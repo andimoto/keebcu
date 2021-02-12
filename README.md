@@ -1,22 +1,27 @@
-# 75er keyboard
+# keebcu - a customizer for 3d printable keyboard case
 
 
 **WORK IN PROGRESS!**
-This Keyboard Model for OpenSCAD is not finished and has not been printed by me.
+This Keyboard Customizer for OpenSCAD is usable and you can customize your keyboard. But there are still some imperfections and "bugs". Please double check measurements and fittings of your keyboard layout.
+You fist may print some critical parts for testing everything.
+The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini.
 
 This is a remix of Parametric Cherry MX Mounting Plate for Mechanical Keyboards by rsheldiii
 http://www.thingiverse.com/thing:573578
 
 ## Description
-This is a OpenSCAD Model of an 75% keyboard. Some parameters can be configured, some like the screw holes
-of the case need to be configured separately.
+This is a OpenSCAD Script for custumizing a keyboard with a spezific layout. It is designed to also do a simulation on how the keyboard could look like.
 
-I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini.
+I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cutted by the script. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design was the bigges layout I can print. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually.
+The cut will always be around the switch holes. This gives good stability when glueing the parts together.
+
+You can copy the file "template_to_copy.scad" and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "rigth & left case", "rigth & left lid", and also risers. It is also possible to create the hole keyboard if you can print this big parts.
 
 If you want to simulate the keyboard with keycaps, you can clone rsheldiii's KeyV2 Repository
-( https://github.com/rsheldiii/KeyV2 ) into the folder where this repository is.
+( https://github.com/rsheldiii/KeyV2 ) in parallel to this repository (<thisRepo>/..).
 The SCAD script will include "../KeyV2/includes.scad". So just put it into the right directory.
-Keycap styles can be replaced in the module "keySim()". See KeyV2 Wiki for available keycap profiles.
+Keycap styles can be replaced in the module "KeyboardSim(<layout>,<simulation true/false>)". See KeyV2 Wiki for available keycap profiles.
+
 
 The keyboard layout is defined in an array. Here it is called "ansiUS_75keyboard" for example.
 It describes (in Units):
@@ -61,6 +66,7 @@ I will try to implement as many automatic functionalities as possible. (Or as lo
 ### todo
 - create selectable space (in y direction) between function row and next rows
 - provide pcb cutout for teensy 2.0
+- add delta variable for usb cutout and pcbholder to move it.
 - function for iso layouts
 - avoid case stabilizer for iso enter and numpad enter
 - add cherry style stabilizer

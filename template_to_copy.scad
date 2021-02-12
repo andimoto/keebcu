@@ -11,11 +11,7 @@ this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
 if you don't want this file to be included, just don't clone this library or
 set the 'DoKeycapSimulation' parameter to false call for placing all keycaps on the keyboard.
 
-todo:
-- template cutout for teensy2
-- select/deselect risers
-- bigger borders
-- add delta variable for usb cutout and pcbholder to move it.
+
 */
 
 /* ########## predefinitions ############ */
