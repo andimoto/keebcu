@@ -38,6 +38,12 @@ Backspace would be 2u or spacebar is for example 6.25u. The size of the cutout f
 
 You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be in the layout array.
 
+After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case.
+
+It is also possible to modify the pcb dimensions with the 'pcb'-values. The template pcb sizes are for an Arduino Pro Micro (clone).
+
+Generating risers for the keyboard can be selected and adjusted. The colors of the risers and of cource case and lid can be set after the screw hole array.
+
 ### Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
 - Be careful with color changes. If color change is only at height of case stabilizer or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers.
