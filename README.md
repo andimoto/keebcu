@@ -29,9 +29,9 @@ I will try to implement some more automatic functionalities as possible. (Or as 
 
 The keyboard layout is defined in an array. In the template it is called "template_ansiUS_7583" for example.
 It describes (in Units):
-'''
+```
     [ [ [xPos (Column) , yPos (Row)] , key size (in Unit)], color ]
-'''
+```
 
 A unit is the size of the cutout for a cherry mx style switch. So a normal key would be 1u,
 Backspace would be 2u or spacebar is for example 6.25u. The size of the cutout for the switch is defined as 'lkey'.
