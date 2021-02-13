@@ -59,6 +59,8 @@ Generating risers for the keyboard can be selected and adjusted. The colors of t
 
 ![](pics/75er004.png)
 
+![](pics/75er004_1.png)
+
 ![](pics/75er005.png)
 
 ![](pics/75er006.png)

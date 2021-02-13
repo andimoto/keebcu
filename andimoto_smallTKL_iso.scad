@@ -27,7 +27,7 @@ plateThickness=3;
 /* thickness of the walls */
 wallThickness=3;
 /* height of the case */
-caseHeight=9;
+caseHeight=13;
 
 /* space between inner case stabilizers
    and the bottom/lip of the case */
@@ -37,7 +37,7 @@ innerCaseSpace = 5;
 caseRadius=1;
 
 //length, in units, of board
-width=16;
+width=17.25;
 //Height, in units, of board
 height=6;
 
@@ -87,96 +87,96 @@ switchHoleTolerance = -0.2;
 
 isoDE_7583keyboard = [
 //start ROW 0 Function ROW
-[[0,0],1,"red"], //Esc
-[[1,0],1,"MintCream"], //F1
-[[2,0],1,"MintCream"], //F2
-[[3,0],1,"MintCream"], //F3
-[[4,0],1,"MintCream"], //F4
-[[5,0],1,"Gray"], //F5
-[[6,0],1,"Gray"], //F6
-[[7,0],1,"Gray"], //F7
-[[8,0],1,"Gray"], //F8
-[[9,0],1,"MintCream"], //F9
-[[10,0],1,"MintCream"], //F10
-[[11,0],1,"MintCream"], //F11
-[[12,0],1,"MintCream"], //F12
-[[13,0],1,"Gray"], //PrintScreen
-[[14,0],1,"Gray"], //PrintScreen
-[[15,0],1,"Gray"], // Del/Ins
+[[0,0],1,"Grey"], //Esc
+[[2,0],1,"Gray"], //F1
+[[3,0],1,"Gray"], //F2
+[[4,0],1,"Gray"], //F3
+[[5,0],1,"Gray"], //F4
+[[6.5,0],1,"Gray"], //F5
+[[7.5,0],1,"Gray"], //F6
+[[8.5,0],1,"Gray"], //F7
+[[9.5,0],1,"Gray"], //F8
+[[11,0],1,"Gray"], //F9
+[[12,0],1,"Gray"], //F10
+[[13,0],1,"Gray"], //F11
+[[14,0],1,"Gray"], //F12
+[[15.25,0],1,"Gray"], //PrintScreen
+[[16.25,0],1,"Gray"], //Pause
+
 //start ROW 1
-[[  0,1],1,"MintCream"], //'
-[[1,1],1,"MintCream"], //1
-[[2,1],1,"MintCream"], //2
-[[3,1],1,"MintCream"], //3
-[[4,1],1,"MintCream"], //4
-[[5,1],1,"MintCream"], //5
-[[6,1],1,"MintCream"], //6
-[[7,1],1,"MintCream"], //7
-[[8,1],1,"MintCream"], //8
-[[9,1],1,"MintCream"], //9
-[[10,1],1,"MintCream"], //0
-[[11,1],1,"MintCream"], //-_
-[[12,1],1,"MintCream"], //=+
+[[0,1],1,"Gray"], //'
+[[1,1],1,"Gray"], //1
+[[2,1],1,"Gray"], //2
+[[3,1],1,"Gray"], //3
+[[4,1],1,"Gray"], //4
+[[5,1],1,"Gray"], //5
+[[6,1],1,"Gray"], //6
+[[7,1],1,"Gray"], //7
+[[8,1],1,"Gray"], //8
+[[9,1],1,"Gray"], //9
+[[10,1],1,"Gray"], //0
+[[11,1],1,"Gray"], //-_
+[[12,1],1,"Gray"], //=+
 [[13,1],2,"Gray"], //backspace
-[[15,1],1,"Gray"], //home
+[[15.25,1],1,"Gray"], //ins
+[[16.25,1],1,"Gray"], //pos1
 //start ROW 2
 [[  0,2],1.5,"Gray"], //TAB
-[[1.5,2],1,"MintCream"], //Q
-[[2.5,2],1,"MintCream"], //W
-[[3.5,2],1,"MintCream"], //E
-[[4.5,2],1,"MintCream"], //R
-[[5.5,2],1,"MintCream"], //T
-[[6.5,2],1,"MintCream"], //Y
-[[7.5,2],1,"MintCream"], //U
-[[8.5,2],1,"MintCream"], //I
-[[9.5,2],1,"MintCream"], //O
-[[10.5,2],1,"MintCream"], //P
-[[11.5,2],1,"MintCream"], //[
-[[12.5,2],1,"MintCream"], //]
-[[13.5,2.5],1.5,"MintCream"], // ENTER
-[[15,2],1,"Gray"], // PgUp
+[[1.5,2],1,"Gray"], //Q
+[[2.5,2],1,"Gray"], //W
+[[3.5,2],1,"Gray"], //E
+[[4.5,2],1,"Gray"], //R
+[[5.5,2],1,"Gray"], //T
+[[6.5,2],1,"Gray"], //Y
+[[7.5,2],1,"Gray"], //U
+[[8.5,2],1,"Gray"], //I
+[[9.5,2],1,"Gray"], //O
+[[10.5,2],1,"Gray"], //P
+[[11.5,2],1,"Gray"], //[
+[[12.5,2],1,"Gray"], //]
+[[13.5,2.5],1.5,"Gray"], // ENTER
+[[15.25,2],1,"Gray"], // del
+[[16.25,2],1,"Gray"], // end
 //start ROW 3
 [[   0,3],1.75,"Gray"], //CapsLock
-[[1.75,3],1,"MintCream"], //A
-[[2.75,3],1,"MintCream"], //S
-[[3.75,3],1,"MintCream"], //D
-[[4.75,3],1,"MintCream"], //F
-[[5.75,3],1,"MintCream"], //G
-[[6.75,3],1,"MintCream"], //H
-[[7.75,3],1,"MintCream"], //J
-[[8.75,3],1,"MintCream"], //K
-[[9.75,3],1,"MintCream"], //L
-[[10.75,3],1,"MintCream"], //;
-[[11.75,3],1,"MintCream"], //'
-[[12.75,3],1,"MintCream"], //#
-[[15,3],1,"Gray"], //PgDn
+[[1.75,3],1,"Gray"], //A
+[[2.75,3],1,"Gray"], //S
+[[3.75,3],1,"Gray"], //D
+[[4.75,3],1,"Gray"], //F
+[[5.75,3],1,"Gray"], //G
+[[6.75,3],1,"Gray"], //H
+[[7.75,3],1,"Gray"], //J
+[[8.75,3],1,"Gray"], //K
+[[9.75,3],1,"Gray"], //L
+[[10.75,3],1,"Gray"], //;
+[[11.75,3],1,"Gray"], //'
+[[12.75,3],1,"Gray"], //#
 //start ROW 4
 [[   0,4],1.25,"Gray"], //LShift
-[[1.25,4],1,"MintCream"], //Z
-[[2.25,4],1,"MintCream"], //Z
-[[3.25,4],1,"MintCream"], //X
-[[4.25,4],1,"MintCream"], //C
-[[5.25,4],1,"MintCream"], //V
-[[6.25,4],1,"MintCream"], //B
-[[7.25,4],1,"MintCream"], //N
-[[8.25,4],1,"MintCream"], //M
-[[9.25,4],1,"MintCream"], //,
-[[10.25,4],1,"MintCream"], //.
-[[11.25,4],1,"MintCream"], // /
-[[12.25,4],1.75,"Gray"], //RShift
-[[14,4],1,"Gray"], //UP
-[[15,4],1,"Gray"], //end
+[[1.25,4],1,"Gray"], //Z
+[[2.25,4],1,"Gray"], //Z
+[[3.25,4],1,"Gray"], //X
+[[4.25,4],1,"Gray"], //C
+[[5.25,4],1,"Gray"], //V
+[[6.25,4],1,"Gray"], //B
+[[7.25,4],1,"Gray"], //N
+[[8.25,4],1,"Gray"], //M
+[[9.25,4],1,"Gray"], //,
+[[10.25,4],1,"Gray"], //.
+[[11.25,4],1,"Gray"], // /
+[[12.25,4],2.75,"Gray"], //RShift
+[[15.25,4],1,"Gray"], //UP
 //start ROW 5
 [[   0,5],1.25,"Gray"], //LCTRL
 [[1.25,5],1.25,"Gray"], //TUX
 [[2.5 ,5],1.25,"Gray"], //ALT
-[[3.75,5],6.25,"MintCream"], //SPACE
+[[3.75,5],6.25,"Gray"], //SPACE
 [[10  ,5],1.25,"Gray"], //COMP
 [[11.25,5],1.25,"Gray"], //Fn
-/* [[12 ,5],1], //RCTRL */
-[[13,5],1,"Gray"], //LEFT
-[[14,5],1,"Gray"], //DOWN
-[[15,5],1,"Gray"], //RIGHT
+[[12.5 ,5],1.25,"Grey"], //RCTRL
+[[14.25,5],1,"Gray"], //LEFT
+[[15.25,5],1,"Gray"], //DOWN
+[[16.25,5],1,"Gray"], //RIGHT
 ];
 
 /* set this variable to the amount of the rows of your LAYOUT.
