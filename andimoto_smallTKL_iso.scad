@@ -27,7 +27,7 @@ plateThickness=3;
 /* thickness of the walls */
 wallThickness=3;
 /* height of the case */
-caseHeight=13;
+caseHeight=9;
 
 /* space between inner case stabilizers
    and the bottom/lip of the case */
@@ -205,6 +205,11 @@ pcbHeight = 2;
 pcbWidth = 18;
 pcbLength = 34;
 
+/* set 'addRisers' to true or false
+ * to calculate a lid with holes for risers
+ * and add risers to simulation
+ */
+addRisers = true;
 
 /* keyboardRiser config
  * angleBaseX -> width of the riser
@@ -261,24 +266,14 @@ colorRiserL="Blue";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(isoDE_7583keyboard,true); */
+KeyboardSim(isoDE_7583keyboard,true);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
-
-w=width*lkey;
-h=height*lkey;
 /* ### complete keyboard model ### */
-difference() {
-mainCase(isoDE_7583keyboard);
-#translate([-61, -1, 0]) cube([w,h+2,15]);
-#translate([w-65, h-17, 0]) cube([w,h+2,15]);
-#translate([w-65, -h+17.5, 0]) cube([w,h+2,15]);
-}
-
-
+/* mainCase(isoDE_7583keyboard); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
