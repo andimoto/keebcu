@@ -19,9 +19,9 @@ The cut will always be around the switch holes. This gives good stability when g
 You can copy the file "template_to_copy.scad" and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "rigth & left case", "rigth & left lid", and also risers. It is also possible to create the hole keyboard if you can print this big parts.
 
 If you want to simulate the keyboard with keycaps and its colors, you can clone rsheldiii's KeyV2 Repository
-( https://github.com/rsheldiii/KeyV2 ) in parallel to this repository (<thisRepo>/..).
+( https://github.com/rsheldiii/KeyV2 ) in parallel to this repository (thisRepo/..).
 The SCAD script will include "../KeyV2/includes.scad". So just put it into the right directory.
-Keycap styles can be replaced in the module "KeyboardSim(<layout>,<simulation true/false>)" itself. See KeyV2 Wiki for available keycap profiles and documentation.
+Keycap styles can be replaced in the module "KeyboardSim('layout','simulation true/false')" itself. See KeyV2 Wiki for available keycap profiles and documentation.
 
 So if you want you can change the colors and have a look at how your keyboard may look!
 You can add further keys into the array, but maybe the case will not fit automatically.
@@ -29,10 +29,12 @@ I will try to implement some more automatic functionalities as possible. (Or as 
 
 The keyboard layout is defined in an array. In the template it is called "template_ansiUS_7583" for example.
 It describes (in Units):
+'''
     [ [ [xPos (Column) , yPos (Row)] , key size (in Unit)], color ]
+'''
 
 A unit is the size of the cutout for a cherry mx style switch. So a normal key would be 1u,
-Backspace would be 2u or spacebar is for example 6.25u. The size of the cutout for the switch is defined as "lkey".
+Backspace would be 2u or spacebar is for example 6.25u. The size of the cutout for the switch is defined as 'lkey'.
 
 You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be in the layout array.
 
