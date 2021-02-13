@@ -40,7 +40,7 @@ You need to configure 'hight' and 'width' of the case. These variables are neces
 
 ### Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
-- Be careful with color changes. If color change is only at height of case stabilizer or screw holes, there can be problems when screwing on the lid.
+- Be careful with color changes. If color change is only at height of case stabilizer or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers.
 - Notice that when placing in the switches, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed.
 - normally the lid parts do not need any brim.
 
@@ -85,10 +85,6 @@ You need to configure 'hight' and 'width' of the case. These variables are neces
 
 # LICENSE
 
-<dl>
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Namensnennung 4.0 International Lizenz</a>.
-</dl>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.
 
-<dl>
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-</dl>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
