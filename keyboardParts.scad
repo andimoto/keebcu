@@ -39,17 +39,45 @@ module holematrix(holes,startx,starty,zCase){
 	for (key = holes){
 		/* echo (key[0][0],key[0][1],key[1]); */
 
+		/* place switch holes */
 		if(key[1] >= 1){
-			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			switchhole();
-		}
+			/* check for iso Enter key; should be the last row minus 3.5
+			   iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
+				 row without F Keys */
+			if(key[0][1] == height-3.5)
+			{
+				/* iso enter needs a move of about 2mm into right direction */
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+				translate([(lkey*key[1]-holesize)/2 + 2,(lkey - holesize)/2, 0])
+				switchhole();
 
-		/* remove comment to show root point of holesize */
+				/* iso enter and other stabilizers than spacebar */
+				translate([19.7,-5,0])
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2,(lkey - holesize)/2+costarStabYdelta, 0])
+				rotate([0,0,90]) costarStabilizer();
+
+				translate([-4.7,20,0])
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2,(lkey - holesize)/2+costarStabYdelta, 0])
+				rotate([0,0,90]) costarStabilizer();
+
+			}
+			else
+			{
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				switchhole();
+			}
+		}
+		/* place switch holes - end */
+
+		/* debugging - remove comment to show root point of holesize */
 		/* translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 		translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 		#cylinder(r=0.1,h=10); */
 
+		/* place stabilizers */
 		if (key[1]>1.75){
 			temp=lkey*key[1];
 			/* echo("Stab! ", temp); */
@@ -77,19 +105,7 @@ module holematrix(holes,startx,starty,zCase){
 				costarStabilizer();
 			}
 		}
-		if(key[0][1]==2.5)
-		{
-			/* iso enter and other stabilizers than spacebar */
-			translate([19.7,-5,0])
-			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-			translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2,(lkey - holesize)/2+costarStabYdelta, 0])
-			rotate([0,0,90]) costarStabilizer();
 
-			translate([-4.7,20,0])
-			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-			translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2,(lkey - holesize)/2+costarStabYdelta, 0])
-			rotate([0,0,90]) costarStabilizer();
-		}
 	}
 }
 
