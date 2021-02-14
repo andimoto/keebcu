@@ -185,8 +185,8 @@ module keySim(holes)
 		{
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			iso_enter();
+			translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
+			sa_row(key[0][1]) iso_enter() key(true);
 		}
 		else if (key[1]==2.25){
 			color(key[2])
