@@ -1,12 +1,12 @@
-# keebcu - a customizer for 3d printable keyboard case
+# keebcu - customizer for 3d printable keyboard cases
 
 ## Keyboard Customizer
 
 This Keyboard Customizer for OpenSCAD is usable and you can customize your keyboard. But there are still some imperfections and "bugs". Please double check measurements and fittings of your keyboard layout.
-You fist may print some critical parts for testing everything.
-The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I can not give any guarantee on the correct functionality of this script.
+You first may print some critical parts for testing everything, like space bar, or stabilized keys.
+The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I cannot give any guarantee on the correct functionality of this script.
 
-This is a remix of Parametric Cherry MX Mounting Plate for Mechanical Keyboards by rsheldiii
+This is based on Parametric Cherry MX Mounting Plate for Mechanical Keyboards by rsheldiii
 http://www.thingiverse.com/thing:573578
 
 ## Description
