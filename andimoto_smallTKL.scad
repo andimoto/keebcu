@@ -246,7 +246,7 @@ screwHoleArray = [
 
 /* set colors for simulation */
 colorCase="Gold";
-colorLid="White";
+colorLid="Gold";
 colorRiserR="Gold";
 colorRiserL="Gold";
 

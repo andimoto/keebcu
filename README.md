@@ -1,9 +1,10 @@
-# keebcu - a customizer for 3d printable keyboard case
+# keebcu - a customizer for 3d printable keyboard cases
 
 ## Keyboard Customizer
 
-This Keyboard Customizer for OpenSCAD is usable and you can customize your keyboard. But there are still some imperfections and "bugs". Please double check measurements and fittings of your keyboard layout.
-You fist may print some critical parts for testing everything.
+#### Notes
+This Keyboard Customizer for OpenSCAD is in "usable" state now, and you can customize your keyboard :). But there are still some imperfections and "bugs". Please double check measurements and fittings of your keyboard layout.
+You first may print some critical parts for testing everything.
 The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I can not give any guarantee on the correct functionality of this script.
 
 This is a remix of Parametric Cherry MX Mounting Plate for Mechanical Keyboards by rsheldiii
@@ -38,11 +39,11 @@ Backspace would be 2u or spacebar is for example 6.25u. The size of the cutout f
 
 You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be in the layout array.
 
-After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case.
+After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case.
 
-It is also possible to modify the pcb dimensions with the 'pcb'-values. The template pcb sizes are for an Arduino Pro Micro (clone).
+It is also possible to modify the pcb dimensions with the 'pcb'-values. The template pcb sizes is for an Arduino Pro Micro (clone) at the moment.
 
-Generating risers for the keyboard can be selected and adjusted. The colors of the risers and of cource case and lid can be set after the screw hole array.
+Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
 
 ### Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
@@ -50,16 +51,40 @@ Generating risers for the keyboard can be selected and adjusted. The colors of t
 - Notice that when placing in the switches, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed.
 - normally the lid parts do not need any brim.
 
+### todo
+- create selectable space (in y direction) between function row and next rows
+- provide pcb cutout for teensy 2.0
+- add delta variable for usb cutout and pcbholder to move it.
+- function for iso layouts
+- avoid case stabilizer for iso enter and numpad enter
+- add cherry style stabilizer
+- add scirting to case if needed
+- add parametric keebCase (already working on in other branch)
 
+## Firmware
+
+For firmware please see https://github.com/andimoto/qmk_firmware/tree/andimoto/andimoto-7583-promicro-new/keyboards/andimoto
+
+## Model Gallery
+*andimoto7583*
 ![](pics/75er001.png)
+
+*andimoto smallTKL iso*
+![](pics/75er004_1.png)
+
+*andimoto smallTKL*
+![](pics/andimoto_smallTKL.png)
+
+*andimoto6061*
+![](pics/75er004_2.png)
+
+![](pics/75er013.png)
 
 ![](pics/75er002.png)
 
 ![](pics/75er003.png)
 
 ![](pics/75er004.png)
-
-![](pics/75er004_1.png)
 
 ![](pics/75er005.png)
 
@@ -77,18 +102,27 @@ Generating risers for the keyboard can be selected and adjusted. The colors of t
 
 ![](pics/75er012.png)
 
-![](pics/75er013.png)
 
 
+### Reality
 
-### todo
-- create selectable space (in y direction) between function row and next rows
-- provide pcb cutout for teensy 2.0
-- add delta variable for usb cutout and pcbholder to move it.
-- function for iso layouts
-- avoid case stabilizer for iso enter and numpad enter
-- add cherry style stabilizer
-- add scirting to case if needed
+![](pics/img/IMG_20210119_213742.jpg)
+
+![](pics/img/IMG_20201224_111752.jpg)
+
+![](pics/img/IMG_20201228_204647.jpg)
+
+![](pics/img/IMG_20201215_085124.jpg)
+
+![](pics/img/IMG_20201224_110407.jpg)
+
+![](pics/img/IMG_20210111_151044.jpg)
+
+![](pics/img/IMG_20201215_085352.jpg)
+
+![](pics/img/IMG_20210111_150655.jpg)
+
+
 
 
 # LICENSE
