@@ -8,16 +8,17 @@ This Keyboard Customizer for OpenSCAD is in "usable" state now, and you can cust
 Please double check measurements and fittings of your keyboard layout. You first may print some critical parts for testing the model.
 The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I can not give any guarantee on the correct functionality of this script.
 
-This is a remix of Parametric Cherry MX Mounting Plate for Mechanical Keyboards by rsheldiii
+This is based on *Parametric Cherry MX Mounting Plate for Mechanical Keyboards* by rsheldiii
 http://www.thingiverse.com/thing:573578
 
 ## Description
 This is a OpenSCAD Script for custumizing a keyboard with a specific layout. It is designed to also show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii. **Download OpenSCAD and start building your keyboard ;)!**
 
 I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cut by the script with 'cutAfterUnits' variable. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design is the biggest layout I can print now. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually :).
-The cut will always be around the switch holes. This gives good stability when glueing the parts together. In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.
+The cut will always be around the switch holes. This gives good stability when glueing the parts together. Before glueing, the parts may need some sanding work, etc. Just check that both sides fit to each other without bigger space in between.
+(In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.)
 
-I glued the parts together with Revell CONTACTA glue because of its fine needle which was very practical. Any plastic glue will work. I broke one of my prototype boards and they are pretty stable. I had to use some force for it. Just be sure the case parts are glued well together!
+I glued the parts together with Revell CONTACTA glue because of its fine needle which was very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
 
 ### Create you own keyboard layout
 You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard if you can print bigger parts.
@@ -49,7 +50,6 @@ It is also possible to modify the pcb dimensions with the 'pcb'-values. The temp
 Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
 
 ### Parts needed
-
 - Printed Keyboard Parts
   - Case
   - Lids
@@ -76,12 +76,11 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - add parametric keebCase (already working on)
 
 ## Firmware
-
 For firmware please see https://github.com/andimoto/qmk_firmware/tree/andimoto/andimoto-7583-promicro-new/keyboards/andimoto
 
 The qmk_firmware fork contains everything to build the firmware for the provided boards *andimoto7583* and *andimoto_smallTKL*.
 
-**Attention: The Pro Micro is "normaly" suited for layouts with up to 65 switches. I was lazy and did not want to modify the pcb cutout to fit in the teensy 2.0 at that time. So I removed both TX/RX Leds from the pro micro and had 2 extra pins available. This enables layouts with up to 84 switches :). Also qmk_layout needs to be squeezed together.**
+**Attention: The Pro Micro is "normally" suited for layouts with up to 65 switches. I was lazy and did not want to modify the pcb cutout to fit in the teensy 2.0 at that time. So I removed both TX/RX Leds from the pro micro and had 2 extra pins available (pcb may be damaged!!). This enables layouts with up to 84 switches :). Also qmk_layout needs to be squeezed together.**
 
 *I will also add a schematic for soldering the keyboard matrix and the Pro Micro of the available boards.*
 
