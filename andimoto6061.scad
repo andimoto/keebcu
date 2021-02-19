@@ -98,7 +98,7 @@ ansiUS_6061 = [
 [[12,0],1,"MintCream"], //=+
 [[13,0],2,"White"], //backspace
 //start ROW 2
-[[  0,1],1.5,"Black"], //TAB
+[[  0,1],1.5,"Grey"], //TAB
 [[1.5,1],1,"MintCream"], //Q
 [[2.5,1],1,"MintCream"], //W
 [[3.5,1],1,"MintCream"], //E
@@ -111,9 +111,9 @@ ansiUS_6061 = [
 [[10.5,1],1,"MintCream"], //P
 [[11.5,1],1,"MintCream"], //[
 [[12.5,1],1,"MintCream"], //]
-[[13.5,1],1.5,"Black"], // \
+[[13.5,1],1.5,"Grey"], // \
 //start ROW 3
-[[    0,2],1.75,"Black"], //CapsLock
+[[    0,2],1.75,"Grey"], //CapsLock
 [[ 1.75,2],1,"MintCream"], //A
 [[ 2.75,2],1,"MintCream"], //S
 [[ 3.75,2],1,"MintCream"], //D
@@ -125,9 +125,9 @@ ansiUS_6061 = [
 [[ 9.75,2],1,"MintCream"], //L
 [[10.75,2],1,"MintCream"], //;
 [[11.75,2],1,"MintCream"], //'
-[[12.75,2],2.25,"Black"], //ENTER
+[[12.75,2],2.25,"Grey"], //ENTER
 //start ROW 4
-[[    0,3],2.25,"Black"], //LShift
+[[    0,3],2.25,"Grey"], //LShift
 [[ 2.25,3],1,"MintCream"], //Z
 [[ 3.25,3],1,"MintCream"], //X
 [[ 4.25,3],1,"MintCream"], //C
@@ -138,16 +138,16 @@ ansiUS_6061 = [
 [[ 9.25,3],1,"MintCream"], //,
 [[10.25,3],1,"MintCream"], //.
 [[11.25,3],1,"MintCream"], // /
-[[12.25,3],2.75,"Black"], //RShift
+[[12.25,3],2.75,"Grey"], //RShift
 //start ROW 5
-[[   0,4],1.25,"Black"], //LCTRL
-[[1.25,4],1.25,"Black"], //TUX
-[[2.5 ,4],1.25,"Black"], //ALT
+[[   0,4],1.25,"Grey"], //LCTRL
+[[1.25,4],1.25,"Grey"], //TUX
+[[2.5 ,4],1.25,"Grey"], //ALT
 [[3.75,4],6.25,"White"], //SPACE
-[[10  ,4],1.25,"Black"], //COMP
-[[11.25,4],1.25,"Black"], //Fn
-[[12.5 ,4],1.25,"Black"], //RCTRL
-[[13.75 ,4],1.25,"Black"], //RCTRL
+[[10  ,4],1.25,"Grey"], //COMP
+[[11.25,4],1.25,"Grey"], //Fn
+[[12.5 ,4],1.25,"Grey"], //RCTRL
+[[13.75 ,4],1.25,"Grey"], //RCTRL
 
 ];
 

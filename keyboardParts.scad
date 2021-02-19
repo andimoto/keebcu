@@ -281,7 +281,9 @@ module screwHole(r1=2.5,r2=1.5,
 	h1=caseHeight-plateThickness-1,h2=caseHeight-1)
 {
 	difference() {
+	/* screw head */
 	cylinder(r=r1, h=h1);
+	/* screw hole */
 	cylinder(r=r2, h=h2);
 	}
 }

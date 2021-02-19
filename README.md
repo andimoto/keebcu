@@ -1,48 +1,64 @@
-# keebcu - customizer for 3d printable keyboard cases
+# keebcu - a customizer for 3d printable keyboard cases
 
 ## Keyboard Customizer
 
-This Keyboard Customizer for OpenSCAD is usable and you can customize your keyboard. But there are still some imperfections and "bugs". Please double check measurements and fittings of your keyboard layout.
-You first may print some critical parts for testing everything, like space bar, or stabilized keys.
-The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I cannot give any guarantee on the correct functionality of this script.
+#### Notes
+This Keyboard Customizer for OpenSCAD is in "usable" state now, and you can customize your keyboard :). But there are still some imperfections and "bugs". I'm testing several layouts, like normal sized boards to macro pads, etc., from time to time.
 
-This is based on Parametric Cherry MX Mounting Plate for Mechanical Keyboards by rsheldiii
+Please double check measurements and fittings of your keyboard layout. You first may print some critical parts for testing the model.
+The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I can not give any guarantee on the correct functionality of this script.
+
+This is based on *Parametric Cherry MX Mounting Plate for Mechanical Keyboards* by rsheldiii
 http://www.thingiverse.com/thing:573578
 
 ## Description
-This is a OpenSCAD Script for custumizing a keyboard with a specific layout. It is designed to also show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii.
+This is a OpenSCAD Script for custumizing a keyboard with a specific layout. It is designed to also show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii. **Download OpenSCAD and start building your keyboard ;)!**
 
-I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cutted by the script with 'cutAfterUnits' variable. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design is the bigges layout I can print. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually.
-The cut will always be around the switch holes. This gives good stability when glueing the parts together. In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.
+I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cut by the script with 'cutAfterUnits' variable. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design is the biggest layout I can print now. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually :).
+The cut will always be around the switch holes. This gives good stability when glueing the parts together. Before glueing, the parts may need some sanding work, etc. Just check that both sides fit to each other without bigger space in between.
+(In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.)
+
+I glued the parts together with Revell CONTACTA glue because of its fine needle which was very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
 
 ### Create you own keyboard layout
-You can copy the file "template_to_copy.scad" and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "rigth & left case", "rigth & left lid", and also risers. It is also possible to create the hole keyboard if you can print this big parts.
+You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard if you can print bigger parts.
 
 If you want to simulate the keyboard with keycaps and its colors, you can clone rsheldiii's KeyV2 Repository
 ( https://github.com/rsheldiii/KeyV2 ) in parallel to this repository (thisRepo/..).
 The SCAD script will include "../KeyV2/includes.scad". So just put it into the right directory.
 Keycap styles can be replaced in the module "KeyboardSim('layout','simulation true/false')" itself. See KeyV2 Wiki for available keycap profiles and documentation.
 
-So if you want you can change the colors and have a look at how your keyboard may look!
-You can add further keys into the array, but maybe the case will not fit automatically.
-I will try to implement some more automatic functionalities as possible. (Or as long as I have fun with it :D).
+So you can change the colors and have a look at how your keyboard may look like!
+You can add more keys into the array, but maybe the case will not fit automatically. Adjust height and width of the case, then.
+I will try to implement some more automatic functionalities as possible.
 
-The keyboard layout is defined in an array. In the template it is called "template_ansiUS_7583" for example.
+The keyboard layout is defined in an array. In the template file it is called "template_ansiUS_7583" for example.
 It describes (in Units):
 ```
-    [ [ [xPos (Column) , yPos (Row)] , key size (in Unit)], color ]
+    [ [xPos (Column) , yPos (Row)] , key size (in Unit), color ]
 ```
 
-A unit is the size of the cutout for a cherry mx style switch. So a normal key would be 1u,
-Backspace would be 2u or spacebar is for example 6.25u. The size of the cutout for the switch is defined as 'lkey'.
+A unit is the size of the cutout for a cherry mx style switch. So a normal key is 1u,
+Backspace is 2u or spacebar is for example 6.25u. The size of the cutout for the switch is defined as 'lkey'.
 
-You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be in the layout array.
+You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be calculatable from the layout array.
 
-After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case.
+After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case. The standard screw size is 3mm. The length depends on the case height, but I used 3x8mm screws.
 
-It is also possible to modify the pcb dimensions with the 'pcb'-values. The template pcb sizes are for an Arduino Pro Micro (clone).
+It is also possible to modify the pcb dimensions with the 'pcb'-values. The template pcb sizes is for an Arduino Pro Micro (clone) at the moment.
 
-Generating risers for the keyboard can be selected and adjusted. The colors of the risers and of cource case and lid can be set after the screw hole array.
+Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
+
+### Parts needed
+- Printed Keyboard Parts
+  - Case
+  - Lids
+  - Risers
+- Cherry MX Style switches
+- Fancy Keycaps
+- Costar Stabilizers
+- Screws 3x8mm
+
 
 ### Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
@@ -50,16 +66,46 @@ Generating risers for the keyboard can be selected and adjusted. The colors of t
 - Notice that when placing in the switches, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed.
 - normally the lid parts do not need any brim.
 
+### todo
+- create selectable space (in y direction) between function row and next rows
+- provide pcb cutout for teensy 2.0
+- add delta variable for usb cutout and pcbholder to move it.
+- avoid case stabilizer for iso enter and numpad enter (optional)
+- add cherry style stabilizer!
+- add a selectable scirt to the case
+- add parametric keebCase (already working on)
 
+## Firmware
+For firmware please see https://github.com/andimoto/qmk_firmware/tree/andimoto/andimoto-7583-promicro-new/keyboards/andimoto
+
+The qmk_firmware fork contains everything to build the firmware for the provided boards *andimoto7583* and *andimoto_smallTKL*.
+
+**Attention: The Pro Micro is "normally" suited for layouts with up to 65 switches. I was lazy and did not want to modify the pcb cutout to fit in the teensy 2.0 at that time. So I removed both TX/RX Leds from the pro micro and had 2 extra pins available (pcb may be damaged!!). This enables layouts with up to 84 switches :). Also qmk_layout needs to be squeezed together.**
+
+*I will also add a schematic for soldering the keyboard matrix and the Pro Micro of the available boards.*
+
+The Arduino Pro Micro clones are very cheap so I used them. More money for fancy keycaps ;).
+
+## Model Gallery
+*andimoto7583*
 ![](pics/75er001.png)
+
+*andimoto smallTKL iso*
+![](pics/75er004_1.png)
+
+*andimoto smallTKL*
+![](pics/andimoto_smallTKL.png)
+
+*andimoto6061*
+![](pics/75er004_2.png)
+
+![](pics/75er013.png)
 
 ![](pics/75er002.png)
 
 ![](pics/75er003.png)
 
 ![](pics/75er004.png)
-
-![](pics/75er004_1.png)
 
 ![](pics/75er005.png)
 
@@ -77,18 +123,27 @@ Generating risers for the keyboard can be selected and adjusted. The colors of t
 
 ![](pics/75er012.png)
 
-![](pics/75er013.png)
 
 
+### Reality
 
-### todo
-- create selectable space (in y direction) between function row and next rows
-- provide pcb cutout for teensy 2.0
-- add delta variable for usb cutout and pcbholder to move it.
-- function for iso layouts
-- avoid case stabilizer for iso enter and numpad enter
-- add cherry style stabilizer
-- add scirting to case if needed
+![](pics/img/IMG_20210119_213742.jpg)
+
+![](pics/img/IMG_20201224_111752.jpg)
+
+![](pics/img/IMG_20201228_204647.jpg)
+
+![](pics/img/IMG_20201215_085124.jpg)
+
+![](pics/img/IMG_20201224_110407.jpg)
+
+![](pics/img/IMG_20210111_151044.jpg)
+
+![](pics/img/IMG_20201215_085352.jpg)
+
+![](pics/img/IMG_20210111_150655.jpg)
+
+
 
 
 # LICENSE
