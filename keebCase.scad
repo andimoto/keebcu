@@ -68,4 +68,50 @@ module halfCase(slidePin = false)
   }
 }
 
-translate([2,2,0]) halfCase(true);
+/* translate([2,2,0]) halfCase(true); */
+
+
+module sphereCut()
+{
+  translate([0,0,10])
+  difference()
+  {
+    sphere(r=11);
+    translate([0,13,0]) cube([22, 22, 22],center = true);
+    translate([0,0,5]) cube([22, 22, 22],center = true);
+  }
+}
+
+/* sphereCut(); */
+
+module lock(radius=10, height=4)
+{
+  difference() {
+    /* lock part */
+    minkowski()
+    {
+      difference() {
+        hull()
+        {
+          cylinder(r=radius,h=height);
+          translate([0,radius*2,0]) cylinder(r=radius,h=height);
+        }
+        translate([radius*2-radius/2,radius,0]) cylinder(r=radius,h=height);
+        translate([-radius*2+radius/2,radius,0]) cylinder(r=radius,h=height);
+      }
+      cylinder(r=edgeRadius,h=0.01, center=true);
+    }
+
+    /* cutout */
+    translate([0,0,2]) sphereCut();
+    translate([0,radius*2,2]) rotate([0,0,180]) sphereCut();
+
+    translate([0,-radius/1.5,0]) cylinder(r=2.5, h=2, center=true);
+    translate([0,radius*2+radius/1.5,0]) cylinder(r=2.5, h=2, center=true);
+    /* debug cut */
+    /* cube([radius*2,50,5]); */
+  }
+}
+
+
+lock();
