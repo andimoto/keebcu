@@ -35,7 +35,7 @@ I will try to implement some more automatic functionalities as possible.
 The keyboard layout is defined in an array. In the template file it is called "template_ansiUS_7583" for example.
 It describes (in Units):
 ```
-    [ [ [xPos (Column) , yPos (Row)] , key size (in Unit)], color ]
+    [ [xPos (Column) , yPos (Row)] , key size (in Unit), color ]
 ```
 
 A unit is the size of the cutout for a cherry mx style switch. So a normal key is 1u,
