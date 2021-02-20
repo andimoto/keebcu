@@ -135,5 +135,5 @@ rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=true); */
 /* difference()
 {
   translate([2,2,1]) halfCase(locks=true,magnets=true);
-  #cube([keebHeight,keebThickness+10,keebLen/2+wallThickness]);
+  #cube([keebHeight+10,keebThickness+10,keebLen/2+wallThickness*2]);
 } */
