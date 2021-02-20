@@ -114,10 +114,10 @@ module halfCase(locks=true, magnets=true)
 
     if(locks == true)
     {
-      color("yellow") translate([lockThickness-wallThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius])
+      color("yellow") translate([lockThickness-wallThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
       rotate([90,0,0]) rotate([0,-90,0]) scale([1.01,1.01,1]) lock(negativ=true);
 
-      color("yellow") translate([keebHeight+sideThickness+lockThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius])
+      color("yellow") translate([keebHeight+sideThickness+lockThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
       rotate([90,0,0]) rotate([0,90,0]) scale([1.01,1.01,1]) lock(negativ=true);
     }
   }
@@ -126,6 +126,7 @@ module halfCase(locks=true, magnets=true)
 }
 
 translate([2,2,0]) halfCase(locks=true,magnets=true);
+/* #translate([2,2,keebLen+wallThickness*2+1+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
 /* color("yellow") translate([-lockThickness,keebThickness/2+wallThickness*2,(keebLen/2)-lockRadius])
 rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=true); */
 
@@ -135,5 +136,5 @@ rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=true); */
 /* difference()
 {
   translate([2,2,1]) halfCase(locks=true,magnets=true);
-  #cube([keebHeight+10,keebThickness+10,keebLen/2+wallThickness*2]);
+  cube([keebHeight+10,keebThickness+10,keebLen/2+wallThickness*2]);
 } */
