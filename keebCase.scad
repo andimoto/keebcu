@@ -52,7 +52,7 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
 
     if(negativ == false)
     {
-      /* cutout */
+      /* cutout for fingers */
       translate([0,0,2]) sphereCut();
       translate([0,radius*2,2]) rotate([0,0,180]) sphereCut();
     }
@@ -60,8 +60,8 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
     if(negativ == false)
     {
       /* magnet holes */
-      translate([0,-radius/1.5,0.5]) cylinder(r=magnetRadius, h=magnetThickness, center=true);
-      translate([0,radius*2+radius/1.5,0.5]) cylinder(r=magnetRadius, h=magnetThickness, center=true);
+      translate([0,-radius/1.5,0.75]) cylinder(r=magnetRadius, h=magnetThickness+0.5, center=true);
+      translate([0,radius*2+radius/1.5,0.75]) cylinder(r=magnetRadius, h=magnetThickness+0.5, center=true);
     }
 
     /* debug cut */
@@ -114,7 +114,7 @@ module halfCase(locks=true, magnets=true)
 
     if(locks == true)
     {
-      color("yellow") translate([lockThickness-wallThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
+      color("yellow") translate([lockThickness-wallThickness+1,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
       rotate([90,0,0]) rotate([0,-90,0]) scale([1.02,1.02,1]) lock(negativ=true);
 
       color("yellow") translate([keebHeight+sideThickness+lockThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
@@ -125,11 +125,12 @@ module halfCase(locks=true, magnets=true)
 
 }
 
-translate([2,2,0]) halfCase(locks=true,magnets=true);
-translate([2,2,keebLen+wallThickness*2+1+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true);
-color("yellow") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
-rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false);
-color("yellow") translate([(keebHeight+sideThickness*2)-lockThickness/4,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
+/* color("yellow") translate([2,2,0]) halfCase(locks=true,magnets=true); */
+/* color("yellow") translate([2,2,keebLen+wallThickness*2+1+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
+
+/* color("black") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
+rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false); */
+color("black") translate([(keebHeight+sideThickness*2)-lockThickness/3,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
 rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false);
 
 
