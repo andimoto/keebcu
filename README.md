@@ -74,6 +74,7 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - add cherry style stabilizer!
 - add a selectable scirt to the case
 - add parametric keebCase (already working on)
+- screw holes get crossed by case stabilizer
 
 ## Firmware
 For firmware please see https://github.com/andimoto/qmk_firmware/tree/andimoto/andimoto-7583-promicro-new/keyboards/andimoto
