@@ -30,6 +30,8 @@ module costarStabilizer(){
 		cube([stabX,holesize+1,plateThickness/*+extra*/]);
 		translate([-stabX/2,0.25,plateThickness-0.8])
 		cube([stabX,holesize+0.5,1+extra]);
+		/* debug point */
+		/* #cylinder(r=0.1,h=10); */
 	}
 }
 /* costarStabilizer(); */
@@ -48,18 +50,20 @@ module holematrix(holes,startx,starty,zCase){
 			{
 				/* iso enter needs a move of about 2mm into right direction */
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2 + 2,(lkey - holesize)/2, 0])
+				translate([(lkey*key[1]-holesize)/2 + 3,(lkey - holesize)/2, 0])
 				switchhole();
 
 				/* iso enter and other stabilizers than spacebar */
+				/* needed to add some extra mm to the costarStabilizer cutouts
+				   but different extra for each stabilizer */
 				translate([19.7,-5,0])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2,(lkey - holesize)/2+costarStabYdelta, 0])
+				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.6,(lkey - holesize)/2+costarStabYdelta, 0])
 				rotate([0,0,90]) costarStabilizer();
 
 				translate([-4.7,20,0])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2,(lkey - holesize)/2+costarStabYdelta, 0])
+				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 3,(lkey - holesize)/2+costarStabYdelta, 0])
 				rotate([0,0,90]) costarStabilizer();
 
 			}
@@ -231,11 +235,11 @@ module keySim(holes)
 
 module calcRight(holes,startx,starty,zCase){
 	for (key = holes){
-		if(key[1] >= 1){
+		/* if(key[1] >= 1){
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 			switchhole();
-		}
+		} */
 
 		cutLength = cutLength + lkey*key[0][0];
 		if(cutLength <= cutAfterUnits*lkey)
@@ -277,24 +281,36 @@ module calcRight(holes,startx,starty,zCase){
 }
 
 
-module screwHole(r1=2.5,r2=1.5,
+module screwHole(r2=1.5,
 	h1=caseHeight-plateThickness-1,h2=caseHeight-1)
 {
-	difference() {
-	/* screw head */
-	cylinder(r=r1, h=h1);
 	/* screw hole */
 	cylinder(r=r2, h=h2);
-	}
 }
 
 
-module caseScrewHolesLoop(r10=2.5,r20=1.5)
+module caseScrewHolesLoop(r20=1.5)
 {
 	for(hole = screwHoleArray)
 	{
 		translate([hole[0],hole[1],1])
-		screwHole(r1=r10,r2=r20);
+		screwHole(r2=r20);
+	}
+}
+
+module screwSpacer(r1=2.5,
+	h1=caseHeight-plateThickness-1,h2=caseHeight-1)
+{
+	/* screw head */
+	scale([1.5,1,1]) cylinder(r=r1, h=h1);
+}
+
+module caseScrewSpacerLoop(r10=2.5)
+{
+	for(hole = screwHoleArray)
+	{
+		translate([hole[0],hole[1],1])
+		screwSpacer(r1=r10);
 	}
 }
 
@@ -457,13 +473,21 @@ module case(){
 
 
 module mainCase(keyboardLayout){
-	difference(){
-		case();
-		holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
-		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5,caseDepth-2,1]) usbCutout();
+	difference()
+	{
+		union()
+		{
+			difference(){
+				case();
+				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
+				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5,caseDepth-2,1]) usbCutout();
+			}
+			caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
+			caseScrewSpacerLoop(r10=2.5);
+		}
+		translate([0,0,-plateThickness]) caseScrewHolesLoop(r20=1.45);
 	}
-	caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
-	caseScrewHolesLoop(r10=2.5,r20=1.45);
 }
 
 

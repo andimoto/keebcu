@@ -240,17 +240,17 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[22,lkey-1], //left lower row
-[144,lkey-1],
-[186,lkey-1],
-[310,lkey-1], // right lower row
+[23,lkey-0.4], //left lower row
+[144,lkey-0.4],
+[186,lkey-0.4],
+[310,lkey-0.4], // right lower row
 
 [25,lkey*3+wallThickness-3], //left mid row
 [144,lkey*3+wallThickness-3],
 [186,lkey*3+wallThickness-3],
 [310,lkey*3+wallThickness-3], //right mid row
 
-[19,lkey*5+wallThickness-3], //left upper row
+[20,lkey*5+wallThickness-3], //left upper row
 [144,lkey*5+wallThickness-3],
 [186,lkey*5+wallThickness-3],
 [310,lkey*5+wallThickness-3], //right upper row
@@ -266,19 +266,19 @@ colorRiserL="DarkBlue";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-KeyboardSim(smallTKL_isoDE,false);
+/* KeyboardSim(smallTKL_isoDE,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(smallTKL_isoDE); */
+mainCase(smallTKL_isoDE);
 /* translate([0,0,-lidThickness]) lid(); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(smallTKL_isoDE); */
-/* translate([0, 150,0]) mainCaseRight(smallTKL_isoDE); */
+/* translate([0,0,0]) mainCaseRight(smallTKL_isoDE); */
 
 /* lidL(); */
 /* lidR(); */
@@ -288,5 +288,6 @@ KeyboardSim(smallTKL_isoDE,false);
 /* test */
 /* difference() {
   mainCaseRight(smallTKL_isoDE);
-  translate([20,-20,0]) cube([200,200,30]);
+  translate([37,-20,0]) cube([200,200,30]);
+  translate([315,-20,0]) cube([200,200,30]);
 } */
