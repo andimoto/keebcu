@@ -185,6 +185,9 @@ smallTKL_isoDE = [
  */
 MaxRows = 6;
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=5;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -274,7 +277,7 @@ colorRiserL="DarkBlue";
 
 /* ### complete keyboard model ### */
 mainCase(smallTKL_isoDE);
-/* translate([0,0,-lidThickness]) lid(); */
+/* translate([0,0,-lidThickness-5]) lid(); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(smallTKL_isoDE); */

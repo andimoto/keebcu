@@ -151,6 +151,10 @@ ansiUS_6061 = [
 
 ];
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=0;
+
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */

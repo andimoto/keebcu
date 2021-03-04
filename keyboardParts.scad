@@ -442,14 +442,14 @@ module lid()
 		/* subtract usb cutout and pcb cutout */
 		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
 		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
-		translate([caseWidth-pcbWidth-lkey*2,caseDepth-pcbLength-caseRadius*2,lidThickness])
+		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2,lidThickness])
 				pcbCutout();
-		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5,caseDepth-2,lidThickness])
+		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,lidThickness])
 				usbCutout();
 	}
 
 	/* pcb holder */
-	translate([caseWidth-pcbWidth-lkey*2+0.5,
+	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
 		caseDepth-pcbLength-caseRadius*2,
 		lidThickness+1])
 	pcbClamp();
@@ -480,7 +480,7 @@ module mainCase(keyboardLayout){
 			difference(){
 				case();
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
-				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5,caseDepth-2,1]) usbCutout();
+				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,1]) usbCutout();
 			}
 			caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
