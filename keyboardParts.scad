@@ -50,7 +50,7 @@ module holematrix(holes,startx,starty,zCase){
 			{
 				/* iso enter needs a move of about 2mm into right direction */
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2 + 3,(lkey - holesize)/2, 0])
+				translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])
 				switchhole();
 
 				/* iso enter and other stabilizers than spacebar */
@@ -58,12 +58,12 @@ module holematrix(holes,startx,starty,zCase){
 				   but different extra for each stabilizer */
 				translate([19.7,-5,0])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.6,(lkey - holesize)/2+costarStabYdelta, 0])
+				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.5,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
 				rotate([0,0,90]) costarStabilizer();
 
 				translate([-4.7,20,0])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 3,(lkey - holesize)/2+costarStabYdelta, 0])
+				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
 				rotate([0,0,90]) costarStabilizer();
 
 			}
