@@ -178,9 +178,6 @@ ansiUS_7583 = [
    for better placement */
 pcbShift=0;
 
-/* move pcb and usb cutout in x direction
-   for better placement */
-pcbShift=5;
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
@@ -236,20 +233,20 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-3], //left lower row
-[114,lkey-3],
-[170,lkey-3],
-[285.5,lkey-3], // right lower row
+[24,lkey-0.4], //left lower row
+[114,lkey-0.4],
+[170,lkey-0.4],
+[285.5,lkey-0.4], // right lower row
 
-[24,lkey*3+wallThickness-2], //left mid row
-[124,lkey*3+wallThickness-2],
-[162,lkey*3+wallThickness-2],
-[285,lkey*3+wallThickness-2], //right mid row
+[24,lkey*3+wallThickness-3], //left mid row
+[124,lkey*3+wallThickness-3],
+[162,lkey*3+wallThickness-3],
+[285,lkey*3+wallThickness-3], //right mid row
 
-[19,lkey*5+wallThickness-2], //left upper row
-[133,lkey*5+wallThickness-2],
-[171,lkey*5+wallThickness-2],
-[285.5,lkey*5+wallThickness-2], //right upper row
+[19,lkey*5+wallThickness-3], //left upper row
+[133,lkey*5+wallThickness-3],
+[171,lkey*5+wallThickness-3],
+[285.5,lkey*5+wallThickness-3], //right upper row
 ];
 
 
@@ -263,14 +260,14 @@ colorRiserL="Gainsboro";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_7583,false);
+/* KeyboardSim(ansiUS_7583,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(ansiUS_7583); */
+mainCase(ansiUS_7583);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

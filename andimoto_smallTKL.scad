@@ -232,20 +232,20 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-3], //left lower row
-[145,lkey-3],
-[190,lkey-3],
-[309.5,lkey-3], // right lower row
+[24,lkey-0.5], //left lower row
+[145,lkey-0.5],
+[190,lkey-0.5],
+[309.5,lkey-0.5], // right lower row
 
-[24,lkey*3+wallThickness-2], //left mid row
-[142.5,lkey*3+wallThickness-2],
-[181,lkey*3+wallThickness-2],
-[309.5,lkey*3+wallThickness-2], //right mid row
+[24,lkey*3+wallThickness-3], //left mid row
+[142.5,lkey*3+wallThickness-3],
+[181,lkey*3+wallThickness-3],
+[309.5,lkey*3+wallThickness-3], //right mid row
 
-[24,lkey*5+wallThickness-2], //left upper row
-[143,lkey*5+wallThickness-2],
-[181,lkey*5+wallThickness-2],
-[309.5,lkey*5+wallThickness-2], //right upper row
+[24,lkey*5+wallThickness-3], //left upper row
+[143,lkey*5+wallThickness-3],
+[181,lkey*5+wallThickness-3],
+[309.5,lkey*5+wallThickness-3], //right upper row
 ];
 
 /* set colors for simulation */
@@ -258,14 +258,14 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_smallTKL,false);
+/* KeyboardSim(ansiUS_smallTKL,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* color("Gold") mainCase(ansiUS_smallTKL); */
+color("Gold") mainCase(ansiUS_smallTKL);
 /* color("Gold") lid(); */
 
 /* ### devided keyboard and lid model ### */

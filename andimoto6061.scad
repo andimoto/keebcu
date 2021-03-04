@@ -209,10 +209,10 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[26,lkey-3], //left lower row
-[114,lkey-3],
-[170,lkey-3],
-[260,lkey-3], // right lower row
+[26,lkey-0.5], //left lower row
+[114,lkey-0.5],
+[170,lkey-0.5],
+[260,lkey-0.5], // right lower row
 
 [26,lkey*2+wallThickness-3], //left upper row
 [110,lkey*2+wallThickness-3],
@@ -241,14 +241,14 @@ colorRiserL="Gainsboro";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_6061,false);
+/* KeyboardSim(ansiUS_6061,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(ansiUS_6061); */
+mainCase(ansiUS_6061);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
