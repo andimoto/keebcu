@@ -187,7 +187,7 @@ MaxRows = 6;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=5;
+pcbShift=6;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
