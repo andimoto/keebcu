@@ -204,8 +204,8 @@ usbCutZ=4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
-pcbHeight = 2;
-pcbWidth = 18;
+pcbHeight = 1.8;
+pcbWidth = 19;
 pcbLength = 31;
 
 /* set 'addRisers' to true or false
@@ -276,21 +276,23 @@ colorRiserL="DarkBlue";
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(smallTKL_isoDE);
+/* mainCase(smallTKL_isoDE); */
 /* translate([0,0,-lidThickness-5]) lid(); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(smallTKL_isoDE); */
 /* translate([0,0,0]) mainCaseRight(smallTKL_isoDE); */
 
-/* lidL(); */
 /* lidR(); */
+/* lidL(); */
 
 /* keyboardRiser(); */
 
 /* test */
-/* difference() {
-  mainCaseRight(smallTKL_isoDE);
-  translate([37,-20,0]) cube([200,200,30]);
-  translate([315,-20,0]) cube([200,200,30]);
-} */
+difference() {
+  /* mainCaseRight(smallTKL_isoDE); */
+  lid();
+  translate([-30,-20,0]) cube([300,200,30]);
+  #translate([305,-20,0]) cube([200,200,30]);
+  #translate([250,-125,0]) cube([200,200,30]);
+}

@@ -342,7 +342,7 @@ module pcbCutout()
 
 	/* this marks the root point of the part.
 	 * uncomment this for debugging */
-	cylinder(r=0.1,h=5);
+	/* cylinder(r=0.1,h=5); */
 }
 
 /* polygon of holding clamps for controller pcb.
@@ -350,17 +350,22 @@ module pcbCutout()
  */
 pcbClamps = [
 [0,0],
-[0,2],
-[6,2],
+[0,1],
+[6,1],
 [6,1],
 [5,0]
 ];
 
 module pcbClamp()
 {
-	translate([-5.5,pcbLength,0]) rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
-	translate([pcbWidth+5.5,pcbLength,0]) mirror([1,0,0])  rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
-	translate([0,-5,0]) rotate([90,0,90]) linear_extrude(pcbWidth) polygon(pcbClamps);
+	translate([-5.5,0,0]) cube([5,pcbLength,pcbHeight]);
+	translate([-5.5,pcbLength,pcbHeight-1]) rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
+
+	translate([pcbWidth+0.5,0,0]) cube([5,pcbLength,pcbHeight]);
+	translate([pcbWidth+5.5,pcbLength,pcbHeight-1]) mirror([1,0,0])  rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
+
+	translate([0,-5,0])cube([pcbWidth,5,pcbHeight]);
+	translate([0,-5,pcbHeight-1]) rotate([90,0,90]) linear_extrude(pcbWidth) polygon(pcbClamps);
 
 	/* this marks the root point of the part.
 	 * uncomment this for debugging */
@@ -442,7 +447,7 @@ module lid()
 		/* subtract usb cutout and pcb cutout */
 		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
 		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
-		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2,lidThickness])
+		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2-0.25,lidThickness])
 				pcbCutout();
 		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,lidThickness])
 				usbCutout();
@@ -450,7 +455,7 @@ module lid()
 
 	/* pcb holder */
 	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
-		caseDepth-pcbLength-caseRadius*2,
+		caseDepth-pcbLength-caseRadius*2-0.3,
 		lidThickness+1])
 	pcbClamp();
 }
