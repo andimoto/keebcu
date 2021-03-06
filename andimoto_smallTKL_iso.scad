@@ -194,7 +194,7 @@ pcbShift=5;
  */
 usbCutX=8;
 usbCutY=wallThickness;
-usbCutZ=4;
+usbCutZ=4.5;
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
@@ -205,8 +205,8 @@ usbCutZ=4;
  * perfectly even if pcbWidth is to much
  */
 pcbHeight = 1.8;
-pcbWidth = 19;
-pcbLength = 31;
+pcbWidth = 18.5;
+pcbLength = 31.4;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -276,8 +276,8 @@ colorRiserL="DarkBlue";
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(smallTKL_isoDE); */
-/* translate([0,0,-lidThickness-5]) lid(); */
+mainCase(smallTKL_isoDE);
+translate([0,0,-lidThickness]) lid();
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(smallTKL_isoDE); */
@@ -289,10 +289,10 @@ colorRiserL="DarkBlue";
 /* keyboardRiser(); */
 
 /* test */
-difference() {
-  /* mainCaseRight(smallTKL_isoDE); */
+/* difference() {
+  mainCaseRight(smallTKL_isoDE);
   lid();
   translate([-30,-20,0]) cube([300,200,30]);
-  #translate([305,-20,0]) cube([200,200,30]);
-  #translate([250,-125,0]) cube([200,200,30]);
-}
+  translate([305,-20,0]) cube([200,200,30]);
+  translate([250,-125,0]) cube([200,200,30]);
+} */
