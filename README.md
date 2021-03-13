@@ -18,7 +18,7 @@ I designed the keyboard to be printable on smaller 3d printer build plates like 
 The cut will always be around the switch holes. This gives good stability when glueing the parts together. Before glueing, the parts may need some sanding work, etc. Just check that both sides fit to each other without bigger space in between.
 (In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.)
 
-I glued the parts together with Revell CONTACTA glue because of its fine needle which was very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
+I glued the parts together with Revell CONTACTA glue because of its fine needle which is very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
 
 ### TL;DR usage
 ```
