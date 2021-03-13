@@ -174,6 +174,10 @@ ansiUS_7583 = [
 [[15,5],1,"Gray"], //RIGHT
 ];
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=0;
+
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
@@ -189,6 +193,12 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
+/* teensy2 cutout */
+//pcbHeight = 1.8;
+//pcbWidth = 18.5;
+// pcbLength = 31.4;
+
+ /* arduino pro micro cutout */
 pcbHeight = 2;
 pcbWidth = 18;
 pcbLength = 34;
@@ -229,20 +239,20 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-3], //left lower row
-[114,lkey-3],
-[170,lkey-3],
-[285.5,lkey-3], // right lower row
+[24,lkey-0.4], //left lower row
+[114,lkey-0.4],
+[170,lkey-0.4],
+[285.5,lkey-0.4], // right lower row
 
-[24,lkey*3+wallThickness-2], //left mid row
-[124,lkey*3+wallThickness-2],
-[162,lkey*3+wallThickness-2],
-[285,lkey*3+wallThickness-2], //right mid row
+[24,lkey*3+wallThickness-3], //left mid row
+[124,lkey*3+wallThickness-3],
+[162,lkey*3+wallThickness-3],
+[285,lkey*3+wallThickness-3], //right mid row
 
-[19,lkey*5+wallThickness-2], //left upper row
-[133,lkey*5+wallThickness-2],
-[171,lkey*5+wallThickness-2],
-[285.5,lkey*5+wallThickness-2], //right upper row
+[19,lkey*5+wallThickness-3], //left upper row
+[133,lkey*5+wallThickness-3],
+[171,lkey*5+wallThickness-3],
+[285.5,lkey*5+wallThickness-3], //right upper row
 ];
 
 
@@ -256,14 +266,14 @@ colorRiserL="Gainsboro";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_7583,false);
+/* KeyboardSim(ansiUS_7583,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(ansiUS_7583); */
+mainCase(ansiUS_7583);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
