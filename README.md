@@ -34,6 +34,22 @@ I glued the parts together with Revell CONTACTA glue because of its fine needle 
 - generate all necessary model files you want to print by uncomment the proper module call
 - save and print!
 ```
+### Current designs available
+```
+- andimoto7583
+- andimoto6061 (not printed)
+- andimoto_smallTKL
+- andimoto_smallTKL_iso (printed)
+- andimotoTKL (not printed)
+- andimotoTKLiso (not printed)
+```
+```
+Note:
+7583 is -> 75% layout with 83 switches.
+6061 is -> 60% layout with 61 switches
+etc.
+```
+
 ### Create you own keyboard layout
 You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard itself in one piece if you can print bigger parts.
 
@@ -137,6 +153,12 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 *andimoto6061*
 ![](pics/75er004_2.png)
+
+*andimotoTKL*
+![](pics/andimotoTKL.png)
+
+*andimotoTKLiso*
+![](pics/andimotoTKLiso.png)
 
 ![](pics/75er013.png)
 
