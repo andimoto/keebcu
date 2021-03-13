@@ -45,7 +45,7 @@ You need to configure 'hight' and 'width' of the case. These variables are neces
 
 After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case. The standard screw size is 3mm. The length depends on the case height, but I used 3x8mm screws.
 
-It is also possible to modify the pcb dimensions with the 'pcb'-values. The template pcb sizes is for an Arduino Pro Micro (clone) at the moment.
+It is also possible to modify the pcb dimensions with the 'pcb'-values. Available sizes for Arduino Pro Micro and Teensy2 are included. Just change the comments to select the right one. I recommend to measure your pcb anyway and check dimensions. You can also move the whole pcb and cutout for usb connection in X direction by setting 'pcbShift' with a positive or negative value.
 
 Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
 
@@ -68,13 +68,13 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 
 ### todo
 - create selectable space (in y direction) between function row and next rows
-- provide pcb cutout for teensy 2.0
-- add delta variable for usb cutout and pcbholder to move it.
+- provide pcb cutout for teensy 2.0 (DONE)
+- add delta variable for usb cutout and pcbholder to move it. (DONE)
 - avoid case stabilizer for iso enter and numpad enter (optional)
 - add cherry style stabilizer!
-- add a selectable scirt to the case
+- add a selectable skirt to the case
 - add parametric keebCase (already working on)
-- screw holes get crossed by case stabilizer
+- screw holes get crossed by case stabilizer (DONE)
 
 ## Firmware
 For firmware please see https://github.com/andimoto/qmk_firmware/tree/andimoto/andimoto-7583-promicro-new/keyboards/andimoto
@@ -97,6 +97,9 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 *andimoto smallTKL*
 ![](pics/andimoto_smallTKL.png)
 
+*andimoto smallTKL_iso*
+![](pics/andimoto_smallTKL_iso.png)
+
 *andimoto6061*
 ![](pics/75er004_2.png)
 
@@ -114,7 +117,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/75er007.png)
 
-![](pics/75er008.png)
+![](pics/andimoto_smallTKL_iso.png)
 
 ![](pics/75er009.png)
 
@@ -128,11 +131,19 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ### Reality
 
-![](pics/img/IMG_20210119_213742.jpg)
+![](pics/pics/keebcu_017.JPG)
 
-![](pics/img/IMG_20201224_111752.jpg)
+![](pics/pics/keebcu_013.JPG)
 
-![](pics/img/IMG_20201228_204647.jpg)
+![](pics/pics/keebcu_014.JPG)
+
+![](pics/pics/keebcu_015.JPG)
+
+![](pics/pics/keebcu_004.JPG)
+
+![](pics/pics/keebcu_005.JPG)
+
+![](pics/pics/keebcu_009.JPG)
 
 ![](pics/img/IMG_20201215_085124.jpg)
 
@@ -144,6 +155,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/img/IMG_20210111_150655.jpg)
 
+![](pics/pics/keebcu_016.JPG)
 
 
 

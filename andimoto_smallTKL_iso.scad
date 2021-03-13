@@ -204,9 +204,16 @@ usbCutZ=4.5;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
+/* teensy2 cutout */
 pcbHeight = 1.8;
 pcbWidth = 18.5;
 pcbLength = 31.4;
+
+/* arduino pro micro cutout */
+//pcbHeight = 2;
+//pcbWidth = 18;
+//pcbLength = 34;
+
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -269,7 +276,7 @@ colorRiserL="DarkBlue";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(smallTKL_isoDE,false); */
+KeyboardSim(smallTKL_isoDE,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -280,7 +287,7 @@ colorRiserL="DarkBlue";
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
-mainCaseLeft(smallTKL_isoDE);
+/* mainCaseLeft(smallTKL_isoDE); */
 /* translate([0,0,0]) mainCaseRight(smallTKL_isoDE); */
 
 /* lidR(); */
