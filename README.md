@@ -76,6 +76,11 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - add parametric keebCase (already working on)
 - screw holes get crossed by case stabilizer (DONE)
 
+## Wrist rest and Keyboard Case
+For each keyboard a wrist rest can be created with the model file. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
+For transportation I designed a case which can be customized in size to fit your keyboard. The case has placeholders for little magnets and gets locked by some kind of bones :).
+
+
 ## Firmware
 For firmware please see https://github.com/andimoto/qmk_firmware/tree/andimoto/andimoto-7583-promicro-new/keyboards/andimoto
 
