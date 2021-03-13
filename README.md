@@ -76,6 +76,7 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - add parametric keebCase (already working on)
 - screw holes get crossed by case stabilizer (DONE)
 - documentation for keebCase.scad
+- add build scripts
 
 ## Wrist rest and Keyboard Case
 For each keyboard a wrist rest can be created with the model file. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
