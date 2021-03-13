@@ -121,18 +121,32 @@ module halfCase(locks=true, magnets=true)
       rotate([90,0,0]) rotate([0,90,0]) scale([1.02,1.02,1]) lock(negativ=true);
     }
   }
-
-
 }
 
-/* color("yellow") translate([2,2,0]) halfCase(locks=true,magnets=true); */
+
+/* ############################################# */
+/* ########## Place keyboard case ############## */
+/* ############################################# */
+
+color("yellow") translate([2,2,0]) halfCase(locks=true,magnets=true);
 /* color("yellow") translate([2,2,keebLen+wallThickness*2+1+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
 
-/* color("black") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
-rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false); */
+
+/* case locks */
+color("black") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
+rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false);
+
 color("black") translate([(keebHeight+sideThickness*2)-lockThickness/3,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
 rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false);
 
+
+
+
+
+
+
+
+/*########### DEBUG ###########*/
 
 /* test print */
 /* difference()
