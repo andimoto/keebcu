@@ -276,11 +276,11 @@ colorRiserL="DarkBlue";
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(smallTKL_isoDE);
+/* mainCase(smallTKL_isoDE); */
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(smallTKL_isoDE); */
+mainCaseLeft(smallTKL_isoDE);
 /* translate([0,0,0]) mainCaseRight(smallTKL_isoDE); */
 
 /* lidR(); */
