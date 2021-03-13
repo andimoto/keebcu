@@ -154,6 +154,12 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 *andimoto6061*
 ![](pics/75er004_2.png)
 
+*andimotoTKL*
+![](pics/andimotoTKL.png)
+
+*andimotoTKLiso*
+![](pics/andimotoTKLiso.png)
+
 ![](pics/75er013.png)
 
 ![](pics/75er002.png)
