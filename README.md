@@ -75,10 +75,13 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - add a selectable skirt to the case
 - add parametric keebCase (already working on)
 - screw holes get crossed by case stabilizer (DONE)
+- documentation for keebCase.scad
 
 ## Wrist rest and Keyboard Case
 For each keyboard a wrist rest can be created with the model file. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
 For transportation I designed a case which can be customized in size to fit your keyboard. The case has placeholders for little magnets and gets locked by some kind of bones :).
+
+__Attention: The Keyboard case is still in development state. I just printed some smaller prototypes. But it fits well so far. Need to check magnets.__
 
 
 ## Firmware
@@ -132,7 +135,9 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/75er012.png)
 
+![](pics/keebCase.png)
 
+![](pics/keebCaseLocks.png)
 
 ### Reality
 
