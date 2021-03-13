@@ -52,7 +52,7 @@ lidThickness=3;
 /* these are unit values; one unit is one key or switchhole
  * this makes the keyboard printable on nearly every printer.
  */
-cutAfterUnits = 7.25;
+cutAfterUnits = 8;
 spacebarCut = 4.5;
 
 
@@ -85,98 +85,98 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-isoDE_7583keyboard = [
+smallTKL_isoDE = [
 //start ROW 0 Function ROW
-[[0,0],1,"Grey"], //Esc
-[[2,0],1,"Gray"], //F1
-[[3,0],1,"Gray"], //F2
-[[4,0],1,"Gray"], //F3
-[[5,0],1,"Gray"], //F4
-[[6.5,0],1,"Gray"], //F5
-[[7.5,0],1,"Gray"], //F6
-[[8.5,0],1,"Gray"], //F7
-[[9.5,0],1,"Gray"], //F8
-[[11,0],1,"Gray"], //F9
-[[12,0],1,"Gray"], //F10
-[[13,0],1,"Gray"], //F11
-[[14,0],1,"Gray"], //F12
-[[15.25,0],1,"Gray"], //PrintScreen
-[[16.25,0],1,"Gray"], //Pause
+[[0,0],1,"DarkSlateGray"], //Esc
+[[2,0],1,"DarkSlateGray"], //F1
+[[3,0],1,"DarkSlateGray"], //F2
+[[4,0],1,"DarkSlateGray"], //F3
+[[5,0],1,"DarkSlateGray"], //F4
+[[6.5,0],1,"DarkSlateGray"], //F5
+[[7.5,0],1,"DarkSlateGray"], //F6
+[[8.5,0],1,"DarkSlateGray"], //F7
+[[9.5,0],1,"DarkSlateGray"], //F8
+[[11,0],1,"DarkSlateGray"], //F9
+[[12,0],1,"DarkSlateGray"], //F10
+[[13,0],1,"DarkSlateGray"], //F11
+[[14,0],1,"DarkSlateGray"], //F12
+[[15.25,0],1,"DarkSlateGray"], //PrintScreen
+[[16.25,0],1,"DarkSlateGray"], //Pause
 
 //start ROW 1
-[[0,1],1,"Gray"], //'
-[[1,1],1,"Gray"], //1
-[[2,1],1,"Gray"], //2
-[[3,1],1,"Gray"], //3
-[[4,1],1,"Gray"], //4
-[[5,1],1,"Gray"], //5
-[[6,1],1,"Gray"], //6
-[[7,1],1,"Gray"], //7
-[[8,1],1,"Gray"], //8
-[[9,1],1,"Gray"], //9
-[[10,1],1,"Gray"], //0
-[[11,1],1,"Gray"], //-_
-[[12,1],1,"Gray"], //=+
-[[13,1],2,"Gray"], //backspace
-[[15.25,1],1,"Gray"], //ins
-[[16.25,1],1,"Gray"], //pos1
+[[0,1],1,"DarkSlateGray"], //'
+[[1,1],1,"DarkSlateGray"], //1
+[[2,1],1,"DarkSlateGray"], //2
+[[3,1],1,"DarkSlateGray"], //3
+[[4,1],1,"DarkSlateGray"], //4
+[[5,1],1,"DarkSlateGray"], //5
+[[6,1],1,"DarkSlateGray"], //6
+[[7,1],1,"DarkSlateGray"], //7
+[[8,1],1,"DarkSlateGray"], //8
+[[9,1],1,"DarkSlateGray"], //9
+[[10,1],1,"DarkSlateGray"], //0
+[[11,1],1,"DarkSlateGray"], //-_
+[[12,1],1,"DarkSlateGray"], //=+
+[[13,1],2,"DarkSlateGray"], //backspace
+[[15.25,1],1,"DarkSlateGray"], //ins
+[[16.25,1],1,"DarkSlateGray"], //pos1
 //start ROW 2
-[[  0,2],1.5,"Gray"], //TAB
-[[1.5,2],1,"Gray"], //Q
-[[2.5,2],1,"Gray"], //W
-[[3.5,2],1,"Gray"], //E
-[[4.5,2],1,"Gray"], //R
-[[5.5,2],1,"Gray"], //T
-[[6.5,2],1,"Gray"], //Y
-[[7.5,2],1,"Gray"], //U
-[[8.5,2],1,"Gray"], //I
-[[9.5,2],1,"Gray"], //O
-[[10.5,2],1,"Gray"], //P
-[[11.5,2],1,"Gray"], //[
-[[12.5,2],1,"Gray"], //]
-[[13.5,2.5],1.5,"Gray"], // ENTER
-[[15.25,2],1,"Gray"], // del
-[[16.25,2],1,"Gray"], // end
+[[  0,2],1.5,"DarkSlateGray"], //TAB
+[[1.5,2],1,"DarkSlateGray"], //Q
+[[2.5,2],1,"DarkSlateGray"], //W
+[[3.5,2],1,"DarkSlateGray"], //E
+[[4.5,2],1,"DarkSlateGray"], //R
+[[5.5,2],1,"DarkSlateGray"], //T
+[[6.5,2],1,"DarkSlateGray"], //Y
+[[7.5,2],1,"DarkSlateGray"], //U
+[[8.5,2],1,"DarkSlateGray"], //I
+[[9.5,2],1,"DarkSlateGray"], //O
+[[10.5,2],1,"DarkSlateGray"], //P
+[[11.5,2],1,"DarkSlateGray"], //[
+[[12.5,2],1,"DarkSlateGray"], //]
+[[13.5,2.5],1.5,"DarkSlateGray"], // ENTER
+[[15.25,2],1,"DarkSlateGray"], // del
+[[16.25,2],1,"DarkSlateGray"], // end
 //start ROW 3
-[[   0,3],1.75,"Gray"], //CapsLock
-[[1.75,3],1,"Gray"], //A
-[[2.75,3],1,"Gray"], //S
-[[3.75,3],1,"Gray"], //D
-[[4.75,3],1,"Gray"], //F
-[[5.75,3],1,"Gray"], //G
-[[6.75,3],1,"Gray"], //H
-[[7.75,3],1,"Gray"], //J
-[[8.75,3],1,"Gray"], //K
-[[9.75,3],1,"Gray"], //L
-[[10.75,3],1,"Gray"], //;
-[[11.75,3],1,"Gray"], //'
-[[12.75,3],1,"Gray"], //#
+[[   0,3],1.75,"DarkSlateGray"], //CapsLock
+[[1.75,3],1,"DarkSlateGray"], //A
+[[2.75,3],1,"DarkSlateGray"], //S
+[[3.75,3],1,"DarkSlateGray"], //D
+[[4.75,3],1,"DarkSlateGray"], //F
+[[5.75,3],1,"DarkSlateGray"], //G
+[[6.75,3],1,"DarkSlateGray"], //H
+[[7.75,3],1,"DarkSlateGray"], //J
+[[8.75,3],1,"DarkSlateGray"], //K
+[[9.75,3],1,"DarkSlateGray"], //L
+[[10.75,3],1,"DarkSlateGray"], //;
+[[11.75,3],1,"DarkSlateGray"], //'
+[[12.75,3],1,"DarkSlateGray"], //#
 //start ROW 4
-[[   0,4],1.25,"Gray"], //LShift
-[[1.25,4],1,"Gray"], //Z
-[[2.25,4],1,"Gray"], //Z
-[[3.25,4],1,"Gray"], //X
-[[4.25,4],1,"Gray"], //C
-[[5.25,4],1,"Gray"], //V
-[[6.25,4],1,"Gray"], //B
-[[7.25,4],1,"Gray"], //N
-[[8.25,4],1,"Gray"], //M
-[[9.25,4],1,"Gray"], //,
-[[10.25,4],1,"Gray"], //.
-[[11.25,4],1,"Gray"], // /
-[[12.25,4],2.75,"Gray"], //RShift
-[[15.25,4],1,"Gray"], //UP
+[[   0,4],1.25,"DarkSlateGray"], //LShift
+[[1.25,4],1,"DarkSlateGray"], //Z
+[[2.25,4],1,"DarkSlateGray"], //Z
+[[3.25,4],1,"DarkSlateGray"], //X
+[[4.25,4],1,"DarkSlateGray"], //C
+[[5.25,4],1,"DarkSlateGray"], //V
+[[6.25,4],1,"DarkSlateGray"], //B
+[[7.25,4],1,"DarkSlateGray"], //N
+[[8.25,4],1,"DarkSlateGray"], //M
+[[9.25,4],1,"DarkSlateGray"], //,
+[[10.25,4],1,"DarkSlateGray"], //.
+[[11.25,4],1,"DarkSlateGray"], // /
+[[12.25,4],2.75,"DarkSlateGray"], //RShift
+[[15.25,4],1,"DarkSlateGray"], //UP
 //start ROW 5
-[[   0,5],1.25,"Gray"], //LCTRL
-[[1.25,5],1.25,"Gray"], //TUX
-[[2.5 ,5],1.25,"Gray"], //ALT
-[[3.75,5],6.25,"Gray"], //SPACE
-[[10  ,5],1.25,"Gray"], //COMP
-[[11.25,5],1.25,"Gray"], //Fn
-[[12.5 ,5],1.25,"Grey"], //RCTRL
-[[14.25,5],1,"Gray"], //LEFT
-[[15.25,5],1,"Gray"], //DOWN
-[[16.25,5],1,"Gray"], //RIGHT
+[[   0,5],1.25,"DarkSlateGray"], //LCTRL
+[[1.25,5],1.25,"DarkSlateGray"], //TUX
+[[2.5 ,5],1.25,"DarkSlateGray"], //ALT
+[[3.75,5],6.25,"DarkSlateGray"], //SPACE
+[[10  ,5],1.25,"DarkSlateGray"], //COMP
+[[11.25,5],1.25,"DarkSlateGray"], //Fn
+[[12.5 ,5],1.25,"DarkSlateGray"], //RCTRL
+[[14.25,5],1,"DarkSlateGray"], //LEFT
+[[15.25,5],1,"DarkSlateGray"], //DOWN
+[[16.25,5],1,"DarkSlateGray"], //RIGHT
 ];
 
 /* set this variable to the amount of the rows of your LAYOUT.
@@ -185,13 +185,16 @@ isoDE_7583keyboard = [
  */
 MaxRows = 6;
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=6;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
 usbCutX=8;
 usbCutY=wallThickness;
-usbCutZ=3.4;
+usbCutZ=4.5;
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
@@ -201,9 +204,16 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
-pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 34;
+/* teensy2 cutout */
+pcbHeight = 1.8;
+pcbWidth = 18.5;
+pcbLength = 31.4;
+
+/* arduino pro micro cutout */
+//pcbHeight = 2;
+//pcbWidth = 18;
+//pcbLength = 34;
+
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -240,47 +250,56 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-3], //left lower row
-[114,lkey-3],
-[170,lkey-3],
-[285.5,lkey-3], // right lower row
+[23,lkey-0.4], //left lower row
+[144,lkey-0.4],
+[186,lkey-0.4],
+[310,lkey-0.4], // right lower row
 
-[24,lkey*3+wallThickness-2], //left mid row
-[124,lkey*3+wallThickness-2],
-[162,lkey*3+wallThickness-2],
-[285,lkey*3+wallThickness-2], //right mid row
+[25,lkey*3+wallThickness-3], //left mid row
+[144,lkey*3+wallThickness-3],
+[186,lkey*3+wallThickness-3],
+[310,lkey*3+wallThickness-3], //right mid row
 
-[19,lkey*5+wallThickness-2], //left upper row
-[133,lkey*5+wallThickness-2],
-[171,lkey*5+wallThickness-2],
-[285.5,lkey*5+wallThickness-2], //right upper row
+[20,lkey*5+wallThickness-3], //left upper row
+[144,lkey*5+wallThickness-3],
+[186,lkey*5+wallThickness-3],
+[310,lkey*5+wallThickness-3], //right upper row
 ];
 
 
 /* set colors for simulation */
-colorCase="White";
-colorLid="Green";
-colorRiserR="Gold";
-colorRiserL="Blue";
+colorCase="DarkBlue";
+colorLid="DarkBlue";
+colorRiserR="DarkBlue";
+colorRiserL="DarkBlue";
 
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-KeyboardSim(isoDE_7583keyboard,true);
+KeyboardSim(smallTKL_isoDE,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(isoDE_7583keyboard); */
-/* lid(); */
+/* mainCase(smallTKL_isoDE); */
+/* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(isoDE_7583keyboard); */
-/* translate([0, 150,0]) mainCaseRight(isoDE_7583keyboard); */
+/* mainCaseLeft(smallTKL_isoDE); */
+/* translate([0,0,0]) mainCaseRight(smallTKL_isoDE); */
 
-/* lidL(); */
 /* lidR(); */
+/* lidL(); */
 
 /* keyboardRiser(); */
+
+/* test */
+/* difference() {
+  mainCaseRight(smallTKL_isoDE);
+  lid();
+  translate([-30,-20,0]) cube([300,200,30]);
+  translate([305,-20,0]) cube([200,200,30]);
+  translate([250,-125,0]) cube([200,200,30]);
+} */

@@ -175,6 +175,10 @@ template_ansiUS_7583 = [
 [[  15,5],1,"Gray"], //RIGHT
 ];
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=0;
+
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
@@ -190,9 +194,15 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
-pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 34;
+ /* teensy2 cutout */
+ pcbHeight = 1.8;
+ pcbWidth = 18.5;
+ pcbLength = 31.4;
+
+ /* arduino pro micro cutout */
+ //pcbHeight = 2;
+ //pcbWidth = 18;
+ //pcbLength = 34;;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers

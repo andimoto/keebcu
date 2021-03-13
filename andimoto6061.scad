@@ -151,6 +151,10 @@ ansiUS_6061 = [
 
 ];
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=0;
+
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
@@ -166,9 +170,15 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
-pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 34;
+ /* teensy2 cutout */
+ pcbHeight = 1.8;
+ pcbWidth = 18.5;
+ pcbLength = 31.4;
+
+ /* arduino pro micro cutout */
+ //pcbHeight = 2;
+ //pcbWidth = 18;
+ //pcbLength = 34;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -205,10 +215,10 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[26,lkey-3], //left lower row
-[114,lkey-3],
-[170,lkey-3],
-[260,lkey-3], // right lower row
+[26,lkey-0.5], //left lower row
+[114,lkey-0.5],
+[170,lkey-0.5],
+[260,lkey-0.5], // right lower row
 
 [26,lkey*2+wallThickness-3], //left upper row
 [110,lkey*2+wallThickness-3],
@@ -237,14 +247,14 @@ colorRiserL="Gainsboro";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_6061,false);
+/* KeyboardSim(ansiUS_6061,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(ansiUS_6061); */
+mainCase(ansiUS_6061);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

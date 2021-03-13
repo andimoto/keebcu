@@ -174,6 +174,10 @@ ansiUS_smallTKL = [
 [[16.25,5],1,"Gold"], //RIGHT
 ];
 
+/* move pcb and usb cutout in x direction
+   for better placement */
+pcbShift=0;
+
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
@@ -189,9 +193,15 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
-pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 34;
+ /* teensy2 cutout */
+ //pcbHeight = 1.8;
+ //pcbWidth = 18.5;
+ //pcbLength = 31.4;
+
+ /* arduino pro micro cutout */
+ pcbHeight = 2;
+ pcbWidth = 18;
+ pcbLength = 34;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -228,20 +238,20 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-3], //left lower row
-[145,lkey-3],
-[190,lkey-3],
-[309.5,lkey-3], // right lower row
+[24,lkey-0.5], //left lower row
+[145,lkey-0.5],
+[190,lkey-0.5],
+[309.5,lkey-0.5], // right lower row
 
-[24,lkey*3+wallThickness-2], //left mid row
-[142.5,lkey*3+wallThickness-2],
-[181,lkey*3+wallThickness-2],
-[309.5,lkey*3+wallThickness-2], //right mid row
+[24,lkey*3+wallThickness-3], //left mid row
+[142.5,lkey*3+wallThickness-3],
+[181,lkey*3+wallThickness-3],
+[309.5,lkey*3+wallThickness-3], //right mid row
 
-[24,lkey*5+wallThickness-2], //left upper row
-[143,lkey*5+wallThickness-2],
-[181,lkey*5+wallThickness-2],
-[309.5,lkey*5+wallThickness-2], //right upper row
+[24,lkey*5+wallThickness-3], //left upper row
+[143,lkey*5+wallThickness-3],
+[181,lkey*5+wallThickness-3],
+[309.5,lkey*5+wallThickness-3], //right upper row
 ];
 
 /* set colors for simulation */
@@ -254,14 +264,14 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_smallTKL,false);
+/* KeyboardSim(ansiUS_smallTKL,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* color("Gold") mainCase(ansiUS_smallTKL); */
+color("Gold") mainCase(ansiUS_smallTKL);
 /* color("Gold") lid(); */
 
 /* ### devided keyboard and lid model ### */
