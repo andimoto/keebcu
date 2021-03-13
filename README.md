@@ -20,8 +20,22 @@ The cut will always be around the switch holes. This gives good stability when g
 
 I glued the parts together with Revell CONTACTA glue because of its fine needle which was very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
 
+### TL;DR usage
+```
+- clone this repo: git clone https://github.com/andimoto/keebcu.git
+- get OpenSCAD (I used 2021.01 and 2019.05 as appImages on Linux).
+- open the template_to_copy.scad file in OpenSCAD (or copy and rename it for your own custom layout)
+- uncomment 'mainCase(<layout>)' line at the end of the file to check what your are doing
+- start customizing your layout (place switch holes and set colors of your keycaps if you want)
+- set screw holes where needed or add even more of them (think about the risers on the bottom)
+- set usb and pcb values
+- depending on your printbed size, set where to cut the keyboard case
+- (optional) print critical parts of the case like space bar, parts with other stabilizers or usb and pcb area to test everything fits
+- generate all necessary model files you want to print by uncomment the proper module call
+- save and print!
+```
 ### Create you own keyboard layout
-You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard if you can print bigger parts.
+You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard itself in one piece if you can print bigger parts.
 
 If you want to simulate the keyboard with keycaps and its colors, you can clone rsheldiii's KeyV2 Repository
 ( https://github.com/rsheldiii/KeyV2 ) in parallel to this repository (thisRepo/..).
@@ -59,14 +73,25 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - Costar Stabilizers
 - Screws 3x8mm
 
+### Assembly
+- use sandpaper and a scalpel to clear the surface where parts get glued together. Double check if parts does not block each other.
+- glue the two case parts together carefully. Place them on a flat surface and put some books on each side, then put some glue into the rills.
+- wait until it is dry and put some more glue on it if needed.
+- after some drying time you can put in the switches (it is possible that this will bend the keyboard)
+- solder switches and diodes together (electronics will be documented later)
+- solder the controller onto the keyboard matrix and place the pcb inside the pcb holder of the lid.
+- flash and test your firmware
+- screw all parts together and place the risers if you need them (I recommend gluing the risers on the lids and then assembly them to the case)
+- have fun with your keyboard ;)
+
 
 ### Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
-- Be careful with color changes. If color change is only at height of case stabilizer or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers.
+- Be careful with color changes. If color change is only at height of case stabilizer or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers. I recommend to do the color change at the last layer of the keyboard cases plate. (See pics/pics/keebcu_016.JPG)
 - Notice that when placing in the switches, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed.
 - normally the lid parts do not need any brim.
 
-### todo
+## todo
 - create selectable space (in y direction) between function row and next rows
 - provide pcb cutout for teensy 2.0 (DONE)
 - add delta variable for usb cutout and pcbholder to move it. (DONE)
@@ -77,9 +102,10 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 - screw holes get crossed by case stabilizer (DONE)
 - documentation for keebCase.scad
 - add build scripts
+- test other keyboard layouts like random stuff or ten keys
 
 ## Wrist rest and Keyboard Case
-For each keyboard a wrist rest can be created with the model file. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
+For each keyboard a wrist rest can be created with the model file wrist.scad. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
 For transportation I designed a case which can be customized in size to fit your keyboard. The case has placeholders for little magnets and gets locked by some kind of bones :).
 
 __Attention: The Keyboard case is still in development state. I just printed some smaller prototypes. But it fits well so far. Need to check magnets.__
