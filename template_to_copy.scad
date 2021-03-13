@@ -184,7 +184,13 @@ pcbShift=0;
  */
 usbCutX=8;
 usbCutY=wallThickness;
+
+/* Arduino Pro Micro USB Port height */
 usbCutZ=3.4;
+
+/* Teensy2 USB Port height */
+/* usbCutZ=4.5; */
+
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
