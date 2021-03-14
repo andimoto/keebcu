@@ -268,6 +268,12 @@ colorLid="Green";
 colorRiserR="Gold";
 colorRiserL="Blue";
 
+/* ###################### BUILD_LINE ########################*/
+/* ##########################################################*/
+/* All calls after this line have to be ignored by the build script.
+ * Do not place any calls above build line (or comment it)
+ */
+
 /* uncomment following line to get the keyboard simulation
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
