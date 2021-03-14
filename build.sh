@@ -9,6 +9,7 @@ echo "Check OpenSCAD PATH..."
 if [ -x openscad ]
 then
 	echo "OpenSCAD found..."
+	OPENSCADPATH=openscad
 else
   if [ -z $OPENSCADPATH ]
   then
@@ -57,7 +58,11 @@ for i in $modules; do
 		head -n $LINE $scadFile > $tempDir/temp$scadFile
 		echo $i >> $tempDir/temp$scadFile
 		outputFile=`echo "$i" | cut -d \( -f 1`
-		echo $keebcu\_$outputFile
+		outputFile=$keebcu\_$outputFile\.stl
+		echo $outputFile
+		$OPENSCADPATH -o stl/$outputFile $tempDir/temp$scadFile
 done
+
+
 # remove temprary directory
-# rm -rf $tempDir
+#rm -rf $tempDir
