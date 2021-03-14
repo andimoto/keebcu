@@ -1,10 +1,10 @@
-/* andimoto7583.scad
+/* andimoto6064.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
 single parts go to end of this file
 
-this file contains the layout for my 7583 keyboard 3d model which can be devided
+this file contains the layout for my 6064 keyboard 3d model which can be devided
 to print on smaller printers
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
