@@ -204,6 +204,10 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/pics/keebcu_009.JPG)
 
+![](pics/img/IMG_20210318_140604.jpg)
+
+![](pics/img/IMG_20210318_140627.jpg)
+
 ![](pics/img/IMG_20201215_085124.jpg)
 
 ![](pics/img/IMG_20201224_110407.jpg)
