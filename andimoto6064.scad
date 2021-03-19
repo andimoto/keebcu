@@ -49,7 +49,7 @@ lidThickness=3;
  * this makes the keyboard printable on nearly every printer.
  */
 cutAfterUnits = 6.5;
-spacebarCut = 4.25;
+spacebarCut = 4;
 
 
 
@@ -245,14 +245,14 @@ colorRiserL="Yellow";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(ansiUS_6064,false);
+/* KeyboardSim(ansiUS_6064,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(ansiUS_6064); */
+mainCase(ansiUS_6064);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
