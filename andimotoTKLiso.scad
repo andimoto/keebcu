@@ -9,7 +9,7 @@ to print on smaller printers
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
 if you don't want this file to be included, just don't clone this library or
-set the 'DoKeycapSimulation' parameter to false call for placing all keycaps on the keyboard.
+set the 'DoKeycapSimulation' parameter of KeyboardSim() to false.
 */
 
 /* ########## predefinitions ############ */
@@ -52,10 +52,6 @@ cutAfterUnits = 8.5;
 spacebarCut = 5.5;
 
 
-
-/* ################## calculated vars #################### */
-
-
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
 
@@ -81,7 +77,8 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-TKL_iso = [
+/* TKL_iso  */
+layout = [
 //start ROW 0 Function ROW
 [[0,0],1,"DarkSlateGray"], //Esc
 [[2,0],1,"DarkSlateGray"], //F1
@@ -270,22 +267,28 @@ colorLid="Green";
 colorRiserR="Green";
 colorRiserL="Green";
 
+/* ###################### BUILD_LINE ########################*/
+/* ##########################################################*/
+/* All calls after this line have to be ignored by the build script.
+ * Do not place any calls above build line (or comment it)
+ */
+
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(TKL_iso,false); */
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(TKL_iso);
+mainCase(layout);
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(TKL_iso); */
-/* translate([0,0,0]) mainCaseRight(TKL_iso); */
+/* mainCaseLeft(layout); */
+/* translate([0,0,0]) mainCaseRight(layout); */
 
 /* lidR(); */
 /* lidL(); */
@@ -294,7 +297,7 @@ mainCase(TKL_iso);
 
 /* test */
 /* difference() {
-  mainCaseRight(TKL_iso);
+  mainCaseRight(layout);
   lid();
   translate([-30,-20,0]) cube([300,200,30]);
   translate([305,-20,0]) cube([200,200,30]);

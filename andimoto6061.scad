@@ -9,7 +9,7 @@ and to configure and place essential parts like usb cut out, screw holes or stab
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
 if you don't want this file to be included, just don't clone this library or
-set the 'DoKeycapSimulation' parameter to false call for placing all keycaps on the keyboard.
+set the 'DoKeycapSimulation' parameter of KeyboardSim() to false.
 */
 
 /* ########## predefinitions ############ */
@@ -248,6 +248,12 @@ colorLid="Black";
 colorRiserR="Gainsboro";
 colorRiserL="Gainsboro";
 
+/* ###################### BUILD_LINE ########################*/
+/* ##########################################################*/
+/* All calls after this line have to be ignored by the build script.
+ * Do not place any calls above build line (or comment it)
+ */
+
 /* uncomment following line to get the keyboard simulation
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
@@ -259,7 +265,7 @@ colorRiserL="Gainsboro";
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(ansiUS_6061);
+/* mainCase(ansiUS_6061); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

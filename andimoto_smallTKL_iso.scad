@@ -1,4 +1,4 @@
-/* test_isoDE_7583.scad
+/* andimoto_smallTKL_iso.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
@@ -9,11 +9,7 @@ and to configure and place essential parts like usb cut out, screw holes or stab
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
 if you don't want this file to be included, just don't clone this library or
-set the 'DoKeycapSimulation' parameter to false call for placing all keycaps on the keyboard.
-
-todo:
-- template cutout for teensy2
-
+set the 'DoKeycapSimulation' parameter of KeyboardSim() to false.
 */
 
 /* ########## predefinitions ############ */
@@ -56,10 +52,6 @@ cutAfterUnits = 8;
 spacebarCut = 4.5;
 
 
-
-/* ################## calculated vars #################### */
-
-
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
 
@@ -85,7 +77,8 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-smallTKL_isoDE = [
+/* smallTKL_isoDE */
+layout = [
 //start ROW 0 Function ROW
 [[0,0],1,"DarkSlateGray"], //Esc
 [[2,0],1,"DarkSlateGray"], //F1
@@ -278,22 +271,28 @@ colorLid="DarkBlue";
 colorRiserR="DarkBlue";
 colorRiserL="DarkBlue";
 
+/* ###################### BUILD_LINE ########################*/
+/* ##########################################################*/
+/* All calls after this line have to be ignored by the build script.
+ * Do not place any calls above build line (or comment it)
+ */
+
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-KeyboardSim(smallTKL_isoDE,false);
+KeyboardSim(layout,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(smallTKL_isoDE); */
+/* mainCase(layout); */
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(smallTKL_isoDE); */
-/* translate([0,0,0]) mainCaseRight(smallTKL_isoDE); */
+/* mainCaseLeft(layout); */
+/* translate([0,0,0]) mainCaseRight(layout); */
 
 /* lidR(); */
 /* lidL(); */
@@ -302,7 +301,7 @@ KeyboardSim(smallTKL_isoDE,false);
 
 /* test */
 /* difference() {
-  mainCaseRight(smallTKL_isoDE);
+  mainCaseRight(layout);
   lid();
   translate([-30,-20,0]) cube([300,200,30]);
   translate([305,-20,0]) cube([200,200,30]);
