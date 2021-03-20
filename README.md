@@ -55,7 +55,7 @@ TKL - ten keyless
 etc.
 ```
 
-### Create your own keyboard layout
+## Create your own keyboard layout
 You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard itself in one piece if you can print bigger parts.
 
 If you want to simulate the keyboard with keycaps and its colors, you can clone rsheldiii's KeyV2 Repository
@@ -84,6 +84,10 @@ It is also possible to modify the pcb dimensions with the 'pcb'-values. Availabl
 
 Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
 
+## Build STL Files
+You can use the traditional way to build all parts of your keyboard by activating one call in the keyboard file for each part. This is also necessary while configuring the keyboard you want. If you have minor changes in any file it is hard to build each module or part again.
+Because I often have to generate the stl files after some changes, I wanted something easy to generate all stl files with one call. This is possible with the script 'build.sh'. It reads conf/module-calls.conf and places each call at the end of the keyboard file to render it and safe it in the stl directory.
+
 ### Parts needed
 - Printed Keyboard Parts
   - Case
@@ -99,7 +103,8 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 
 __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but also many things are not available or in stock...
 
-### Assembly
+
+## Assembly
 - use sandpaper and a scalpel to clear the surface where parts get glued together. Double check if parts does not block each other.
 - glue the two case parts together carefully. Place them on a flat surface and put some books on each side, then put some glue into the rills.
 - wait until it is dry and put some more glue on it if needed.
@@ -130,7 +135,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - add parametric keebCase (already working on)
 - screw holes get crossed by case stabilizer (DONE / screw hole standoffs have an oval shape now)
 - documentation for keebCase.scad
-- add build scripts
+- add build script (DONE)
 - test other keyboard layouts like random stuff or ten keys
 
 ## Wrist rest and Keyboard Case
