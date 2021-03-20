@@ -2,24 +2,6 @@
 
 ## Keyboard Customizer
 
-#### Notes
-This Keyboard Customizer for OpenSCAD is in "usable" state now, and you can customize your keyboard :). But there are still some imperfections and "bugs". I'm testing several layouts, like normal sized boards to macro pads, etc., from time to time.
-
-Please double check measurements and fittings of your keyboard layout. You first may print some critical parts for testing the model.
-The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I can not give any guarantee on the correct functionality of this script.
-
-This is based on *Parametric Cherry MX Mounting Plate for Mechanical Keyboards* by rsheldiii
-http://www.thingiverse.com/thing:573578
-
-## Description
-This is a OpenSCAD Script for customizing a keyboard with a specific layout. It is designed to also show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii. **So download OpenSCAD and start building your keyboard ;)!**
-
-I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cut by the script with 'cutAfterUnits' variable. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design is the biggest layout I can print for now. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually :).
-The cut will always be around the switch holes. This gives good stability when glueing the parts together. Before glueing, the parts may need some sanding work, etc. Just check that both sides fit to each other without bigger space in between.
-(In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.)
-
-I glued the parts together with Revell CONTACTA glue because of its fine needle which is very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
-
 ### TL;DR usage
 ```
 - clone this repo: git clone https://github.com/andimoto/keebcu.git
@@ -34,6 +16,26 @@ I glued the parts together with Revell CONTACTA glue because of its fine needle 
 - generate all necessary model files you want to print by uncomment the proper module call
 - save and print!
 ```
+
+#### Notes
+This is based on *Parametric Cherry MX Mounting Plate for Mechanical Keyboards* by rsheldiii
+http://www.thingiverse.com/thing:573578
+
+## Description
+This is a OpenSCAD Script for customizing a keyboard with a specific layout. It is designed to also show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii. **So download OpenSCAD and start building your keyboard ;)!**
+
+I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cut by the script with 'cutAfterUnits' variable. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design is the biggest layout I can print for now. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually :).
+The cut will always be around the switch holes. This gives good stability when glueing the parts together. Before glueing, the parts may need some sanding work, etc. Just check that both sides fit to each other without bigger space in between.
+(In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.)
+
+I glued the parts together with Revell CONTACTA glue because of its fine needle which is very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
+
+#### Notes
+This Keyboard Customizer for OpenSCAD is in "usable" state now, and you can customize your keyboard :). But there are still some imperfections and "bugs". I'm testing several layouts, like normal sized boards to macro pads, etc., from time to time.
+
+Please double check measurements and fittings of your keyboard layout. You first may print some critical parts for testing the model.
+The available keyboard models (in stl directory) should work and have been printed by me on a Prusa Mini. I can not give any guarantee on the correct functionality of this script.
+
 ### Current designs available
 ```
 - andimoto7583 (printed)
@@ -43,8 +45,9 @@ I glued the parts together with Revell CONTACTA glue because of its fine needle 
 - andimotoTKL (not printed)
 - andimotoTKLiso (not printed)
 ```
+
+__Note:__
 ```
-Note:
 7583 is -> 75% layout with 83 switches.
 6061 is -> 60% layout with 61 switches
 smallTKL is TKL keyboard with one missing column
@@ -52,7 +55,7 @@ TKL - ten keyless
 etc.
 ```
 
-### Create you own keyboard layout
+### Create your own keyboard layout
 You can copy the file "template_to_copy.scad", rename it and start configuring your own layout. By uncomment the module calls at the end of the layout file, it is possible to create each part like "right & left case", "right & left lid", and also risers. It is also possible to create the whole keyboard itself in one piece if you can print bigger parts.
 
 If you want to simulate the keyboard with keycaps and its colors, you can clone rsheldiii's KeyV2 Repository
