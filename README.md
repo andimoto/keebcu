@@ -13,7 +13,7 @@
 - set usb and pcb values
 - depending on your printbed size, set where to cut the keyboard case
 - (optional) print critical parts of the case like space bar, parts with other stabilizers or usb and pcb area to test everything fits
-- generate all necessary model files you want to print by uncomment the proper module call
+- generate all necessary model files you want to print by uncomment the proper module call or run the build.sh script
 - save and print!
 ```
 
@@ -99,6 +99,13 @@ build.sh parameter:
 ./build.sh <keyboard name> <config file>
     - keyboard name: name of the keyboard file without .scad extension
     - (optional) config file: mymodules.conf (any file name is possible, just add the proper syntax)
+
+for example:
+    ./build.sh andimotoTKL
+
+    or
+
+    /build.sh andimoto6061 myModuleCalls.conf
 ```
 
 ```
@@ -124,7 +131,7 @@ config file syntax:
 ```
 
 
-__This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubuntu 20.04).__ 
+__This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubuntu 20.04).__
 
 
 ## Parts needed
