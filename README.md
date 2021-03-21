@@ -182,6 +182,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - screw holes get crossed by case stabilizer (DONE / screw hole standoffs have an oval shape now)
 - documentation for keebCase.scad
 - add build script (DONE)
+- other build system (make or docker, etc.)
 - test other keyboard layouts like random stuff or ten keys
 
 ## Wrist rest and Keyboard Case
