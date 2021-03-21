@@ -85,10 +85,49 @@ It is also possible to modify the pcb dimensions with the 'pcb'-values. Availabl
 Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
 
 ## Build STL Files
-You can use the traditional way to build all parts of your keyboard by activating one call in the keyboard file for each part. This is also necessary while configuring the keyboard you want. If you have minor changes in any file it is hard to build each module or part again.
-Because I often have to generate the stl files after some changes, I wanted something easy to generate all stl files with one call. This is possible with the script 'build.sh'. It reads conf/module-calls.conf and places each call at the end of the keyboard file to render it and safe it in the stl directory.
+I added the script 'build.sh' for building all necessary parts of a keyboard at once. It reads 'conf/module-calls.conf' and places each call at the end of the keyboard file to render it and safe it in the stl directory. The output is saved in stl directory under the keyboard name.
 
-### Parts needed
+```
+NOTE: openscad command should be in $PATH or the environment variable OPENSCADPATH should be set to the OpenSCAD binary.
+For example:
+                export OPENSCADPATH=/home/<user>/<pathToBinary>/OpenSCAD-2021.01-x86_64.AppImage
+```
+
+```
+build.sh parameter:
+
+./build.sh <keyboard name> <config file>
+    - keyboard name: name of the keyboard file without .scad extension
+    - (optional) config file: mymodules.conf (any file name is possible, just add the proper syntax)
+```
+
+```
+NOTE: do not remove this line from the keyboard file and do not place this line in between the configuration variables
+
+              /* ###################### BUILD_LINE ########################*/
+```
+
+### build.sh description
+The build.sh script checks if OpenSCAD binary is available. If not, user has to set OPENSCADPATH to point to the binary.
+Then it checks parameters. The 1st parameter is necessary and tells the name of the keyboard to build. The script then appends .scad extension automaticaly and uses the name for the output directory. No keyboard file name will stop the script and return an error. Then it checks optional parameter of config file. Default config file will be used if no 2nd parameter is given.
+
+Each keyboard file has a separator at the end "BUILD_LINE". The script greps for the line number of the separator and prints out the keyboard file until this line number. This output will be saved in an temporary directory which will be removed after build. Also and output directory will be generated to save stl files in it.
+Then it places each module call from the config file at the end and calls OpenSCAD with the generated file to render the stl part. After this it places the next module call and generates the next stl, an so on.
+
+You can add your own config file with the module calls you want and call the build.sh script with the config file as 2nd parameter. If no 2nd parameter is given, the script uses default config file 'conf/module-calls.conf'. The script greps for 'module' and separates the line at ':'. The last part will be used and appended to the created scad file.
+
+```
+config file syntax:
+  module1: mainCase(layout);
+  module2: lidR();
+  module3: myOwnModuleCall(withParam);
+```
+
+
+__This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubuntu 20.04).__ 
+
+
+## Parts needed
 - Printed Keyboard Parts
   - Case
   - Lids
@@ -117,7 +156,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - have fun with your keyboard ;)
 
 
-### Printing advises
+## Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
 - Be careful with color changes. If color change is only at height of case stabilizer (not keycap stabilizers!!) or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers. I recommend to do the color change at the last layer of the keyboard cases plate. (See https://github.com/andimoto/keebcu/tree/master/pics/img/screwHolesColorChange.jpg)
   - Note: even this issue may be fixed with the oval spacers for the screws, double check the stability of the screw holes by printing a small prototyp with color change where you want it.

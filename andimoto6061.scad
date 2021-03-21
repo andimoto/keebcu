@@ -81,7 +81,8 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-ansiUS_6061 = [
+/* ansiUS_6061 */
+layout = [
 //start ROW 1
 [[0,0],1,"White"], //'
 [[1,0],1,"MintCream"], //1
@@ -258,19 +259,19 @@ colorRiserL="Gainsboro";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(ansiUS_6061,false); */
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(ansiUS_6061); */
+/* mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(ansiUS_6061); */
-/* translate([0, 150,0]) mainCaseRight(ansiUS_6061); */
+/* mainCaseLeft(layout); */
+/* translate([0, 150,0]) mainCaseRight(layout); */
 
 /* lidL(); */
 /* lidR(); */
