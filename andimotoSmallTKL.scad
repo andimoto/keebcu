@@ -1,10 +1,10 @@
-/* andimoto6064.scad
+/* andimoto_smallTKL.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
 single parts go to end of this file
 
-this file contains the layout for my 6064 keyboard 3d model which can be devided
+this file contains the layout for my smallTKL keyboard 3d model which can be devided
 to print on smaller printers
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
@@ -33,9 +33,9 @@ innerCaseSpace = 5;
 caseRadius=1;
 
 //length, in units, of board
-width=15;
+width=17.25;
 //Height, in units, of board
-height=5;
+height=6;
 
 /* thickness of the lid.
    the function 'lid()' will add an
@@ -48,8 +48,8 @@ lidThickness=3;
 /* these are unit values; one unit is one key or switchhole
  * this makes the keyboard printable on nearly every printer.
  */
-cutAfterUnits = 6.5;
-spacebarCut = 4;
+cutAfterUnits = 8;
+spacebarCut = 4.5;
 
 
 /* debug extra for avoiding artefacts @ compilation */
@@ -76,78 +76,98 @@ switchHoleTolerance = -0.2;
 					"row place" is the place of the switch in the row;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
-
-/* ansiUS_6064 */
+/* ansiUS_smallTKL */
 layout = [
+//start ROW 0 Function ROW
+[[0,0],1,"Gold"], //Esc
+[[2,0],1,"Gold"], //F1
+[[3,0],1,"Gold"], //F2
+[[4,0],1,"Gold"], //F3
+[[5,0],1,"Gold"], //F4
+[[6.5,0],1,"Gold"], //F5
+[[7.5,0],1,"Gold"], //F6
+[[8.5,0],1,"Gold"], //F7
+[[9.5,0],1,"Gold"], //F8
+[[11,0],1,"Gold"], //F9
+[[12,0],1,"Gold"], //F10
+[[13,0],1,"Gold"], //F11
+[[14,0],1,"Gold"], //F12
+[[15.25,0],1,"Gold"], //PrintScreen
+[[16.25,0],1,"Gold"], //PrintScreen
+/* [[17,0],1,"Gray"], // Del/Ins */
 //start ROW 1
-[[0,0],1,"DarkSlateGray"], //'
-[[1,0],1,"DarkSlateGray"], //1
-[[2,0],1,"DarkSlateGray"], //2
-[[3,0],1,"DarkSlateGray"], //3
-[[4,0],1,"DarkSlateGray"], //4
-[[5,0],1,"DarkSlateGray"], //5
-[[6,0],1,"DarkSlateGray"], //6
-[[7,0],1,"DarkSlateGray"], //7
-[[8,0],1,"DarkSlateGray"], //8
-[[9,0],1,"DarkSlateGray"], //9
-[[10,0],1,"DarkSlateGray"], //0
-[[11,0],1,"DarkSlateGray"], //-_
-[[12,0],1,"DarkSlateGray"], //=+
-[[13,0],2,"DarkSlateGray"], //backspace
+[[  0,1],1,"Gold"], //'
+[[1,1],1,"Gold"], //1
+[[2,1],1,"Gold"], //2
+[[3,1],1,"Gold"], //3
+[[4,1],1,"Gold"], //4
+[[5,1],1,"Gold"], //5
+[[6,1],1,"Gold"], //6
+[[7,1],1,"Gold"], //7
+[[8,1],1,"Gold"], //8
+[[9,1],1,"Gold"], //9
+[[10,1],1,"Gold"], //0
+[[11,1],1,"Gold"], //-_
+[[12,1],1,"Gold"], //=+
+[[13,1],2,"Gold"], //backspace
+[[15.25,1],1,"Gold"], //ins
+[[16.25,1],1,"Gold"], //pos1
 //start ROW 2
-[[  0,1],1.5,"DarkSlateGray"], //TAB
-[[1.5,1],1,"DarkSlateGray"], //Q
-[[2.5,1],1,"DarkSlateGray"], //W
-[[3.5,1],1,"DarkSlateGray"], //E
-[[4.5,1],1,"DarkSlateGray"], //R
-[[5.5,1],1,"DarkSlateGray"], //T
-[[6.5,1],1,"DarkSlateGray"], //Y
-[[7.5,1],1,"DarkSlateGray"], //U
-[[8.5,1],1,"DarkSlateGray"], //I
-[[9.5,1],1,"DarkSlateGray"], //O
-[[10.5,1],1,"DarkSlateGray"], //P
-[[11.5,1],1,"DarkSlateGray"], //[
-[[12.5,1],1,"DarkSlateGray"], //]
-[[13.5,1],1.5,"DarkSlateGray"], // \
+[[  0,2],1.5,"Gold"], //TAB
+[[1.5,2],1,"Gold"], //Q
+[[2.5,2],1,"Gold"], //W
+[[3.5,2],1,"Gold"], //E
+[[4.5,2],1,"Gold"], //R
+[[5.5,2],1,"Gold"], //T
+[[6.5,2],1,"Gold"], //Y
+[[7.5,2],1,"Gold"], //U
+[[8.5,2],1,"Gold"], //I
+[[9.5,2],1,"Gold"], //O
+[[10.5,2],1,"Gold"], //P
+[[11.5,2],1,"Gold"], //[
+[[12.5,2],1,"Gold"], //]
+[[13.5,2],1.5,"Gold"], // \
+[[15.25,2],1,"Gold"], // del
+[[16.25,2],1,"Gold"], // end
 //start ROW 3
-[[   0,2],1.75,"DarkSlateGray"], //CapsLock
-[[1.75,2],1,"DarkSlateGray"], //A
-[[2.75,2],1,"DarkSlateGray"], //S
-[[3.75,2],1,"DarkSlateGray"], //D
-[[4.75,2],1,"DarkSlateGray"], //F
-[[5.75,2],1,"DarkSlateGray"], //G
-[[6.75,2],1,"DarkSlateGray"], //H
-[[7.75,2],1,"DarkSlateGray"], //J
-[[8.75,2],1,"DarkSlateGray"], //K
-[[9.75,2],1,"DarkSlateGray"], //L
-[[10.75,2],1,"DarkSlateGray"], //;
-[[11.75,2],1,"DarkSlateGray"], //'
-[[12.75,2],2.25,"DarkSlateGray"], //ENTER
+[[   0,3],1.75,"Gold"], //CapsLock
+[[1.75,3],1,"Gold"], //A
+[[2.75,3],1,"Gold"], //S
+[[3.75,3],1,"Gold"], //D
+[[4.75,3],1,"Gold"], //F
+[[5.75,3],1,"Gold"], //G
+[[6.75,3],1,"Gold"], //H
+[[7.75,3],1,"Gold"], //J
+[[8.75,3],1,"Gold"], //K
+[[9.75,3],1,"Gold"], //L
+[[10.75,3],1,"Gold"], //;
+[[11.75,3],1,"Gold"], //'
+[[12.75,3],2.25,"Gold"], //ENTER
 //start ROW 4
-[[0,3],2,"DarkSlateGray"], //LShift
-[[2,3],1,"DarkSlateGray"], //Z
-[[3,3],1,"DarkSlateGray"], //X
-[[4,3],1,"DarkSlateGray"], //C
-[[5,3],1,"DarkSlateGray"], //V
-[[6,3],1,"DarkSlateGray"], //B
-[[7,3],1,"DarkSlateGray"], //N
-[[8,3],1,"DarkSlateGray"], //M
-[[9,3],1,"DarkSlateGray"], //,
-[[10,3],1,"DarkSlateGray"], //.
-[[11,3],1,"DarkSlateGray"], // /
-[[12,3],1,"DarkSlateGray"], //RShift
-[[13,3],1,"DarkSlateGray"], //UP
-[[14,3],1,"DarkSlateGray"], //del
+[[   0,4],2.25,"Gold"], //LShift
+[[2.25,4],1,"Gold"], //Z
+[[3.25,4],1,"Gold"], //X
+[[4.25,4],1,"Gold"], //C
+[[5.25,4],1,"Gold"], //V
+[[6.25,4],1,"Gold"], //B
+[[7.25,4],1,"Gold"], //N
+[[8.25,4],1,"Gold"], //M
+[[9.25,4],1,"Gold"], //,
+[[10.25,4],1,"Gold"], //.
+[[11.25,4],1,"Gold"], // /
+[[12.25,4],2.75,"Gold"], //RShift
+[[15.25,4],1,"Gold"], //UP
 //start ROW 5
-[[0,   4],1.25,"DarkSlateGray"], //LCTRL
-[[1.25,4],1.25,"DarkSlateGray"], //TUX
-[[2.5 ,4],1.25,"DarkSlateGray"], //ALT
-[[3.75,4],6.25,"DarkSlateGray"], //SPACE
-[[10  ,4],1,"DarkSlateGray"], //Fn
-[[11,4],1,"DarkSlateGray"], //menu
-[[12,4],1,"DarkSlateGray"], //LEFT
-[[13,4],1,"DarkSlateGray"], //DOWN
-[[14,4],1,"DarkSlateGray"], //RIGHT
+[[   0,5],1.25,"Gold"], //LCTRL
+[[1.25,5],1.25,"Gold"], //TUX
+[[2.5 ,5],1.25,"Gold"], //ALT
+[[3.75,5],6.25,"Gold"], //SPACE
+[[10  ,5],1.25,"Gold"], //COMP
+[[11.25,5],1.25,"Gold"], //Fn
+[[12.5 ,5],1.25,"Gold"], //RCTRL
+[[14.25,5],1,"Gold"], //LEFT
+[[15.25,5],1,"Gold"], //DOWN
+[[16.25,5],1,"Gold"], //RIGHT
 ];
 
 /* move pcb and usb cutout in x direction
@@ -174,16 +194,15 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
-/* teensy2 cutout */
-//pcbHeight = 1.8;
-//pcbWidth = 18.5;
-// pcbLength = 31.4;
+ /* teensy2 cutout */
+ //pcbHeight = 1.8;
+ //pcbWidth = 18.5;
+ //pcbLength = 31.4;
 
  /* arduino pro micro cutout */
-pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 34;
-
+ pcbHeight = 2;
+ pcbWidth = 18;
+ pcbLength = 34;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -195,7 +214,7 @@ addRisers = true;
  * angleBaseX -> width of the riser
  * angleBaseY -> depth of the riser
  */
-angleBaseY=90;
+angleBaseY=110;
 angleBaseX=80;
 /* riser edge radius */
 angleBaseRad=1;
@@ -207,8 +226,8 @@ riserPoints = [
 ];
 
 /* optional: move keyboard risers as needed */
-xRiserR=15;
-xRiserL=-15;
+xRiserR=0;
+xRiserL=0;
 
 /* ####### include keyboard lib ############ */
 include <constants.scad>
@@ -220,23 +239,27 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[20,lkey-0.4], //left lower row
-[114,lkey-0.4],
-[171,lkey-0.4],
-[266,lkey-0.4], // right lower row
+[24,lkey-0.5], //left lower row
+[145,lkey-0.5],
+[190,lkey-0.5],
+[309.5,lkey-0.5], // right lower row
 
-[19,lkey*4+wallThickness-3], //left upper row
-[114,lkey*4+wallThickness-3],
-[171,lkey*4+wallThickness-3],
-[266,lkey*4+wallThickness-3], //right upper row
+[24,lkey*3+wallThickness-3], //left mid row
+[142.5,lkey*3+wallThickness-3],
+[181,lkey*3+wallThickness-3],
+[309.5,lkey*3+wallThickness-3], //right mid row
+
+[24,lkey*5+wallThickness-3], //left upper row
+[143,lkey*5+wallThickness-3],
+[181,lkey*5+wallThickness-3],
+[309.5,lkey*5+wallThickness-3], //right upper row
 ];
 
-
 /* set colors for simulation */
-colorCase="White";
-colorLid="Green";
-colorRiserR="Yellow";
-colorRiserL="Yellow";
+colorCase="Gold";
+colorLid="Gold";
+colorRiserR="Gold";
+colorRiserL="Gold";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -248,19 +271,19 @@ colorRiserL="Yellow";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false); */
+/* KeyboardSim(ansiUS_smallTKL,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
-/* lid(); */
+/* color("Gold") mainCase(ansiUS_smallTKL); */
+/* color("Gold") lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(layout); */
-/* translate([0,150,0]) mainCaseRight(layout); */
+/* mainCaseLeft(ansiUS_smallTKL); */
+/* mainCaseRight(ansiUS_smallTKL); */
 
 /* lidL(); */
 /* lidR(); */

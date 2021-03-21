@@ -9,7 +9,7 @@ to print on smaller printers
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
 if you don't want this file to be included, just don't clone this library or
-set the 'DoKeycapSimulation' parameter to false call for placing all keycaps on the keyboard.
+set the 'DoKeycapSimulation' parameter of KeyboardSim() to false.
 */
 
 /* ########## predefinitions ############ */
@@ -52,10 +52,6 @@ cutAfterUnits = 7.25;
 spacebarCut = 4.5;
 
 
-
-/* ################## calculated vars #################### */
-
-
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
 
@@ -81,7 +77,8 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-ansiUS_7583 = [
+/* ansiUS_7583  */
+layout = [
 //start ROW 0 Function ROW
 [[0,0],1,"red"], //Esc
 [[1,0],1,"MintCream"], //F1
@@ -267,23 +264,29 @@ colorLid="White";
 colorRiserR="Gainsboro";
 colorRiserL="Gainsboro";
 
+/* ###################### BUILD_LINE ########################*/
+/* ##########################################################*/
+/* All calls after this line have to be ignored by the build script.
+ * Do not place any calls above build line (or comment it)
+ */
+
 /* uncomment following line to get the keyboard simulation
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(ansiUS_7583,false); */
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(ansiUS_7583);
+mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(ansiUS_7583); */
-/* mainCaseRight(ansiUS_7583); */
+/* mainCaseLeft(layout); */
+/* mainCaseRight(layout); */
 
 /* lidL(); */
 /* lidR(); */

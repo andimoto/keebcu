@@ -1,11 +1,11 @@
-/* andimotoTKLiso.scad
+/* andimoto_smallTKL_iso.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
 single parts go to end of this file
 
-this file contains the layout for my TKL keyboard 3d model which can be devided
-to print on smaller printers
+this file is a template which may be copied to create a new keyboard layout
+and to configure and place essential parts like usb cut out, screw holes or stabilizers
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
 if you don't want this file to be included, just don't clone this library or
@@ -33,7 +33,7 @@ innerCaseSpace = 5;
 caseRadius=1;
 
 //length, in units, of board
-width=18.25;
+width=17.25;
 //Height, in units, of board
 height=6;
 
@@ -48,8 +48,8 @@ lidThickness=3;
 /* these are unit values; one unit is one key or switchhole
  * this makes the keyboard printable on nearly every printer.
  */
-cutAfterUnits = 8.5;
-spacebarCut = 5.5;
+cutAfterUnits = 8;
+spacebarCut = 4.5;
 
 
 /* debug extra for avoiding artefacts @ compilation */
@@ -77,7 +77,7 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-/* TKL_iso  */
+/* smallTKL_isoDE */
 layout = [
 //start ROW 0 Function ROW
 [[0,0],1,"DarkSlateGray"], //Esc
@@ -94,8 +94,8 @@ layout = [
 [[13,0],1,"DarkSlateGray"], //F11
 [[14,0],1,"DarkSlateGray"], //F12
 [[15.25,0],1,"DarkSlateGray"], //PrintScreen
-[[16.25,0],1,"DarkSlateGray"], //ScrLk
-[[17.25,0],1,"DarkSlateGray"], //Pause
+[[16.25,0],1,"DarkSlateGray"], //Pause
+
 //start ROW 1
 [[0,1],1,"DarkSlateGray"], //'
 [[1,1],1,"DarkSlateGray"], //1
@@ -113,7 +113,6 @@ layout = [
 [[13,1],2,"DarkSlateGray"], //backspace
 [[15.25,1],1,"DarkSlateGray"], //ins
 [[16.25,1],1,"DarkSlateGray"], //pos1
-[[17.25,1],1,"DarkSlateGray"], //pgup
 //start ROW 2
 [[  0,2],1.5,"DarkSlateGray"], //TAB
 [[1.5,2],1,"DarkSlateGray"], //Q
@@ -131,7 +130,6 @@ layout = [
 [[13.5,2.5],1.5,"DarkSlateGray"], // ENTER
 [[15.25,2],1,"DarkSlateGray"], // del
 [[16.25,2],1,"DarkSlateGray"], // end
-[[17.25,2],1,"DarkSlateGray"], // pgdn
 //start ROW 3
 [[   0,3],1.75,"DarkSlateGray"], //CapsLock
 [[1.75,3],1,"DarkSlateGray"], //A
@@ -160,7 +158,7 @@ layout = [
 [[10.25,4],1,"DarkSlateGray"], //.
 [[11.25,4],1,"DarkSlateGray"], // /
 [[12.25,4],2.75,"DarkSlateGray"], //RShift
-[[16.25,4],1,"DarkSlateGray"], //UP
+[[15.25,4],1,"DarkSlateGray"], //UP
 //start ROW 5
 [[   0,5],1.25,"DarkSlateGray"], //LCTRL
 [[1.25,5],1.25,"DarkSlateGray"], //TUX
@@ -168,16 +166,21 @@ layout = [
 [[3.75,5],6.25,"DarkSlateGray"], //SPACE
 [[10  ,5],1.25,"DarkSlateGray"], //COMP
 [[11.25,5],1.25,"DarkSlateGray"], //Fn
-[[12.5,5],1.25,"DarkSlateGray"], //menu
-[[13.75 ,5],1.25,"DarkSlateGray"], //RCTRL
-[[15.25,5],1,"DarkSlateGray"], //LEFT
-[[16.25,5],1,"DarkSlateGray"], //DOWN
-[[17.25,5],1,"DarkSlateGray"], //RIGHT
+[[12.5 ,5],1.25,"DarkSlateGray"], //RCTRL
+[[14.25,5],1,"DarkSlateGray"], //LEFT
+[[15.25,5],1,"DarkSlateGray"], //DOWN
+[[16.25,5],1,"DarkSlateGray"], //RIGHT
 ];
+
+/* set this variable to the amount of the rows of your LAYOUT.
+ * this will be used in "calcRight" module to add wallThickness
+ * to the cut in y direction.
+ */
+MaxRows = 6;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=-13;
+pcbShift=6;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -186,10 +189,10 @@ usbCutX=8;
 usbCutY=wallThickness;
 
 /* Arduino Pro Micro USB Port height */
-usbCutZ=3.4;
+/* usbCutZ=3.4; */
 
 /* Teensy2 USB Port height */
-/* usbCutZ=4.5; */
+usbCutZ=4.5;
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
@@ -199,15 +202,16 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
- /* teensy2 cutout */
+/* teensy2 cutout */
 pcbHeight = 1.8;
 pcbWidth = 18.5;
 pcbLength = 31.4;
 
- /* arduino pro micro cutout */
+/* arduino pro micro cutout */
 //pcbHeight = 2;
 //pcbWidth = 18;
 //pcbLength = 34;
+
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -220,7 +224,7 @@ addRisers = true;
  * angleBaseY -> depth of the riser
  */
 angleBaseY=110;
-angleBaseX=80;
+angleBaseX=60;
 /* riser edge radius */
 angleBaseRad=1;
 /* polygon; this is the shape of the riser */
@@ -243,29 +247,29 @@ include <keyboardParts.scad>
  * if your keyboard is bigger, you can add some
  * more screw holes into the keyboard case and lid.
  */
- screwHoleArray = [
- [24,lkey-0.5], //left lower row
- [157,lkey-0.5],
- [193,lkey-0.5],
- [328,lkey-0.5], // right lower row
+screwHoleArray = [
+[23,lkey-0.4], //left lower row
+[144,lkey-0.4],
+[186,lkey-0.4],
+[310,lkey-0.4], // right lower row
 
- [24,lkey*3+wallThickness-3], //left mid row
- [148.5,lkey*3+wallThickness-3],
- [200,lkey*3+wallThickness-3],
- [328,lkey*3+wallThickness-3], //right mid row
+[25,lkey*3+wallThickness-3], //left mid row
+[144,lkey*3+wallThickness-3],
+[186,lkey*3+wallThickness-3],
+[310,lkey*3+wallThickness-3], //right mid row
 
- [24,lkey*5+wallThickness-3], //left upper row
- [152,lkey*5+wallThickness-3],
- [200,lkey*5+wallThickness-3],
- [328,lkey*5+wallThickness-3], //right upper row
- ];
+[20,lkey*5+wallThickness-3], //left upper row
+[144,lkey*5+wallThickness-3],
+[186,lkey*5+wallThickness-3],
+[310,lkey*5+wallThickness-3], //right upper row
+];
 
 
 /* set colors for simulation */
-colorCase="Green";
-colorLid="Green";
-colorRiserR="Green";
-colorRiserL="Green";
+colorCase="DarkBlue";
+colorLid="DarkBlue";
+colorRiserR="DarkBlue";
+colorRiserL="DarkBlue";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -276,14 +280,14 @@ colorRiserL="Green";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(layout,false); */
+KeyboardSim(layout,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
