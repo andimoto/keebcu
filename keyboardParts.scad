@@ -41,6 +41,7 @@ module holematrix(holes,startx,starty,zCase){
 	for (key = holes){
 		/* echo (key[0][0],key[0][1],key[1]); */
 
+
 		/* place switch holes */
 		if(key[1] >= 1){
 			/* check for iso Enter key; should be the last row minus 3.5
@@ -69,9 +70,18 @@ module holematrix(holes,startx,starty,zCase){
 			}
 			else
 			{
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				switchhole();
+				if((key[0][1]==0) && (fRowSeparator==true))
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1]-0.5), zCase-extra])
+					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+					switchhole();
+				}
+				else
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+					switchhole();
+				}
 			}
 		}
 		/* place switch holes - end */
@@ -463,6 +473,11 @@ module lid()
 
 
 module case(){
+	if(fRowSeparator==true)
+	{
+		caseExtra = lkey*0.5;
+	}
+
 	difference() {
 		minkowski() {
 			cube([caseWidth,caseDepth,caseHeight]);
