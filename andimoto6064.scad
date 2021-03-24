@@ -207,8 +207,8 @@ riserPoints = [
 ];
 
 /* optional: move keyboard risers as needed */
-xRiserR=15;
-xRiserL=-15;
+xRiserR=13;
+xRiserL=-13;
 
 /* ####### include keyboard lib ############ */
 include <constants.scad>
@@ -248,14 +248,14 @@ colorRiserL="Yellow";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false); */
+KeyboardSim(layout,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
