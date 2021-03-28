@@ -73,7 +73,7 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
   }
 }
 
-lock(negativ=false);
+/* lock(negativ=false); */
 
 
 module halfCase(locks=true, magnets=true)
