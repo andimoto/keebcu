@@ -5,7 +5,7 @@ for placing assambled parts and
 single parts go to end of this file
  */
 
-$fn=50;
+$fn=70;
 
 keebLen = 330;
 keebThickness = 60;
@@ -15,6 +15,7 @@ sideThickness = 10;
 edgeRadius = 2;
 
 magnetRadius = 5/2;
+magnetRadiusTolerance=0.05;
 magnetThickness = 1;
 
 lockRadius = 10;
@@ -53,15 +54,12 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
     if(negativ == false)
     {
       /* cutout for fingers */
-      translate([0,0,2]) sphereCut();
-      translate([0,radius*2,2]) rotate([0,0,180]) sphereCut();
-    }
+      translate([0,0, 2.4]) sphereCut();
+      translate([0,radius*2, 2.4]) rotate([0,0,180]) sphereCut();
 
-    if(negativ == false)
-    {
       /* magnet holes */
-      translate([0,-radius/1.5,0.75]) cylinder(r=magnetRadius, h=magnetThickness+0.5, center=true);
-      translate([0,radius*2+radius/1.5,0.75]) cylinder(r=magnetRadius, h=magnetThickness+0.5, center=true);
+      translate([0,-radius/1.5,0]) cylinder(r=magnetRadius+magnetRadiusTolerance, h=magnetThickness+0.7, center=false);
+      translate([0,radius*2+radius/1.5,0]) cylinder(r=magnetRadius+magnetRadiusTolerance, h=magnetThickness+0.7, center=false);
     }
 
     /* debug cut */
@@ -70,11 +68,12 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
   if(negativ == true)
   {
     /* magnet holes */
-    translate([0,-radius/1.5,-0.5]) cylinder(r=magnetRadius, h=magnetThickness, center=true);
-    translate([0,radius*2+radius/1.5,-0.5]) cylinder(r=magnetRadius, h=magnetThickness, center=true);
+    translate([0,-radius/1.5,-magnetThickness-0.7]) cylinder(r=magnetRadius+magnetRadiusTolerance, h=magnetThickness+0.7, center=false);
+    translate([0,radius*2+radius/1.5,-magnetThickness-0.7]) cylinder(r=magnetRadius+magnetRadiusTolerance, h=magnetThickness+0.7, center=false);
   }
 }
-/* lock(negativ=true); */
+
+lock(negativ=false);
 
 
 module halfCase(locks=true, magnets=true)
@@ -123,26 +122,21 @@ module halfCase(locks=true, magnets=true)
   }
 }
 
-
+/* ################ BUILD_LINE ################# */
 /* ############################################# */
 /* ########## Place keyboard case ############## */
 /* ############################################# */
 
-color("yellow") translate([2,2,0]) halfCase(locks=true,magnets=true);
+/* color("yellow") translate([2,2,0]) halfCase(locks=true,magnets=true); */
 /* color("yellow") translate([2,2,keebLen+wallThickness*2+1+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
 
 
 /* case locks */
-color("black") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
-rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false);
+/* color("green") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
+rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false); */
 
-color("black") translate([(keebHeight+sideThickness*2)-lockThickness/3,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
-rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false);
-
-
-
-
-
+/* color("black") translate([(keebHeight+sideThickness*2)-lockThickness/3,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
+rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false); */
 
 
 
