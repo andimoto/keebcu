@@ -139,17 +139,17 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 	}
 
 	for (key = holes){
-		if(key[0][1]!=2.5){
-			/* don't place case stabilizer on iso enter button */
-			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
-			cube([1,lkey,2]);
-		}
-
 		if((key[0][1]==0) && (fRowSeparator==true))
 		{
 			/* don't place case stabilizer on iso enter button */
 			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
 			cube([1,lkey+getExtraFRow(fRowSeparator),2]);
+		}
+
+		if(key[0][1]!=2.5){
+			/* don't place case stabilizer on iso enter button */
+			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
+			cube([1,lkey,2]);
 		}
 
 		/*put some extra stabilizer profiles to spacebar*/
@@ -188,9 +188,20 @@ module keySim(holes)
 	starty = caseDepth - lkey;
 	zCase = tempHeigth;
 	for (key = holes){
-		translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-		translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
-		color("black") switchSim();
+		/* switch simulation for F-Row */
+		if(key[0][1]==0 && fRowSeparator==true)
+		{
+			translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), zCase-extra])
+			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
+			color("black") switchSim();
+		}
+		else
+		{
+			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
+			color("black") switchSim();
+		}
+
 
 		if (key[1]==6.25){
 			color(key[2])
@@ -242,12 +253,23 @@ module keySim(holes)
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 			1_25u() sa_row(key[0][1]) key();
 		}
-		else
+		else /* 1u keys */
 		{
-			color(key[2])
-			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			1u() sa_row(key[0][1]) key();
+			/* keysim with F-Row separator only for 1u keys */
+			if(key[0][1]==0 && fRowSeparator==true)
+			{
+				color(key[2])
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), 0])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				1u() sa_row(key[0][1]) key();
+			}
+			else
+			{
+				color(key[2])
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				1u() sa_row(key[0][1]) key();
+			}
 		}
 	}
 }
@@ -270,7 +292,7 @@ module calcRight(holes,startx,starty,zCase){
 			{
 				yCut = lkey+wallThickness/2;
 				translate([-1,starty-lkey*key[0][1],0])
-				cube([cutLength+1+lkey,yCut,caseHeight+extra*2]);
+				cube([cutLength+1+lkey,yCut+getExtraFRow(fRowSeparator),caseHeight+extra*2]);
 			}
 			/* last row */
 			else if( key[0][1]==height-1)

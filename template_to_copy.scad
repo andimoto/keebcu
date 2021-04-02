@@ -51,7 +51,11 @@ lidThickness=3;
 cutAfterUnits = 7.25;
 spacebarCut = 4.5;
 
-
+/* fRowSeparator [true/false]
+ * Select separation of F-Row (or Row 0; key[0][1]=0)
+ * This will move the upper row by a half unit (lkey*0.5)
+ */
+fRowSeparator=false;
 
 /* ################## calculated vars #################### */
 
@@ -277,14 +281,14 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false); */
+KeyboardSim(layout,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* translate([0,0,5]) mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
