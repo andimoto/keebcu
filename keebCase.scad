@@ -15,7 +15,7 @@ sideThickness = 10;
 edgeRadius = 2;
 
 magnetRadius = 5/2;
-magnetRadiusTolerance=0.05;
+magnetRadiusTolerance=0.025;
 magnetThickness = 1;
 
 lockRadius = 10;
@@ -73,7 +73,7 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
   }
 }
 
-/* lock(negativ=false); */
+lock(negativ=false);
 
 
 module halfCase(locks=true, magnets=true)
