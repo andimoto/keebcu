@@ -51,8 +51,10 @@ lidThickness=3;
 cutAfterUnits = 8.5;
 spacebarCut = 5.5;
 
-
-/*  */
+/* fRowSeparator [true/false]
+ * Select separation of F-Row (or Row 0; key[0][1]=0)
+ * This will move the upper row by a half unit (lkey*0.5)
+ */
 fRowSeparator=true;
 
 /* debug extra for avoiding artefacts @ compilation */

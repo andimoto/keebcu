@@ -51,6 +51,11 @@ lidThickness=3;
 cutAfterUnits = 8;
 spacebarCut = 4.5;
 
+/* fRowSeparator [true/false]
+ * Select separation of F-Row (or Row 0; key[0][1]=0)
+ * This will move the upper row by a half unit (lkey*0.5)
+ */
+fRowSeparator=false;
 
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
@@ -271,19 +276,19 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(ansiUS_smallTKL,false); */
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* color("Gold") mainCase(ansiUS_smallTKL); */
+color("Gold") mainCase(layout);
 /* color("Gold") lid(); */
 
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(ansiUS_smallTKL); */
-/* mainCaseRight(ansiUS_smallTKL); */
+/* mainCaseLeft(layout); */
+/* mainCaseRight(layout); */
 
 /* lidL(); */
 /* lidR(); */

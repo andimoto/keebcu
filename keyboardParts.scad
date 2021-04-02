@@ -566,7 +566,7 @@ module lidR()
 	difference() {
 		lid();
 		translate([-caseRadius-extra,-caseRadius-extra,-extra])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra,caseHeight]);
+		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
 	}
 }
 
@@ -575,7 +575,7 @@ module lidL()
 	difference() {
 		lid();
 		translate([(caseWidth+2*caseRadius)/2-extra,-caseRadius-extra,-extra])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra,caseHeight]);
+		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
 	}
 }
 
