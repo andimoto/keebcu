@@ -11,6 +11,7 @@
 - start customizing your layout (place switch holes and set colors of your keycaps if you want)
 - set screw holes where needed or add even more of them (think about the risers on the bottom)
 - set usb and pcb values
+- set fRowSeparator to move F-Row up if needed
 - depending on your printbed size, set where to cut the keyboard case
 - (optional) print critical parts of the case like space bar, parts with other stabilizers or usb and pcb area to test everything fits
 - generate all necessary model files you want to print by uncomment the proper module call or run the build.sh script
@@ -83,6 +84,8 @@ After your layout is set you can adjust and modify the array 'screwHoleArray' to
 It is also possible to modify the pcb dimensions with the 'pcb'-values. Available sizes for Arduino Pro Micro and Teensy2 are included. Just change the comments to select the right one. I recommend to measure your pcb anyway and check dimensions. You can also move the whole pcb and cutout for usb connection in X direction by setting 'pcbShift' with a positive or negative value.
 
 Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
+
+With the variable 'fRowSeparator' you can select if the F-Row or the most upper Row (key[0][1]==0) will be moved upwards by a half key unit. See example 'andimotoTKL_iso'. When selecting 'true' some modules will call 'getExtraFRow()' function to get the value to move F-Row upwards.
 
 ## Build STL Files
 I added the script 'build.sh' for building all necessary parts of a keyboard at once. It reads 'conf/module-calls.conf' and places each call at the end of the keyboard file to render it and safe it in the stl directory. The output is saved in stl directory under the keyboard name.
@@ -172,7 +175,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - check if your printer prints right-angled. I had issues with my Prusa Mini printing exact squared parts. More info [here](https://forum.prusaprinters.org/forum/how-do-i-print-this-printing-help/how-to-fix-bending-of-a-box/).
 
 ## todo
-- create selectable space (in y direction) between function row and next rows
+- create selectable space (in y direction) between function row and next rows (DONE: fRowSeparator)
 - provide pcb cutout for teensy 2.0 (DONE)
 - add delta variable for usb cutout and pcbholder to move it. (DONE)
 - avoid case stabilizer for iso enter and numpad enter (optional)
