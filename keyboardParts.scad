@@ -17,6 +17,8 @@ cutLength = 0;
 tempHeigth=caseHeight-plateThickness+extra;
 
 
+function getExtraFRow(extraFRow=false) = (extraFRow==true) ? lkey*0.5 : 0 ;
+
 module switchhole(){
 	union(){
 		translate([0,0,-extra/2])
@@ -72,7 +74,7 @@ module holematrix(holes,startx,starty,zCase){
 			{
 				if((key[0][1]==0) && (fRowSeparator==true))
 				{
-					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1]-0.5), zCase-extra])
+					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1])+getExtraFRow(fRowSeparator), zCase-extra])
 					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 					switchhole();
 				}
@@ -142,6 +144,14 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
 			cube([1,lkey,2]);
 		}
+
+		if((key[0][1]==0) && (fRowSeparator==true))
+		{
+			/* don't place case stabilizer on iso enter button */
+			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
+			cube([1,lkey+getExtraFRow(fRowSeparator),2]);
+		}
+
 		/*put some extra stabilizer profiles to spacebar*/
 		if(key[1]>6)
 		{
@@ -431,12 +441,12 @@ module lid()
 		union()
 		{
 			minkowski() {
-				cube([caseWidth,caseDepth,lidThickness]);
+				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),lidThickness]);
 				cylinder(r=1, h=0.0000000001, center=true);
 			}
 
 			translate([wallThickness+extra/4,wallThickness+extra/4,innerExtraLid]) minkowski() {
-				cube([caseWidth-(wallThickness*2)-extra/2,caseDepth-(wallThickness*2)-extra/2,lidThickness]);
+				cube([caseWidth-(wallThickness*2)-extra/2,caseDepth-(wallThickness*2)-extra/2+getExtraFRow(fRowSeparator),lidThickness]);
 				cylinder(r=1, h=0.0000000001, center=true);
 			}
 		}
@@ -457,15 +467,15 @@ module lid()
 		/* subtract usb cutout and pcb cutout */
 		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
 		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
-		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2-0.25,lidThickness])
+		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2-0.25+getExtraFRow(fRowSeparator),lidThickness])
 				pcbCutout();
-		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,lidThickness])
+		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2+getExtraFRow(fRowSeparator),lidThickness])
 				usbCutout();
 	}
 
 	/* pcb holder */
 	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
-		caseDepth-pcbLength-caseRadius*2-0.3,
+		caseDepth-pcbLength-caseRadius*2-0.3+getExtraFRow(fRowSeparator),
 		lidThickness+1])
 	pcbClamp();
 }
@@ -473,19 +483,15 @@ module lid()
 
 
 module case(){
-	if(fRowSeparator==true)
-	{
-		caseExtra = lkey*0.5;
-	}
 
 	difference() {
 		minkowski() {
-			cube([caseWidth,caseDepth,caseHeight]);
+			cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
 			cylinder(r=caseRadius, h=0.0000000001, center=true);
 	  }
 		translate([wallThickness,wallThickness,-extra])
 		minkowski() {
-			cube([caseWidth-(wallThickness*2),caseDepth-(wallThickness*2),tempHeigth]);
+			cube([caseWidth-(wallThickness*2),caseDepth-(wallThickness*2)+getExtraFRow(fRowSeparator),tempHeigth]);
 			cylinder(r=caseRadius, h=0.0000000001, center=true);
 		}
 	}
@@ -500,7 +506,9 @@ module mainCase(keyboardLayout){
 			difference(){
 				case();
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
-				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,1]) usbCutout();
+				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
+					caseDepth-2+getExtraFRow(fRowSeparator),1])
+					usbCutout();
 			}
 			caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
