@@ -217,7 +217,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 ![](pics/andimoto_smallTKL.png)
 
 *andimoto smallTKL_iso*
-![](pics/andimoto_smallTKL_iso.png)
+![](pics/andimoto_smallTKL_isoBlue.png)
 
 *andimoto6061*
 ![](pics/75er004_2.png)
@@ -242,6 +242,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/75er007.png)
 
+*andimoto smallTKL_iso case*
 ![](pics/andimoto_smallTKL_iso.png)
 
 ![](pics/75er009.png)
