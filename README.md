@@ -39,7 +39,7 @@ The available keyboard models (in stl directory) should work and have been print
 
 ### Current designs available
 ```
-- andimoto7583 (printed)
+- andimoto7583 (printed, documented wiring)
 - andimoto6061 (not printed)
 - andimoto_smallTKL (printed)
 - andimoto_smallTKL_iso (printed)
@@ -158,11 +158,14 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - glue the two case parts together carefully. Place them on a flat surface and put some books on each side, then put some glue into the rills.
 - wait until it is dry and put some more glue on it if needed.
 - after some drying time you can put in the switches (it is possible that this will bend the keyboard)
-- solder switches and diodes together (electronics will be documented later, for now you need to do your own schematic)
+  - maybe you need to add more glue when keyboard is bended
+  - switches which will have stabilizers should be set with the champfer downwards. Champfer is where LED placement is on the switch. Then the stabilizers have space inside the keycaps.
+- solder switches and diodes together (see directory wiring_sheets)
   - you can checkout qmk guide for handwiring -> https://beta.docs.qmk.fm/using-qmk/guides/keyboard-building/hand_wire
 - solder the controller onto the keyboard matrix and place the pcb inside the pcb holder of the lid.
 - build, flash and test your firmware (you can use this for testing https://keyboardchecker.com/)
 - screw all parts together and place the risers if you need them (I recommend gluing the risers on the lids and then assembly them to the case)
+- if you use Costar Stabilizers, place the stabilizers downwards.
 - have fun with your keyboard ;)
 
 
@@ -181,7 +184,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - avoid case stabilizer for iso enter and numpad enter (optional)
 - add cherry style stabilizer!
 - add a selectable skirt to the case
-- add parametric keebCase (already working on)
+- add parametric keebCase (in progress, should be already usable)
 - screw holes get crossed by case stabilizer (DONE / screw hole standoffs have an oval shape now)
 - documentation for keebCase.scad
 - add build script (DONE)
@@ -203,6 +206,9 @@ The qmk_firmware fork contains everything to build the firmware for the provided
 **Attention: The Pro Micro is "normally" suited for layouts with up to 65 switches. I was lazy and did not want to modify the pcb cutout to fit in the teensy 2.0 at that time. So I removed both TX/RX Leds from the pro micro and had 2 extra pins available (pcb may be damaged!!). This enables layouts with up to 84 switches :). Also qmk_layout needs to be squeezed together.**
 
 *I will also add a schematic for soldering the keyboard matrix and the Pro Micro of the available boards.*
+
+Available wiring diagrams for:
+- andimoto7583 with Arduino Pro Micro
 
 The Arduino Pro Micro clones are very cheap so I used them. More money for fancy keycaps ;).
 
