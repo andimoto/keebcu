@@ -239,9 +239,9 @@ screwHoleArray = [
 
 /* set colors for simulation */
 colorCase="White";
-colorLid="Green";
-colorRiserR="Yellow";
-colorRiserL="Yellow";
+colorLid="DarkSlateGray";
+colorRiserR="DarkSlateGray";
+colorRiserL="DarkSlateGray";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -253,7 +253,7 @@ colorRiserL="Yellow";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false);
+KeyboardSim(layout,true);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
