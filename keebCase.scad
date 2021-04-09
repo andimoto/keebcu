@@ -7,17 +7,19 @@ single parts go to end of this file
 
 $fn=70;
 
-keebLen = 330;
-keebThickness = 60;
-keebHeight = 117;
+keebLen = 290;
+keebThickness = 65;
+keebHeight = 100;
 wallThickness = 3;
 sideThickness = 10;
-edgeRadius = 2;
+edgeRadius = 4;
+yMoveMagnet = 5; /* move magnet cutout in y direction */
 
 magnetRadius = 5/2;
 magnetRadiusTolerance=0.025;
 magnetThickness = 1;
 
+lockEdgeRadius = 2;
 lockRadius = 10;
 lockThickness = 6;
 
@@ -47,7 +49,7 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
         translate([radius*2-radius/2,radius,0]) cylinder(r=radius,h=height);
         translate([-radius*2+radius/2,radius,0]) cylinder(r=radius,h=height);
       }
-      cylinder(r=edgeRadius,h=0.0000001, center=true);
+      cylinder(r=lockEdgeRadius,h=0.0000001, center=true);
     }
 
 
@@ -73,50 +75,72 @@ module lock(radius=lockRadius, height=lockThickness, negativ=false)
   }
 }
 
-lock(negativ=false);
+/* DEBUG */
+  /* translate([edgeRadius,edgeRadius,0])
+translate([-edgeRadius+lockThickness,
+  keebThickness/2+wallThickness,
+  (keebLen/2+wallThickness)-lockRadius+0.5])
+rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=true); */
 
 
 module halfCase(locks=true, magnets=true)
 {
+  /* move piece by edgeRadius to align it at zero */
+  translate([edgeRadius,edgeRadius,0])
   difference() {
+    /* complete case */
     minkowski()
     {
-      cube([keebHeight+sideThickness*2,
-          keebThickness+wallThickness*2,
-          keebLen/2+wallThickness]);
-      cylinder(r=edgeRadius, center=true);
+      cube([(keebHeight+sideThickness*2)-edgeRadius*2,
+          (keebThickness+wallThickness*2)-edgeRadius*2,
+          (keebLen/2)+wallThickness]);
+      cylinder(r=edgeRadius, h=0.0000001, center=false);
     }
 
+    /* case cutout */
     translate([sideThickness,wallThickness,wallThickness])
     minkowski()
     {
-      cube([keebHeight,
-          keebThickness,
+      cube([keebHeight-edgeRadius*2,
+          keebThickness-edgeRadius*2,
           keebLen/2]);
-      cylinder(r=edgeRadius, center=true);
+      cylinder(r=edgeRadius, h=0.0000001, center=false);
     }
-
 
     if(magnets == true)
     {
       /* magnets */
-      translate([sideThickness/2-edgeRadius, keebThickness/6,keebLen/2+wallThickness])
-      cylinder(r=magnetRadius, h=magnetThickness, center=true);
-      translate([sideThickness/2-edgeRadius,(keebThickness+2*wallThickness)-keebThickness/6,keebLen/2+wallThickness])
-      cylinder(r=magnetRadius, h=magnetThickness, center=true);
+      translate([-edgeRadius+sideThickness/2,
+        -edgeRadius+wallThickness+magnetRadius+yMoveMagnet,
+        keebLen/2+wallThickness-magnetThickness])
+      cylinder(r=magnetRadius, h=magnetThickness, center=false);
+      translate([-edgeRadius+sideThickness/2,
+        -edgeRadius+keebThickness-yMoveMagnet,
+        keebLen/2+wallThickness-magnetThickness])
+      cylinder(r=magnetRadius, h=magnetThickness, center=false);
 
-      translate([keebHeight+sideThickness*2-sideThickness/2+edgeRadius, keebThickness/6,keebLen/2+wallThickness])
-      cylinder(r=magnetRadius, h=magnetThickness, center=true);
-      translate([keebHeight+sideThickness*2-sideThickness/2+edgeRadius,(keebThickness+2*wallThickness)-keebThickness/6,keebLen/2+wallThickness])
-      cylinder(r=magnetRadius, h=magnetThickness, center=true);
+      translate([-edgeRadius+keebHeight+sideThickness+sideThickness/2,
+        -edgeRadius+wallThickness+magnetRadius+yMoveMagnet,
+        keebLen/2+wallThickness-magnetThickness])
+      cylinder(r=magnetRadius, h=magnetThickness, center=false);
+      translate([-edgeRadius+keebHeight+sideThickness+sideThickness/2,
+        -edgeRadius+keebThickness-yMoveMagnet,
+        keebLen/2+wallThickness-magnetThickness])
+      cylinder(r=magnetRadius, h=magnetThickness, center=false);
     }
 
     if(locks == true)
     {
-      color("yellow") translate([lockThickness-wallThickness+1,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
+      color("yellow")
+      translate([-edgeRadius+lockThickness,
+        (keebThickness/2)-edgeRadius+wallThickness,
+        (keebLen/2+wallThickness)-lockRadius])
       rotate([90,0,0]) rotate([0,-90,0]) scale([1.02,1.02,1]) lock(negativ=true);
 
-      color("yellow") translate([keebHeight+sideThickness+lockThickness,keebThickness/2+wallThickness,(keebLen/2+wallThickness)-lockRadius+0.5])
+      color("yellow")
+      translate([(keebHeight-edgeRadius*2+sideThickness*2+edgeRadius)-lockThickness,
+        (keebThickness/2)-edgeRadius+wallThickness,
+        (keebLen/2+wallThickness)-lockRadius])
       rotate([90,0,0]) rotate([0,90,0]) scale([1.02,1.02,1]) lock(negativ=true);
     }
   }
@@ -127,8 +151,8 @@ module halfCase(locks=true, magnets=true)
 /* ########## Place keyboard case ############## */
 /* ############################################# */
 
-/* color("yellow") translate([2,2,0]) halfCase(locks=true,magnets=true); */
-/* color("yellow") translate([2,2,keebLen+wallThickness*2+1+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
+color("yellow") translate([0,0,0]) halfCase(locks=true,magnets=true);
+/* color("yellow") translate([0,0,keebLen+wallThickness*2+0.2]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
 
 
 /* case locks */
@@ -145,6 +169,6 @@ rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false); */
 /* test print */
 /* difference()
 {
-  translate([2,2,1]) halfCase(locks=true,magnets=true);
-  cube([keebHeight+10,keebThickness+10,keebLen/2+wallThickness*2]);
+  translate([0,0,0]) halfCase(locks=true,magnets=true);
+  translate([0,-40,0]) cube([keebHeight+sideThickness*2+4,keebThickness+wallThickness*2+4,(keebLen/2)+wallThickness]);
 } */
