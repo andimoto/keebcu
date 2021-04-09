@@ -52,6 +52,12 @@ cutAfterUnits = 8;
 spacebarCut = 4.5;
 
 
+/* fRowSeparator [true/false]
+ * Select separation of F-Row (or Row 0; key[0][1]=0)
+ * This will move the upper row by a half unit (lkey*0.5)
+ */
+fRowSeparator=false;
+
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
 
@@ -80,96 +86,96 @@ switchHoleTolerance = -0.2;
 /* smallTKL_isoDE */
 layout = [
 //start ROW 0 Function ROW
-[[0,0],1,"DarkSlateGray"], //Esc
-[[2,0],1,"DarkSlateGray"], //F1
-[[3,0],1,"DarkSlateGray"], //F2
-[[4,0],1,"DarkSlateGray"], //F3
-[[5,0],1,"DarkSlateGray"], //F4
-[[6.5,0],1,"DarkSlateGray"], //F5
-[[7.5,0],1,"DarkSlateGray"], //F6
-[[8.5,0],1,"DarkSlateGray"], //F7
-[[9.5,0],1,"DarkSlateGray"], //F8
-[[11,0],1,"DarkSlateGray"], //F9
-[[12,0],1,"DarkSlateGray"], //F10
-[[13,0],1,"DarkSlateGray"], //F11
-[[14,0],1,"DarkSlateGray"], //F12
-[[15.25,0],1,"DarkSlateGray"], //PrintScreen
-[[16.25,0],1,"DarkSlateGray"], //Pause
+[[0,0],1,"Red"], //Esc
+[[2,0],1,"LightSkyBlue"], //F1
+[[3,0],1,"LightSkyBlue"], //F2
+[[4,0],1,"LightSkyBlue"], //F3
+[[5,0],1,"LightSkyBlue"], //F4
+[[6.5,0],1,"MidnightBlue"], //F5
+[[7.5,0],1,"MidnightBlue"], //F6
+[[8.5,0],1,"MidnightBlue"], //F7
+[[9.5,0],1,"MidnightBlue"], //F8
+[[11,0],1,"LightSkyBlue"], //F9
+[[12,0],1,"LightSkyBlue"], //F10
+[[13,0],1,"LightSkyBlue"], //F11
+[[14,0],1,"LightSkyBlue"], //F12
+[[15.25,0],1,"MidnightBlue"], //PrintScreen
+[[16.25,0],1,"MidnightBlue"], //Pause
 
 //start ROW 1
-[[0,1],1,"DarkSlateGray"], //'
-[[1,1],1,"DarkSlateGray"], //1
-[[2,1],1,"DarkSlateGray"], //2
-[[3,1],1,"DarkSlateGray"], //3
-[[4,1],1,"DarkSlateGray"], //4
-[[5,1],1,"DarkSlateGray"], //5
-[[6,1],1,"DarkSlateGray"], //6
-[[7,1],1,"DarkSlateGray"], //7
-[[8,1],1,"DarkSlateGray"], //8
-[[9,1],1,"DarkSlateGray"], //9
-[[10,1],1,"DarkSlateGray"], //0
-[[11,1],1,"DarkSlateGray"], //-_
-[[12,1],1,"DarkSlateGray"], //=+
-[[13,1],2,"DarkSlateGray"], //backspace
-[[15.25,1],1,"DarkSlateGray"], //ins
-[[16.25,1],1,"DarkSlateGray"], //pos1
+[[0,1],1,"LightSkyBlue"], //'
+[[1,1],1,"LightSkyBlue"], //1
+[[2,1],1,"LightSkyBlue"], //2
+[[3,1],1,"LightSkyBlue"], //3
+[[4,1],1,"LightSkyBlue"], //4
+[[5,1],1,"LightSkyBlue"], //5
+[[6,1],1,"LightSkyBlue"], //6
+[[7,1],1,"LightSkyBlue"], //7
+[[8,1],1,"LightSkyBlue"], //8
+[[9,1],1,"LightSkyBlue"], //9
+[[10,1],1,"LightSkyBlue"], //0
+[[11,1],1,"LightSkyBlue"], //-_
+[[12,1],1,"LightSkyBlue"], //=+
+[[13,1],2,"MidnightBlue"], //backspace
+[[15.25,1],1,"MidnightBlue"], //ins
+[[16.25,1],1,"MidnightBlue"], //pos1
 //start ROW 2
-[[  0,2],1.5,"DarkSlateGray"], //TAB
-[[1.5,2],1,"DarkSlateGray"], //Q
-[[2.5,2],1,"DarkSlateGray"], //W
-[[3.5,2],1,"DarkSlateGray"], //E
-[[4.5,2],1,"DarkSlateGray"], //R
-[[5.5,2],1,"DarkSlateGray"], //T
-[[6.5,2],1,"DarkSlateGray"], //Y
-[[7.5,2],1,"DarkSlateGray"], //U
-[[8.5,2],1,"DarkSlateGray"], //I
-[[9.5,2],1,"DarkSlateGray"], //O
-[[10.5,2],1,"DarkSlateGray"], //P
-[[11.5,2],1,"DarkSlateGray"], //[
-[[12.5,2],1,"DarkSlateGray"], //]
-[[13.5,2.5],1.5,"DarkSlateGray"], // ENTER
-[[15.25,2],1,"DarkSlateGray"], // del
-[[16.25,2],1,"DarkSlateGray"], // end
+[[  0,2],1.5,"MidnightBlue"], //TAB
+[[1.5,2],1,"LightSkyBlue"], //Q
+[[2.5,2],1,"LightSkyBlue"], //W
+[[3.5,2],1,"LightSkyBlue"], //E
+[[4.5,2],1,"LightSkyBlue"], //R
+[[5.5,2],1,"LightSkyBlue"], //T
+[[6.5,2],1,"LightSkyBlue"], //Y
+[[7.5,2],1,"LightSkyBlue"], //U
+[[8.5,2],1,"LightSkyBlue"], //I
+[[9.5,2],1,"LightSkyBlue"], //O
+[[10.5,2],1,"LightSkyBlue"], //P
+[[11.5,2],1,"LightSkyBlue"], //[
+[[12.5,2],1,"LightSkyBlue"], //]
+[[13.5,2.5],1.5,"Red"], // ENTER
+[[15.25,2],1,"MidnightBlue"], // del
+[[16.25,2],1,"MidnightBlue"], // end
 //start ROW 3
-[[   0,3],1.75,"DarkSlateGray"], //CapsLock
-[[1.75,3],1,"DarkSlateGray"], //A
-[[2.75,3],1,"DarkSlateGray"], //S
-[[3.75,3],1,"DarkSlateGray"], //D
-[[4.75,3],1,"DarkSlateGray"], //F
-[[5.75,3],1,"DarkSlateGray"], //G
-[[6.75,3],1,"DarkSlateGray"], //H
-[[7.75,3],1,"DarkSlateGray"], //J
-[[8.75,3],1,"DarkSlateGray"], //K
-[[9.75,3],1,"DarkSlateGray"], //L
-[[10.75,3],1,"DarkSlateGray"], //;
-[[11.75,3],1,"DarkSlateGray"], //'
-[[12.75,3],1,"DarkSlateGray"], //#
+[[   0,3],1.75,"MidnightBlue"], //CapsLock
+[[1.75,3],1,"LightSkyBlue"], //A
+[[2.75,3],1,"LightSkyBlue"], //S
+[[3.75,3],1,"LightSkyBlue"], //D
+[[4.75,3],1,"LightSkyBlue"], //F
+[[5.75,3],1,"LightSkyBlue"], //G
+[[6.75,3],1,"LightSkyBlue"], //H
+[[7.75,3],1,"LightSkyBlue"], //J
+[[8.75,3],1,"LightSkyBlue"], //K
+[[9.75,3],1,"LightSkyBlue"], //L
+[[10.75,3],1,"LightSkyBlue"], //;
+[[11.75,3],1,"LightSkyBlue"], //'
+[[12.75,3],1,"LightSkyBlue"], //#
 //start ROW 4
-[[   0,4],1.25,"DarkSlateGray"], //LShift
-[[1.25,4],1,"DarkSlateGray"], //Z
-[[2.25,4],1,"DarkSlateGray"], //Z
-[[3.25,4],1,"DarkSlateGray"], //X
-[[4.25,4],1,"DarkSlateGray"], //C
-[[5.25,4],1,"DarkSlateGray"], //V
-[[6.25,4],1,"DarkSlateGray"], //B
-[[7.25,4],1,"DarkSlateGray"], //N
-[[8.25,4],1,"DarkSlateGray"], //M
-[[9.25,4],1,"DarkSlateGray"], //,
-[[10.25,4],1,"DarkSlateGray"], //.
-[[11.25,4],1,"DarkSlateGray"], // /
-[[12.25,4],2.75,"DarkSlateGray"], //RShift
-[[15.25,4],1,"DarkSlateGray"], //UP
+[[   0,4],1.25,"MidnightBlue"], //LShift
+[[1.25,4],1,"LightSkyBlue"], //Z
+[[2.25,4],1,"LightSkyBlue"], //Z
+[[3.25,4],1,"LightSkyBlue"], //X
+[[4.25,4],1,"LightSkyBlue"], //C
+[[5.25,4],1,"LightSkyBlue"], //V
+[[6.25,4],1,"LightSkyBlue"], //B
+[[7.25,4],1,"LightSkyBlue"], //N
+[[8.25,4],1,"LightSkyBlue"], //M
+[[9.25,4],1,"LightSkyBlue"], //,
+[[10.25,4],1,"LightSkyBlue"], //.
+[[11.25,4],1,"LightSkyBlue"], // /
+[[12.25,4],2.75,"MidnightBlue"], //RShift
+[[15.25,4],1,"MidnightBlue"], //UP
 //start ROW 5
-[[   0,5],1.25,"DarkSlateGray"], //LCTRL
-[[1.25,5],1.25,"DarkSlateGray"], //TUX
-[[2.5 ,5],1.25,"DarkSlateGray"], //ALT
-[[3.75,5],6.25,"DarkSlateGray"], //SPACE
-[[10  ,5],1.25,"DarkSlateGray"], //COMP
-[[11.25,5],1.25,"DarkSlateGray"], //Fn
-[[12.5 ,5],1.25,"DarkSlateGray"], //RCTRL
-[[14.25,5],1,"DarkSlateGray"], //LEFT
-[[15.25,5],1,"DarkSlateGray"], //DOWN
-[[16.25,5],1,"DarkSlateGray"], //RIGHT
+[[   0,5],1.25,"MidnightBlue"], //LCTRL
+[[1.25,5],1.25,"MidnightBlue"], //TUX
+[[2.5 ,5],1.25,"MidnightBlue"], //ALT
+[[3.75,5],6.25,"LightSkyBlue"], //SPACE
+[[10  ,5],1.25,"MidnightBlue"], //COMP
+[[11.25,5],1.25,"MidnightBlue"], //Fn
+[[12.5 ,5],1.25,"MidnightBlue"], //RCTRL
+[[14.25,5],1,"MidnightBlue"], //LEFT
+[[15.25,5],1,"MidnightBlue"], //DOWN
+[[16.25,5],1,"MidnightBlue"], //RIGHT
 ];
 
 /* set this variable to the amount of the rows of your LAYOUT.

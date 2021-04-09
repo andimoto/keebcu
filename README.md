@@ -11,6 +11,7 @@
 - start customizing your layout (place switch holes and set colors of your keycaps if you want)
 - set screw holes where needed or add even more of them (think about the risers on the bottom)
 - set usb and pcb values
+- set fRowSeparator to move F-Row up if needed
 - depending on your printbed size, set where to cut the keyboard case
 - (optional) print critical parts of the case like space bar, parts with other stabilizers or usb and pcb area to test everything fits
 - generate all necessary model files you want to print by uncomment the proper module call or run the build.sh script
@@ -38,7 +39,7 @@ The available keyboard models (in stl directory) should work and have been print
 
 ### Current designs available
 ```
-- andimoto7583 (printed)
+- andimoto7583 (printed, documented wiring)
 - andimoto6061 (not printed)
 - andimoto_smallTKL (printed)
 - andimoto_smallTKL_iso (printed)
@@ -83,6 +84,8 @@ After your layout is set you can adjust and modify the array 'screwHoleArray' to
 It is also possible to modify the pcb dimensions with the 'pcb'-values. Available sizes for Arduino Pro Micro and Teensy2 are included. Just change the comments to select the right one. I recommend to measure your pcb anyway and check dimensions. You can also move the whole pcb and cutout for usb connection in X direction by setting 'pcbShift' with a positive or negative value.
 
 Generating risers for the keyboard can be selected with true/false and adjusted in width and length/depth. The colors of the risers and of cource the case and lid can be set after the screw hole array, at the end of the layout file.
+
+With the variable 'fRowSeparator' you can select if the F-Row or the most upper Row (key[0][1]==0) will be moved upwards by a half key unit. See example 'andimotoTKL_iso'. When selecting 'true' some modules will call 'getExtraFRow()' function to get the value to move F-Row upwards.
 
 ## Build STL Files
 I added the script 'build.sh' for building all necessary parts of a keyboard at once. It reads 'conf/module-calls.conf' and places each call at the end of the keyboard file to render it and safe it in the stl directory. The output is saved in stl directory under the keyboard name.
@@ -155,11 +158,14 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - glue the two case parts together carefully. Place them on a flat surface and put some books on each side, then put some glue into the rills.
 - wait until it is dry and put some more glue on it if needed.
 - after some drying time you can put in the switches (it is possible that this will bend the keyboard)
-- solder switches and diodes together (electronics will be documented later, for now you need to do your own schematic)
+  - maybe you need to add more glue when keyboard is bended
+  - switches which will have stabilizers should be set with the champfer downwards. Champfer is where LED placement is on the switch. Then the stabilizers have space inside the keycaps.
+- solder switches and diodes together (see directory wiring_sheets)
   - you can checkout qmk guide for handwiring -> https://beta.docs.qmk.fm/using-qmk/guides/keyboard-building/hand_wire
 - solder the controller onto the keyboard matrix and place the pcb inside the pcb holder of the lid.
 - build, flash and test your firmware (you can use this for testing https://keyboardchecker.com/)
 - screw all parts together and place the risers if you need them (I recommend gluing the risers on the lids and then assembly them to the case)
+- if you use Costar Stabilizers, place the stabilizers downwards.
 - have fun with your keyboard ;)
 
 
@@ -172,13 +178,13 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - check if your printer prints right-angled. I had issues with my Prusa Mini printing exact squared parts. More info [here](https://forum.prusaprinters.org/forum/how-do-i-print-this-printing-help/how-to-fix-bending-of-a-box/).
 
 ## todo
-- create selectable space (in y direction) between function row and next rows
+- create selectable space (in y direction) between function row and next rows (DONE: fRowSeparator)
 - provide pcb cutout for teensy 2.0 (DONE)
 - add delta variable for usb cutout and pcbholder to move it. (DONE)
 - avoid case stabilizer for iso enter and numpad enter (optional)
 - add cherry style stabilizer!
 - add a selectable skirt to the case
-- add parametric keebCase (already working on)
+- add parametric keebCase (in progress, should be already usable)
 - screw holes get crossed by case stabilizer (DONE / screw hole standoffs have an oval shape now)
 - documentation for keebCase.scad
 - add build script (DONE)
@@ -201,6 +207,9 @@ The qmk_firmware fork contains everything to build the firmware for the provided
 
 *I will also add a schematic for soldering the keyboard matrix and the Pro Micro of the available boards.*
 
+Available wiring diagrams for:
+- andimoto7583 with Arduino Pro Micro
+
 The Arduino Pro Micro clones are very cheap so I used them. More money for fancy keycaps ;).
 
 ## Model Gallery
@@ -214,7 +223,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 ![](pics/andimoto_smallTKL.png)
 
 *andimoto smallTKL_iso*
-![](pics/andimoto_smallTKL_iso.png)
+![](pics/andimoto_smallTKL_isoBlue.png)
 
 *andimoto6061*
 ![](pics/75er004_2.png)
@@ -239,6 +248,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/75er007.png)
 
+*andimoto smallTKL_iso case*
 ![](pics/andimoto_smallTKL_iso.png)
 
 ![](pics/75er009.png)
@@ -272,6 +282,12 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 ![](pics/img/IMG_20210318_140604.jpg)
 
 ![](pics/img/IMG_20210318_140627.jpg)
+
+![](pics/img/IMG_20210406_151424.jpg)
+
+![](pics/img/IMG_20210406_151405.jpg)
+
+![](pics/img/IMG_20210406_151326.jpg)
 
 ![](pics/img/IMG_20201215_085124.jpg)
 

@@ -17,6 +17,8 @@ cutLength = 0;
 tempHeigth=caseHeight-plateThickness+extra;
 
 
+function getExtraFRow(extraFRow=false) = (extraFRow==true) ? lkey*0.5 : 0 ;
+
 module switchhole(){
 	union(){
 		translate([0,0,-extra/2])
@@ -40,6 +42,7 @@ costarStabYdelta = -0.5;
 module holematrix(holes,startx,starty,zCase){
 	for (key = holes){
 		/* echo (key[0][0],key[0][1],key[1]); */
+
 
 		/* place switch holes */
 		if(key[1] >= 1){
@@ -69,9 +72,18 @@ module holematrix(holes,startx,starty,zCase){
 			}
 			else
 			{
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				switchhole();
+				if((key[0][1]==0) && (fRowSeparator==true))
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1])+getExtraFRow(fRowSeparator), zCase-extra])
+					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+					switchhole();
+				}
+				else
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+					switchhole();
+				}
 			}
 		}
 		/* place switch holes - end */
@@ -127,11 +139,19 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 	}
 
 	for (key = holes){
+		if((key[0][1]==0) && (fRowSeparator==true))
+		{
+			/* don't place case stabilizer on iso enter button */
+			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
+			cube([1,lkey+getExtraFRow(fRowSeparator),2]);
+		}
+
 		if(key[0][1]!=2.5){
 			/* don't place case stabilizer on iso enter button */
 			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
 			cube([1,lkey,2]);
 		}
+
 		/*put some extra stabilizer profiles to spacebar*/
 		if(key[1]>6)
 		{
@@ -168,9 +188,20 @@ module keySim(holes)
 	starty = caseDepth - lkey;
 	zCase = tempHeigth;
 	for (key = holes){
-		translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-		translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
-		color("black") switchSim();
+		/* switch simulation for F-Row */
+		if(key[0][1]==0 && fRowSeparator==true)
+		{
+			translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), zCase-extra])
+			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
+			color("black") switchSim();
+		}
+		else
+		{
+			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
+			color("black") switchSim();
+		}
+
 
 		if (key[1]==6.25){
 			color(key[2])
@@ -222,12 +253,23 @@ module keySim(holes)
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 			1_25u() sa_row(key[0][1]) key();
 		}
-		else
+		else /* 1u keys */
 		{
-			color(key[2])
-			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			1u() sa_row(key[0][1]) key();
+			/* keysim with F-Row separator only for 1u keys */
+			if(key[0][1]==0 && fRowSeparator==true)
+			{
+				color(key[2])
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), 0])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				1u() sa_row(key[0][1]) key();
+			}
+			else
+			{
+				color(key[2])
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				1u() sa_row(key[0][1]) key();
+			}
 		}
 	}
 }
@@ -250,7 +292,7 @@ module calcRight(holes,startx,starty,zCase){
 			{
 				yCut = lkey+wallThickness/2;
 				translate([-1,starty-lkey*key[0][1],0])
-				cube([cutLength+1+lkey,yCut,caseHeight+extra*2]);
+				cube([cutLength+1+lkey,yCut+getExtraFRow(fRowSeparator),caseHeight+extra*2]);
 			}
 			/* last row */
 			else if( key[0][1]==height-1)
@@ -421,12 +463,12 @@ module lid()
 		union()
 		{
 			minkowski() {
-				cube([caseWidth,caseDepth,lidThickness]);
+				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),lidThickness]);
 				cylinder(r=1, h=0.0000000001, center=true);
 			}
 
 			translate([wallThickness+extra/4,wallThickness+extra/4,innerExtraLid]) minkowski() {
-				cube([caseWidth-(wallThickness*2)-extra/2,caseDepth-(wallThickness*2)-extra/2,lidThickness]);
+				cube([caseWidth-(wallThickness*2)-extra/2,caseDepth-(wallThickness*2)-extra/2+getExtraFRow(fRowSeparator),lidThickness]);
 				cylinder(r=1, h=0.0000000001, center=true);
 			}
 		}
@@ -447,15 +489,15 @@ module lid()
 		/* subtract usb cutout and pcb cutout */
 		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
 		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
-		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2-0.25,lidThickness])
+		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2-0.25+getExtraFRow(fRowSeparator),lidThickness])
 				pcbCutout();
-		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,lidThickness])
+		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2+getExtraFRow(fRowSeparator),lidThickness])
 				usbCutout();
 	}
 
 	/* pcb holder */
 	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
-		caseDepth-pcbLength-caseRadius*2-0.3,
+		caseDepth-pcbLength-caseRadius*2-0.3+getExtraFRow(fRowSeparator),
 		lidThickness+1])
 	pcbClamp();
 }
@@ -463,14 +505,15 @@ module lid()
 
 
 module case(){
+
 	difference() {
 		minkowski() {
-			cube([caseWidth,caseDepth,caseHeight]);
+			cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
 			cylinder(r=caseRadius, h=0.0000000001, center=true);
 	  }
 		translate([wallThickness,wallThickness,-extra])
 		minkowski() {
-			cube([caseWidth-(wallThickness*2),caseDepth-(wallThickness*2),tempHeigth]);
+			cube([caseWidth-(wallThickness*2),caseDepth-(wallThickness*2)+getExtraFRow(fRowSeparator),tempHeigth]);
 			cylinder(r=caseRadius, h=0.0000000001, center=true);
 		}
 	}
@@ -485,7 +528,9 @@ module mainCase(keyboardLayout){
 			difference(){
 				case();
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
-				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2,1]) usbCutout();
+				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
+					caseDepth-2+getExtraFRow(fRowSeparator),1])
+					usbCutout();
 			}
 			caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
@@ -521,7 +566,7 @@ module lidR()
 	difference() {
 		lid();
 		translate([-caseRadius-extra,-caseRadius-extra,-extra])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra,caseHeight]);
+		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
 	}
 }
 
@@ -530,7 +575,7 @@ module lidL()
 	difference() {
 		lid();
 		translate([(caseWidth+2*caseRadius)/2-extra,-caseRadius-extra,-extra])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra,caseHeight]);
+		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
 	}
 }
 

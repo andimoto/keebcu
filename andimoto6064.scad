@@ -51,6 +51,11 @@ lidThickness=3;
 cutAfterUnits = 6.5;
 spacebarCut = 4;
 
+/* fRowSeparator [true/false]
+ * Select separation of F-Row (or Row 0; key[0][1]=0)
+ * This will move the upper row by a half unit (lkey*0.5)
+ */
+fRowSeparator=false;
 
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
@@ -234,9 +239,9 @@ screwHoleArray = [
 
 /* set colors for simulation */
 colorCase="White";
-colorLid="Green";
-colorRiserR="Yellow";
-colorRiserL="Yellow";
+colorLid="DarkSlateGray";
+colorRiserR="DarkSlateGray";
+colorRiserL="DarkSlateGray";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -248,7 +253,7 @@ colorRiserL="Yellow";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false);
+KeyboardSim(layout,true);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
