@@ -12,7 +12,7 @@ keebThickness = 65;
 keebHeight = 100;
 wallThickness = 3;
 sideThickness = 10;
-edgeRadius = 4;
+edgeRadius = 2;
 yMoveMagnet = 5; /* move magnet cutout in y direction */
 
 magnetRadius = 5/2;
