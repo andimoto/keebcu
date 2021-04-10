@@ -151,16 +151,20 @@ module halfCase(locks=true, magnets=true)
 /* ########## Place keyboard case ############## */
 /* ############################################# */
 
-color("yellow") translate([0,0,0]) halfCase(locks=true,magnets=true);
-/* color("yellow") translate([0,0,keebLen+wallThickness*2+0.2]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
+color("grey") translate([0,0,0]) halfCase(locks=true,magnets=true);
+/* color("grey") translate([0,0,keebLen+wallThickness*2+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
 
 
 /* case locks */
-/* color("green") translate([lockThickness-0.1,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
-rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false); */
+color("LightSkyBlue") translate([lockThickness,
+  (keebThickness/2)+wallThickness,
+  (keebLen/2)+wallThickness-lockRadius])
+rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false);
 
-/* color("black") translate([(keebHeight+sideThickness*2)-lockThickness/3,(keebThickness/2+wallThickness*2)-1,(keebLen/2)-lockRadius+3.5])
-rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false); */
+color("LightSkyBlue") translate([(keebHeight+sideThickness*2)-lockThickness,
+  (keebThickness/2)+wallThickness,
+  (keebLen/2)+wallThickness-lockRadius])
+rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false);
 
 
 

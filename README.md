@@ -192,8 +192,8 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - test other keyboard layouts like random stuff or ten keys
 
 ## Wrist rest and Keyboard Case
-For each keyboard a wrist rest can be created with the model file wrist.scad. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
-For transportation I designed a case which can be customized in size to fit your keyboard. The case has placeholders for little magnets and gets locked by some kind of bones :).
+For each keyboard a wrist rest can be created with the model file wrist.scad and keebCase.scad. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.
+For transportation I designed a case which can be customized in size to fit your keyboard. The case has placeholders for little magnets and gets locked by some kind of bones :). Each keebCase is big enough to fit the keyboard and the suited wrist rest in it. 
 
 __Attention: The Keyboard case is still in development state. I just printed some smaller prototypes. But it fits well so far. Need to check magnets.__
 
