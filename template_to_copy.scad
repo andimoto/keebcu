@@ -29,8 +29,6 @@ caseHeight=13;
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
-/* edge radius of the case */
-caseRadius=1;
 
 //length, in units, of board
 width=16;
@@ -55,7 +53,24 @@ spacebarCut = 4.5;
  * Select separation of F-Row (or Row 0; key[0][1]=0)
  * This will move the upper row by a half unit (lkey*0.5)
  */
-fRowSeparator=false;
+fRowSeparator=true;
+
+/* skirt selctor and skirt settings
+ * select 'skirtSelect' as true to activate a additional skirt
+ * around the keyboard case. The variables 'skirtX' & 'skirtY'
+ * are configurable as you want the skirt. These values ADD the
+ * configured amount to the side of the case.
+ * Note: be careful here, this interacts with caseRadius
+ */
+skirtSelect = true;
+skirtX = 5;
+skirtY = 5;
+
+/* edge radius of the case
+ * Note: be careful here, this interacts with skirtX/Y
+ */
+caseRadius=1;
+
 
 /* ################## calculated vars #################### */
 
@@ -281,8 +296,8 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false);
-
+/* KeyboardSim(layout,false); */
+mainCase(layout);
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */

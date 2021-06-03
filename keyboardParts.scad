@@ -16,6 +16,8 @@ cutLength = 0;
 
 tempHeigth=caseHeight-plateThickness+extra;
 
+//constant for inner case
+innerCaseRadius=1;
 
 function getExtraFRow(extraFRow=false) = (extraFRow==true) ? lkey*0.5 : 0 ;
 
@@ -133,7 +135,7 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 	for (key = holes){
 		/* don't place case stabilizer on iso enter button */
 		if(key[0][1]!=2.5){
-			translate([0,lkey*key[0][1]-caseRadius,innerCaseSpace])
+			translate([0,lkey*key[0][1]-1,innerCaseSpace])
 			cube([w,1,caseHeight-plateThickness-innerCaseSpace]);
 		}
 	}
@@ -142,7 +144,7 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 		if((key[0][1]==0) && (fRowSeparator==true))
 		{
 			/* don't place case stabilizer on iso enter button */
-			translate([startx+lkey*key[0][0]+lkey*key[1]-1,starty-lkey*key[0][1],caseHeight-plateThickness-2])
+			translate([startx+lkey*key[0][0]+lkey*key[1]-innerCaseRadius,starty-lkey*key[0][1],caseHeight-plateThickness-2])
 			cube([1,lkey+getExtraFRow(fRowSeparator),2]);
 		}
 
@@ -503,18 +505,29 @@ module lid()
 }
 
 
-
 module case(){
 
 	difference() {
-		minkowski() {
-			cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
-			cylinder(r=caseRadius, h=0.0000000001, center=true);
-	  }
+		union()
+		{
+			minkowski() {
+				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
+				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
+	  	}
+			if(skirtSelect == true)
+			{
+				//add some skirt to the case if selected
+				translate([-skirtX+caseRadius,-skirtY+caseRadius,0])
+				minkowski() {
+					cube([caseWidth+(skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(skirtY-caseRadius)*2,caseHeight]);
+					cylinder(r=caseRadius, h=0.0000000001, center=true);
+			  }
+			}
+		}
 		translate([wallThickness,wallThickness,-extra])
 		minkowski() {
 			cube([caseWidth-(wallThickness*2),caseDepth-(wallThickness*2)+getExtraFRow(fRowSeparator),tempHeigth]);
-			cylinder(r=caseRadius, h=0.0000000001, center=true);
+			cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
 		}
 	}
 }
