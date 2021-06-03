@@ -69,7 +69,7 @@ skirtY = 5;
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
  */
-caseRadius=1;
+caseRadius=10;
 
 
 /* ################## calculated vars #################### */
@@ -297,13 +297,13 @@ colorRiserL="Blue";
  * or remove keycap simulation
  */
 /* KeyboardSim(layout,false); */
-mainCase(layout);
+
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* translate([0,0,5]) mainCase(layout); */
+translate([0,0,5]) mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

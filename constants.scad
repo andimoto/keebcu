@@ -33,3 +33,6 @@ shortStabX=24;
 longStabX=101;
 
 innerExtraLid = 1;
+
+//constant for inner case
+innerCaseRadius=1;

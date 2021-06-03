@@ -16,9 +16,6 @@ cutLength = 0;
 
 tempHeigth=caseHeight-plateThickness+extra;
 
-//constant for inner case
-innerCaseRadius=1;
-
 function getExtraFRow(extraFRow=false) = (extraFRow==true) ? lkey*0.5 : 0 ;
 
 module switchhole(){
@@ -458,55 +455,9 @@ module keyboardRiser()
 }
 
 
-module lid()
-{
-	difference()
-	{
-		union()
-		{
-			minkowski() {
-				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),lidThickness]);
-				cylinder(r=1, h=0.0000000001, center=true);
-			}
-
-			translate([wallThickness+extra/4,wallThickness+extra/4,innerExtraLid]) minkowski() {
-				cube([caseWidth-(wallThickness*2)-extra/2,caseDepth-(wallThickness*2)-extra/2+getExtraFRow(fRowSeparator),lidThickness]);
-				cylinder(r=1, h=0.0000000001, center=true);
-			}
-		}
-
-		/* subtract screw holes */
-		lidScrewHolesLoop(c1=1.8);
-		translate([0,0,-1]) lidScrewHolesLoop(c1=2.8);
-
-		if(addRisers == true)
-		{
-			/* subtract cutouts for risers */
-			translate([40+angleBaseX/2+xRiserL,(caseDepth/2)-(angleBaseY-20)/2,-(lidThickness+1)])
-				riserConnector(conHeight=lidThickness+1);
-			translate([caseWidth-40-angleBaseX/2+xRiserR,(caseDepth/2)-(angleBaseY-20)/2,-(lidThickness+1)])
-				riserConnector(conHeight=lidThickness+1);
-		}
-
-		/* subtract usb cutout and pcb cutout */
-		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
-		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
-		translate([caseWidth-pcbWidth-lkey*2+pcbShift,caseDepth-pcbLength-caseRadius*2-0.25+getExtraFRow(fRowSeparator),lidThickness])
-				pcbCutout();
-		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,caseDepth-2+getExtraFRow(fRowSeparator),lidThickness])
-				usbCutout();
-	}
-
-	/* pcb holder */
-	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
-		caseDepth-pcbLength-caseRadius*2-0.3+getExtraFRow(fRowSeparator),
-		lidThickness+1])
-	pcbClamp();
-}
 
 
 module case(){
-
 	difference() {
 		union()
 		{
@@ -574,12 +525,86 @@ module mainCaseLeft(keyboardLayout)
 	}
 }
 
+
+module lid()
+{
+	difference()
+	{
+		union()
+		{
+			minkowski() {
+				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),lidThickness]);
+				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
+			}
+
+			if(skirtSelect == true)
+			{
+				translate([-(skirtX-caseRadius),-(skirtY-caseRadius),0])
+				minkowski() {
+					cube([caseWidth+(skirtX-caseRadius)*2,
+						caseDepth+getExtraFRow(fRowSeparator)+(skirtY-caseRadius)*2,
+						lidThickness]);
+					cylinder(r=caseRadius, h=0.0000000001, center=true);
+				}
+			}
+
+			translate([wallThickness+extra/4,wallThickness+extra/4,innerExtraLid])
+			minkowski() {
+				cube([caseWidth-(wallThickness*2)-extra/2,
+					caseDepth-(wallThickness*2)-extra/2+getExtraFRow(fRowSeparator),
+					lidThickness]);
+				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
+			}
+		}
+
+		/* subtract screw holes */
+		lidScrewHolesLoop(c1=1.8);
+		translate([0,0,-1]) lidScrewHolesLoop(c1=2.8);
+
+		if(addRisers == true)
+		{
+			/* subtract cutouts for risers */
+			translate([40+angleBaseX/2+xRiserL,(caseDepth/2)-(angleBaseY-20)/2,-(lidThickness+1)])
+				riserConnector(conHeight=lidThickness+1);
+			translate([caseWidth-40-angleBaseX/2+xRiserR,(caseDepth/2)-(angleBaseY-20)/2,-(lidThickness+1)])
+				riserConnector(conHeight=lidThickness+1);
+		}
+
+		/* subtract usb cutout and pcb cutout */
+		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
+		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
+		translate([caseWidth-pcbWidth-lkey*2+pcbShift,
+				caseDepth-pcbLength-innerCaseRadius*2-0.25+getExtraFRow(fRowSeparator),
+				lidThickness])
+				pcbCutout();
+		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
+				caseDepth-2+getExtraFRow(fRowSeparator),
+				lidThickness])
+				usbCutout();
+	}
+
+	/* pcb holder */
+	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
+		caseDepth-pcbLength-innerCaseRadius*2-0.3+getExtraFRow(fRowSeparator),
+		lidThickness+1])
+	pcbClamp();
+}
+
 module lidR()
 {
 	difference() {
 		lid();
-		translate([-caseRadius-extra,-caseRadius-extra,-extra])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
+		union()
+		{
+			if(skirtSelect == true)
+			{
+				translate([0-skirtX-caseRadius/2,-skirtY-caseRadius-extra,-extra])
+				cube([(caseWidth+(skirtX*2))/2,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
+			}else{
+				translate([-innerCaseRadius-extra,-innerCaseRadius-extra,-extra])
+				cube([(caseWidth+2*innerCaseRadius)/2+extra,caseDepth+2*innerCaseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
+			}
+		}
 	}
 }
 
@@ -587,8 +612,17 @@ module lidL()
 {
 	difference() {
 		lid();
-		translate([(caseWidth+2*caseRadius)/2-extra,-caseRadius-extra,-extra])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
+		union()
+		{
+			if(skirtSelect == true)
+			{
+		 		translate([0-skirtX-caseRadius/2+(caseWidth+skirtX*2)/2,-skirtY-caseRadius-extra,-extra])
+				cube([(caseWidth+skirtX*2)/2,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
+			}else{
+				translate([(caseWidth+2*innerCaseRadius)/2-extra,-innerCaseRadius-extra,-extra])
+				cube([(caseWidth+2*innerCaseRadius)/2+extra,caseDepth+2*innerCaseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
+			}
+		}
 	}
 }
 
