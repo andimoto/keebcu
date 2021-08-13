@@ -17,6 +17,8 @@ cutLength = 0;
 tempHeigth=caseHeight-plateThickness+extra;
 
 function getExtraFRow(extraFRow=false) = (extraFRow==true) ? lkey*0.5 : 0 ;
+function getSkirtY() = (skirtSelect==true) ? skirtY : 0 ;
+function getSkirtX() = (skirtSelect==true) ? skirtX : 0 ;
 
 module switchhole(){
 	union(){
@@ -274,6 +276,7 @@ module keySim(holes)
 }
 
 
+
 module calcRight(holes,startx,starty,zCase){
 	for (key = holes){
 		/* if(key[1] >= 1){
@@ -291,14 +294,14 @@ module calcRight(holes,startx,starty,zCase){
 			{
 				yCut = lkey+wallThickness/2;
 				translate([-1,starty-lkey*key[0][1],0])
-				cube([cutLength+1+lkey,yCut+getExtraFRow(fRowSeparator),caseHeight+extra*2]);
+				cube([cutLength+1+lkey,yCut+getExtraFRow(fRowSeparator)+getSkirtY(),caseHeight+extra*2]);
 			}
 			/* last row */
 			else if( key[0][1]==height-1)
 			{
 				yCut = lkey+wallThickness/2;
-				translate([-1,starty-lkey*key[0][1]-wallThickness/2,0])
-				cube([cutLength+1+lkey,yCut,caseHeight+extra*2]);
+				translate([-1,starty-lkey*key[0][1]-wallThickness/2-getSkirtY(),0])
+				cube([cutLength+1+lkey,yCut+getSkirtY(),caseHeight+extra*2]);
 			}
 			/* all middle rows between 0 last row */
 			else
@@ -313,8 +316,14 @@ module calcRight(holes,startx,starty,zCase){
 			 */
 			if(temp>6){
 				temp = spacebarCut;
-				translate([cutLength-1,starty-lkey*key[0][1]-wallThickness/2,0])
-		 	  cube([1+startx+lkey*temp,lkey+wallThickness/2,caseHeight+extra*2]);
+				translate([cutLength-1,starty-lkey*key[0][1]-wallThickness/2-getSkirtY(),0])
+		 	  cube([1+startx+lkey*temp,lkey+wallThickness/2+getSkirtY(),caseHeight+extra*2]);
+			}
+
+			if(skirtSelect==true)
+			{
+				translate([-skirtX-1,-skirtY-1,0])
+				cube([skirtX,caseDepth+2*skirtY+getExtraFRow(fRowSeparator)+2,caseHeight+extra*2]); /*dont know why +2 at y? */
 			}
 
 		} /*if(cutLength)*/
@@ -368,7 +377,7 @@ module lidScrewHolesLoop(c1=1.5)
 module usbCutout()
 {
 	translate([0,-0.1,0]) cube([usbCutX,usbCutY,usbCutZ]);
-	translate([-1.5,1,-2]) cube([usbCutX+3,usbCutY,usbCutZ+4]);
+	translate([-2,1,-2]) cube([usbCutX+4,usbCutY+getSkirtY(),usbCutZ+4]);
 
 	/* this marks the root point of the part.
 	 * uncomment this for debugging */
@@ -455,8 +464,6 @@ module keyboardRiser()
 }
 
 
-
-
 module case(){
 	difference() {
 		union()
@@ -539,10 +546,10 @@ module lid()
 
 			if(skirtSelect == true)
 			{
-				translate([-(skirtX-caseRadius),-(skirtY-caseRadius),0])
+				translate([(-1-skirtX+caseRadius),(-1-skirtY+caseRadius),0])
 				minkowski() {
-					cube([caseWidth+(skirtX-caseRadius)*2,
-						caseDepth+getExtraFRow(fRowSeparator)+(skirtY-caseRadius)*2,
+					cube([caseWidth+(1+skirtX-caseRadius)*2,
+						caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,
 						lidThickness]);
 					cylinder(r=caseRadius, h=0.0000000001, center=true);
 				}
@@ -617,7 +624,7 @@ module lidL()
 			if(skirtSelect == true)
 			{
 		 		translate([0-skirtX-caseRadius/2+(caseWidth+skirtX*2)/2,-skirtY-caseRadius-extra,-extra])
-				cube([(caseWidth+skirtX*2)/2,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
+				cube([(caseWidth+skirtX*2)/2+caseRadius,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
 			}else{
 				translate([(caseWidth+2*innerCaseRadius)/2-extra,-innerCaseRadius-extra,-extra])
 				cube([(caseWidth+2*innerCaseRadius)/2+extra,caseDepth+2*innerCaseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
