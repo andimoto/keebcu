@@ -468,9 +468,9 @@ module case(){
 			if(skirtSelect == true)
 			{
 				//add some skirt to the case if selected
-				translate([-skirtX+caseRadius,-skirtY+caseRadius,0])
+				translate([-1-skirtX+caseRadius,-1-skirtY+caseRadius,0])
 				minkowski() {
-					cube([caseWidth+(skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(skirtY-caseRadius)*2,caseHeight]);
+					cube([caseWidth+(1+skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,caseHeight]);
 					cylinder(r=caseRadius, h=0.0000000001, center=true);
 			  }
 			}
