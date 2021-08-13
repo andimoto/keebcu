@@ -186,7 +186,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but
 - add delta variable for usb cutout and pcbholder to move it. (DONE)
 - avoid case stabilizer for iso enter and numpad enter (optional)
 - add cherry style stabilizer!
-- add a selectable skirt to the case
+- add a selectable skirt to the case (DONE)
 - add parametric keebCase (in progress, should be already usable)
 - screw holes get crossed by case stabilizer (DONE / screw hole standoffs have an oval shape now)
 - documentation for keebCase.scad
