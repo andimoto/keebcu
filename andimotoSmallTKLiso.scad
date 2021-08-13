@@ -58,6 +58,23 @@ spacebarCut = 4.5;
  */
 fRowSeparator=false;
 
+/* skirt selctor and skirt settings
+ * select 'skirtSelect' as true to activate a additional skirt
+ * around the keyboard case. The variables 'skirtX' & 'skirtY'
+ * are configurable as you want the skirt. These values ADD the
+ * configured amount to the side of the case.
+ * Note: be careful here, this interacts with caseRadius
+ */
+skirtSelect = false;
+skirtX = 0;
+skirtY = 0;
+
+/* edge radius of the case
+ * Note: be careful here, this interacts with skirtX/Y
+ */
+caseRadius=0;
+
+
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
 
