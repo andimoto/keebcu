@@ -87,6 +87,9 @@ Generating risers for the keyboard can be selected with true/false and adjusted 
 
 With the variable 'fRowSeparator' you can select if the F-Row or the most upper Row (key[0][1]==0) will be moved upwards by a half key unit. See example 'andimotoTKL_iso'. When selecting 'true' some modules will call 'getExtraFRow()' function to get the value to move F-Row upwards.
 
+If the keyboard should get a skirt you can set 'skirtSelect' to true. This enables calculation of an additional skirt around the keyboard. The parameters 'skirtX', 'skirtY' and 'caseRadius' define the skirts dimensions and the radius of the edges.
+
+
 ## Build STL Files
 I added the script 'build.sh' for building all necessary parts of a keyboard at once. It reads 'conf/module-calls.conf' and places each call at the end of the keyboard file to render it and safe it in the stl directory. The output is saved in stl directory under the keyboard name.
 
