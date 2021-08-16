@@ -2,6 +2,8 @@
 
 ## Keyboard Customizer
 
+![](pics/keebcu_banner.png)
+
 ### TL;DR usage
 ```
 - clone this repo: git clone https://github.com/andimoto/keebcu.git
