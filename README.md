@@ -175,20 +175,20 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but
 ## Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
 - Be careful with color changes. If color change is only at height of case stabilizer (not keycap stabilizers!!) or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers. I recommend to do the color change at the last layer of the keyboard cases plate. (See https://github.com/andimoto/keebcu/tree/master/pics/img/screwHolesColorChange.jpg)
-  - Note: even this issue may be fixed with the oval spacers for the screws, double check the stability of the screw holes by printing a small prototyp with color change where you want it.
-- Notice that when placing in the switches, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed.
+  - Note: though this issue may be fixed with the oval spacers for the screws, double check the stability of the screw holes by printing a small prototyp with color change where you want it.
+- Notice, when placing the switches into the plate, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed. This could reduse this kind of bending, but also make the switches more loose.
 - normally the lid parts do not need any brim.
 - check if your printer prints right-angled. I had issues with my Prusa Mini printing exact squared parts. More info [here](https://forum.prusaprinters.org/forum/how-do-i-print-this-printing-help/how-to-fix-bending-of-a-box/).
 
 ## todo
 - create selectable space (in y direction) between function row and next rows (DONE: fRowSeparator)
 - provide pcb cutout for teensy 2.0 (DONE)
-- add delta variable for usb cutout and pcbholder to move it. (DONE)
+- add delta variable for usb cutout and pcb-holder to move it. (DONE)
 - avoid case stabilizer for iso enter and numpad enter (optional)
 - add cherry style stabilizer!
 - add a selectable skirt to the case (DONE)
 - add parametric keebCase (in progress, should be already usable)
-- screw holes get crossed by case stabilizer (DONE / screw hole standoffs have an oval shape now)
+- screw holes get crossed by case stabilizer (DONE / screw hole standoffs have also an oval shape now)
 - documentation for keebCase.scad
 - add build script (DONE)
 - other build system (make or docker, etc.)
@@ -211,7 +211,9 @@ The qmk_firmware fork contains everything to build the firmware for the provided
 *I will also add a schematic for soldering the keyboard matrix and the Pro Micro of the available boards.*
 
 Available wiring diagrams for:
+- andimoto6064 with Arduino Pro Micro
 - andimoto7583 with Arduino Pro Micro
+- andimotoSmallTKL_iso with Teensy 2.0
 
 The Arduino Pro Micro clones are very cheap so I used them. More money for fancy keycaps ;).
 
