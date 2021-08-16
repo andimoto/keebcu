@@ -176,7 +176,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
 - Be careful with color changes. If color change is only at height of case stabilizer (not keycap stabilizers!!) or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers. I recommend to do the color change at the last layer of the keyboard cases plate. (See https://github.com/andimoto/keebcu/tree/master/pics/img/screwHolesColorChange.jpg)
   - Note: though this issue may be fixed with the oval spacers for the screws, double check the stability of the screw holes by printing a small prototyp with color change where you want it.
-- Notice, when placing the switches into the plate, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed. This could reduse this kind of bending, but also make the switches more loose.
+- Notice, when placing the switches into the plate, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed. This could reduce this kind of bending, but also make the switches more loose.
 - normally the lid parts do not need any brim.
 - check if your printer prints right-angled. I had issues with my Prusa Mini printing exact squared parts. More info [here](https://forum.prusaprinters.org/forum/how-do-i-print-this-printing-help/how-to-fix-bending-of-a-box/).
 
