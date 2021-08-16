@@ -153,7 +153,7 @@ __This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubun
 - Thin wires
 - 1N4148 diodes
 
-__Note:__ Parts can be bougth from ebay, amazon, etc. There is great choise, but also many things are not available or in stock...
+__Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but also many things are not available or in stock...
 
 
 ## Assembly
