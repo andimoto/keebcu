@@ -43,8 +43,9 @@ The available keyboard models (in stl directory) should work and have been print
 ```
 - andimoto7583 (printed, documented wiring)
 - andimoto6061 (not printed)
+- andimoto6064 (printed, documented wiring)
 - andimoto_smallTKL (printed)
-- andimoto_smallTKL_iso (printed)
+- andimoto_smallTKL_iso (printed, documented wiring)
 - andimotoTKL (not printed)
 - andimotoTKLiso (not printed)
 ```
@@ -81,7 +82,7 @@ backspace is 2u or spacebar is for example 6.25u. The size of the cutout for the
 
 You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be calculatable from the layout array.
 
-After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case. The standard screw size is 3mm. The length depends on the case height, but I used 3x8mm screws for my keyboards.
+After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case. The standard screw size is 3mm. The length depends on the case height, but I used 3x8mm cylinder head screws for my keyboards.
 
 It is also possible to modify the pcb dimensions with the 'pcb'-values. Available sizes for Arduino Pro Micro and Teensy2 are included. Just change the comments to select the right one. I recommend to measure your pcb anyway and check dimensions. You can also move the whole pcb and cutout for usb connection in X direction by setting 'pcbShift' with a positive or negative value.
 
@@ -124,9 +125,9 @@ NOTE: do not remove this line from the keyboard file and do not place this line 
 
 ### build.sh description
 The build.sh script checks if OpenSCAD binary is available. If not, user has to set OPENSCADPATH to point to the binary.
-Then it checks parameters. The 1st parameter is necessary and tells the name of the keyboard to build. The script then appends .scad extension automaticaly and uses the name for the output directory. No keyboard file name will stop the script and return an error. Then it checks optional parameter of config file. Default config file will be used if no 2nd parameter is given.
+Then it checks parameters. The 1st parameter is necessary and tells the name of the keyboard to build. The script then appends .scad extension automaticaly and uses the name for the output directory. No keyboard file name provided, will stop the script and return an error. Then it checks optional parameter of config file. Default config file will be used if no 2nd parameter is given.
 
-Each keyboard file has a separator at the end "BUILD_LINE". The script greps for the line number of the separator and prints out the keyboard file until this line number. This output will be saved in an temporary directory which will be removed after build. Also and output directory will be generated to save stl files in it.
+Each keyboard file has a separator at the end: "BUILD_LINE". The script greps for the line number of the separator and prints out the keyboard file until this line number. This output will be saved in an temporary directory which will be removed after build. Also, and output directory will be generated to save stl files in it.
 Then it places each module call from the config file at the end and calls OpenSCAD with the generated file to render the stl part. After this it places the next module call and generates the next stl, an so on.
 
 You can add your own config file with the module calls you want and call the build.sh script with the config file as 2nd parameter. If no 2nd parameter is given, the script uses default config file 'conf/module-calls.conf'. The script greps for 'module' and separates the line at ':'. The last part will be used and appended to the created scad file.
@@ -151,7 +152,7 @@ __This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubun
 - __Costar Stabilizers__
 - __Fancy Keycaps__
 - __Teensy2 or Arduino Pro Micro__
-- Screws 3x8mm
+- Cylinder Head Screws 3x8mm
 - Thin wires
 - 1N4148 diodes
 
