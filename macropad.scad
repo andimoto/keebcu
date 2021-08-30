@@ -194,6 +194,14 @@ screwHoleArray = [
 /* rotate screw hole spacers */
 screwSpacerRotation=90;
 
+/* move horizontal case stabilizers inside the case.
+ * to move horizontal by lkey/2 for half switch cutout.
+ * this enables to set x.5 values in layout array.
+ * else use 0!!
+ */
+caseStabMov=lkey/2;
+
+
 /* set colors for simulation */
 colorCase="DimGray";
 colorLid="Gold";
@@ -218,7 +226,7 @@ colorRiserL="Gold";
 
 /* ### complete keyboard model ### */
 translate([0,0,30]) mainCase(layout);
-lid();
+/* lid(); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */

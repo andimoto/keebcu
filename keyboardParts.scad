@@ -134,7 +134,7 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 	for (key = holes){
 		/* don't place case stabilizer on iso enter button */
 		if(key[0][1]!=2.5){
-			translate([0,lkey*key[0][1]-1,innerCaseSpace])
+			translate([0,lkey*key[0][1]-1+caseStabMov,innerCaseSpace])
 			cube([w,1,caseHeight-plateThickness-innerCaseSpace]);
 		}
 	}

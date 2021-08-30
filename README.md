@@ -48,6 +48,7 @@ The available keyboard models (in stl directory) should work and have been print
 - andimoto_smallTKL_iso (printed, documented wiring)
 - andimotoTKL (not printed)
 - andimotoTKLiso (not printed)
+- macropad
 ```
 
 __Note:__
@@ -197,6 +198,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but
 - other build system (make or docker, etc.)
 - test other keyboard layouts like random stuff or ten keys
 - make screw stems (spacers for screwing lid in) rotateable (DONE: screwSpacerRotation in degree)
+- move inner horizontal case stabilizers in vertical direction (DONE: set caseStabMov Var)
 
 ## Wrist rest and Keyboard Case
 For each keyboard a wrist rest can be created with the model file wrist.scad. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.

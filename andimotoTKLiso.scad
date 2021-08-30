@@ -285,6 +285,13 @@ include <keyboardParts.scad>
  /* rotate screw hole spacers */
  screwSpacerRotation=0;
 
+ /* move horizontal case stabilizers inside the case.
+  * to move horizontal by lkey/2 for half switch cutout.
+  * this enables to set x.5 values in layout array.
+  * else use 0!!
+  */
+ caseStabMov=0;
+
 /* set colors for simulation */
 colorCase="Green";
 colorLid="Green";
