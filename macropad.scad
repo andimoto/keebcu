@@ -203,8 +203,8 @@ caseStabMov=lkey/2;
 
 
 /* set colors for simulation */
-colorCase="DimGray";
-colorLid="Gold";
+colorCase="Gold";
+colorLid="DimGray";
 colorRiserR="Gold";
 colorRiserL="Gold";
 
@@ -218,14 +218,14 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false); */
+KeyboardSim(layout,true);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-translate([0,0,30]) mainCase(layout);
+/* translate([0,0,30]) mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
