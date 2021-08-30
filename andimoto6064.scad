@@ -253,6 +253,8 @@ screwHoleArray = [
 [266,lkey*4+wallThickness-3], //right upper row
 ];
 
+/* rotate screw hole spacers */
+screwSpacerRotation=0;
 
 /* set colors for simulation */
 colorCase="White";

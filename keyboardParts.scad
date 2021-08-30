@@ -349,10 +349,10 @@ module caseScrewHolesLoop(r20=1.5)
 }
 
 module screwSpacer(r1=2.5,
-	h1=caseHeight-plateThickness-1,h2=caseHeight-1)
+	h1=caseHeight-plateThickness-1,h2=caseHeight-1,rotation=screwSpacerRotation)
 {
 	/* screw head */
-	scale([1.5,1,1]) cylinder(r=r1, h=h1);
+	rotate([0,0,rotation]) scale([1.5,1,1]) cylinder(r=r1, h=h1);
 }
 
 module caseScrewSpacerLoop(r10=2.5)

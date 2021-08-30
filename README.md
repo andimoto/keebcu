@@ -196,6 +196,7 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but
 - add build script (DONE)
 - other build system (make or docker, etc.)
 - test other keyboard layouts like random stuff or ten keys
+- make screw stems (spacers for screwing lid in) rotateable (DONE: screwSpacerRotation in degree)
 
 ## Wrist rest and Keyboard Case
 For each keyboard a wrist rest can be created with the model file wrist.scad. The stl-directory contains a wrist rest for each keyboard which can be printed as you want.

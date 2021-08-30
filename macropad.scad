@@ -63,8 +63,8 @@ fRowSeparator=false;
  * Note: be careful here, this interacts with caseRadius
  */
 skirtSelect = true;
-skirtX = 3;
-skirtY = 3;
+skirtX = 4;
+skirtY = 4;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
@@ -185,13 +185,14 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[lkey,0], //left lower row
-[lkey*4,0],
-[lkey,lkey*2.5],
-[lkey*4,lkey*2.5], // right lower row
-
+[lkey,5.5], //left lower row
+[lkey*4,5.5],
+[lkey,lkey*2.21],
+[lkey*4,lkey*2.21], // right lower row
 ];
 
+/* rotate screw hole spacers */
+screwSpacerRotation=90;
 
 /* set colors for simulation */
 colorCase="DimGray";
@@ -209,15 +210,15 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false);
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* translate([0,0,30]) mainCase(layout); */
-/* lid(); */
+translate([0,0,30]) mainCase(layout);
+lid();
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */
