@@ -218,7 +218,7 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true);
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -226,7 +226,7 @@ KeyboardSim(layout,true);
 
 /* ### complete keyboard model ### */
 /* translate([0,0,30]) mainCase(layout); */
-/* lid(); */
+lid();
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */

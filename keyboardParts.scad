@@ -377,7 +377,7 @@ module lidScrewHolesLoop(c1=1.5)
 module usbCutout()
 {
 	translate([0,-0.1,0]) cube([usbCutX,usbCutY,usbCutZ]);
-	translate([-2,1,-2]) cube([usbCutX+4,usbCutY+getSkirtY(),usbCutZ+4]);
+	translate([-3,1,-2]) cube([usbCutX+6,usbCutY+getSkirtY(),usbCutZ+5]);
 
 	/* this marks the root point of the part.
 	 * uncomment this for debugging */
