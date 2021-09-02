@@ -141,14 +141,14 @@ usbCutZ=3.4;
  * perfectly even if pcbWidth is to much
  */
  /* teensy2 cutout */
- pcbHeight = 1.8;
- pcbWidth = 18.5;
- pcbLength = 31.4;
+/* pcbHeight = 1.8;
+pcbWidth = 18.5;
+pcbLength = 31.4; */
 
  /* arduino pro micro cutout */
- //pcbHeight = 2;
- //pcbWidth = 18;
- //pcbLength = 34;;
+pcbHeight = 2;
+pcbWidth = 18;
+pcbLength = 34;;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
