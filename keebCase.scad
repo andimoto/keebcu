@@ -17,11 +17,13 @@ yMoveMagnet = 5; /* move magnet cutout in y direction */
 
 magnetRadius = 5/2;
 magnetRadiusTolerance=0.025;
-magnetThickness = 1;
+magnetThickness = 1.2;
 
 lockEdgeRadius = 2;
 lockRadius = 10;
 lockThickness = 6;
+
+/* cylinder(r=10,h=wallThickness+keebLen/2); */
 
 module sphereCut()
 {
@@ -151,20 +153,20 @@ module halfCase(locks=true, magnets=true)
 /* ########## Place keyboard case ############## */
 /* ############################################# */
 
-color("grey") translate([0,0,0]) halfCase(locks=true,magnets=true);
+color("yellow") translate([0,0,0]) halfCase(locks=true,magnets=true);
 /* color("grey") translate([0,0,keebLen+wallThickness*2+0.0]) mirror([0,0,1]) halfCase(locks=true,magnets=true); */
 
 
 /* case locks */
-color("LightSkyBlue") translate([lockThickness,
+/* color("LightSkyBlue") translate([lockThickness,
   (keebThickness/2)+wallThickness,
   (keebLen/2)+wallThickness-lockRadius])
-rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false);
+rotate([90,0,0]) rotate([0,-90,0]) lock(negativ=false); */
 
-color("LightSkyBlue") translate([(keebHeight+sideThickness*2)-lockThickness,
+/* color("LightSkyBlue") translate([(keebHeight+sideThickness*2)-lockThickness,
   (keebThickness/2)+wallThickness,
   (keebLen/2)+wallThickness-lockRadius])
-rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false);
+rotate([90,0,0]) rotate([0,90,0]) lock(negativ=false); */
 
 
 
