@@ -300,6 +300,14 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/img/IMG_20210406_151326.jpg)
 
+![](pics/pics/macro001.JPG)
+
+![](pics/pics/macro002.JPG)
+
+![](pics/pics/macro003.JPG)
+*5x2 macropad printed with fuzzing on outer walls*
+![](pics/pics/macro004.JPG)
+
 ![](pics/img/IMG_20201215_085124.jpg)
 
 ![](pics/img/IMG_20201224_110407.jpg)
@@ -311,6 +319,8 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 ![](pics/img/IMG_20210111_150655.jpg)
 
 ![](pics/pics/keebcu_016.JPG)
+
+
 
 
 
