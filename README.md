@@ -10,14 +10,15 @@
 - get OpenSCAD (I used 2021.01 and 2019.05 as appImages on Linux).
 - open the template_to_copy.scad file in OpenSCAD (or copy and rename it for your own custom layout)
 - uncomment 'mainCase(<layout>)' line at the end of the file to check what your are doing
-- start customizing your layout (place switch holes and set colors of your keycaps if you want)
-- set screw holes where needed or add even more of them (think about the risers on the bottom)
+- start customizing your layout (place switch holes and set colors of your keycaps)
+- set screw holes where you want them or add even more of them (don't place screw holes near risers on the bottom)
 - set usb and pcb values
-- set fRowSeparator to move F-Row up if needed
-- depending on your printbed size, set where to cut the keyboard case
+- set or unset fRowSeparator to move F-Row up
+- depending on your printbed size, set where to cut the keyboard case ('cutAfterUnits' & 'spacebarCut')
 - (optional) print critical parts of the case like space bar, parts with other stabilizers or usb and pcb area to test everything fits
 - generate all necessary model files you want to print by uncomment the proper module call or run the build.sh script
-- save and print!
+- save as stl file, print and assemble!
+- checkout, build and flash firmware firmware https://github.com/andimoto/qmk_firmware/tree/andimoto-keyboards/keyboards/andimoto
 ```
 
 #### Notes
@@ -25,11 +26,11 @@ This is based on *Parametric Cherry MX Mounting Plate for Mechanical Keyboards* 
 http://www.thingiverse.com/thing:573578
 
 ## Description
-This is a OpenSCAD Script for customizing a keyboard with a specific layout. It is designed to also show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii. **So download OpenSCAD and start building your keyboard ;)!**
+This is a OpenSCAD Script for customizing a keyboard with a specific layout. It is designed to show a simulation on how the keyboard could look like by adding keycaps from KeyV2 project by rsheldiii. **So download OpenSCAD and start building your keyboard ;)!**
 
 I designed the keyboard to be printable on smaller 3d printer build plates like Prusa Mini. Therefore, it is possible to configure where the keyboard should be cut by the script with 'cutAfterUnits' variable. With this, it is possible to print a keyboard on smaller printers. The "smallTKL" design is the biggest layout I can print for now. If you have standard size printers like Prusa MK3 or Ender 3, etc, you may print normal TKL or even 100% layouts, eventually :).
 The cut will always be around the switch holes. This gives good stability when glueing the parts together. Before glueing, the parts may need some sanding work, etc. Just check that both sides fit to each other without bigger space in between.
-(In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function.)
+(In theory, it should be possible to cut the keyboard into 3 or more parts. Therefore, new modules should be created and the pieces can be calculated by using difference function. This should enable printing bigger sizes like TKL or 100% on smaller printers)
 
 I glued the parts together with Revell CONTACTA glue because of its fine needle which is very practical. Any plastic glue will work. I broke one of my prototype boards for testing and they are pretty stable if glued properly :). I had to use some force for it. Just be sure the case parts are glued well together!
 
@@ -70,7 +71,7 @@ Keycap styles can be replaced in the module "KeyboardSim('layout','simulation tr
 
 So you can change the colors and have a look at how your keyboard may look like!
 You can add more keys into the array, but maybe the case will not fit automatically. Adjust 'height' and 'width' of the case, then.
-I will try to implement some more automatic functionalities as possible.
+I will try to implement some more automatic functionalities from time to time.
 
 The keyboard layout is defined in an array. In the template file it is called "template_ansiUS_7583" for example.
 It describes (in Units):
@@ -161,28 +162,29 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but
 
 
 ## Assembly
-- use sandpaper and a scalpel to clear the surface where parts get glued together. Double check if parts does not block each other.
-- glue the two case parts together carefully. Place them on a flat surface and put some books on each side, then put some glue into the rills.
-- wait until it is dry and put some more glue on it if needed.
-- after some drying time you can put in the switches (it is possible that this will bend the keyboard)
-  - maybe you need to add more glue when keyboard is bended
-  - switches which will have stabilizers should be set with the champfer downwards. Champfer is where LED placement is on the switch. Then the stabilizers have space inside the keycaps.
-- solder switches and diodes together (see directory wiring_sheets)
-  - you can checkout qmk guide for handwiring -> https://beta.docs.qmk.fm/using-qmk/guides/keyboard-building/hand_wire
-- solder the controller onto the keyboard matrix and place the pcb inside the pcb holder of the lid.
-- build, flash and test your firmware (you can use this for testing https://keyboardchecker.com/)
-- screw all parts together and place the risers if you need them (I recommend gluing the risers on the lids and then assembly them to the case)
-- if you use Costar Stabilizers, place the stabilizers downwards.
-- have fun with your keyboard ;)
+- Use sandpaper and a scalpel to clear the surface where parts get glued together. Double check if parts do not block each other.
+- Glue the two case parts together carefully. Place them on a flat surface and put some books on each side, then put some glue into the rills.
+- Wait until it is dry and put some more glue on it if needed.
+- After some drying time you can put in the switches (it is possible that this will bend the keyboard)
+  - Maybe you need to add more glue when keyboard is bended
+  - Switches which will have stabilizers should be set with the champfer downwards. Champfer is where LED placement is on the switch. Then the stabilizers have space inside the keycaps.
+- Solder switches and diodes together (see directory wiring_sheets)
+  - Checkout qmk guide for handwiring -> https://beta.docs.qmk.fm/using-qmk/guides/keyboard-building/hand_wire
+- Solder the controller onto the keyboard matrix and place the pcb inside the pcb holder of the lid.
+- Build, flash and test your firmware (you can use this for testing https://keyboardchecker.com/)
+- Screw all parts together and place the risers if you need them (I recommend gluing the risers on the lids and then assembly them to the case)
+- If you use Costar Stabilizers, place the stabilizers downwards.
+- Have fun with your keyboard and start building your next keyboard ;)
 
 
 ## Printing advises
 - Use brim for keyboard case. As there are many holes, the plate adhesion can be weak and the corners can rise up a little bit.
-- Be careful with color changes. If color change is only at height of case stabilizer (not keycap stabilizers!!) or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers. I recommend to do the color change at the last layer of the keyboard cases plate. (See https://github.com/andimoto/keebcu/tree/master/pics/img/screwHolesColorChange.jpg)
+- Be careful with color changes. If color change is only at height of case stabilizer (not keycap stabilizers!!) or screw holes, there can be problems when screwing on the lid. I broke the top part of the scrw cylinder where the color change had no good adhesion the other layers. I recommend to do the color change at the last layer of the keyboard cases plate as seen [here](https://github.com/andimoto/keebcu/tree/master/pics/img/screwHolesColorChange.jpg)
+  - Place color changes on the upper layer of the plate of the case. With this the walls have more adhesion on previous layers as seen [here](https://github.com/andimoto/keebcu/blob/master/pics/img/IMG_20210406_151457.jpg)
   - Note: though this issue may be fixed with the oval spacers for the screws, double check the stability of the screw holes by printing a small prototyp with color change where you want it.
 - Notice, when placing the switches into the plate, the keyboard case will bend (mid up, sides down) there is the variable 'switchHoleTolerance' which you can modifiy if needed. This could reduce this kind of bending, but also make the switches more loose.
-- normally the lid parts do not need any brim.
-- check if your printer prints right-angled. I had issues with my Prusa Mini printing exact squared parts. More info [here](https://forum.prusaprinters.org/forum/how-do-i-print-this-printing-help/how-to-fix-bending-of-a-box/).
+- Normally the lid parts do not need any brim.
+- Check if your printer prints right-angled. I had issues with my Prusa Mini printing exact squared parts. More info [here](https://forum.prusaprinters.org/forum/how-do-i-print-this-printing-help/how-to-fix-bending-of-a-box/).
 
 ## todo
 - create selectable space (in y direction) between function row and next rows (DONE: fRowSeparator)
@@ -193,10 +195,10 @@ __Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but
 - add a selectable skirt to the case (DONE)
 - add parametric keebCase (in progress, should be already usable)
 - screw holes get crossed by case stabilizer (DONE / screw hole standoffs have also an oval shape now)
-- documentation for keebCase.scad
+- documentation for keebCase.scad (always in progress)
 - add build script (DONE)
 - other build system (make or docker, etc.)
-- test other keyboard layouts like random stuff or ten keys
+- test other keyboard layouts like random stuff or ten keys (always in progress)
 - make screw stems (spacers for screwing lid in) rotateable (DONE: screwSpacerRotation in degree)
 - move inner horizontal case stabilizers in vertical direction (DONE: set caseStabMov Var)
 
