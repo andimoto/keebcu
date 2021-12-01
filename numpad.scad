@@ -31,9 +31,9 @@ innerCaseSpace = 5;
 
 
 //length, in units, of board
-width=16;
+width=4;
 //Height, in units, of board
-height=6;
+height=5;
 
 /* thickness of the lid.
    the function 'lid()' will add an
@@ -53,7 +53,7 @@ spacebarCut = 4.5;
  * Select separation of F-Row (or Row 0; key[0][1]=0)
  * This will move the upper row by a half unit (lkey*0.5)
  */
-fRowSeparator=true;
+fRowSeparator=false;
 
 /* skirt selctor and skirt settings
  * select 'skirtSelect' as true to activate a additional skirt
@@ -62,7 +62,7 @@ fRowSeparator=true;
  * configured amount to the side of the case.
  * Note: be careful here, this interacts with caseRadius
  */
-skirtSelect = true;
+skirtSelect = false;
 skirtX = 5;
 skirtY = 5;
 
@@ -103,94 +103,28 @@ switchHoleTolerance = -0.2;
 /* template_ansiUS_7583 */
 layout = [
 //start ROW 0 Function ROW
-[[ 0,0],1,"red"], //Esc
+[[ 0,0],1,"red"], //Es
 [[ 1,0],1,"MintCream"], //F1
 [[ 2,0],1,"MintCream"], //F2
 [[ 3,0],1,"MintCream"], //F3
-[[ 4,0],1,"MintCream"], //F4
-[[ 5,0],1,"Gray"], //F5
-[[ 6,0],1,"Gray"], //F6
-[[ 7,0],1,"Gray"], //F7
-[[ 8,0],1,"Gray"], //F8
-[[ 9,0],1,"MintCream"], //F9
-[[10,0],1,"MintCream"], //F10
-[[11,0],1,"MintCream"], //F11
-[[12,0],1,"MintCream"], //F12
-[[13,0],1,"Gray"], //PrintScreen
-[[14,0],1,"Gray"], //PrintScreen
-[[15,0],1,"Gray"], // Del/Ins
 //start ROW 1
 [[ 0,1],1,"Gray"], //'
 [[ 1,1],1,"MintCream"], //1
 [[ 2,1],1,"MintCream"], //2
-[[ 3,1],1,"MintCream"], //3
-[[ 4,1],1,"MintCream"], //4
-[[ 5,1],1,"MintCream"], //5
-[[ 6,1],1,"MintCream"], //6
-[[ 7,1],1,"MintCream"], //7
-[[ 8,1],1,"MintCream"], //8
-[[ 9,1],1,"MintCream"], //9
-[[10,1],1,"MintCream"], //0
-[[11,1],1,"MintCream"], //-_
-[[12,1],1,"MintCream"], //=+
-[[13,1],2,"Gray"], //backspace
-[[15,1],1,"Gray"], //home
+[[ 3,1.5],1,"MintCream"], //3
 //start ROW 2
-[[   0,2],1.5,"Gray"], //TAB
-[[ 1.5,2],1,"MintCream"], //Q
-[[ 2.5,2],1,"MintCream"], //W
-[[ 3.5,2],1,"MintCream"], //E
-[[ 4.5,2],1,"MintCream"], //R
-[[ 5.5,2],1,"MintCream"], //T
-[[ 6.5,2],1,"MintCream"], //Y
-[[ 7.5,2],1,"MintCream"], //U
-[[ 8.5,2],1,"MintCream"], //I
-[[ 9.5,2],1,"MintCream"], //O
-[[10.5,2],1,"MintCream"], //P
-[[11.5,2],1,"MintCream"], //[
-[[12.5,2],1,"MintCream"], //]
-[[13.5,2],1.5,"Gray"], // \
-[[  15,2],1,"Gray"], // PgUp
+[[ 0,2],1,"Gray"], //TAB
+[[ 1,2],1,"MintCream"], //Q
+[[ 2,2],1,"MintCream"], //W
+/* [[ 3,2],1,"MintCream"], //E */
 //start ROW 3
-[[    0,3],1.75,"Gray"], //CapsLock
-[[ 1.75,3],1,"MintCream"], //A
-[[ 2.75,3],1,"MintCream"], //S
-[[ 3.75,3],1,"MintCream"], //D
-[[ 4.75,3],1,"MintCream"], //F
-[[ 5.75,3],1,"MintCream"], //G
-[[ 6.75,3],1,"MintCream"], //H
-[[ 7.75,3],1,"MintCream"], //J
-[[ 8.75,3],1,"MintCream"], //K
-[[ 9.75,3],1,"MintCream"], //L
-[[10.75,3],1,"MintCream"], //;
-[[11.75,3],1,"MintCream"], //'
-[[12.75,3],2.25,"Aqua"], //ENTER
-[[   15,3],1,"Gray"], //PgDn
+[[ 0,3],1,"Gray"], //CapsLock
+[[ 1,3],1,"MintCream"], //A
+[[ 2,3],1,"MintCream"], //S
+[[ 3,3.5],1,"MintCream"], //D
 //start ROW 4
-[[    0,4],2.25,"Gray"], //LShift
-[[ 2.25,4],1,"MintCream"], //Z
-[[ 3.25,4],1,"MintCream"], //X
-[[ 4.25,4],1,"MintCream"], //C
-[[ 5.25,4],1,"MintCream"], //V
-[[ 6.25,4],1,"MintCream"], //B
-[[ 7.25,4],1,"MintCream"], //N
-[[ 8.25,4],1,"MintCream"], //M
-[[ 9.25,4],1,"MintCream"], //,
-[[10.25,4],1,"MintCream"], //.
-[[11.25,4],1,"MintCream"], // /
-[[12.25,4],1.75,"Gray"], //RShift
-[[   14,4],1,"Gray"], //UP
-[[   15,4],1,"Gray"], //end
-//start ROW 5
-[[    0,5],1.25,"Gray"], //LCTRL
-[[ 1.25,5],1.25,"Gray"], //TUX
-[[ 2.5 ,5],1.25,"Gray"], //ALT
-[[ 3.75,5],6.25,"MintCream"], //SPACE
-[[ 10  ,5],1.25,"Gray"], //COMP
-[[11.25,5],1.25,"Gray"], //Fn
-[[  13,5],1,"Gray"], //LEFT
-[[  14,5],1,"Gray"], //DOWN
-[[  15,5],1,"Gray"], //RIGHT
+[[ 0,4],2,"Gray"], //LShift
+[[ 2,4],1,"MintCream"], //Z
 ];
 
 /* move pcb and usb cutout in x direction
@@ -288,6 +222,7 @@ screwSpacerRotation=0;
  * else use 0!!
  */
 caseStabMov=0;
+
 
 /* set colors for simulation */
 colorCase="White";
