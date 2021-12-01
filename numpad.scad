@@ -129,7 +129,7 @@ layout = [
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=0;
+pcbShift=8.5;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -166,7 +166,7 @@ usbCutZ=3.4;
  * to calculate a lid with holes for risers
  * and add risers to simulation
  */
-addRisers = true;
+addRisers = false;
 
 /* keyboardRiser config
  * angleBaseX -> width of the riser
@@ -197,20 +197,12 @@ include <keyboardParts.scad>
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-3], //left lower row
-[114,lkey-3],
-[170,lkey-3],
-[285.5,lkey-3], // right lower row
+[20.5,lkey], //left lower row
+[55,lkey],
 
-[24,lkey*3+wallThickness-2], //left mid row
-[124,lkey*3+wallThickness-2],
-[162,lkey*3+wallThickness-2],
-[285,lkey*3+wallThickness-2], //right mid row
 
-[19,lkey*5+wallThickness-2], //left upper row
-[133,lkey*5+wallThickness-2],
-[171,lkey*5+wallThickness-2],
-[285.5,lkey*5+wallThickness-2], //right upper row
+[15,lkey*4], //left upper row
+[60.5,lkey*4],
 ];
 
 /* rotate screw hole spacers */
