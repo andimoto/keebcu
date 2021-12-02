@@ -30,7 +30,7 @@ caseHeight=13;
 innerCaseSpace = 5;
 
 /* edge radius of the case */
-caseRadius=1;
+/* caseRadius=1; */
 
 //length, in units, of board
 width=17.25;
@@ -72,7 +72,7 @@ skirtY = 0;
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
  */
-caseRadius=0;
+caseRadius=1;
 
 
 /* debug extra for avoiding artefacts @ compilation */
@@ -312,14 +312,14 @@ colorRiserL="DarkBlue";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-KeyboardSim(layout,false);
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
