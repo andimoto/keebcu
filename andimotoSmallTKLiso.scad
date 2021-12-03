@@ -100,6 +100,10 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
+isoEnter = [
+[[13.5,2.5],1.5,"Red"] // ENTER
+];
+
 /* smallTKL_isoDE */
 layout = [
 //start ROW 0 Function ROW
@@ -150,7 +154,7 @@ layout = [
 [[10.5,2],1,"LightSkyBlue"], //P
 [[11.5,2],1,"LightSkyBlue"], //[
 [[12.5,2],1,"LightSkyBlue"], //]
-[[13.5,2.5],1.5,"Red"], // ENTER
+/* [[13.5,2.5],1.5,"Red"], // ENTER */
 [[15.25,2],1,"MidnightBlue"], // del
 [[16.25,2],1,"MidnightBlue"], // end
 //start ROW 3
@@ -261,9 +265,44 @@ riserPoints = [
 xRiserR=0;
 xRiserL=0;
 
+
+
 /* ####### include keyboard lib ############ */
 include <constants.scad>
 include <keyboardParts.scad>
+
+
+module extraCutoutHook()
+{
+  for(key = isoEnter)
+  {
+    startx = 0;
+    starty = caseDepth - lkey;
+    zCase = tempHeigth;
+    echo(startx);
+    echo(lkey);
+    echo(isoEnter[0][0]);
+    echo(startx+lkey*key[0][0]);
+    /* iso enter needs a move of about 2mm into right direction */
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+    translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])
+    switchhole();
+
+    /* iso enter and other stabilizers than spacebar */
+    /* needed to add some extra mm to the costarStabilizer cutouts
+       but different extra for each stabilizer */
+    translate([19.7,-5,0])
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+    translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.5,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
+    rotate([0,0,90]) costarStabilizer();
+
+    translate([-4.7,20,0])
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+    translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
+    rotate([0,0,90]) costarStabilizer();
+  }
+}
+
 
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
@@ -302,6 +341,8 @@ colorCase="DarkBlue";
 colorLid="DarkBlue";
 colorRiserR="DarkBlue";
 colorRiserL="DarkBlue";
+
+
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/

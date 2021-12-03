@@ -41,6 +41,9 @@ module costarStabilizer(){
 
 costarStabYdelta = -0.5;
 module holematrix(holes,startx,starty,zCase){
+
+	extraCutoutHook();
+
 	for (key = holes){
 		/* echo (key[0][0],key[0][1],key[1]); */
 
@@ -52,28 +55,7 @@ module holematrix(holes,startx,starty,zCase){
 			/* check for iso Enter key; should be the last row minus 3.5
 			   iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
 				 row without F Keys */
-			if(key[0][1] == height-3.5)
-			{
-				/* iso enter needs a move of about 2mm into right direction */
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])
-				switchhole();
-
-				/* iso enter and other stabilizers than spacebar */
-				/* needed to add some extra mm to the costarStabilizer cutouts
-				   but different extra for each stabilizer */
-				translate([19.7,-5,0])
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.5,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
-				rotate([0,0,90]) costarStabilizer();
-
-				translate([-4.7,20,0])
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
-				rotate([0,0,90]) costarStabilizer();
-
-			}
-			else if(half == 0.5){
+			if(half == 0.5){
 				/* iso enter needs a move of about 2mm into right direction */
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
@@ -108,6 +90,9 @@ module holematrix(holes,startx,starty,zCase){
 				}
 			}
 		}
+
+
+
 		/* place switch holes - end */
 
 		/* debugging - remove comment to show root point of holesize */

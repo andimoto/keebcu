@@ -33,7 +33,7 @@ innerCaseSpace = 5;
 //length, in units, of board
 width=4;
 //Height, in units, of board
-height=5;
+height=6;
 
 /* thickness of the lid.
    the function 'lid()' will add an
@@ -102,29 +102,29 @@ switchHoleTolerance = -0.2;
 
 /* template_ansiUS_7583 */
 layout = [
-//start ROW 0 Function ROW
-[[ 0,0],1,"red"], //Es
-[[ 1,0],1,"MintCream"], //F1
-[[ 2,0],1,"MintCream"], //F2
-[[ 3,0],1,"MintCream"], //F3
+[[ 0,1],1,"red"], //Es
+[[ 1,1],1,"MintCream"], //F1
+[[ 2,1],1,"MintCream"], //F2
+[[ 3,1],1,"MintCream"], //F3
 //start ROW 1
-[[ 0,1],1,"Gray"], //'
-[[ 1,1],1,"MintCream"], //1
-[[ 2,1],1,"MintCream"], //2
-[[ 3,1.5],1,"MintCream"], //3
+[[ 0,2],1,"Gray"], //'
+[[ 1,2],1,"MintCream"], //1
+[[ 2,2],1,"MintCream"], //2
+[[ 3,2.5],1,"MintCream"], //3
 //start ROW 2
-[[ 0,2],1,"Gray"], //TAB
-[[ 1,2],1,"MintCream"], //Q
-[[ 2,2],1,"MintCream"], //W
+[[ 0,3],1,"Gray"], //TAB
+[[ 1,3],1,"MintCream"], //Q
+[[ 2,3],1,"MintCream"], //W
 /* [[ 3,2],1,"MintCream"], //E */
 //start ROW 3
-[[ 0,3],1,"Gray"], //CapsLock
-[[ 1,3],1,"MintCream"], //A
-[[ 2,3],1,"MintCream"], //S
-[[ 3,3.5],1,"MintCream"], //D
+[[ 0,4],1,"Gray"], //CapsLock
+[[ 1,4],1,"MintCream"], //A
+[[ 2,4],1,"MintCream"], //S
+[[ 3,4.5],1,"MintCream"], //D
 //start ROW 4
-[[ 0,4],2,"Gray"], //LShift
-[[ 2,4],1,"MintCream"], //Z
+[[ 0,5],2,"Gray"], //LShift
+[[ 2,5],1,"MintCream"], //Z
+
 ];
 
 /* move pcb and usb cutout in x direction
@@ -191,6 +191,15 @@ xRiserL=0;
 include <constants.scad>
 include <keyboardParts.scad>
 
+
+
+module extraCutoutHook()
+{
+}
+
+
+
+
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
  * if your keyboard is bigger, you can add some
@@ -201,8 +210,8 @@ screwHoleArray = [
 [55,lkey],
 
 
-[15,lkey*4], //left upper row
-[60.5,lkey*4],
+[19,lkey*5], //left upper row
+[57,lkey*5],
 ];
 
 /* rotate screw hole spacers */
@@ -232,7 +241,7 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false); */
+/* KeyboardSim(layout,true); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
