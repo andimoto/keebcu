@@ -63,13 +63,14 @@ fRowSeparator=false;
  * Note: be careful here, this interacts with caseRadius
  */
 skirtSelect = false;
-skirtX = 5;
-skirtY = 5;
+skirtX = 3;
+skirtY = 3;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
+ * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
  */
-caseRadius=10;
+caseRadius=5;
 
 
 /* ################## calculated vars #################### */
@@ -253,14 +254,14 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true);
+/* KeyboardSim(layout,true); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* translate([0,0,5]) mainCase(layout); */
+translate([0,0,5]) mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
