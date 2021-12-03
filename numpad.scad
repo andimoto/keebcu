@@ -100,30 +100,30 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
-/* template_ansiUS_7583 */
+/* numpad layout */
 layout = [
-[[ 0,1],1,"red"], //Es
-[[ 1,1],1,"MintCream"], //F1
-[[ 2,1],1,"MintCream"], //F2
-[[ 3,1],1,"MintCream"], //F3
+[[ 0,1],1,"blue"], //numlock
+[[ 1,1],1,"blue"], // /
+[[ 2,1],1,"blue"], // *
+[[ 3,1],1,"blue"], // -
 //start ROW 1
-[[ 0,2],1,"Gray"], //'
-[[ 1,2],1,"MintCream"], //1
-[[ 2,2],1,"MintCream"], //2
-[[ 3,2.5],1,"MintCream"], //3
+[[ 0,2],1,"blue"], //7
+[[ 1,2],1,"blue"], //8
+[[ 2,2],1,"blue"], //9
+[[ 3,2.5],1,"blue"], // +
 //start ROW 2
-[[ 0,3],1,"Gray"], //TAB
-[[ 1,3],1,"MintCream"], //Q
-[[ 2,3],1,"MintCream"], //W
+[[ 0,3],1,"blue"], //4
+[[ 1,3],1,"blue"], //5
+[[ 2,3],1,"blue"], //6
 /* [[ 3,2],1,"MintCream"], //E */
 //start ROW 3
-[[ 0,4],1,"Gray"], //CapsLock
-[[ 1,4],1,"MintCream"], //A
-[[ 2,4],1,"MintCream"], //S
-[[ 3,4.5],1,"MintCream"], //D
+[[ 0,4],1,"blue"], //1
+[[ 1,4],1,"blue"], //2
+[[ 2,4],1,"blue"], //3
+[[ 3,4.5],1,"blue"], // numpad enter
 //start ROW 4
-[[ 0,5],2,"Gray"], //LShift
-[[ 2,5],1,"MintCream"], //Z
+[[ 0,5],2,"red"], //0
+[[ 2,5],1,"blue"], //,
 
 ];
 
@@ -158,14 +158,14 @@ usbCutZ=3.4;
  * perfectly even if pcbWidth is to much
  */
  /* teensy2 cutout */
- pcbHeight = 1.8;
- pcbWidth = 18.5;
- pcbLength = 31.4;
+ //pcbHeight = 1.8;
+ //pcbWidth = 18.5;
+ //pcbLength = 31.4;
 
  /* arduino pro micro cutout */
- //pcbHeight = 2;
- //pcbWidth = 18;
- //pcbLength = 34;;
+ pcbHeight = 2;
+ pcbWidth = 18;
+ pcbLength = 34;;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -197,12 +197,19 @@ include <constants.scad>
 include <keyboardParts.scad>
 
 
-
+/* this module gets called in 'holematrix' and adds a specific
+ * object to the 'holematrix'. it enables placing switchholes
+  * or other cutout objects to the model */
 module extraCutoutHook()
 {
 }
 
-
+/* this module gets called in 'keySim()' and adds a specific
+ * object to the 'key simulation'. it enables placing keys
+  * or other objects to the model simulation */
+module extraKeySimHook()
+{
+}
 
 
 /* ####### screw hole config ######## */
@@ -246,14 +253,14 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,true); */
+KeyboardSim(layout,true);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-translate([0,0,5]) mainCase(layout);
+/* translate([0,0,5]) mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

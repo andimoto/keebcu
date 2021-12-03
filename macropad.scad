@@ -118,7 +118,7 @@ layout = [
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
  * for example: true for numpad enter or numpad +
  * if you just want a single unit (1unit keycap) you can set this to false */
-enableStabsOnHalfs = true;
+enableStabsOnHalfs = false;
 
 /* move pcb and usb cutout in x direction
    for better placement */
@@ -239,8 +239,8 @@ colorRiserL="Gold";
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* translate([0,0,30]) mainCase(layout); */
-lid();
+translate([0,0,30]) mainCase(layout);
+/* lid(); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */

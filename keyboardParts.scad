@@ -48,19 +48,15 @@ module holematrix(holes,startx,starty,zCase){
 
 	for (key = holes){
 		/* echo (key[0][0],key[0][1],key[1]); */
-
-
 		/* place switch holes */
 		if(key[1] >= 1){
 			half = getHalf(key[0][1]);// % 1;
-
-
 			if(half == 0.5){
 				/* all switchholes which have vertical sized keycaps like numpad-enter or numpad+ */
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 				switchhole();
-				
+
 				if(enableStabsOnHalfs == true)
 				{
 					/* directly add costarStabilizers to this switchhole */
@@ -197,6 +193,10 @@ module keySim(holes)
 	startx = 0;
 	starty = caseDepth - lkey;
 	zCase = tempHeigth;
+
+	/* simulate extra objects which have different placement */
+	extraKeySimHook();
+
 	for (key = holes){
 		/* switch simulation for F-Row */
 		if(key[0][1]==0 && fRowSeparator==true)
@@ -225,13 +225,6 @@ module keySim(holes)
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 			2_75u() sa_row(key[0][1]) key();
-		}
-		else if(key[0][1]==2.5)
-		{
-			color(key[2])
-			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-			translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
-			sa_row(key[0][1]) iso_enter() key(true);
 		}
 		else if (key[1]==2.25){
 			color(key[2])

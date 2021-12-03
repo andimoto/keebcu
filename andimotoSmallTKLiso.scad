@@ -56,7 +56,7 @@ spacebarCut = 4.5;
  * Select separation of F-Row (or Row 0; key[0][1]=0)
  * This will move the upper row by a half unit (lkey*0.5)
  */
-fRowSeparator=false;
+fRowSeparator=true;
 
 /* skirt selctor and skirt settings
  * select 'skirtSelect' as true to activate a additional skirt
@@ -289,10 +289,6 @@ module extraCutoutHook()
     startx = 0;
     starty = caseDepth - lkey;
     zCase = tempHeigth;
-    echo(startx);
-    echo(lkey);
-    echo(isoEnter[0][0]);
-    echo(startx+lkey*key[0][0]);
 
     /* check for iso Enter key; should be the last row minus 3.5
        iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
@@ -314,6 +310,24 @@ module extraCutoutHook()
     translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
     translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
     rotate([0,0,90]) costarStabilizer();
+  }
+}
+
+/* this module gets called in 'keySim()' and adds a specific
+ * object to the 'key simulation'. it enables placing keys
+  * or other objects to the model simulation */
+module extraKeySimHook()
+{
+  startx = 0;
+	starty = caseDepth - lkey;
+	zCase = tempHeigth;
+
+  for(key = isoEnter)
+  {
+    color(key[2])
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+    translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
+    sa_row(key[0][1]) iso_enter() key(true);
   }
 }
 
@@ -367,7 +381,7 @@ colorRiserL="DarkBlue";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(layout,false); */
+/* KeyboardSim(layout,true); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */

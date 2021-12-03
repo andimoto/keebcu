@@ -277,10 +277,6 @@ module extraCutoutHook()
     startx = 0;
     starty = caseDepth - lkey;
     zCase = tempHeigth;
-    echo(startx);
-    echo(lkey);
-    echo(isoEnter[0][0]);
-    echo(startx+lkey*key[0][0]);
 
     /* check for iso Enter key; should be the last row minus 3.5
        iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
@@ -305,6 +301,23 @@ module extraCutoutHook()
   }
 }
 
+/* this module gets called in 'keySim()' and adds a specific
+ * object to the 'key simulation'. it enables placing keys
+  * or other objects to the model simulation */
+module extraKeySimHook()
+{
+  startx = 0;
+	starty = caseDepth - lkey;
+	zCase = tempHeigth;
+
+  for(key = isoEnter)
+  {
+    color(key[2])
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+    translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
+    sa_row(key[0][1]) iso_enter() key(true);
+  }
+}
 
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
@@ -353,7 +366,7 @@ colorRiserL="Green";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(layout,false); */
+/* KeyboardSim(layout,true); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -365,7 +378,7 @@ mainCase(layout);
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */
-/* translate([0,0,0]) mainCaseRight(layout); */
+/* translate([0,200,0]) mainCaseRight(layout); */
 
 /* lidR(); */
 /* lidL(); */
