@@ -68,11 +68,6 @@ skirtSelect = false;
 skirtX = 0;
 skirtY = 0;
 
-/* edge radius of the case
- * Note: be careful here, this interacts with skirtX/Y
- */
-caseRadius=0;
-
 
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
@@ -98,6 +93,12 @@ switchHoleTolerance = -0.2;
 					"row place" is the place of the switch in the row;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
+
+/* place extra keys here which are not aligned
+*  with usual switchhole unit */
+isoEnter = [
+[[13.5,2.5],1.5,"Red"] // ENTER
+];
 
 /* TKL_iso  */
 layout = [
@@ -150,7 +151,7 @@ layout = [
 [[10.5,2],1,"DarkSlateGray"], //P
 [[11.5,2],1,"DarkSlateGray"], //[
 [[12.5,2],1,"DarkSlateGray"], //]
-[[13.5,2.5],1.5,"DarkSlateGray"], // ENTER
+/* [[13.5,2.5],1.5,"DarkSlateGray"], // ENTER */
 [[15.25,2],1,"DarkSlateGray"], // del
 [[16.25,2],1,"DarkSlateGray"], // end
 [[17.25,2],1,"DarkSlateGray"], // pgdn
@@ -196,6 +197,11 @@ layout = [
 [[16.25,5],1,"DarkSlateGray"], //DOWN
 [[17.25,5],1,"DarkSlateGray"], //RIGHT
 ];
+
+/* enable placment of stabilizers on switchholes with x.5 unit in y direction
+ * for example: true for numpad enter or numpad +
+ * if you just want a single unit (1unit keycap) you can set this to false */
+enableStabsOnHalfs = true;
 
 /* move pcb and usb cutout in x direction
    for better placement */
@@ -260,6 +266,46 @@ xRiserL=0;
 include <constants.scad>
 include <keyboardParts.scad>
 
+/* this module gets called in 'holematrix' and adds a specific
+ * object to the 'holematrix'. it enables placing switchholes
+  * or other cutout objects to the model */
+module extraCutoutHook()
+{
+  /* custom: place isoEnter switchhole here */
+  for(key = isoEnter)
+  {
+    startx = 0;
+    starty = caseDepth - lkey;
+    zCase = tempHeigth;
+    echo(startx);
+    echo(lkey);
+    echo(isoEnter[0][0]);
+    echo(startx+lkey*key[0][0]);
+
+    /* check for iso Enter key; should be the last row minus 3.5
+       iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
+       row without F Keys */
+    /* iso enter needs a move of about 2mm into right direction */
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+    translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])
+    switchhole();
+
+    /* iso enter and other stabilizers than spacebar */
+    /* needed to add some extra mm to the costarStabilizer cutouts
+       but different extra for each stabilizer */
+    translate([19.7,-5,0])
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+    translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.5,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
+    rotate([0,0,90]) costarStabilizer();
+
+    translate([-4.7,20,0])
+    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+    translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
+    rotate([0,0,90]) costarStabilizer();
+  }
+}
+
+
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
  * if your keyboard is bigger, you can add some
@@ -307,14 +353,14 @@ colorRiserL="Green";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-KeyboardSim(layout,false);
+/* KeyboardSim(layout,false); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */

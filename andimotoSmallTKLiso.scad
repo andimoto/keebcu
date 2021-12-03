@@ -100,6 +100,8 @@ switchHoleTolerance = -0.2;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
 
+/* place extra keys here which are not aligned
+*  with usual switchhole unit */
 isoEnter = [
 [[13.5,2.5],1.5,"Red"] // ENTER
 ];
@@ -199,6 +201,11 @@ layout = [
 [[16.25,5],1,"MidnightBlue"], //RIGHT
 ];
 
+/* enable placment of stabilizers on switchholes with x.5 unit in y direction
+ * for example: true for numpad enter or numpad +
+ * if you just want a single unit (1unit keycap) you can set this to false */
+enableStabsOnHalfs = true;
+
 /* set this variable to the amount of the rows of your LAYOUT.
  * this will be used in "calcRight" module to add wallThickness
  * to the cut in y direction.
@@ -271,9 +278,12 @@ xRiserL=0;
 include <constants.scad>
 include <keyboardParts.scad>
 
-
+/* this module gets called in 'holematrix' and adds a specific
+ * object to the 'holematrix'. it enables placing switchholes
+  * or other cutout objects to the model */
 module extraCutoutHook()
 {
+  /* custom: place isoEnter switchhole here */
   for(key = isoEnter)
   {
     startx = 0;
@@ -283,6 +293,10 @@ module extraCutoutHook()
     echo(lkey);
     echo(isoEnter[0][0]);
     echo(startx+lkey*key[0][0]);
+
+    /* check for iso Enter key; should be the last row minus 3.5
+       iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
+       row without F Keys */
     /* iso enter needs a move of about 2mm into right direction */
     translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
     translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])

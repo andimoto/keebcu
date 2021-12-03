@@ -68,11 +68,6 @@ skirtSelect = false;
 skirtX = 0;
 skirtY = 0;
 
-/* edge radius of the case
- * Note: be careful here, this interacts with skirtX/Y
- */
-caseRadius=0;
-
 
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
@@ -172,6 +167,11 @@ layout = [
 [[14,4],1,"DarkSlateGray"], //RIGHT
 ];
 
+/* enable placment of stabilizers on switchholes with x.5 unit in y direction
+ * for example: true for numpad enter or numpad +
+ * if you just want a single unit (1unit keycap) you can set this to false */
+enableStabsOnHalfs = true;
+
 /* move pcb and usb cutout in x direction
    for better placement */
 pcbShift=0;
@@ -236,6 +236,15 @@ xRiserL=-13;
 include <constants.scad>
 include <keyboardParts.scad>
 
+/* this module gets called in 'holematrix' and adds a specific
+ * object to the 'holematrix'. it enables placing switchholes
+  * or other cutout objects to the model */
+module extraCutoutHook()
+{
+  /* place nothing here for this current layout */
+}
+
+
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
  * if your keyboard is bigger, you can add some
@@ -279,14 +288,14 @@ colorRiserL="DarkSlateGray";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true);
+/* KeyboardSim(layout,true); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

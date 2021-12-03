@@ -19,6 +19,7 @@ tempHeigth=caseHeight-plateThickness+extra;
 function getExtraFRow(extraFRow=false) = (extraFRow==true) ? lkey*0.5 : 0 ;
 function getSkirtY() = (skirtSelect==true) ? skirtY : 0 ;
 function getSkirtX() = (skirtSelect==true) ? skirtX : 0 ;
+function getHalf(yPosKey) = (yPosKey % 1);
 
 module switchhole(){
 	union(){
@@ -42,6 +43,7 @@ module costarStabilizer(){
 costarStabYdelta = -0.5;
 module holematrix(holes,startx,starty,zCase){
 
+	/* create extra objects to be cutout like isoEnter, etc. */
 	extraCutoutHook();
 
 	for (key = holes){
@@ -50,29 +52,28 @@ module holematrix(holes,startx,starty,zCase){
 
 		/* place switch holes */
 		if(key[1] >= 1){
-			half = key[0][1] % 1;
+			half = getHalf(key[0][1]);// % 1;
 
-			/* check for iso Enter key; should be the last row minus 3.5
-			   iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
-				 row without F Keys */
+
 			if(half == 0.5){
-				/* iso enter needs a move of about 2mm into right direction */
+				/* all switchholes which have vertical sized keycaps like numpad-enter or numpad+ */
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
 				switchhole();
+				
+				if(enableStabsOnHalfs == true)
+				{
+					/* directly add costarStabilizers to this switchhole */
+					translate([19.3,-5,0])
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+					translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
+					rotate([0,0,90]) costarStabilizer();
 
-				/* iso enter and other stabilizers than spacebar */
-				/* needed to add some extra mm to the costarStabilizer cutouts
-				   but different extra for each stabilizer */
-				translate([19.3,-5,0])
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
-				rotate([0,0,90]) costarStabilizer();
-
-				translate([-4.7,20,0])
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
-				rotate([0,0,90]) costarStabilizer();
+					translate([-4.7,20,0])
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+					translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
+					rotate([0,0,90]) costarStabilizer();
+				}
 			}
 			else
 			{
@@ -139,7 +140,7 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 {
 	for (key = holes){
 		/* don't place case stabilizer on iso enter button */
-		half = key[0][1] % 1;
+		half = getHalf(key[0][1]);
 		/* echo(half); */
 		if(key[0][1]!=2.5 && half != 0.5){
 			translate([0,lkey*key[0][1]-1+caseStabMov,innerCaseSpace])

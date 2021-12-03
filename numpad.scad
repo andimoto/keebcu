@@ -127,6 +127,11 @@ layout = [
 
 ];
 
+/* enable placment of stabilizers on switchholes with x.5 unit in y direction
+ * for example: true for numpad enter or numpad +
+ * if you just want a single unit (1unit keycap) you can set this to false */
+enableStabsOnHalfs = true;
+
 /* move pcb and usb cutout in x direction
    for better placement */
 pcbShift=8.5;

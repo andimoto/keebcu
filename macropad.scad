@@ -115,6 +115,11 @@ layout = [
 [[ 4,1.5],1,"Gold"], //4
 ];
 
+/* enable placment of stabilizers on switchholes with x.5 unit in y direction
+ * for example: true for numpad enter or numpad +
+ * if you just want a single unit (1unit keycap) you can set this to false */
+enableStabsOnHalfs = true;
+
 /* move pcb and usb cutout in x direction
    for better placement */
 pcbShift=0;
@@ -178,6 +183,15 @@ xRiserL=0;
 /* ####### include keyboard lib ############ */
 include <constants.scad>
 include <keyboardParts.scad>
+
+/* this module gets called in 'holematrix' and adds a specific
+ * object to the 'holematrix'. it enables placing switchholes
+  * or other cutout objects to the model */
+module extraCutoutHook()
+{
+  /* nothing here for this current layout */
+}
+
 
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
