@@ -172,26 +172,34 @@ usbCutZ=3.4;
  * to calculate a lid with holes for risers
  * and add risers to simulation
  */
-addRisers = false;
+addRisers = true;
 
 /* keyboardRiser config
  * angleBaseX -> width of the riser
  * angleBaseY -> depth of the riser
  */
-angleBaseY=110;
-angleBaseX=60;
+angleBaseY=20;
+angleBaseX=10;
 /* riser edge radius */
 angleBaseRad=1;
 /* polygon; this is the shape of the riser */
 riserPoints = [
 [0,0],
 [angleBaseY,0],
-[0,18]
+[0,5]
 ];
 
 /* optional: move keyboard risers as needed */
-xRiserR=0;
-xRiserL=0;
+xRiserR=-22;
+xRiserL=22;
+/* yRiserAll=0; */
+
+riserConnectorRadius = 4;
+riserConnectorX = 0;
+riserConnectorY1 = 15;
+riserConnectorY2 = 13;
+
+
 
 /* ####### include keyboard lib ############ */
 include <constants.scad>
@@ -254,14 +262,14 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,true); */
+KeyboardSim(layout,false);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-translate([0,0,5]) mainCase(layout);
+/* translate([0,0,5]) mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
@@ -271,4 +279,5 @@ translate([0,0,5]) mainCase(layout);
 /* lidL(); */
 /* lidR(); */
 
-/* keyboardRiser(); */
+/* keyboardRiser(riserPoints,riserConnectorRadius); */
+/* riser(); */

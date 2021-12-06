@@ -425,7 +425,7 @@ module pcbClamp()
 }
 
 
-module riser()
+module riser(polyRiser)
 {
 	/* translate([0,angleBaseY,0]) */
 	mirror([0,1,0])
@@ -433,10 +433,10 @@ module riser()
 	{
 		minkowski() {
 			difference() {
-				rotate([90,180,90]) linear_extrude(height=angleBaseX) polygon(riserPoints);
+				rotate([90,180,90]) linear_extrude(height=angleBaseX) polygon(polyRiser);
 
 				/* cut of the notch */
-				translate([-1,-angleBaseY,-10]) cube([angleBaseX+angleBaseRad*2,20,10]);
+				translate([-angleBaseRad,-angleBaseY-100,-10]) cube([angleBaseX+angleBaseRad*2,100,10]);
 			}
 			cylinder(r=angleBaseRad, h=0.0000000001, center=true);
 		}
@@ -448,20 +448,20 @@ module riserConnector(rCon=5,conHeight=3)
 	union()
 	{
 		/* #cylinder(r=0.1, h=10); */
-		translate([0,20,conHeight]) cylinder(r=rCon, h=conHeight);
-		translate([0,angleBaseY-40,conHeight]) cylinder(r=rCon, h=conHeight); //the 20mm is from the notch cut off of the riser
+		translate([riserConnectorX,riserConnectorY1,conHeight])	cylinder(r=rCon, h=conHeight);
+		translate([riserConnectorX,-rCon*2+riserConnectorY2,conHeight]) cylinder(r=rCon, h=conHeight); //the 20mm is from the notch cut off of the riser
 	}
 }
 
-module keyboardRiser()
+module keyboardRiser(poly,conRadius)
 {
 	translate([0,angleBaseY-20,0])
 	mirror([0,1,0])
 	union()
 	{
 		/* cylinder(r=0.1, h=100); */  //debug needle
-		riser();
-		translate([angleBaseX/2,0,-lidThickness]) riserConnector(rCon=4.98, conHeight=lidThickness);
+		riser(poly);
+		translate([angleBaseX/2,0,-lidThickness]) riserConnector(rCon=conRadius-0.02, conHeight=lidThickness);
 	}
 }
 
