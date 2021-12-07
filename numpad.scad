@@ -263,7 +263,7 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false,4);
+/* KeyboardSim(layout,false,4); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -280,5 +280,6 @@ KeyboardSim(layout,false,4);
 /* lidL(); */
 /* lidR(); */
 
-/* translate([5, 40, -4]) keyboardRiser(); */
+/* translate([5, 40, -4])  */
+keyboardRiser();
 /* riser(); */

@@ -586,8 +586,7 @@ module lid()
 		}
 
 		/* subtract usb cutout and pcb cutout */
-		/* translate([(caseWidth-lkey*3)-0.5,caseDepth-wallThickness+5-2*lkey,lidThickness]) pcbCutout();
-		translate([(caseWidth+5-lkey*3),caseDepth-2,lidThickness]) usbCutout(); */
+	
 		translate([caseWidth-pcbWidth-lkey*2+pcbShift,
 				caseDepth-pcbLength-innerCaseRadius*2-0.25+getExtraFRow(fRowSeparator),
 				lidThickness])
