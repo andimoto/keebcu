@@ -53,7 +53,7 @@ spacebarCut = 4.5;
  * Select separation of F-Row (or Row 0; key[0][1]=0)
  * This will move the upper row by a half unit (lkey*0.5)
  */
-fRowSeparator=true;
+fRowSeparator=false;
 
 /* skirt selctor and skirt settings
  * select 'skirtSelect' as true to activate a additional skirt
@@ -62,7 +62,7 @@ fRowSeparator=true;
  * configured amount to the side of the case.
  * Note: be careful here, this interacts with caseRadius
  */
-skirtSelect = true;
+skirtSelect = false;
 skirtX = 5;
 skirtY = 5;
 
@@ -244,7 +244,7 @@ addRisers = true;
  * angleBaseX -> width of the riser
  * angleBaseY -> depth of the riser
  */
-angleBaseY=110;
+angleBaseY=90;
 angleBaseX=60;
 /* riser edge radius */
 angleBaseRad=1;
@@ -259,12 +259,12 @@ riserPoints = [
 /* optional: move keyboard risers as needed */
 xRiserR=0;
 xRiserL=0;
-yRiserAll=20;
+yRiserAll=0;
 
 riserConnectorRadius = 5;
 riserConnectorX = 0;
-riserConnectorY1 = 90;
-riserConnectorY2 = 30;
+riserConnectorY1 = 60;
+
 
 
 
@@ -335,7 +335,7 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false);
+translate([0,0,30]) KeyboardSim(layout,false,9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -352,4 +352,8 @@ KeyboardSim(layout,false);
 /* lidL(); */
 /* lidR(); */
 
+/* translate([40,30,-5])  */
 /* keyboardRiser(); */
+
+/* riser(riserPoints);*/
+/* riserConnector(); */

@@ -428,12 +428,15 @@ module pcbClamp()
 module riser(polyRiser)
 {
 	/* translate([0,angleBaseY,0]) */
-	mirror([0,1,0])
+	/* mirror([0,1,0]) */
 	union()
 	{
 		minkowski() {
 			difference() {
-				rotate([90,180,90]) linear_extrude(height=angleBaseX) polygon(polyRiser);
+				translate([0, angleBaseY, 0])
+				rotate([90,180,90])
+				linear_extrude(height=angleBaseX)
+				polygon(polyRiser);
 
 				/* cut of the notch */
 				translate([-angleBaseRad,-angleBaseY-100,-10]) cube([angleBaseX+angleBaseRad*2,100,10]);
@@ -447,21 +450,22 @@ module riserConnector(rCon=5,conHeight=3)
 {
 	union()
 	{
-		/* #cylinder(r=0.1, h=10); */
-		translate([riserConnectorX,riserConnectorY1,conHeight])	cylinder(r=rCon, h=conHeight);
-		translate([riserConnectorX,-rCon*2+riserConnectorY2,conHeight]) cylinder(r=rCon, h=conHeight); //the 20mm is from the notch cut off of the riser
+		/* Debug Root */
+		/* cylinder(r=0.1, h=10); */
+		translate([0,0,0])	cylinder(r=rCon, h=conHeight);
+		translate([0,rCon*2+riserConnectorY1,0]) cylinder(r=rCon, h=conHeight); //the 20mm is from the notch cut off of the riser
 	}
 }
 
 module keyboardRiser()
 {
-	translate([0,angleBaseY-20,0])
-	mirror([0,1,0])
+	translate([0,0,0])
+	/* mirror([0,1,0]) */
 	union()
 	{
 		/* cylinder(r=0.1, h=100); */  //debug needle
 		riser(riserPoints);
-		translate([angleBaseX/2,0,-lidThickness]) riserConnector(rCon=riserConnectorRadius-0.02, conHeight=lidThickness);
+		translate([angleBaseX/2,(angleBaseY-riserConnectorY1)/2-riserConnectorRadius,0]) riserConnector(rCon=riserConnectorRadius-0.02, conHeight=lidThickness);
 	}
 }
 
@@ -573,9 +577,11 @@ module lid()
 		if(addRisers == true)
 		{
 			/* subtract cutouts for risers */
-			translate([40+angleBaseX/2+xRiserL,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-(lidThickness+1)])
+			yShiftConnector = -riserConnectorRadius+((caseDepth+getExtraFRow(fRowSeparator)-riserConnectorY1)/2);
+
+			translate([40+angleBaseX/2+xRiserL,yShiftConnector+yRiserAll,0])
 				riserConnector(riserConnectorRadius,conHeight=lidThickness+1);
-			translate([caseWidth-40-angleBaseX/2+xRiserR,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-(lidThickness+1)])
+			translate([caseWidth-40-angleBaseX/2+xRiserR,yShiftConnector+yRiserAll,0])
 				riserConnector(riserConnectorRadius,conHeight=lidThickness+1);
 		}
 
@@ -639,9 +645,9 @@ module lidL()
 /* ################################################## */
 /* ########## complete keyboard simulation ########## */
 /* ################################################## */
-module KeyboardSim(keyboardLayout,DoKeycapSimulation)
+module KeyboardSim(keyboardLayout,DoKeycapSimulation, xRotate)
 {
-	rotate([9,0,0])
+	rotate([xRotate,0,0])
 	union()
 	{
 		color(colorCase) mainCase(keyboardLayout);
@@ -649,11 +655,12 @@ module KeyboardSim(keyboardLayout,DoKeycapSimulation)
 
 		if(addRisers == true)
 		{
+			yShiftConnector = ((caseDepth+getExtraFRow(fRowSeparator)-angleBaseY)/2);
 			color(colorRiserL)
-			translate([40+xRiserL,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-lidThickness])
+			translate([40+xRiserL,yShiftConnector+yRiserAll,-lidThickness])
 				keyboardRiser();
 			color(colorRiserR)
-			translate([caseWidth-angleBaseX-40+xRiserR,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-lidThickness])
+			translate([caseWidth-angleBaseX-40+xRiserR,yShiftConnector+yRiserAll,-lidThickness])
 				keyboardRiser();
 		}
 
