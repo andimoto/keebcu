@@ -270,7 +270,7 @@ colorRiserL="Blue";
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* translate([0,0,5]) mainCase(layout); */
+translate([0,0,5]) mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
@@ -280,6 +280,6 @@ colorRiserL="Blue";
 /* lidL(); */
 /* lidR(); */
 
-/* translate([5, 40, -4])  */
-keyboardRiser();
+
+/* keyboardRiser(); */
 /* riser(); */

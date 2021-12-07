@@ -29,7 +29,6 @@ caseHeight=13;
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
-
 //length, in units, of board
 width=16;
 //Height, in units, of board
@@ -72,8 +71,6 @@ skirtY = 5;
  */
 caseRadius=10;
 
-
-/* ################## calculated vars #################### */
 
 
 /* debug extra for avoiding artefacts @ compilation */

@@ -29,7 +29,6 @@ caseHeight=13;
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
-
 //length, in units, of board
 width=5;
 //Height, in units, of board
@@ -68,11 +67,9 @@ skirtY = 4;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
+ * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
  */
 caseRadius=5;
-
-
-/* ################## calculated vars #################### */
 
 
 /* debug extra for avoiding artefacts @ compilation */
@@ -173,12 +170,21 @@ angleBaseRad=1;
 riserPoints = [
 [0,0],
 [angleBaseY,0],
+[angleBaseY,3],
 [0,18]
 ];
 
 /* optional: move keyboard risers as needed */
 xRiserR=0;
 xRiserL=0;
+yRiserAll=0;
+
+riserConnectorRadius = 5;
+riserConnectorX = 0;
+riserConnectorY1 = 60;
+
+
+
 
 /* ####### include keyboard lib ############ */
 include <constants.scad>
@@ -189,7 +195,13 @@ include <keyboardParts.scad>
   * or other cutout objects to the model */
 module extraCutoutHook()
 {
-  /* nothing here for this current layout */
+}
+
+/* this module gets called in 'keySim()' and adds a specific
+ * object to the 'key simulation'. it enables placing keys
+  * or other objects to the model simulation */
+module extraKeySimHook()
+{
 }
 
 
@@ -232,14 +244,14 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false); */
+KeyboardSim(layout,false,0);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-translate([0,0,30]) mainCase(layout);
+/* translate([0,0,30]) mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

@@ -29,9 +29,6 @@ caseHeight=13;
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
-/* edge radius of the case */
-caseRadius=1;
-
 //length, in units, of board
 width=15;
 //Height, in units, of board
@@ -67,6 +64,15 @@ fRowSeparator=false;
 skirtSelect = false;
 skirtX = 0;
 skirtY = 0;
+
+/* edge radius of the case
+ * Note: be careful here, this interacts with skirtX/Y
+ * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
+ */
+caseRadius=5;
+
+
+/* ################## calculated vars #################### */
 
 
 /* debug extra for avoiding artefacts @ compilation */
@@ -217,7 +223,7 @@ addRisers = true;
  * angleBaseX -> width of the riser
  * angleBaseY -> depth of the riser
  */
-angleBaseY=90;
+angleBaseY=80;
 angleBaseX=80;
 /* riser edge radius */
 angleBaseRad=1;
@@ -225,12 +231,21 @@ angleBaseRad=1;
 riserPoints = [
 [0,0],
 [angleBaseY,0],
-[0,18]
+[angleBaseY,3],
+[0,16]
 ];
 
 /* optional: move keyboard risers as needed */
-xRiserR=13;
-xRiserL=-13;
+xRiserR=0;
+xRiserL=0;
+yRiserAll=0;
+
+riserConnectorRadius = 5;
+riserConnectorX = 0;
+riserConnectorY1 = 50;
+
+
+
 
 /* ####### include keyboard lib ############ */
 include <constants.scad>
@@ -241,7 +256,13 @@ include <keyboardParts.scad>
   * or other cutout objects to the model */
 module extraCutoutHook()
 {
-  /* place nothing here for this current layout */
+}
+
+/* this module gets called in 'keySim()' and adds a specific
+ * object to the 'key simulation'. it enables placing keys
+  * or other objects to the model simulation */
+module extraKeySimHook()
+{
 }
 
 
@@ -288,15 +309,15 @@ colorRiserL="DarkSlateGray";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,true); */
+/* KeyboardSim(layout,false,8); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
-/* lid(); */
+/* mainCase(layout); */
+lid();
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */

@@ -29,9 +29,6 @@ caseHeight=13;
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
-/* edge radius of the case */
-/* caseRadius=1; */
-
 //length, in units, of board
 width=17.25;
 //Height, in units, of board
@@ -71,6 +68,7 @@ skirtY = 0;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
+ * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
  */
 caseRadius=1;
 
@@ -206,12 +204,6 @@ layout = [
  * if you just want a single unit (1unit keycap) you can set this to false */
 enableStabsOnHalfs = true;
 
-/* set this variable to the amount of the rows of your LAYOUT.
- * this will be used in "calcRight" module to add wallThickness
- * to the cut in y direction.
- */
-MaxRows = 6;
-
 /* move pcb and usb cutout in x direction
    for better placement */
 pcbShift=6;
@@ -257,7 +249,7 @@ addRisers = true;
  * angleBaseX -> width of the riser
  * angleBaseY -> depth of the riser
  */
-angleBaseY=110;
+angleBaseY=100;
 angleBaseX=60;
 /* riser edge radius */
 angleBaseRad=1;
@@ -265,12 +257,19 @@ angleBaseRad=1;
 riserPoints = [
 [0,0],
 [angleBaseY,0],
-[0,18]
+[angleBaseY,3],
+[0,16]
 ];
 
 /* optional: move keyboard risers as needed */
 xRiserR=0;
 xRiserL=0;
+yRiserAll=0;
+
+riserConnectorRadius = 5;
+riserConnectorX = 0;
+riserConnectorY1 = 60;
+
 
 
 
@@ -381,14 +380,14 @@ colorRiserL="DarkBlue";
 /* uncomment following line to get the keyboard simulation
  * with keycaps.
  */
-/* KeyboardSim(layout,true); */
+KeyboardSim(layout,false,8);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* translate([0,0,0]) lid(); */
 
 /* ### devided keyboard and lid model ### */
