@@ -453,15 +453,15 @@ module riserConnector(rCon=5,conHeight=3)
 	}
 }
 
-module keyboardRiser(poly,conRadius)
+module keyboardRiser()
 {
 	translate([0,angleBaseY-20,0])
 	mirror([0,1,0])
 	union()
 	{
 		/* cylinder(r=0.1, h=100); */  //debug needle
-		riser(poly);
-		translate([angleBaseX/2,0,-lidThickness]) riserConnector(rCon=conRadius-0.02, conHeight=lidThickness);
+		riser(riserPoints);
+		translate([angleBaseX/2,0,-lidThickness]) riserConnector(rCon=riserConnectorRadius-0.02, conHeight=lidThickness);
 	}
 }
 
@@ -573,10 +573,10 @@ module lid()
 		if(addRisers == true)
 		{
 			/* subtract cutouts for risers */
-			translate([40+angleBaseX/2+xRiserL,(caseDepth/2)-(angleBaseY-20)/2,-(lidThickness+1)])
-				riserConnector(conHeight=lidThickness+1);
-			translate([caseWidth-40-angleBaseX/2+xRiserR,(caseDepth/2)-(angleBaseY-20)/2,-(lidThickness+1)])
-				riserConnector(conHeight=lidThickness+1);
+			translate([40+angleBaseX/2+xRiserL,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-(lidThickness+1)])
+				riserConnector(riserConnectorRadius,conHeight=lidThickness+1);
+			translate([caseWidth-40-angleBaseX/2+xRiserR,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-(lidThickness+1)])
+				riserConnector(riserConnectorRadius,conHeight=lidThickness+1);
 		}
 
 		/* subtract usb cutout and pcb cutout */
@@ -650,10 +650,10 @@ module KeyboardSim(keyboardLayout,DoKeycapSimulation)
 		if(addRisers == true)
 		{
 			color(colorRiserL)
-			translate([40+xRiserL,(caseDepth/2)-(angleBaseY-20)/2,-lidThickness])
+			translate([40+xRiserL,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-lidThickness])
 				keyboardRiser();
 			color(colorRiserR)
-			translate([caseWidth-angleBaseX-40+xRiserR,(caseDepth/2)-(angleBaseY-20)/2,-lidThickness])
+			translate([caseWidth-angleBaseX-40+xRiserR,((caseDepth/2)-(angleBaseY-20)/2)+yRiserAll,-lidThickness])
 				keyboardRiser();
 		}
 
