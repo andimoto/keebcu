@@ -207,10 +207,10 @@ usbCutX=8;
 usbCutY=wallThickness;
 
 /* Arduino Pro Micro USB Port height */
-usbCutZ=3.4;
+/* usbCutZ=3.4; */
 
 /* Teensy2 USB Port height */
-/* usbCutZ=4.5; */
+usbCutZ=4.5;
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
@@ -221,14 +221,14 @@ usbCutZ=3.4;
  * perfectly even if pcbWidth is to much
  */
  /* teensy2 cutout */
- //pcbHeight = 1.8;
- //pcbWidth = 18.5;
- //pcbLength = 31.4;
+ pcbHeight = 1.8;
+ pcbWidth = 18.5;
+ pcbLength = 31.4;
 
  /* arduino pro micro cutout */
- pcbHeight = 2;
- pcbWidth = 18;
- pcbLength = 34;
+ /* pcbHeight = 2; */
+ /* pcbWidth = 18; */
+ /* pcbLength = 34; */
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -331,7 +331,7 @@ colorRiserL="#2C708B";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true,8);
+/* KeyboardSim(layout,true,8); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -348,4 +348,4 @@ KeyboardSim(layout,true,8);
 /* lidL(); */
 /* lidR(); */
 
-/* keyboardRiser(); */
+keyboardRiser();
