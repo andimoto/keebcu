@@ -52,7 +52,7 @@ spacebarCut = 4.5;
  * Select separation of F-Row (or Row 0; key[0][1]=0)
  * This will move the upper row by a half unit (lkey*0.5)
  */
-fRowSeparator=false;
+fRowSeparator=true;
 
 /* skirt selctor and skirt settings
  * select 'skirtSelect' as true to activate a additional skirt
@@ -100,95 +100,95 @@ switchHoleTolerance = -0.2;
 /* ansiUS_smallTKL */
 layout = [
 //start ROW 0 Function ROW
-[[0,0],1,"Gold"], //Esc
-[[2,0],1,"Gold"], //F1
-[[3,0],1,"Gold"], //F2
-[[4,0],1,"Gold"], //F3
-[[5,0],1,"Gold"], //F4
-[[6.5,0],1,"Gold"], //F5
-[[7.5,0],1,"Gold"], //F6
-[[8.5,0],1,"Gold"], //F7
-[[9.5,0],1,"Gold"], //F8
-[[11,0],1,"Gold"], //F9
-[[12,0],1,"Gold"], //F10
-[[13,0],1,"Gold"], //F11
-[[14,0],1,"Gold"], //F12
-[[15.25,0],1,"Gold"], //PrintScreen
-[[16.25,0],1,"Gold"], //PrintScreen
+[[0,0],1,"SlateGray"], //Esc
+[[2,0],1,"Silver"], //F1
+[[3,0],1,"Silver"], //F2
+[[4,0],1,"Silver"], //F3
+[[5,0],1,"Silver"], //F4
+[[6.5,0],1,"SlateGray"], //F5
+[[7.5,0],1,"SlateGray"], //F6
+[[8.5,0],1,"SlateGray"], //F7
+[[9.5,0],1,"SlateGray"], //F8
+[[11,0],1,"Silver"], //F9
+[[12,0],1,"Silver"], //F10
+[[13,0],1,"Silver"], //F11
+[[14,0],1,"Silver"], //F12
+[[15.25,0],1,"SlateGray"], //PrintScreen
+[[16.25,0],1,"SlateGray"], //PrintScreen
 /* [[17,0],1,"Gray"], // Del/Ins */
 //start ROW 1
-[[  0,1],1,"Gold"], //'
-[[1,1],1,"Gold"], //1
-[[2,1],1,"Gold"], //2
-[[3,1],1,"Gold"], //3
-[[4,1],1,"Gold"], //4
-[[5,1],1,"Gold"], //5
-[[6,1],1,"Gold"], //6
-[[7,1],1,"Gold"], //7
-[[8,1],1,"Gold"], //8
-[[9,1],1,"Gold"], //9
-[[10,1],1,"Gold"], //0
-[[11,1],1,"Gold"], //-_
-[[12,1],1,"Gold"], //=+
-[[13,1],2,"Gold"], //backspace
-[[15.25,1],1,"Gold"], //ins
-[[16.25,1],1,"Gold"], //pos1
+[[  0,1],1,"Silver"], //'
+[[1,1],1,"Silver"], //1
+[[2,1],1,"Silver"], //2
+[[3,1],1,"Silver"], //3
+[[4,1],1,"Silver"], //4
+[[5,1],1,"Silver"], //5
+[[6,1],1,"Silver"], //6
+[[7,1],1,"Silver"], //7
+[[8,1],1,"Silver"], //8
+[[9,1],1,"Silver"], //9
+[[10,1],1,"Silver"], //0
+[[11,1],1,"Silver"], //-_
+[[12,1],1,"Silver"], //=+
+[[13,1],2,"SlateGray"], //backspace
+[[15.25,1],1,"SlateGray"], //ins
+[[16.25,1],1,"SlateGray"], //pos1
 //start ROW 2
-[[  0,2],1.5,"Gold"], //TAB
-[[1.5,2],1,"Gold"], //Q
-[[2.5,2],1,"Gold"], //W
-[[3.5,2],1,"Gold"], //E
-[[4.5,2],1,"Gold"], //R
-[[5.5,2],1,"Gold"], //T
-[[6.5,2],1,"Gold"], //Y
-[[7.5,2],1,"Gold"], //U
-[[8.5,2],1,"Gold"], //I
-[[9.5,2],1,"Gold"], //O
-[[10.5,2],1,"Gold"], //P
-[[11.5,2],1,"Gold"], //[
-[[12.5,2],1,"Gold"], //]
-[[13.5,2],1.5,"Gold"], // \
-[[15.25,2],1,"Gold"], // del
-[[16.25,2],1,"Gold"], // end
+[[  0,2],1.5,"SlateGray"], //TAB
+[[1.5,2],1,"Silver"], //Q
+[[2.5,2],1,"Silver"], //W
+[[3.5,2],1,"Silver"], //E
+[[4.5,2],1,"Silver"], //R
+[[5.5,2],1,"Silver"], //T
+[[6.5,2],1,"Silver"], //Y
+[[7.5,2],1,"Silver"], //U
+[[8.5,2],1,"Silver"], //I
+[[9.5,2],1,"Silver"], //O
+[[10.5,2],1,"Silver"], //P
+[[11.5,2],1,"Silver"], //[
+[[12.5,2],1,"Silver"], //]
+[[13.5,2],1.5,"Silver"], // \
+[[15.25,2],1,"SlateGray"], // del
+[[16.25,2],1,"SlateGray"], // end
 //start ROW 3
-[[   0,3],1.75,"Gold"], //CapsLock
-[[1.75,3],1,"Gold"], //A
-[[2.75,3],1,"Gold"], //S
-[[3.75,3],1,"Gold"], //D
-[[4.75,3],1,"Gold"], //F
-[[5.75,3],1,"Gold"], //G
-[[6.75,3],1,"Gold"], //H
-[[7.75,3],1,"Gold"], //J
-[[8.75,3],1,"Gold"], //K
-[[9.75,3],1,"Gold"], //L
-[[10.75,3],1,"Gold"], //;
-[[11.75,3],1,"Gold"], //'
-[[12.75,3],2.25,"Gold"], //ENTER
+[[   0,3],1.75,"SlateGray"], //CapsLock
+[[1.75,3],1,"Silver"], //A
+[[2.75,3],1,"Silver"], //S
+[[3.75,3],1,"Silver"], //D
+[[4.75,3],1,"Silver"], //F
+[[5.75,3],1,"Silver"], //G
+[[6.75,3],1,"Silver"], //H
+[[7.75,3],1,"Silver"], //J
+[[8.75,3],1,"Silver"], //K
+[[9.75,3],1,"Silver"], //L
+[[10.75,3],1,"Silver"], //;
+[[11.75,3],1,"Silver"], //'
+[[12.75,3],2.25,"SlateGray"], //ENTER
 //start ROW 4
-[[   0,4],2.25,"Gold"], //LShift
-[[2.25,4],1,"Gold"], //Z
-[[3.25,4],1,"Gold"], //X
-[[4.25,4],1,"Gold"], //C
-[[5.25,4],1,"Gold"], //V
-[[6.25,4],1,"Gold"], //B
-[[7.25,4],1,"Gold"], //N
-[[8.25,4],1,"Gold"], //M
-[[9.25,4],1,"Gold"], //,
-[[10.25,4],1,"Gold"], //.
-[[11.25,4],1,"Gold"], // /
-[[12.25,4],2.75,"Gold"], //RShift
-[[15.25,4],1,"Gold"], //UP
+[[   0,4],2.25,"SlateGray"], //LShift
+[[2.25,4],1,"Silver"], //Z
+[[3.25,4],1,"Silver"], //X
+[[4.25,4],1,"Silver"], //C
+[[5.25,4],1,"Silver"], //V
+[[6.25,4],1,"Silver"], //B
+[[7.25,4],1,"Silver"], //N
+[[8.25,4],1,"Silver"], //M
+[[9.25,4],1,"Silver"], //,
+[[10.25,4],1,"Silver"], //.
+[[11.25,4],1,"Silver"], // /
+[[12.25,4],2.75,"SlateGray"], //RShift
+[[15.25,4],1,"SlateGray"], //UP
 //start ROW 5
-[[   0,5],1.25,"Gold"], //LCTRL
-[[1.25,5],1.25,"Gold"], //TUX
-[[2.5 ,5],1.25,"Gold"], //ALT
-[[3.75,5],6.25,"Gold"], //SPACE
-[[10  ,5],1.25,"Gold"], //COMP
-[[11.25,5],1.25,"Gold"], //Fn
-[[12.5 ,5],1.25,"Gold"], //RCTRL
-[[14.25,5],1,"Gold"], //LEFT
-[[15.25,5],1,"Gold"], //DOWN
-[[16.25,5],1,"Gold"], //RIGHT
+[[   0,5],1.25,"SlateGray"], //LCTRL
+[[1.25,5],1.25,"SlateGray"], //TUX
+[[2.5 ,5],1.25,"SlateGray"], //ALT
+[[3.75,5],6.25,"Silver"], //SPACE
+[[10  ,5],1.25,"SlateGray"], //COMP
+[[11.25,5],1.25,"SlateGray"], //Fn
+[[12.5 ,5],1.25,"SlateGray"], //RCTRL
+[[14.25,5],1,"SlateGray"], //LEFT
+[[15.25,5],1,"SlateGray"], //DOWN
+[[16.25,5],1,"SlateGray"], //RIGHT
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -316,10 +316,10 @@ screwSpacerRotation=0;
 caseStabMov=0;
 
 /* set colors for simulation */
-colorCase="Gold";
-colorLid="Gold";
-colorRiserR="Gold";
-colorRiserL="Gold";
+colorCase="#2C708B";
+colorLid="DarkSlateGray";
+colorRiserR="#2C708B";
+colorRiserL="#2C708B";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -331,7 +331,7 @@ colorRiserL="Gold";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false,8);
+KeyboardSim(layout,true,8);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
