@@ -261,11 +261,15 @@ riserPoints = [
 [0,16]
 ];
 
-/* optional: move keyboard risers as needed */
+/* optional: move keyboard risers as needed
+   this moves the whole risers */
 xRiserR=0;
 xRiserL=0;
 yRiserAll=0;
 
+/* move connectors (round cylinders on top of risers)
+  around. this is useful for layouts which have a narrow
+  height, but still need risers */
 riserConnectorRadius = 5;
 riserConnectorX = 0;
 riserConnectorY1 = 60;

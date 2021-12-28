@@ -50,6 +50,7 @@ The available keyboard models (in stl directory) should work and have been print
 - andimotoTKL (not printed)
 - andimotoTKLiso (not printed)
 - macropad
+- numpad
 ```
 
 __Note:__
@@ -82,9 +83,11 @@ It describes (in Units):
 A unit is the size of the cutout for a cherry mx style switch. So, for example, a normal key is 1u,
 backspace is 2u or spacebar is for example 6.25u. The size of the cutout for the switch is defined as 'lkey'.
 
-You need to configure 'hight' and 'width' of the case. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be calculatable from the layout array.
+You need to configure 'hight' and 'width' of the case in summury of units. For example: a 5x2 macropad would have width of 5 and a height of 2. These variables are necessary for calculating case sizes. Maybe this will be automated, as the information should be calculatable from the layout array.
 
-After your layout is set you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case. The standard screw size is 3mm. The length depends on the case height, but I used 3x8mm cylinder head screws for my keyboards.
+The 'layout' array variable holds all integer values, including x.5 values in y direction (like numpad enter). Any else switch hole needs to be integrated in the function/module 'extraCutoutHook'. See ISO layout for an example. In this module any 'unaligned' switch hole can be integrated. Properly to that, the module 'extraKeySimHook' allows to integrade additional simulations, like special keycap simulation like IsoEnter, etc.
+
+After configuring your layout, you can adjust and modify the array 'screwHoleArray' to set the scew holes to the right place you want them to. The lid will also use this array, and thus, the screw holes will fit automaticaly to the case. The standard screw size is 3mm. The length depends on the case height, but I used 3x8mm cylinder head screws for my keyboards.
 
 It is also possible to modify the pcb dimensions with the 'pcb'-values. Available sizes for Arduino Pro Micro and Teensy2 are included. Just change the comments to select the right one. I recommend to measure your pcb anyway and check dimensions. You can also move the whole pcb and cutout for usb connection in X direction by setting 'pcbShift' with a positive or negative value.
 
@@ -158,7 +161,7 @@ __This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubun
 - Thin wires
 - 1N4148 diodes
 
-__Note:__ Parts can be bougth from ebay, amazon, etc. There is great choice, but also many things are not available or in stock...
+__Note:__ Parts can be bougth from ebay, amazon, etc. There is a great choice, but also many things are not available or in stock...
 
 
 ## Assembly
