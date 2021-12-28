@@ -179,15 +179,22 @@ addRisers = true;
  * angleBaseY -> depth of the riser
  */
 angleBaseY=90;
-angleBaseX=10;
+angleBaseX=12;
 /* riser edge radius */
 angleBaseRad=1;
 /* polygon; this is the shape of the riser */
-riserPoints = [
+/* riserPoints = [
 [0,0],
 [angleBaseY,0],
 [angleBaseY,2],
 [0,10]
+]; */
+
+riserPoints = [
+[0,0],
+[angleBaseY,0],
+[angleBaseY,4],
+[0,18]
 ];
 
 /* optional: move keyboard risers as needed */
@@ -263,7 +270,7 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true,4);
+/* KeyboardSim(layout,false,4); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -281,5 +288,5 @@ KeyboardSim(layout,true,4);
 /* lidR(); */
 
 
-/* keyboardRiser(); */
+keyboardRiser();
 /* riser(); */
