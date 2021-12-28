@@ -103,28 +103,28 @@ switchHoleTolerance = -0.2;
 
 /* numpad layout */
 layout = [
-[[ 0,1],1,"blue"], //numlock
-[[ 1,1],1,"blue"], // /
-[[ 2,1],1,"blue"], // *
-[[ 3,1],1,"blue"], // -
+[[ 0,1],1,"Blue"], //numlock
+[[ 1,1],1,"Blue"], // /
+[[ 2,1],1,"Blue"], // *
+[[ 3,1],1,"Blue"], // -
 //start ROW 1
-[[ 0,2],1,"blue"], //7
-[[ 1,2],1,"blue"], //8
-[[ 2,2],1,"blue"], //9
-[[ 3,2.5],1,"blue"], // +
+[[ 0,2],1,"DeepSkyBlue"], //7
+[[ 1,2],1,"DeepSkyBlue"], //8
+[[ 2,2],1,"DeepSkyBlue"], //9
+[[ 3,2.5],1,"Blue"], // +
 //start ROW 2
-[[ 0,3],1,"blue"], //4
-[[ 1,3],1,"blue"], //5
-[[ 2,3],1,"blue"], //6
+[[ 0,3],1,"DeepSkyBlue"], //4
+[[ 1,3],1,"DeepSkyBlue"], //5
+[[ 2,3],1,"DeepSkyBlue"], //6
 /* [[ 3,2],1,"MintCream"], //E */
 //start ROW 3
-[[ 0,4],1,"blue"], //1
-[[ 1,4],1,"blue"], //2
-[[ 2,4],1,"blue"], //3
-[[ 3,4.5],1,"blue"], // numpad enter
+[[ 0,4],1,"DeepSkyBlue"], //1
+[[ 1,4],1,"DeepSkyBlue"], //2
+[[ 2,4],1,"DeepSkyBlue"], //3
+[[ 3,4.5],1,"Red"], // numpad enter
 //start ROW 4
-[[ 0,5],2,"red"], //0
-[[ 2,5],1,"blue"], //,
+[[ 0,5],2,"DeepSkyBlue"], //0
+[[ 2,5],1,"DeepSkyBlue"], //,
 
 ];
 
@@ -248,10 +248,10 @@ caseStabMov=0;
 
 
 /* set colors for simulation */
-colorCase="White";
-colorLid="Green";
-colorRiserR="Gold";
-colorRiserL="Blue";
+colorCase="DarkBlue";
+colorLid="DarkBlue";
+colorRiserR="DarkBlue";
+colorRiserL="DarkBlue";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -263,7 +263,7 @@ colorRiserL="Blue";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,false,4); */
+KeyboardSim(layout,true,4);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -281,5 +281,5 @@ colorRiserL="Blue";
 /* lidR(); */
 
 
-keyboardRiser();
+/* keyboardRiser(); */
 /* riser(); */

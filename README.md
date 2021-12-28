@@ -252,6 +252,8 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/75er013.png)
 
+![](pics/numpad_render.png)
+
 ![](pics/75er002.png)
 
 ![](pics/75er003.png)
@@ -304,6 +306,10 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 ![](pics/img/IMG_20210406_151405.jpg)
 
 ![](pics/img/IMG_20210406_151326.jpg)
+
+![](pics/pics/numpad_001.jpg)
+
+![](pics/pics/numpad_002.jpg)
 
 ![](pics/pics/macro001.JPG)
 
