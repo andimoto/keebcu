@@ -183,13 +183,6 @@ angleBaseX=12;
 /* riser edge radius */
 angleBaseRad=1;
 /* polygon; this is the shape of the riser */
-/* riserPoints = [
-[0,0],
-[angleBaseY,0],
-[angleBaseY,2],
-[0,10]
-]; */
-
 riserPoints = [
 [0,0],
 [angleBaseY,0],
