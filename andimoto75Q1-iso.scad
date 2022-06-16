@@ -61,15 +61,15 @@ fRowSeparator=true;
  * configured amount to the side of the case.
  * Note: be careful here, this interacts with caseRadius
  */
-skirtSelect = false;
-skirtX = 0;
-skirtY = 0;
+skirtSelect = true;
+skirtX = 7;
+skirtY = 7;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
  * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
  */
-caseRadius=1;
+caseRadius=3;
 
 
 /* ################## calculated vars #################### */
@@ -181,7 +181,7 @@ layout = [
 [[10.25,4],1,"GhostWhite"], //.
 [[11.25,4],1,"GhostWhite"], // -
 [[12.25,4],1.75,"#5883AC"], //RShift
-[[14.25,4],1,"#5883AC"], //UP
+[[14.25,4.25],1,"#5883AC"], //UP
 //[[15,4],1,"#5883AC"], //end
 //start ROW 5
 [[   0,5],1.25,"#5883AC"], //LCTRL
@@ -191,9 +191,9 @@ layout = [
 [[10  ,5],1,"#5883AC"], //AltGr/Compose
 [[11,5],1,"#5883AC"], //Fn
 [[12,5],1,"#5883AC"], //Strg
-[[13.25,5],1,"#5883AC"], //LEFT
-[[14.25,5],1,"#5883AC"], //DOWN
-[[15.25,5],1,"#5883AC"], //RIGHT
+[[13.25,5.25],1,"#5883AC"], //LEFT
+[[14.25,5.25],1,"#5883AC"], //DOWN
+[[15.25,5.25],1,"#5883AC"], //RIGHT
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -323,7 +323,7 @@ module extraKeySimHook()
     color(key[2])
     translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
     translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
-    sa_row(key[0][1]) iso_enter() key(true);
+    iso_enter() key(true, $fn=setKeycapFragments);
   }
 }
 
@@ -337,17 +337,17 @@ screwHoleArray = [
 [24,lkey-0.4], //left lower row
 [114,lkey-0.4],
 [170,lkey-0.4],
-[285.5,lkey-0.4], // right lower row
+[291.5,lkey-0.4], // right lower row
 
 [24,lkey*3+wallThickness-3], //left mid row
 [124,lkey*3+wallThickness-3],
 [162,lkey*3+wallThickness-3],
-[285,lkey*3+wallThickness-3], //right mid row
+[291,lkey*3+wallThickness-3], //right mid row
 
 [19,lkey*5+wallThickness-3], //left upper row
 [133,lkey*5+wallThickness-3],
 [171,lkey*5+wallThickness-3],
-[285.5,lkey*5+wallThickness-3], //right upper row
+[291,lkey*5+wallThickness-3], //right upper row
 ];
 
 /* rotate screw hole spacers */
@@ -361,10 +361,10 @@ screwSpacerRotation=0;
 caseStabMov=0;
 
 /* set colors for simulation */
-colorCase="Gainsboro";
-colorLid="White";
-colorRiserR="Gainsboro";
-colorRiserL="Gainsboro";
+colorCase="White";
+colorLid="DarkSlateGray";
+colorRiserR="DarkSlateGray";
+colorRiserL="DarkSlateGray";
 
 /* color simulation for switches
   select top and bottom color */
@@ -378,8 +378,8 @@ switchColorBottom = "Black";
    NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
-keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
-setKeycapFragments = 50;
+keycapProfile = "OEM"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+setKeycapFragments = 80;
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -391,14 +391,14 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true,9.5);
+/* KeyboardSim(layout,true,9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

@@ -13,6 +13,8 @@ include <../KeyV2/includes.scad>
 
 /* variable for calculation */
 cutLength = 0;
+/* this variable  */
+cutThrough = 5;
 
 tempHeigth=caseHeight-plateThickness+extra;
 
@@ -23,8 +25,8 @@ function getHalf(yPosKey) = (yPosKey % 1);
 
 module switchhole(){
 	union(){
-		translate([0,0,-extra/2])
-		cube([holesize+switchHoleTolerance,holesize+switchHoleTolerance,plateThickness+extra]);
+		translate([0,0,-extra/2-cutThrough])
+		cube([holesize+switchHoleTolerance,holesize+switchHoleTolerance,plateThickness+cutThrough+extra]);
 	}
 }
 
@@ -88,8 +90,6 @@ module holematrix(holes,startx,starty,zCase){
 			}
 		}
 
-
-
 		/* place switch holes - end */
 
 		/* debugging - remove comment to show root point of holesize */
@@ -129,16 +129,15 @@ module holematrix(holes,startx,starty,zCase){
 	}
 }
 
-
-
-
 module caseStabilizer(w,h,holes,startx,starty,zCase)
 {
 	for (key = holes){
 		/* don't place case stabilizer on iso enter button */
 		half = getHalf(key[0][1]);
 		/* echo(half); */
-		if(key[0][1]!=2.5 && half != 0.5){
+		/* place horizontal case stabilizer under the corresponding switchhole,
+		but only if switch placement is a integer number (no rest of modulo) */
+		if(key[0][1]!=2.5 && half == 0){
 			translate([0,lkey*key[0][1]-1+caseStabMov,innerCaseSpace])
 			cube([w,1,caseHeight-plateThickness-innerCaseSpace]);
 		}
@@ -195,25 +194,25 @@ module keyProfile(row)
 {
 	if(keycapProfile == "SA")	{
 		sa_row(row)
-		key();
+		key($fn=setKeycapFragments);
 	}	else if(keycapProfile == "DSA")	{
 		/* fix dsa row to 3 */
 		dsa_row(3)
-		key();
+		key($fn=setKeycapFragments);
 	}	else if(keycapProfile == "DCS")	{
 		dcs_row(row);
-		key();
+		key($fn=setKeycapFragments);
 	}	else if(keycapProfile == "OEM")	{
 		oem_row(row);
-		key();
+		key($fn=setKeycapFragments);
 	}else if(keycapProfile == "G20")	{
 		g20_row(row);
-		key();
+		key($fn=setKeycapFragments);
 	}else if(keycapProfile == "Hi-Pro")	{
 		hipro_row(row);
-		key();
+		key($fn=setKeycapFragments);
 	}else{
-		key();
+		key($fn=setKeycapFragments);
 	}
 }
 
@@ -534,13 +533,17 @@ module mainCase(keyboardLayout){
 		union()
 		{
 			difference(){
-				case();
+				union()
+				{
+					case();
+					caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+				}
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
 				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
 					caseDepth-2+getExtraFRow(fRowSeparator),1])
 					usbCutout();
 			}
-			caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+			/* caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth); */
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
 			caseScrewSpacerLoop(r10=2.5);
 		}
