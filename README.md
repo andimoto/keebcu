@@ -273,10 +273,6 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/75er010.png)
 
-![](pics/75er011.png)
-
-![](pics/75er012.png)
-
 ![](pics/keebCase.png)
 
 ![](pics/keebCaseLocks.png)
