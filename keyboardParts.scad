@@ -191,6 +191,31 @@ module switchSim()
 	}
 }
 
+module keyProfile(row)
+{
+	if(keycapProfile == "SA")	{
+		sa_row(row)
+		key();
+	}	else if(keycapProfile == "DSA")	{
+		/* fix dsa row to 3 */
+		dsa_row(3)
+		key();
+	}	else if(keycapProfile == "DCS")	{
+		dcs_row(row);
+		key();
+	}	else if(keycapProfile == "OEM")	{
+		oem_row(row);
+		key();
+	}else if(keycapProfile == "G20")	{
+		g20_row(row);
+		key();
+	}else if(keycapProfile == "Hi-Pro")	{
+		hipro_row(row);
+		key();
+	}else{
+		key();
+	}
+}
 
 module keySim(holes)
 {
@@ -223,44 +248,44 @@ module keySim(holes)
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			6_25u() sa_row(key[0][1]) key();
+			6_25u() keyProfile(key[0][1]);
 		}
 
 		else if (key[1]==2.75){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			2_75u() sa_row(key[0][1]) key();
+			2_75u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==2.25){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			2_25u() sa_row(key[0][1]) key();
+			2_25u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==2){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			2u() sa_row(key[0][1]) key();
+			2u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==1.75){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			u(u=1.75) sa_row(key[0][1]) key();
+			u(u=1.75) keyProfile(key[0][1]);
 		}
 		else if (key[1]==1.5){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			1_5u() sa_row(key[0][1]) key();
+			1_5u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==1.25){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			1_25u() sa_row(key[0][1]) key();
+			1_25u() keyProfile(key[0][1]);
 		}
 		else /* 1u keys */
 		{
@@ -270,14 +295,14 @@ module keySim(holes)
 				color(key[2])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), 0])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				1u() sa_row(key[0][1]) key();
+				1u() keyProfile(key[0][1]);
 			}
 			else
 			{
 				color(key[2])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				1u() sa_row(key[0][1]) key();
+				1u() keyProfile(key[0][1]);
 			}
 		}
 	}
@@ -592,7 +617,7 @@ module lid()
 		}
 
 		/* subtract usb cutout and pcb cutout */
-	
+
 		translate([caseWidth-pcbWidth-lkey*2+pcbShift,
 				caseDepth-pcbLength-innerCaseRadius*2-0.25+getExtraFRow(fRowSeparator),
 				lidThickness])

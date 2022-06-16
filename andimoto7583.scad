@@ -330,6 +330,16 @@ colorRiserL="Gainsboro";
 switchColorTop = "Ivory";
 switchColorBottom = "Black";
 
+/* simulate a keycap profile with number of fragments ($fn = setKeycapFragments)
+   which will be set to key() call.
+   KeyV2 currently (2022-06) does not support XDA.
+   Use DSA as they look very similar
+   NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
+   of DSA caps
+   NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
+keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+setKeycapFragments = 50;
+
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
 /* All calls after this line have to be ignored by the build script.
