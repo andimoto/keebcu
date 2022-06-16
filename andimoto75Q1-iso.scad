@@ -361,7 +361,7 @@ screwSpacerRotation=0;
 caseStabMov=0;
 
 /* set colors for simulation */
-colorCase="White";
+colorCase="RoyalBlue";
 colorLid="DarkSlateGray";
 colorRiserR="DarkSlateGray";
 colorRiserL="DarkSlateGray";
@@ -379,7 +379,7 @@ switchColorBottom = "Black";
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
 keycapProfile = "OEM"; // SA, DSA, DCS, G20, Hi-Pro, OEM
-setKeycapFragments = 80;
+setKeycapFragments = 100;
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -391,14 +391,14 @@ setKeycapFragments = 80;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,true,9.5); */
+KeyboardSim(layout,true,9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */
