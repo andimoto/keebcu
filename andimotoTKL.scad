@@ -325,6 +325,11 @@ colorLid="White";
 colorRiserR="White";
 colorRiserL="White";
 
+/* color simulation for switches
+  select top and bottom color */
+switchColorTop = "Ivory";
+switchColorBottom = "Black";
+
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
 /* All calls after this line have to be ignored by the build script.

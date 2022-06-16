@@ -373,7 +373,10 @@ colorLid="DarkBlue";
 colorRiserR="DarkBlue";
 colorRiserL="DarkBlue";
 
-
+/* color simulation for switches
+  select top and bottom color */
+switchColorTop = "Ivory";
+switchColorBottom = "Black";
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/

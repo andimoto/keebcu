@@ -179,11 +179,15 @@ module switchSim()
 {
 	translate([-7,-7,0]) union()
 	{
-		translate([0,10.5,0]) rotate([90,0,0]) linear_extrude(7) polygon(switchSimArray);
-		translate([3.5,0,0]) rotate([90,0,90]) linear_extrude(7) polygon(switchSimArray);
+		color(switchColorTop) translate([0,10.5,0])
+			rotate([90,0,0]) linear_extrude(7) polygon(switchSimArray);
+		color(switchColorTop) translate([3.5,0,0])
+			rotate([90,0,90]) linear_extrude(7) polygon(switchSimArray);
 
-		translate([0,3.5,0]) rotate([270,0,0]) linear_extrude(7) polygon(switchSimArray);
-		translate([3.5,14,0]) rotate([90,180,90]) linear_extrude(7) polygon(switchSimArray);
+		color(switchColorBottom) translate([0,3.5,0])
+			rotate([270,0,0]) linear_extrude(7)  polygon(switchSimArray);
+		color(switchColorBottom) translate([3.5,14,0])
+			rotate([90,180,90]) linear_extrude(7) polygon(switchSimArray);
 	}
 }
 
@@ -198,18 +202,20 @@ module keySim(holes)
 	extraKeySimHook();
 
 	for (key = holes){
-		/* switch simulation for F-Row */
+		/* switch simulation for F-Row
+		   this actually sets a pragmatic mockup for a real switch into the hole!
+			 so a switch will be simulated */
 		if(key[0][1]==0 && fRowSeparator==true)
 		{
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), zCase-extra])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
-			color("black") switchSim();
+			switchSim();
 		}
 		else
 		{
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
-			color("black") switchSim();
+			switchSim();
 		}
 
 
