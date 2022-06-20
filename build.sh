@@ -1,22 +1,22 @@
 #!/bin/bash
 
 #if you have not installed OpenSCAD over package manager, download OpenSCAD (as appImage for example)
-#and set 'export OPENSCADPATH=<DIRECTORY>/OpenSCAD-***.appImage'
+#and set 'export OPENSCADBINPATH=<DIRECTORY>/OpenSCAD-***.appImage'
 
 #check if openscad is available
-#search in default PATH and then search if OPENSCADPATH is set
+#search in default PATH and then search if OPENSCADBINPATH is set
 echo "Check OpenSCAD PATH..."
 if [ -x openscad ]
 then
 	echo "OpenSCAD found..."
-	OPENSCADPATH=openscad
+	OPENSCADBINPATH=openscad
 else
-  if [ -z $OPENSCADPATH ]
+  if [ -z $OPENSCADBINPATH ]
   then
-    echo "OpenSCAD not found! Install OpenSCAD or set 'export OPENSCADPATH=path/to/openscad'"
+    echo "OpenSCAD not found! Install OpenSCAD or set 'export OPENSCADBINPATH=path/to/openscad'"
     exit 1
   else
-    echo "OpenSCAD PATH is $OPENSCADPATH"
+    echo "OpenSCAD PATH is $OPENSCADBINPATH"
   fi
 fi
 
@@ -84,7 +84,7 @@ for i in $modules; do
 		outputFile=`echo "$i" | cut -d \( -f 1`
 		outputFile=$keebcu\_$outputFile\.stl
 		echo $outputFile
-		$OPENSCADPATH -o $outputDir/$outputFile $tempDir/temp$scadFile
+		$OPENSCADBINPATH -o $outputDir/$outputFile $tempDir/temp$scadFile
 		if [ $? == 0 ]
 		then
 			echo "################### done module: $i ###################"
