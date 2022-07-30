@@ -15,6 +15,8 @@ remove the call for placing all keycaps on the keyboard.
 
 /* ###### don't touch this! ###### */
 //Unit square length, from Cherry MX data sheet
+//this is the size of 1unit including keycap size and
+//the space to the next keycap
 lkey=19.05;
 //Hole size, from Cherry MX data sheet
 holesize=14;

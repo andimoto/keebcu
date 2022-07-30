@@ -309,6 +309,27 @@ module extraCutoutHook()
   }
 }
 
+module extraKeycapCutoutHook()
+{
+  /* custom: place isoEnter switchhole here */
+  for(key = isoEnter)
+  {
+    startx = 0;
+    starty = caseDepth - lkey;
+    zCase = tempHeigth;
+
+
+    /* iso enter needs a separate cutout
+     * cutout is made by placing 0.5 unit above and lower
+     */
+    translate([startx+lkey*key[0][0], starty-lkey*(key[0][1]-getHalf(key[0][1])), 0])
+    keycapSpace(key[1]);
+    translate([startx+lkey*key[0][0], starty-lkey*(key[0][1]+getHalf(key[0][1])), 0])
+    keycapSpace(key[1]);
+
+  }
+}
+
 /* this module gets called in 'keySim()' and adds a specific
  * object to the 'key simulation'. it enables placing keys
   * or other objects to the model simulation */
@@ -391,14 +412,14 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true,9.5);
+/* KeyboardSim(layout,true,9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* lid(); */
 
 /* ### devided keyboard and lid model ### */

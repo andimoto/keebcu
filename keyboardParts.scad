@@ -129,6 +129,59 @@ module holematrix(holes,startx,starty,zCase){
 	}
 }
 
+module keycapSpace(factor=1)
+{
+	union(){
+		translate([0,0,0])
+		cube([lkey*factor,lkey,plateThickness+cutThrough+extra]);
+	}
+}
+
+module keycapMatrix(holes,startx,starty,zCase)
+{
+	extraKeycapCutoutHook();
+	for (key = holes){
+		/* echo (key[0][0],key[0][1],key[1]); */
+		/* place switch holes */
+		if(key[1] >= 1){
+			half = getHalf(key[0][1]);// % 1;
+			if(half == 0.5){
+				/* all switchholes which have vertical sized keycaps like numpad-enter or numpad+ */
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				keycapSpace();
+
+				if(enableStabsOnHalfs == true)
+				{
+					/* directly add costarStabilizers to this switchhole */
+					translate([19.3,-5,0])
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+					translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
+					rotate([0,0,90]) costarStabilizer();
+
+					translate([-4.7,20,0])
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+					translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
+					rotate([0,0,90]) costarStabilizer();
+				}
+			}
+			else
+			{
+				if((key[0][1]==0) && (fRowSeparator==true))
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1])+getExtraFRow(fRowSeparator), 0])
+					keycapSpace(key[1]);
+				}
+				else
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+					keycapSpace(key[1]);
+				}
+			}
+		}
+	}
+}
+
 module caseStabilizer(w,h,holes,startx,starty,zCase)
 {
 	for (key = holes){
@@ -504,10 +557,6 @@ module case(){
 	difference() {
 		union()
 		{
-			minkowski() {
-				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
-				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
-	  	}
 			if(skirtSelect == true)
 			{
 				//add some skirt to the case if selected
@@ -516,6 +565,12 @@ module case(){
 					cube([caseWidth+(1+skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,caseHeight]);
 					cylinder(r=caseRadius, h=0.0000000001, center=true);
 			  }
+			}else{
+				/* skirtSelect is set to false - just calculate case */
+				minkowski() {
+					cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
+					cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
+		  	}
 			}
 		}
 		translate([wallThickness,wallThickness,-extra])
@@ -549,6 +604,8 @@ module mainCase(keyboardLayout){
 		}
 		translate([0,0,-plateThickness]) caseScrewHolesLoop(r20=1.45);
 	}
+
+	translate([0,0,10]) keycapMatrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
 }
 
 
