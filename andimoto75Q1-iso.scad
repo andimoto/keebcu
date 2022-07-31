@@ -309,6 +309,11 @@ module extraCutoutHook()
   }
 }
 
+/* this module gets called in 'keycapMatrix()' and adds a specific
+ * object to the keycapMatrix. keycapMatrix is needed as a cutout element
+ * from the frame. this hook gives possibility to add more elements such
+ * as the enter keycap.
+ */
 module extraKeycapCutoutHook()
 {
   /* custom: place isoEnter switchhole here */
@@ -381,9 +386,10 @@ screwSpacerRotation=0;
  */
 caseStabMov=0;
 
-/* set colors for simulation */
-colorCase="RoyalBlue";
-colorLid="DarkSlateGray";
+/* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
+colorCaseTop="Grey";
+colorCaseMid="Grey";
+colorLid="Black";
 colorRiserR="DarkSlateGray";
 colorRiserL="DarkSlateGray";
 

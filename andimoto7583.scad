@@ -279,6 +279,15 @@ module extraCutoutHook()
 {
 }
 
+/* this module gets called in 'keycapMatrix()' and adds a specific
+ * object to the keycapMatrix. keycapMatrix is needed as a cutout element
+ * from the frame. this hook gives possibility to add more elements such
+ * as the enter keycap.
+ */
+module extraKeycapCutoutHook()
+{
+}
+
 /* this module gets called in 'keySim()' and adds a specific
  * object to the 'key simulation'. it enables placing keys
   * or other objects to the model simulation */
@@ -320,7 +329,8 @@ screwSpacerRotation=0;
 caseStabMov=0;
 
 /* set colors for simulation */
-colorCase="Gainsboro";
+colorCaseTop="WHite";
+colorCaseMid="Gainsboro";
 colorLid="White";
 colorRiserR="Gainsboro";
 colorRiserL="Gainsboro";

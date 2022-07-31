@@ -149,21 +149,7 @@ module keycapMatrix(holes,startx,starty,zCase)
 				/* all switchholes which have vertical sized keycaps like numpad-enter or numpad+ */
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				keycapSpace();
-
-				if(enableStabsOnHalfs == true)
-				{
-					/* directly add costarStabilizers to this switchhole */
-					translate([19.3,-5,0])
-					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-					translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
-					rotate([0,0,90]) costarStabilizer();
-
-					translate([-4.7,20,0])
-					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-					translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
-					rotate([0,0,90]) costarStabilizer();
-				}
+				scale([1,1,key[1]]) keycapSpace(); /*todo: test this with numpad!!*/
 			}
 			else
 			{
@@ -182,6 +168,16 @@ module keycapMatrix(holes,startx,starty,zCase)
 	}
 }
 
+module capFrame(capLayout)
+{
+	difference()
+	{
+		outerCase(h=6);
+		translate([0,0,-extra]) keycapMatrix(capLayout,0,caseDepth-lkey,tempHeigth);
+	}
+}
+
+
 module caseStabilizer(w,h,holes,startx,starty,zCase)
 {
 	for (key = holes){
@@ -189,8 +185,10 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 		half = getHalf(key[0][1]);
 		/* echo(half); */
 		/* place horizontal case stabilizer under the corresponding switchhole,
-		but only if switch placement is a integer number (no rest of modulo) */
-		if(key[0][1]!=2.5 && half == 0){
+		but only if switch placement is a integer number (no rest of modulo) and
+		not on the 1st row (key[0][1]==0 ) because this places the caseStabilizer inside
+		the case wall and ruins color simulation*/
+		if(key[0][1]!=2.5 && key[0][1] != 0 && half == 0){
 			translate([0,lkey*key[0][1]-1+caseStabMov,innerCaseSpace])
 			cube([w,1,caseHeight-plateThickness-innerCaseSpace]);
 		}
@@ -552,6 +550,24 @@ module keyboardRiser()
 	}
 }
 
+module outerCase(h)
+{
+	if(skirtSelect == true)
+	{
+		//add some skirt to the case if selected
+		translate([-1-skirtX+caseRadius,-1-skirtY+caseRadius,0])
+		minkowski() {
+			cube([caseWidth+(1+skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,h]);
+			cylinder(r=caseRadius, h=0.0000000001, center=true);
+		}
+	}else{
+		/* skirtSelect is set to false - just calculate case */
+		minkowski() {
+			cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),h]);
+			cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
+		}
+	}
+}
 
 module case(){
 	difference() {
@@ -559,18 +575,11 @@ module case(){
 		{
 			if(skirtSelect == true)
 			{
-				//add some skirt to the case if selected
-				translate([-1-skirtX+caseRadius,-1-skirtY+caseRadius,0])
-				minkowski() {
-					cube([caseWidth+(1+skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,caseHeight]);
-					cylinder(r=caseRadius, h=0.0000000001, center=true);
-			  }
+				translate([0,0,caseHeight-plateThickness]) color(colorCaseTop) outerCase(h=plateThickness);
+				color(colorCaseMid) outerCase(h=caseHeight-plateThickness);
 			}else{
-				/* skirtSelect is set to false - just calculate case */
-				minkowski() {
-					cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
-					cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
-		  	}
+				translate([0,0,caseHeight-plateThickness]) color(colorCaseTop) outerCase(h=plateThickness);
+				color(colorCaseMid) outerCase(h=caseHeight-plateThickness);
 			}
 		}
 		translate([wallThickness,wallThickness,-extra])
@@ -605,7 +614,7 @@ module mainCase(keyboardLayout){
 		translate([0,0,-plateThickness]) caseScrewHolesLoop(r20=1.45);
 	}
 
-	translate([0,0,10]) keycapMatrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
+	translate([0,0,20]) capFrame(keyboardLayout);
 }
 
 
@@ -740,7 +749,7 @@ module KeyboardSim(keyboardLayout,DoKeycapSimulation, xRotate)
 	rotate([xRotate,0,0])
 	union()
 	{
-		color(colorCase) mainCase(keyboardLayout);
+		mainCase(keyboardLayout);
 		translate([0,0,-3]) color(colorLid) lid();
 
 		if(addRisers == true)
