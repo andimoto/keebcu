@@ -386,6 +386,36 @@ screwSpacerRotation=0;
  */
 caseStabMov=0;
 
+
+frameScrewHoleArray = [
+[-skirtX/2,-skirtY/2], //lower row
+[caseWidth/2-lkey,-skirtY/2],
+[caseWidth/4,-skirtY/2],
+[caseWidth/2+lkey,-skirtY/2], //lower row
+[caseWidth-caseWidth/4,-skirtY/2],
+[caseWidth+skirtX/2,-skirtY/2],
+
+[-skirtX/2,lkey*1.5], //lower row
+[caseWidth+skirtX/2,lkey*1.5],
+
+[-skirtX/2,caseDepth-lkey*0.75], //lower row
+[caseWidth/2-lkey,caseDepth-lkey*0.75],
+[caseWidth/4,caseDepth-lkey*0.75],
+[caseWidth/2+lkey,caseDepth-lkey*0.75], //lower row
+[caseWidth-caseWidth/4,caseDepth-lkey*0.75],
+[caseWidth+skirtX/2,caseDepth-lkey*0.75],
+
+[-skirtX/2,caseDepth+lkey*0.5+skirtY/2], //lower row
+[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2],
+[caseWidth/4,caseDepth+lkey*0.5+skirtY/2],
+[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2], //lower row
+[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2],
+[caseWidth+skirtX/2,caseDepth+lkey*0.5+skirtY/2]
+];
+
+
+
+
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
 colorCaseTop="Grey";
 colorCaseMid="Grey";
@@ -418,15 +448,17 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,true,9.5); */
+KeyboardSim(layout,true,9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* lid(); */
+
+/* capFrame(layout); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */

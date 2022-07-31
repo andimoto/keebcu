@@ -168,15 +168,46 @@ module keycapMatrix(holes,startx,starty,zCase)
 	}
 }
 
+module capFrameScrewHoles(screwRad,screwLen,noSupport=true)
+{
+	for(hole = frameScrewHoleArray)
+	{
+		translate([hole[0],hole[1],0])
+		union()
+		{
+			if(noSupport == true)
+			{
+				difference() {
+					translate([0,0,-0.2]) cylinder(r=screwRad,h=0.2);
+					translate([screwRad/2,-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+					translate([-(screwRad+screwRad/2),-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+				}
+			}
+			cylinder(r=screwRad,h=screwLen+extra);
+		}
+	}
+}
+
+/* translate([0,0,30]) capFrameScrewHoles(2.1,3,true); */
+
 module capFrame(capLayout)
 {
 	difference()
 	{
+		/* 6mm is the height of the plate to the keycap usally */
 		outerCase(h=6);
 		translate([0,0,-extra]) keycapMatrix(capLayout,0,caseDepth-lkey,tempHeigth);
+
+		capFrameScrewHoles(screwRad=1.1,screwLen=6,noSupport=false);
+		translate([0,0,3]) capFrameScrewHoles(screwRad=2.1,screwLen=3);
 	}
+
 }
 
+module capFrameR(capLayout)
+{
+	capFrame(capLayout);
+}
 
 module caseStabilizer(w,h,holes,startx,starty,zCase)
 {
@@ -610,11 +641,13 @@ module mainCase(keyboardLayout){
 			/* caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth); */
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
 			caseScrewSpacerLoop(r10=2.5);
+
 		}
 		translate([0,0,-plateThickness]) caseScrewHolesLoop(r20=1.45);
+		translate([0,0,plateThickness]) capFrameScrewHoles(screwRad=1.1,screwLen=caseHeight-plateThickness,noSupport=false);
 	}
 
-	translate([0,0,20]) capFrame(keyboardLayout);
+	
 }
 
 
