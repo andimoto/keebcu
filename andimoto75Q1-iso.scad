@@ -25,7 +25,7 @@ wallThickness=3;
 /* height of the case */
 caseHeight=13;
 
-/* space between inner case stabilizers
+/* space between inner case stabilizers (no costar stabs)
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
@@ -60,10 +60,21 @@ fRowSeparator=true;
  * are configurable as you want the skirt. These values ADD the
  * configured amount to the side of the case.
  * Note: be careful here, this interacts with caseRadius
+ *
+ * If this is activated you can call 'capFrame()'
+ * (or capFrameR/capFrameL) to create a nice frame
+ * around the keycaps to cover the switches. This may give
+ * a cleaner look if this is prefered.
  */
 skirtSelect = true;
 skirtX = 7;
 skirtY = 7;
+
+/* enables screw holes in frame (if capFrame() is called)
+   and in the case. The screws will be placed according to
+   the array frameScrewHoleArray[] around the case and frame.
+   */
+frameScrewsEnable = true;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
@@ -386,42 +397,44 @@ screwSpacerRotation=0;
  */
 caseStabMov=0;
 
-
+/*  */
 frameScrewHoleArray = [
-[-skirtX/2,-skirtY/2], //lower row
-[caseWidth/2-lkey,-skirtY/2],
-[caseWidth/4,-skirtY/2],
-[caseWidth/2+lkey,-skirtY/2], //lower row
-[caseWidth-caseWidth/4,-skirtY/2],
-[caseWidth+skirtX/2,-skirtY/2],
+[-skirtX/2-innerCaseRadius/2,-skirtY/2-innerCaseRadius/2], //lower row
+[caseWidth/4,-skirtY/2-innerCaseRadius/2],
+[caseWidth/2-lkey,-skirtY/2-innerCaseRadius/2],
+[caseWidth/2+lkey,-skirtY/2-innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,-skirtY/2-innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,-skirtY/2-innerCaseRadius/2],
 
-[-skirtX/2,lkey*1.5], //lower row
-[caseWidth+skirtX/2,lkey*1.5],
+[-skirtX/2-innerCaseRadius/2,lkey*1.5], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,lkey*1.5],
 
-[-skirtX/2,caseDepth-lkey*0.75], //lower row
+[-skirtX/2-innerCaseRadius/2,caseDepth-lkey*0.75], //lower row
 [caseWidth/2-lkey,caseDepth-lkey*0.75],
 [caseWidth/4,caseDepth-lkey*0.75],
 [caseWidth/2+lkey,caseDepth-lkey*0.75], //lower row
 [caseWidth-caseWidth/4,caseDepth-lkey*0.75],
-[caseWidth+skirtX/2,caseDepth-lkey*0.75],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth-lkey*0.75],
 
-[-skirtX/2,caseDepth+lkey*0.5+skirtY/2], //lower row
-[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2],
-[caseWidth/4,caseDepth+lkey*0.5+skirtY/2],
-[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2], //lower row
-[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2],
-[caseWidth+skirtX/2,caseDepth+lkey*0.5+skirtY/2]
+[-skirtX/2-innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2]
 ];
 
 
 
 
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
-colorCaseTop="Grey";
-colorCaseMid="Grey";
+colorCaseTop="White";
+colorCaseMid="DimGray";
 colorLid="Black";
-colorRiserR="DarkSlateGray";
-colorRiserL="DarkSlateGray";
+colorRiserR="Black";
+colorRiserL="Black";
+
+frameColor="Black";
 
 /* color simulation for switches
   select top and bottom color */
@@ -448,7 +461,7 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,true,9.5);
+KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -458,7 +471,14 @@ KeyboardSim(layout,true,9.5);
 /* mainCase(layout); */
 /* lid(); */
 
-/* capFrame(layout); */
+/* translate([0,0,13])
+capFrame(layout); */
+
+/* translate([0,0,13])
+capFrameR(layout); */
+
+/* translate([0,0,13])
+capFrameL(layout); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */

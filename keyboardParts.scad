@@ -132,8 +132,8 @@ module holematrix(holes,startx,starty,zCase){
 module keycapSpace(factor=1)
 {
 	union(){
-		translate([0,0,0])
-		cube([lkey*factor,lkey,plateThickness+cutThrough+extra]);
+		translate([-extraSpace/2,-extraSpace/2,0])
+		cube([lkey*factor+extraSpace,lkey+extraSpace,plateThickness+cutThrough+extra]);
 	}
 }
 
@@ -170,20 +170,23 @@ module keycapMatrix(holes,startx,starty,zCase)
 
 module capFrameScrewHoles(screwRad,screwLen,noSupport=true)
 {
-	for(hole = frameScrewHoleArray)
+	if(frameScrewsEnable == true)
 	{
-		translate([hole[0],hole[1],0])
-		union()
+		for(hole = frameScrewHoleArray)
 		{
-			if(noSupport == true)
+			translate([hole[0],hole[1],0])
+			union()
 			{
-				difference() {
-					translate([0,0,-0.2]) cylinder(r=screwRad,h=0.2);
-					translate([screwRad/2,-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
-					translate([-(screwRad+screwRad/2),-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+				if(noSupport == true)
+				{
+					difference() {
+						translate([0,0,-0.2]) cylinder(r=screwRad,h=0.2);
+						translate([screwRad/2,-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+						translate([-(screwRad+screwRad/2),-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+					}
 				}
+				cylinder(r=screwRad,h=screwLen+extra);
 			}
-			cylinder(r=screwRad,h=screwLen+extra);
 		}
 	}
 }
@@ -192,21 +195,42 @@ module capFrameScrewHoles(screwRad,screwLen,noSupport=true)
 
 module capFrame(capLayout)
 {
+	color(frameColor)
 	difference()
 	{
 		/* 6mm is the height of the plate to the keycap usally */
-		outerCase(h=6);
+		outerCase(h=frameHeight);
 		translate([0,0,-extra]) keycapMatrix(capLayout,0,caseDepth-lkey,tempHeigth);
 
-		capFrameScrewHoles(screwRad=1.1,screwLen=6,noSupport=false);
-		translate([0,0,3]) capFrameScrewHoles(screwRad=2.1,screwLen=3);
+		capFrameScrewHoles(screwRad=1.1,screwLen=frameHeight,noSupport=false);
+		translate([0,0,3]) capFrameScrewHoles(screwRad=2.1,screwLen=screwHeadHeight);
 	}
 
 }
 
 module capFrameR(capLayout)
 {
-	capFrame(capLayout);
+	difference() {
+		capFrame(capLayout);
+
+		separatorCubeX = width*lkey+innerCaseRadius*2+skirtX*2;
+		separatorCubeY = height*lkey+getExtraFRow(fRowSeparator)+innerCaseRadius*2+skirtY*2;
+		translate([-innerCaseRadius-skirtX,-innerCaseRadius-skirtY,0])
+			cube([separatorCubeX/2, separatorCubeY, frameHeight]);
+	}
+}
+
+module capFrameL(capLayout)
+{
+	difference() {
+		capFrame(capLayout);
+
+		separatorCubeX = width*lkey+innerCaseRadius*2+skirtX*2;
+		separatorCubeY = height*lkey+getExtraFRow(fRowSeparator)+innerCaseRadius*2+skirtY*2;
+		translate([separatorCubeX/2,0,0])
+		translate([-innerCaseRadius-skirtX,-innerCaseRadius-skirtY,0])
+			cube([separatorCubeX/2, separatorCubeY, frameHeight]);
+	}
 }
 
 module caseStabilizer(w,h,holes,startx,starty,zCase)
@@ -647,7 +671,7 @@ module mainCase(keyboardLayout){
 		translate([0,0,plateThickness]) capFrameScrewHoles(screwRad=1.1,screwLen=caseHeight-plateThickness,noSupport=false);
 	}
 
-	
+
 }
 
 
@@ -777,13 +801,18 @@ module lidL()
 /* ################################################## */
 /* ########## complete keyboard simulation ########## */
 /* ################################################## */
-module KeyboardSim(keyboardLayout,DoKeycapSimulation, xRotate)
+module KeyboardSim(keyboardLayout,doFrameSim=false,DoKeycapSimulation=false, xRotate)
 {
 	rotate([xRotate,0,0])
 	union()
 	{
 		mainCase(keyboardLayout);
 		translate([0,0,-3]) color(colorLid) lid();
+		if(doFrameSim == true)
+		{
+			translate([0,0,caseHeight]) capFrame(keyboardLayout);
+		}
+
 
 		if(addRisers == true)
 		{

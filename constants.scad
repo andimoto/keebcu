@@ -38,3 +38,11 @@ innerExtraLid = 1;
 
 //constant for inner case
 innerCaseRadius=1;
+
+//default height of the frame when in use
+frameHeight = 6;
+
+//height of the head of a cylinder head screw m2
+screwHeadHeight = 3;
+
+extraSpace=0.8;
