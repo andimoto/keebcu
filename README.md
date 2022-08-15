@@ -102,9 +102,9 @@ If the keyboard should get a skirt you can set 'skirtSelect' to true. This enabl
 I added the script 'build.sh' for building all necessary parts of a keyboard at once. It reads 'conf/module-calls.conf' and places each call at the end of the keyboard file to render it and safe it in the stl directory. The output is saved in stl directory under the keyboard name.
 
 ```
-NOTE: openscad command should be in $PATH or the environment variable OPENSCADPATH should be set to the OpenSCAD binary.
+NOTE: openscad command should be in $PATH or the environment variable OPENSCADBINPATH should be set to the OpenSCAD binary.
 For example:
-                export OPENSCADPATH=/home/<user>/<pathToBinary>/OpenSCAD-2021.01-x86_64.AppImage
+                export OPENSCADBINPATH=/home/<user>/<pathToBinary>/OpenSCAD-2021.01-x86_64.AppImage
 ```
 
 ```
@@ -129,7 +129,7 @@ NOTE: do not remove this line from the keyboard file and do not place this line 
 ```
 
 ### build.sh description
-The build.sh script checks if OpenSCAD binary is available. If not, user has to set OPENSCADPATH to point to the binary.
+The build.sh script checks if OpenSCAD binary is available. If not, user has to set OPENSCADBINPATH to point to the binary.
 Then it checks parameters. The 1st parameter is necessary and tells the name of the keyboard to build. The script then appends .scad extension automaticaly and uses the name for the output directory. No keyboard file name provided, will stop the script and return an error. Then it checks optional parameter of config file. Default config file will be used if no 2nd parameter is given.
 
 Each keyboard file has a separator at the end: "BUILD_LINE". The script greps for the line number of the separator and prints out the keyboard file until this line number. This output will be saved in an temporary directory which will be removed after build. Also, and output directory will be generated to save stl files in it.
