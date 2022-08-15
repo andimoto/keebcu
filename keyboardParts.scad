@@ -528,13 +528,9 @@ module mainCaseRight(keyboardLayout)
 
 module mainCaseLeft(keyboardLayout)
 {
-	difference() {
+	intersection() {
 		mainCase(keyboardLayout);
-		mainCaseRight(keyboardLayout);
-		/* avoid artefacts; after rendering there openSCAD
-		   leaves some artefacts on the side */
-		translate([lkey*cutAfterUnits+50,0,0])
-		cube([(caseWidth+2*caseRadius)/2+extra,caseDepth+2*caseRadius+extra,caseHeight]);
+		calcRight(keyboardLayout,0,caseDepth-lkey,tempHeigth);
 	}
 }
 
