@@ -60,10 +60,21 @@ fRowSeparator=false;
  * are configurable as you want the skirt. These values ADD the
  * configured amount to the side of the case.
  * Note: be careful here, this interacts with caseRadius
+ *
+ * If this is activated you can call 'capFrame()'
+ * (or capFrameR/capFrameL) to create a nice frame
+ * around the keycaps to cover the switches. This may give
+ * a cleaner look if this is prefered.
  */
 skirtSelect = false;
 skirtX = 0;
 skirtY = 0;
+
+/* enables screw holes in frame (if capFrame() is called)
+   and in the case. The screws will be placed according to
+   the array frameScrewHoleArray[] around the case and frame.
+   */
+frameScrewsEnable = false;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
@@ -261,6 +272,9 @@ xRiserR=0;
 xRiserL=0;
 yRiserAll=0;
 
+/* move connectors (round cylinders on top of risers)
+  around. this is useful for layouts which have a narrow
+  height, but still need risers */
 riserConnectorRadius = 5;
 riserConnectorX = 0;
 riserConnectorY1 = 60;
@@ -328,12 +342,44 @@ screwSpacerRotation=0;
  */
 caseStabMov=0;
 
-/* set colors for simulation */
-colorCaseTop="WHite";
-colorCaseMid="Gainsboro";
-colorLid="White";
-colorRiserR="Gainsboro";
-colorRiserL="Gainsboro";
+/* screw holes when enabling outer case frame */
+frameScrewHoleArray = [
+[-skirtX/2-innerCaseRadius/2,-skirtY/2-innerCaseRadius/2], //lower row
+[caseWidth/4,-skirtY/2-innerCaseRadius/2],
+[caseWidth/2-lkey,-skirtY/2-innerCaseRadius/2],
+[caseWidth/2+lkey,-skirtY/2-innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,-skirtY/2-innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,-skirtY/2-innerCaseRadius/2],
+
+[-skirtX/2-innerCaseRadius/2,lkey*1.5], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,lkey*1.5],
+
+[-skirtX/2-innerCaseRadius/2,caseDepth-lkey*0.75], //lower row
+[caseWidth/2-lkey,caseDepth-lkey*0.75],
+[caseWidth/4,caseDepth-lkey*0.75],
+[caseWidth/2+lkey,caseDepth-lkey*0.75], //lower row
+[caseWidth-caseWidth/4,caseDepth-lkey*0.75],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth-lkey*0.75],
+
+[-skirtX/2-innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2]
+];
+
+
+
+
+/* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
+colorCaseTop="White";
+colorCaseMid="DarkGray";
+colorLid="Black";
+colorRiserR="Black";
+colorRiserL="Black";
+
+frameColor="Black";
 
 /* color simulation for switches
   select top and bottom color */
@@ -360,7 +406,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false,9.5);
+/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -370,8 +416,20 @@ KeyboardSim(layout,false,9.5);
 /* mainCase(layout); */
 /* lid(); */
 
+/* keycap frame functions. activate if skirt is enabled
+   and you want a frame that hides the switches, which is
+   a more classic look to none printed keyboards */
+/* translate([0,0,13])
+capFrame(layout); */
+
+/* translate([0,0,13])
+capFrameR(layout); */
+
+/* translate([0,0,13])
+capFrameL(layout); */
+
 /* ### devided keyboard and lid model ### */
-/* mainCaseLeft(layout); */
+mainCaseLeft(layout);
 /* mainCaseRight(layout); */
 
 /* lidL(); */

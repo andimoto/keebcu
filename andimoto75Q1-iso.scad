@@ -223,10 +223,10 @@ usbCutX=8;
 usbCutY=wallThickness;
 
 /* Arduino Pro Micro USB Port height */
-usbCutZ=3.4;
+/* usbCutZ=3.4; */
 
 /* Teensy2 USB Port height */
-/* usbCutZ=4.5; */
+usbCutZ=4.5;
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
@@ -237,14 +237,14 @@ usbCutZ=3.4;
  * perfectly even if pcbWidth is to much
  */
 /* teensy2 cutout */
-//pcbHeight = 1.8;
-//pcbWidth = 18.5;
-// pcbLength = 31.4;
+pcbHeight = 1.8;
+pcbWidth = 18.5;
+pcbLength = 31.4;
 
  /* arduino pro micro cutout */
-pcbHeight = 2;
+/* pcbHeight = 2;
 pcbWidth = 18;
-pcbLength = 34;
+pcbLength = 34; */
 
 
 /* set 'addRisers' to true or false
@@ -274,6 +274,9 @@ xRiserR=0;
 xRiserL=0;
 yRiserAll=0;
 
+/* move connectors (round cylinders on top of risers)
+  around. this is useful for layouts which have a narrow
+  height, but still need risers */
 riserConnectorRadius = 5;
 riserConnectorX = 0;
 riserConnectorY1 = 60;
@@ -397,7 +400,7 @@ screwSpacerRotation=0;
  */
 caseStabMov=0;
 
-/*  */
+/* screw holes when enabling outer case frame */
 frameScrewHoleArray = [
 [-skirtX/2-innerCaseRadius/2,-skirtY/2-innerCaseRadius/2], //lower row
 [caseWidth/4,-skirtY/2-innerCaseRadius/2],
@@ -429,7 +432,7 @@ frameScrewHoleArray = [
 
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
 colorCaseTop="White";
-colorCaseMid="DimGray";
+colorCaseMid="DarkGray";
 colorLid="Black";
 colorRiserR="Black";
 colorRiserL="Black";
@@ -461,7 +464,7 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5);
+/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=false,xRotate=9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -471,6 +474,9 @@ KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5);
 /* mainCase(layout); */
 /* lid(); */
 
+/* keycap frame functions. activate if skirt is enabled
+   and you want a frame that hides the switches, which is
+   a more classic look to none printed keyboards */
 /* translate([0,0,13])
 capFrame(layout); */
 
