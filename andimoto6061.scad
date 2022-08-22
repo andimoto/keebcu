@@ -351,11 +351,11 @@ frameScrewHoleArray = [
 
 
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
-colorCaseTop="White";
-colorCaseMid="DarkGray";
-colorLid="Black";
-colorRiserR="Black";
-colorRiserL="Black";
+colorCaseTop="Grey";
+colorCaseMid="Grey";
+colorLid="DarkGrey";
+colorRiserR="DarkGrey";
+colorRiserL="DarkGrey";
 
 frameColor="Black";
 
@@ -371,7 +371,7 @@ switchColorBottom = "Black";
    NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
-keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+keycapProfile = "OEM"; // SA, DSA, DCS, G20, Hi-Pro, OEM
 setKeycapFragments = 50;
 
 /* ###################### BUILD_LINE ########################*/
@@ -384,7 +384,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=9.5); */
+KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
