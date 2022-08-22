@@ -1,4 +1,4 @@
-/* macropad.scad
+/* attiny85-44pad.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
@@ -30,7 +30,7 @@ caseHeight=13;
 innerCaseSpace = 5;
 
 //length, in units, of board
-width=5;
+width=2;
 //Height, in units, of board
 height=2.5;
 
@@ -45,7 +45,7 @@ lidThickness=3;
 /* these are unit values; one unit is one key or switchhole
  * this makes the keyboard printable on nearly every printer.
  */
-cutAfterUnits = 2;
+cutAfterUnits = 1.25;
 spacebarCut = 4.5;
 
 /* fRowSeparator [true/false]
@@ -66,7 +66,7 @@ fRowSeparator=false;
  * around the keycaps to cover the switches. This may give
  * a cleaner look if this is prefered.
  */
-skirtSelect = true;
+skirtSelect = false;
 skirtX = 4;
 skirtY = 4;
 
@@ -111,16 +111,11 @@ switchHoleTolerance = -0.2;
 /* template_ansiUS_7583 */
 layout = [
 //start ROW 0 Function ROW
-[[ 0,0.5],1,"Gold"], //Esc
-[[ 1,0.5],1,"Gold"], //F1
-[[ 2,0.5],1,"Gold"], //F2
-[[ 3,0.5],1,"Gold"], //F3
-[[ 4,0.5],1,"Gold"], //F4
+[[ 0,0.5],1,"Red"], //Key1
+[[ 1,0.5],1,"Green"], //F1
 [[ 0,1.5],1,"Gold"], //'
-[[ 1,1.5],1,"Gold"], //1
-[[ 2,1.5],1,"Gold"], //2
-[[ 3,1.5],1,"Gold"], //3
-[[ 4,1.5],1,"Gold"], //4
+[[ 1,1.5],1,"Blue"], //1
+
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -130,7 +125,7 @@ enableStabsOnHalfs = false;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=0;
+pcbShift=27;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -161,7 +156,7 @@ pcbLength = 31.4; */
  /* arduino pro micro cutout */
 pcbHeight = 2;
 pcbWidth = 18;
-pcbLength = 34;;
+pcbLength = 20;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -234,10 +229,9 @@ module extraKeySimHook()
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[lkey,5.5], //left lower row
-[lkey*4,5.5],
-[lkey,lkey*2.21],
-[lkey*4,lkey*2.21], // right lower row
+[lkey,4.5], //left lower row
+[lkey*2-2.5,lkey*2.3],
+[2.5,lkey*2.3],
 ];
 
 /* rotate screw hole spacers */
@@ -283,7 +277,7 @@ frameScrewHoleArray = [
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
 colorCaseTop="White";
 colorCaseMid="DarkGray";
-colorLid="Black";
+colorLid="White";
 colorRiserR="Black";
 colorRiserL="Black";
 
@@ -301,7 +295,7 @@ switchColorBottom = "Black";
    NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
-keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+keycapProfile = "DSA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
 setKeycapFragments = 50;
 
 /* ###################### BUILD_LINE ########################*/
@@ -314,14 +308,14 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=9.5); */
+KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=0);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* lid(); */
 
 /* keycap frame functions. activate if skirt is enabled
