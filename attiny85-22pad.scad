@@ -125,19 +125,25 @@ enableStabsOnHalfs = false;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=27;
+pcbShift=28;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
-usbCutX=8;
+usbCutX=12;
 usbCutY=wallThickness;
 
+/* move usb cutout in z direction */
+usbCutMoveZ=-1;
+
 /* Arduino Pro Micro USB Port height */
-usbCutZ=3.4;
+/* usbCutZ=3.4; */
 
 /* Teensy2 USB Port height */
 /* usbCutZ=4.5; */
+
+/* attiny85 USB Port height */
+usbCutZ=2.2;
 
 
 /* space in lid for placing the controller pcb.
@@ -154,9 +160,14 @@ pcbWidth = 18.5;
 pcbLength = 31.4; */
 
  /* arduino pro micro cutout */
+/* pcbHeight = 2;
+pcbWidth = 20;
+pcbLength = 20; */
+
+/* attiny85 digispark cutout */
 pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 20;
+pcbWidth = 20;
+pcbLength = 18;
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -229,13 +240,13 @@ module extraKeySimHook()
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[lkey,4.5], //left lower row
-[lkey*2-2.5,lkey*2.3],
-[2.5,lkey*2.3],
+//[lkey,4.5], //left lower row
+[lkey*2-5.3,lkey],
+[5.3,lkey],
 ];
 
 /* rotate screw hole spacers */
-screwSpacerRotation=90;
+screwSpacerRotation=0;
 
 /* move horizontal case stabilizers inside the case.
  * to move horizontal by lkey/2 for half switch cutout.
@@ -308,14 +319,14 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=0);
+/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=0); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* lid(); */
 
 /* keycap frame functions. activate if skirt is enabled

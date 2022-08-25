@@ -658,9 +658,10 @@ module mainCase(keyboardLayout){
 					caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
 				}
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
+
 				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
-					caseDepth-2+getExtraFRow(fRowSeparator),1])
-					usbCutout();
+					caseDepth-2+getExtraFRow(fRowSeparator),1+usbCutMoveZ])
+						usbCutout();
 			}
 			/* caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth); */
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
@@ -703,6 +704,8 @@ module lid()
 				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
 			}
 
+
+
 			if(skirtSelect == true)
 			{
 				translate([(-1-skirtX+caseRadius),(-1-skirtY+caseRadius),0])
@@ -721,11 +724,15 @@ module lid()
 					lidThickness]);
 				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
 			}
+
+			/* pcb holder */
+			translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
+				caseDepth-pcbLength-innerCaseRadius*2-0.3+getExtraFRow(fRowSeparator),
+				lidThickness+1])
+			pcbClamp();
 		}
 
-		/* subtract screw holes */
-		lidScrewHolesLoop(c1=1.8);
-		translate([0,0,-1]) lidScrewHolesLoop(c1=2.8);
+
 
 		if(addRisers == true)
 		{
@@ -748,13 +755,13 @@ module lid()
 				caseDepth-2+getExtraFRow(fRowSeparator),
 				lidThickness])
 				usbCutout();
+
+		/* subtract screw holes */
+		lidScrewHolesLoop(c1=1.8);
+		translate([0,0,-1]) lidScrewHolesLoop(c1=2.8);
 	}
 
-	/* pcb holder */
-	translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
-		caseDepth-pcbLength-innerCaseRadius*2-0.3+getExtraFRow(fRowSeparator),
-		lidThickness+1])
-	pcbClamp();
+
 }
 
 module lidR()
