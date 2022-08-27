@@ -347,7 +347,7 @@ setKeycapFragments = 50;
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 translate([50,0,0]) lid();
 
 /* keycap frame functions. activate if skirt is enabled

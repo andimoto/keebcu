@@ -502,12 +502,17 @@ module caseScrewSpacerLoop(r10=2.5)
 	}
 }
 
-module lidScrewHolesLoop(c1=1.5)
+module lidScrewHolesLoop(c1=1.5,c2=2.5)
 {
 	for(hole = screwHoleArray)
 	{
-		translate([hole[0],hole[1],0])
-		cylinder(r=c1,h=lidThickness+1);
+		translate([hole[0],hole[1],0.005])
+		union()
+		{
+			cylinder(r=c1,h=lidThickness+1);
+			translate([-c1,-c2,lidThickness-1-0.01]) cube([c1*2,c2*2,0.2]);
+			translate([0,0,-0.01]) cylinder(r=c2,h=lidThickness-1);
+		}
 	}
 }
 
@@ -761,8 +766,8 @@ module lid()
 			usbCutout();
 
 		/* subtract screw holes */
-		lidScrewHolesLoop(c1=1.8);
-		translate([0,0,-1]) lidScrewHolesLoop(c1=2.8);
+		lidScrewHolesLoop(c1=1.8,c2=2.8);
+		/* translate([0,0,-1]) lidScrewHolesLoop(c1=2.8); */
 	}
 
 

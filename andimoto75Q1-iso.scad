@@ -489,7 +489,7 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=false,xRotate=9.5);
+/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=false,xRotate=9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -517,4 +517,4 @@ capFrame(layout); */
 /* lidL(); */
 /* lidR(); */
 
-/* keyboardRiser(); */
+keyboardRiser();
