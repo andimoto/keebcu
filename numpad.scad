@@ -138,14 +138,39 @@ layout = [
 enableStabsOnHalfs = true;
 
 /* move pcb and usb cutout in x direction
-   for better placement */
-pcbShift=8.5;
+   for better placement
+   pcbShift = +110 > places usb port to the right side
+   pcbShift = -110 > places usb port to the left side
+   pcbShift = 0 > places usb port to the middle
+   Attention: do not set 0 when cutting case in the middle!!
+*/
+// shifting usb port left or right
+pcbShift=0;
 
-/* cutout for micro usb plug (not the housing of the usb plug!)
- * change this if using mini usb
+/* cutout for micro usb connector (not the housing of the usb connector!)
+ * change this if using mini usb or usb-c
  */
+ // size in x direction of the usb connector itself (without housing)
 usbCutX=8;
+
+/* this is the space in x direction arount the usb port
+ * to fit in the housing of the usb cable
+ */
+// clearance around the usb port cutout.
+usbCutXclearance = 6;
+
+/* this is the space in z direction arount the usb port
+ * to fit in the housing of the usb cable
+ * If value is '>lidThickness * 2' the cutout will
+ * go over bottom of the lid
+ */
+// clearance above and under the usb port cutout.
+usbCutZclearance = 5;
+
 usbCutY=wallThickness;
+
+/* move usb cutout in z direction */
+usbCutMoveZ=0;
 
 /* Arduino Pro Micro USB Port height */
 usbCutZ=3.4;
@@ -209,7 +234,6 @@ riserConnectorY1 = 40;
 /* ####### include keyboard lib ############ */
 include <constants.scad>
 include <keyboardParts.scad>
-
 
 /* this module gets called in 'holematrix' and adds a specific
  * object to the 'holematrix'. it enables placing switchholes

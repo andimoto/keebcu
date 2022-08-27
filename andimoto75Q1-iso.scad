@@ -213,14 +213,39 @@ layout = [
 enableStabsOnHalfs = true;
 
 /* move pcb and usb cutout in x direction
-   for better placement */
-pcbShift=0;
+   for better placement
+   pcbShift = +110 > places usb port to the right side
+   pcbShift = -110 > places usb port to the left side
+   pcbShift = 0 > places usb port to the middle
+   Attention: do not set 0 when cutting case in the middle!!
+*/
+// shifting usb port left or right
+pcbShift=110;
 
-/* cutout for micro usb plug (not the housing of the usb plug!)
- * change this if using mini usb
+/* cutout for micro usb connector (not the housing of the usb connector!)
+ * change this if using mini usb or usb-c
  */
+ // size in x direction of the usb connector itself (without housing)
 usbCutX=8;
+
+/* this is the space in x direction arount the usb port
+ * to fit in the housing of the usb cable
+ */
+// clearance around the usb port cutout.
+usbCutXclearance = 6;
+
+/* this is the space in z direction arount the usb port
+ * to fit in the housing of the usb cable
+ * If value is '>lidThickness * 2' the cutout will
+ * go over bottom of the lid
+ */
+// clearance above and under the usb port cutout.
+usbCutZclearance = 5;
+
 usbCutY=wallThickness;
+
+/* move usb cutout in z direction */
+usbCutMoveZ=0;
 
 /* Arduino Pro Micro USB Port height */
 /* usbCutZ=3.4; */
@@ -265,7 +290,7 @@ angleBaseRad=1;
 riserPoints = [
 [0,0],
 [angleBaseY,0],
-[angleBaseY,2],
+[angleBaseY,3.5],
 [0,17]
 ];
 
@@ -433,7 +458,7 @@ frameScrewHoleArray = [
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
 colorCaseTop="White";
 colorCaseMid="DarkGray";
-colorLid="Black";
+colorLid="Grey";
 colorRiserR="Black";
 colorRiserL="Black";
 
@@ -464,14 +489,14 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5); */
+KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=false,xRotate=9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-mainCase(layout);
+/* mainCase(layout); */
 /* lid(); */
 
 /* keycap frame functions. activate if skirt is enabled

@@ -124,13 +124,34 @@ layout = [
 enableStabsOnHalfs = false;
 
 /* move pcb and usb cutout in x direction
-   for better placement */
-pcbShift=28;
+   for better placement
+   pcbShift = +110 > places usb port to the right side
+   pcbShift = -110 > places usb port to the left side
+   pcbShift = 0 > places usb port to the middle
+   Attention: do not set 0 when cutting case in the middle!!
+*/
+// shifting usb port left or right
+pcbShift=0;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
  */
 usbCutX=12;
+
+/* this is the space in x direction arount the usb port
+ * to fit in the housing of the usb cable
+ */
+// clearance left and right of the usb port cutout.
+usbCutXclearance = 10;
+
+/* this is the space in z direction arount the usb port
+ * to fit in the housing of the usb cable
+ * If value is '>lidThickness * 2' the cutout will
+ * go over bottom of the lid
+ */
+// clearance above and under the usb port cutout.
+usbCutZclearance = 10;
+
 usbCutY=wallThickness;
 
 /* move usb cutout in z direction */
@@ -166,7 +187,7 @@ pcbLength = 20; */
 
 /* attiny85 digispark cutout */
 pcbHeight = 2;
-pcbWidth = 20;
+pcbWidth = 19;
 pcbLength = 18;
 
 /* set 'addRisers' to true or false
@@ -327,7 +348,7 @@ setKeycapFragments = 50;
 
 /* ### complete keyboard model ### */
 mainCase(layout);
-/* lid(); */
+translate([50,0,0]) lid();
 
 /* keycap frame functions. activate if skirt is enabled
    and you want a frame that hides the switches, which is

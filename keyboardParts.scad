@@ -515,7 +515,7 @@ module lidScrewHolesLoop(c1=1.5)
 module usbCutout()
 {
 	translate([0,-0.1,0]) cube([usbCutX,usbCutY,usbCutZ]);
-	translate([-3,1,-2]) cube([usbCutX+6,usbCutY+getSkirtY(),usbCutZ+5]);
+	translate([-usbCutXclearance/2,1,-usbCutZclearance/2]) cube([usbCutX+usbCutXclearance,usbCutY+getSkirtY(),usbCutZ+usbCutZclearance]);
 
 	/* this marks the root point of the part.
 	 * uncomment this for debugging */
@@ -540,20 +540,20 @@ pcbClamps = [
 [0,0],
 [0,1.5],
 [6,1.5],
-[6.5,1.5],
-[5,0]
+[3.5,1.5],
+[2,0]
 ];
 
 module pcbClamp()
 {
-	translate([-5.5,0,0]) cube([5,pcbLength,pcbHeight]);
-	translate([-5.5,pcbLength,pcbHeight-1]) rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
+	translate([-2,0,0]) cube([2,pcbLength,pcbHeight]);
+	translate([-2,pcbLength,pcbHeight-1]) rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
 
-	translate([pcbWidth+0.5,0,0]) cube([5,pcbLength,pcbHeight]);
-	translate([pcbWidth+5.5,pcbLength,pcbHeight-1]) mirror([1,0,0])  rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
+	translate([pcbWidth+1,0,0]) cube([2,pcbLength,pcbHeight]);
+	translate([pcbWidth+3,pcbLength,pcbHeight-1]) mirror([1,0,0])  rotate([90,0,0]) linear_extrude(pcbLength) polygon(pcbClamps);
 
-	translate([0,-5,0])cube([pcbWidth,5,pcbHeight]);
-	translate([0,-5,pcbHeight-1]) rotate([90,0,90]) linear_extrude(pcbWidth) polygon(pcbClamps);
+	translate([0.5,-2,0])cube([pcbWidth,2,pcbHeight]);
+	translate([0.5,-2,pcbHeight-1]) rotate([90,0,90]) linear_extrude(pcbWidth) polygon(pcbClamps);
 
 	/* this marks the root point of the part.
 	 * uncomment this for debugging */
@@ -659,7 +659,10 @@ module mainCase(keyboardLayout){
 				}
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
 
-				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
+				/* translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
+					caseDepth-2+getExtraFRow(fRowSeparator),1+usbCutMoveZ]) getSkirtX()*/
+				/* place usb cutout into middle of the case and shift right or left with 'pcbShift' */
+				translate([caseWidth/2-usbCutX/2-innerCaseRadius/2+pcbShift,
 					caseDepth-2+getExtraFRow(fRowSeparator),1+usbCutMoveZ])
 						usbCutout();
 			}
@@ -726,7 +729,7 @@ module lid()
 			}
 
 			/* pcb holder */
-			translate([caseWidth-pcbWidth-lkey*2+0.5+pcbShift,
+			translate([caseWidth/2-innerCaseRadius-pcbWidth/2+pcbShift,
 				caseDepth-pcbLength-innerCaseRadius*2-0.3+getExtraFRow(fRowSeparator),
 				lidThickness+1])
 			pcbClamp();
@@ -747,14 +750,15 @@ module lid()
 
 		/* subtract usb cutout and pcb cutout */
 
-		translate([caseWidth-pcbWidth-lkey*2+pcbShift,
-				caseDepth-pcbLength-innerCaseRadius*2-0.25+getExtraFRow(fRowSeparator),
-				lidThickness])
-				pcbCutout();
-		translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
-				caseDepth-2+getExtraFRow(fRowSeparator),
-				lidThickness])
-				usbCutout();
+
+		translate([caseWidth/2-innerCaseRadius-pcbWidth/2+pcbShift,
+			caseDepth-pcbLength-innerCaseRadius*2-0.25+getExtraFRow(fRowSeparator),lidThickness])
+			pcbCutout();
+
+		/* place usb cutout into middle of the case and shift right or left with 'pcbShift' */
+		translate([caseWidth/2+innerCaseRadius-wallThickness/2-usbCutX/2+pcbShift,//caseWidth/2-usbCutX/2-innerCaseRadius+pcbShift,
+			caseDepth-2+getExtraFRow(fRowSeparator),lidThickness])
+			usbCutout();
 
 		/* subtract screw holes */
 		lidScrewHolesLoop(c1=1.8);
