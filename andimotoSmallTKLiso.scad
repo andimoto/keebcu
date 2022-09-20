@@ -187,7 +187,7 @@ layout = [
 [[12.75,3],1,"LightSkyBlue"], //#
 //start ROW 4
 [[   0,4],1.25,"MidnightBlue"], //LShift
-[[1.25,4],1,"LightSkyBlue"], //Z
+[[1.25,4],1,"LightSkyBlue"], // /
 [[2.25,4],1,"LightSkyBlue"], //Z
 [[3.25,4],1,"LightSkyBlue"], //X
 [[4.25,4],1,"LightSkyBlue"], //C

@@ -180,7 +180,8 @@ layout = [
 //ENTER
 [[15.25,3],1,"#5883AC"], //Home
 //start ROW 4
-[[   0,4],2.25,"#5883AC"], //LShift
+[[   0,4],1.25,"#5883AC"], //LShift
+[[1.25,4],1,"GhostWhite"], //Z
 [[2.25,4],1,"GhostWhite"], //Z
 [[3.25,4],1,"GhostWhite"], //X
 [[4.25,4],1,"GhostWhite"], //C
