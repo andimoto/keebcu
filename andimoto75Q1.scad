@@ -110,11 +110,7 @@ switchHoleTolerance = -0.2;
 					"row place" is the place of the switch in the row;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
-isoEnter = [
-[[13.5,2.5],1.5,"#5883AC"] // ENTER
-];
-
-/* iso_75Q1  */
+/* ansi_us_75Q1  */
 layout = [
 //start ROW 0 Function ROW
 [[0,0],1,"Red"], //Esc
@@ -150,38 +146,37 @@ layout = [
 [[15.25,1],1,"#5883AC"], //PgUp
 //start ROW 2
 [[  0,2],1.5,"#5883AC"], //TAB
-[[1.5,2],1,"GhostWhite"], //Q
-[[2.5,2],1,"GhostWhite"], //W
-[[3.5,2],1,"GhostWhite"], //E
-[[4.5,2],1,"GhostWhite"], //R
-[[5.5,2],1,"GhostWhite"], //T
-[[6.5,2],1,"GhostWhite"], //Y
-[[7.5,2],1,"GhostWhite"], //U
-[[8.5,2],1,"GhostWhite"], //I
-[[9.5,2],1,"GhostWhite"], //O
-[[10.5,2],1,"GhostWhite"], //P
-[[11.5,2],1,"GhostWhite"], //Ü
-[[12.5,2],1,"GhostWhite"], //+
-[[15.25,2],1,"#5883AC"], // PgDn
+[[1.5,2],1,"MintCream"], //Q
+[[2.5,2],1,"MintCream"], //W
+[[3.5,2],1,"MintCream"], //E
+[[4.5,2],1,"MintCream"], //R
+[[5.5,2],1,"MintCream"], //T
+[[6.5,2],1,"MintCream"], //Y
+[[7.5,2],1,"MintCream"], //U
+[[8.5,2],1,"MintCream"], //I
+[[9.5,2],1,"MintCream"], //O
+[[10.5,2],1,"MintCream"], //P
+[[11.5,2],1,"MintCream"], //[
+[[12.5,2],1,"MintCream"], //]
+[[13.5,2],1.5,"#5883AC"], // \
+[[15.25,2],1,"#5883AC"], // PgUp
 //start ROW 3
 [[   0,3],1.75,"#5883AC"], //CapsLock
-[[1.75,3],1,"GhostWhite"], //A
-[[2.75,3],1,"GhostWhite"], //S
-[[3.75,3],1,"GhostWhite"], //D
-[[4.75,3],1,"GhostWhite"], //F
-[[5.75,3],1,"GhostWhite"], //G
-[[6.75,3],1,"GhostWhite"], //H
-[[7.75,3],1,"GhostWhite"], //J
-[[8.75,3],1,"GhostWhite"], //K
-[[9.75,3],1,"GhostWhite"], //L
-[[10.75,3],1,"GhostWhite"], //Ö
-[[11.75,3],1,"GhostWhite"], //Ä
-[[12.75,3],1,"GhostWhite"], //#
-//ENTER
+[[1.75,3],1,"MintCream"], //A
+[[2.75,3],1,"MintCream"], //S
+[[3.75,3],1,"MintCream"], //D
+[[4.75,3],1,"MintCream"], //F
+[[5.75,3],1,"MintCream"], //G
+[[6.75,3],1,"MintCream"], //H
+[[7.75,3],1,"MintCream"], //J
+[[8.75,3],1,"MintCream"], //K
+[[9.75,3],1,"MintCream"], //L
+[[10.75,3],1,"MintCream"], //;
+[[11.75,3],1,"MintCream"], //'
+[[12.75,3],2.25,"#5883AC"], //ENTER
 [[15.25,3],1,"#5883AC"], //Home
 //start ROW 4
-[[   0,4],1.25,"#5883AC"], //LShift
-[[1.25,4],1,"#5883AC"], // /
+[[   0,4],2.25,"#5883AC"], //LShift
 [[2.25,4],1,"GhostWhite"], //Z
 [[3.25,4],1,"GhostWhite"], //X
 [[4.25,4],1,"GhostWhite"], //C
@@ -193,8 +188,7 @@ layout = [
 [[10.25,4],1,"GhostWhite"], //.
 [[11.25,4],1,"GhostWhite"], // -
 [[12.25,4],1.75,"#5883AC"], //RShift
-[[14.25,4.25],1,"#5883AC"], //UP
-//[[15,4],1,"#5883AC"], //end
+[[14.25,4.25],1,"GhostWhite"], //UP
 //start ROW 5
 [[   0,5],1.25,"#5883AC"], //LCTRL
 [[1.25,5],1.25,"#5883AC"], //TUX
@@ -203,9 +197,9 @@ layout = [
 [[10  ,5],1,"#5883AC"], //AltGr/Compose
 [[11,5],1,"#5883AC"], //Fn
 [[12,5],1,"#5883AC"], //Strg
-[[13.25,5.25],1,"#5883AC"], //LEFT
-[[14.25,5.25],1,"#5883AC"], //DOWN
-[[15.25,5.25],1,"#5883AC"], //RIGHT
+[[13.25,5.25],1,"GhostWhite"], //LEFT
+[[14.25,5.25],1,"GhostWhite"], //DOWN
+[[15.25,5.25],1,"GhostWhite"], //RIGHT
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -294,34 +288,7 @@ include <keyboardParts.scad>
   * or other cutout objects to the model */
 module extraCutoutHook()
 {
-  /* custom: place isoEnter switchhole here */
-  for(key = isoEnter)
-  {
-    startx = 0;
-    starty = caseDepth - lkey;
-    zCase = tempHeigth;
 
-    /* check for iso Enter key; should be the last row minus 3.5
-       iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
-       row without F Keys */
-    /* iso enter needs a move of about 2mm into right direction */
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-    translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])
-    switchhole();
-
-    /* iso enter and other stabilizers than spacebar */
-    /* needed to add some extra mm to the costarStabilizer cutouts
-       but different extra for each stabilizer */
-    translate([19.7,-5,0])
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-    translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.5,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
-    rotate([0,0,90]) costarStabilizer();
-
-    translate([-4.7,20,0])
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-    translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
-    rotate([0,0,90]) costarStabilizer();
-  }
 }
 
 /* this module gets called in 'keycapMatrix()' and adds a specific
@@ -331,23 +298,7 @@ module extraCutoutHook()
  */
 module extraKeycapCutoutHook()
 {
-  /* custom: place isoEnter switchhole here */
-  for(key = isoEnter)
-  {
-    startx = 0;
-    starty = caseDepth - lkey;
-    zCase = tempHeigth;
 
-
-    /* iso enter needs a separate cutout
-     * cutout is made by placing 0.5 unit above and lower
-     */
-    translate([startx+lkey*key[0][0], starty-lkey*(key[0][1]-getHalf(key[0][1])), 0])
-    keycapSpace(key[1]);
-    translate([startx+lkey*key[0][0], starty-lkey*(key[0][1]+getHalf(key[0][1])), 0])
-    keycapSpace(key[1]);
-
-  }
 }
 
 /* this module gets called in 'keySim()' and adds a specific
@@ -355,17 +306,7 @@ module extraKeycapCutoutHook()
   * or other objects to the model simulation */
 module extraKeySimHook()
 {
-  startx = 0;
-	starty = caseDepth - lkey;
-	zCase = tempHeigth;
-
-  for(key = isoEnter)
-  {
-    color(key[2])
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-    translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
-    iso_enter() key(true, $fn=setKeycapFragments);
-  }
+  
 }
 
 
