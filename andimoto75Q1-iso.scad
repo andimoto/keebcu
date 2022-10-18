@@ -465,14 +465,14 @@ setKeycapFragments = 100;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5);
+/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
+mainCase(layout);
 /* lid(); */
 
 /* keycap frame functions. activate if skirt is enabled
