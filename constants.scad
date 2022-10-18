@@ -15,6 +15,8 @@ remove the call for placing all keycaps on the keyboard.
 
 /* ###### don't touch this! ###### */
 //Unit square length, from Cherry MX data sheet
+//this is the size of 1unit including keycap size and
+//the space to the next keycap
 lkey=19.05;
 //Hole size, from Cherry MX data sheet
 holesize=14;
@@ -36,3 +38,11 @@ innerExtraLid = 1;
 
 //constant for inner case
 innerCaseRadius=1;
+
+//default height of the frame when in use
+frameHeight = 6;
+
+//height of the head of a cylinder head screw m2
+screwHeadHeight = 3;
+
+extraSpace=0.8;

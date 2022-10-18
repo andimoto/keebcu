@@ -13,6 +13,8 @@ include <../KeyV2/includes.scad>
 
 /* variable for calculation */
 cutLength = 0;
+/* this variable  */
+cutThrough = 5;
 
 tempHeigth=caseHeight-plateThickness+extra;
 
@@ -23,8 +25,8 @@ function getHalf(yPosKey) = (yPosKey % 1);
 
 module switchhole(){
 	union(){
-		translate([0,0,-extra/2])
-		cube([holesize+switchHoleTolerance,holesize+switchHoleTolerance,plateThickness+extra]);
+		translate([0,0,-extra/2-cutThrough])
+		cube([holesize+switchHoleTolerance,holesize+switchHoleTolerance,plateThickness+cutThrough+extra]);
 	}
 }
 
@@ -88,8 +90,6 @@ module holematrix(holes,startx,starty,zCase){
 			}
 		}
 
-
-
 		/* place switch holes - end */
 
 		/* debugging - remove comment to show root point of holesize */
@@ -129,8 +129,109 @@ module holematrix(holes,startx,starty,zCase){
 	}
 }
 
+module keycapSpace(factor=1)
+{
+	union(){
+		translate([-extraSpace/2,-extraSpace/2,0])
+		cube([lkey*factor+extraSpace,lkey+extraSpace,plateThickness+cutThrough+extra]);
+	}
+}
 
+module keycapMatrix(holes,startx,starty,zCase)
+{
+	extraKeycapCutoutHook();
+	for (key = holes){
+		/* echo (key[0][0],key[0][1],key[1]); */
+		/* place switch holes */
+		if(key[1] >= 1){
+			half = getHalf(key[0][1]);// % 1;
+			if(half == 0.5){
+				/* all switchholes which have vertical sized keycaps like numpad-enter or numpad+ */
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
+				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+				scale([1,1,key[1]]) keycapSpace(); /*todo: test this with numpad!!*/
+			}
+			else
+			{
+				if((key[0][1]==0) && (fRowSeparator==true))
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1])+getExtraFRow(fRowSeparator), 0])
+					keycapSpace(key[1]);
+				}
+				else
+				{
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+					keycapSpace(key[1]);
+				}
+			}
+		}
+	}
+}
 
+module capFrameScrewHoles(screwRad,screwLen,noSupport=true)
+{
+	if(frameScrewsEnable == true)
+	{
+		for(hole = frameScrewHoleArray)
+		{
+			translate([hole[0],hole[1],0])
+			union()
+			{
+				if(noSupport == true)
+				{
+					difference() {
+						translate([0,0,-0.2]) cylinder(r=screwRad,h=0.2);
+						translate([screwRad/2,-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+						translate([-(screwRad+screwRad/2),-screwRad,-0.2]) cube([screwRad,screwRad*2,0.2]);
+					}
+				}
+				cylinder(r=screwRad,h=screwLen+extra);
+			}
+		}
+	}
+}
+
+/* translate([0,0,30]) capFrameScrewHoles(2.1,3,true); */
+
+module capFrame(capLayout)
+{
+	color(frameColor)
+	difference()
+	{
+		/* 6mm is the height of the plate to the keycap usally */
+		outerCase(h=frameHeight);
+		translate([0,0,-extra]) keycapMatrix(capLayout,0,caseDepth-lkey,tempHeigth);
+
+		capFrameScrewHoles(screwRad=1.1,screwLen=frameHeight,noSupport=false);
+		translate([0,0,3]) capFrameScrewHoles(screwRad=2.1,screwLen=screwHeadHeight);
+	}
+
+}
+
+module capFrameR(capLayout)
+{
+	difference() {
+		capFrame(capLayout);
+
+		separatorCubeX = width*lkey+innerCaseRadius*2+skirtX*2;
+		separatorCubeY = height*lkey+getExtraFRow(fRowSeparator)+innerCaseRadius*2+skirtY*2;
+		translate([-innerCaseRadius-skirtX,-innerCaseRadius-skirtY,0])
+			cube([separatorCubeX/2, separatorCubeY, frameHeight]);
+	}
+}
+
+module capFrameL(capLayout)
+{
+	difference() {
+		capFrame(capLayout);
+
+		separatorCubeX = width*lkey+innerCaseRadius*2+skirtX*2;
+		separatorCubeY = height*lkey+getExtraFRow(fRowSeparator)+innerCaseRadius*2+skirtY*2;
+		translate([separatorCubeX/2,0,0])
+		translate([-innerCaseRadius-skirtX,-innerCaseRadius-skirtY,0])
+			cube([separatorCubeX/2, separatorCubeY, frameHeight]);
+	}
+}
 
 module caseStabilizer(w,h,holes,startx,starty,zCase)
 {
@@ -138,7 +239,11 @@ module caseStabilizer(w,h,holes,startx,starty,zCase)
 		/* don't place case stabilizer on iso enter button */
 		half = getHalf(key[0][1]);
 		/* echo(half); */
-		if(key[0][1]!=2.5 && half != 0.5){
+		/* place horizontal case stabilizer under the corresponding switchhole,
+		but only if switch placement is a integer number (no rest of modulo) and
+		not on the 1st row (key[0][1]==0 ) because this places the caseStabilizer inside
+		the case wall and ruins color simulation*/
+		if(key[0][1]!=2.5 && key[0][1] != 0 && half == 0){
 			translate([0,lkey*key[0][1]-1+caseStabMov,innerCaseSpace])
 			cube([w,1,caseHeight-plateThickness-innerCaseSpace]);
 		}
@@ -179,14 +284,43 @@ module switchSim()
 {
 	translate([-7,-7,0]) union()
 	{
-		translate([0,10.5,0]) rotate([90,0,0]) linear_extrude(7) polygon(switchSimArray);
-		translate([3.5,0,0]) rotate([90,0,90]) linear_extrude(7) polygon(switchSimArray);
+		color(switchColorTop) translate([0,10.5,0])
+			rotate([90,0,0]) linear_extrude(7) polygon(switchSimArray);
+		color(switchColorTop) translate([3.5,0,0])
+			rotate([90,0,90]) linear_extrude(7) polygon(switchSimArray);
 
-		translate([0,3.5,0]) rotate([270,0,0]) linear_extrude(7) polygon(switchSimArray);
-		translate([3.5,14,0]) rotate([90,180,90]) linear_extrude(7) polygon(switchSimArray);
+		color(switchColorBottom) translate([0,3.5,0])
+			rotate([270,0,0]) linear_extrude(7)  polygon(switchSimArray);
+		color(switchColorBottom) translate([3.5,14,0])
+			rotate([90,180,90]) linear_extrude(7) polygon(switchSimArray);
 	}
 }
 
+module keyProfile(row)
+{
+	if(keycapProfile == "SA")	{
+		sa_row(row)
+		key($fn=setKeycapFragments);
+	}	else if(keycapProfile == "DSA")	{
+		/* fix dsa row to 3 */
+		dsa_row(3)
+		key($fn=setKeycapFragments);
+	}	else if(keycapProfile == "DCS")	{
+		dcs_row(row);
+		key($fn=setKeycapFragments);
+	}	else if(keycapProfile == "OEM")	{
+		oem_row(row);
+		key($fn=setKeycapFragments);
+	}else if(keycapProfile == "G20")	{
+		g20_row(row);
+		key($fn=setKeycapFragments);
+	}else if(keycapProfile == "Hi-Pro")	{
+		hipro_row(row);
+		key($fn=setKeycapFragments);
+	}else{
+		key($fn=setKeycapFragments);
+	}
+}
 
 module keySim(holes)
 {
@@ -198,18 +332,20 @@ module keySim(holes)
 	extraKeySimHook();
 
 	for (key = holes){
-		/* switch simulation for F-Row */
+		/* switch simulation for F-Row
+		   this actually sets a pragmatic mockup for a real switch into the hole!
+			 so a switch will be simulated */
 		if(key[0][1]==0 && fRowSeparator==true)
 		{
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), zCase-extra])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
-			color("black") switchSim();
+			switchSim();
 		}
 		else
 		{
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, -14])
-			color("black") switchSim();
+			switchSim();
 		}
 
 
@@ -217,44 +353,44 @@ module keySim(holes)
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			6_25u() sa_row(key[0][1]) key();
+			6_25u() keyProfile(key[0][1]);
 		}
 
 		else if (key[1]==2.75){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			2_75u() sa_row(key[0][1]) key();
+			2_75u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==2.25){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			2_25u() sa_row(key[0][1]) key();
+			2_25u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==2){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			2u() sa_row(key[0][1]) key();
+			2u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==1.75){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			u(u=1.75) sa_row(key[0][1]) key();
+			u(u=1.75) keyProfile(key[0][1]);
 		}
 		else if (key[1]==1.5){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			1_5u() sa_row(key[0][1]) key();
+			1_5u() keyProfile(key[0][1]);
 		}
 		else if (key[1]==1.25){
 			color(key[2])
 			translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 			translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-			1_25u() sa_row(key[0][1]) key();
+			1_25u() keyProfile(key[0][1]);
 		}
 		else /* 1u keys */
 		{
@@ -264,14 +400,14 @@ module keySim(holes)
 				color(key[2])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1]+getExtraFRow(fRowSeparator), 0])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				1u() sa_row(key[0][1]) key();
+				1u() keyProfile(key[0][1]);
 			}
 			else
 			{
 				color(key[2])
 				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
 				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				1u() sa_row(key[0][1]) key();
+				1u() keyProfile(key[0][1]);
 			}
 		}
 	}
@@ -469,23 +605,36 @@ module keyboardRiser()
 	}
 }
 
+module outerCase(h)
+{
+	if(skirtSelect == true)
+	{
+		//add some skirt to the case if selected
+		translate([-1-skirtX+caseRadius,-1-skirtY+caseRadius,0])
+		minkowski() {
+			cube([caseWidth+(1+skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,h]);
+			cylinder(r=caseRadius, h=0.0000000001, center=true);
+		}
+	}else{
+		/* skirtSelect is set to false - just calculate case */
+		minkowski() {
+			cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),h]);
+			cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
+		}
+	}
+}
 
 module case(){
 	difference() {
 		union()
 		{
-			minkowski() {
-				cube([caseWidth,caseDepth+getExtraFRow(fRowSeparator),caseHeight]);
-				cylinder(r=innerCaseRadius, h=0.0000000001, center=true);
-	  	}
 			if(skirtSelect == true)
 			{
-				//add some skirt to the case if selected
-				translate([-1-skirtX+caseRadius,-1-skirtY+caseRadius,0])
-				minkowski() {
-					cube([caseWidth+(1+skirtX-caseRadius)*2,caseDepth+getExtraFRow(fRowSeparator)+(1+skirtY-caseRadius)*2,caseHeight]);
-					cylinder(r=caseRadius, h=0.0000000001, center=true);
-			  }
+				translate([0,0,caseHeight-plateThickness]) color(colorCaseTop) outerCase(h=plateThickness);
+				color(colorCaseMid) outerCase(h=caseHeight-plateThickness);
+			}else{
+				translate([0,0,caseHeight-plateThickness]) color(colorCaseTop) outerCase(h=plateThickness);
+				color(colorCaseMid) outerCase(h=caseHeight-plateThickness);
 			}
 		}
 		translate([wallThickness,wallThickness,-extra])
@@ -503,18 +652,26 @@ module mainCase(keyboardLayout){
 		union()
 		{
 			difference(){
-				case();
+				union()
+				{
+					case();
+					caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+				}
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
 				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
 					caseDepth-2+getExtraFRow(fRowSeparator),1])
 					usbCutout();
 			}
-			caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+			/* caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth); */
 			/* caseScrewHolesLoop(r10=2.5,r20=1.45); */
 			caseScrewSpacerLoop(r10=2.5);
+
 		}
 		translate([0,0,-plateThickness]) caseScrewHolesLoop(r20=1.45);
+		translate([0,0,plateThickness]) capFrameScrewHoles(screwRad=1.1,screwLen=caseHeight-plateThickness,noSupport=false);
 	}
+
+
 }
 
 
@@ -582,7 +739,7 @@ module lid()
 		}
 
 		/* subtract usb cutout and pcb cutout */
-	
+
 		translate([caseWidth-pcbWidth-lkey*2+pcbShift,
 				caseDepth-pcbLength-innerCaseRadius*2-0.25+getExtraFRow(fRowSeparator),
 				lidThickness])
@@ -640,13 +797,18 @@ module lidL()
 /* ################################################## */
 /* ########## complete keyboard simulation ########## */
 /* ################################################## */
-module KeyboardSim(keyboardLayout,DoKeycapSimulation, xRotate)
+module KeyboardSim(keyboardLayout,doFrameSim=false,DoKeycapSimulation=false, xRotate)
 {
 	rotate([xRotate,0,0])
 	union()
 	{
-		color(colorCase) mainCase(keyboardLayout);
+		mainCase(keyboardLayout);
 		translate([0,0,-3]) color(colorLid) lid();
+		if(doFrameSim == true)
+		{
+			translate([0,0,caseHeight]) capFrame(keyboardLayout);
+		}
+
 
 		if(addRisers == true)
 		{

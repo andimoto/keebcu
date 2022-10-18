@@ -60,10 +60,21 @@ fRowSeparator=false;
  * are configurable as you want the skirt. These values ADD the
  * configured amount to the side of the case.
  * Note: be careful here, this interacts with caseRadius
+ *
+ * If this is activated you can call 'capFrame()'
+ * (or capFrameR/capFrameL) to create a nice frame
+ * around the keycaps to cover the switches. This may give
+ * a cleaner look if this is prefered.
  */
 skirtSelect = false;
 skirtX = 0;
 skirtY = 0;
+
+/* enables screw holes in frame (if capFrame() is called)
+   and in the case. The screws will be placed according to
+   the array frameScrewHoleArray[] around the case and frame.
+   */
+frameScrewsEnable = false;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
@@ -255,6 +266,15 @@ module extraCutoutHook()
 {
 }
 
+/* this module gets called in 'keycapMatrix()' and adds a specific
+ * object to the keycapMatrix. keycapMatrix is needed as a cutout element
+ * from the frame. this hook gives possibility to add more elements such
+ * as the enter keycap.
+ */
+module extraKeycapCutoutHook()
+{
+}
+
 /* this module gets called in 'keySim()' and adds a specific
  * object to the 'key simulation'. it enables placing keys
   * or other objects to the model simulation */
@@ -300,12 +320,59 @@ screwSpacerRotation=0;
  */
 caseStabMov=0;
 
+/* screw holes when enabling outer case frame */
+frameScrewHoleArray = [
+[-skirtX/2-innerCaseRadius/2,-skirtY/2-innerCaseRadius/2], //lower row
+[caseWidth/4,-skirtY/2-innerCaseRadius/2],
+[caseWidth/2-lkey,-skirtY/2-innerCaseRadius/2],
+[caseWidth/2+lkey,-skirtY/2-innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,-skirtY/2-innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,-skirtY/2-innerCaseRadius/2],
 
-/* set colors for simulation */
-colorCase="White";
-colorLid="Black";
-colorRiserR="Gainsboro";
-colorRiserL="Gainsboro";
+[-skirtX/2-innerCaseRadius/2,lkey*1.5], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,lkey*1.5],
+
+[-skirtX/2-innerCaseRadius/2,caseDepth-lkey*0.75], //lower row
+[caseWidth/2-lkey,caseDepth-lkey*0.75],
+[caseWidth/4,caseDepth-lkey*0.75],
+[caseWidth/2+lkey,caseDepth-lkey*0.75], //lower row
+[caseWidth-caseWidth/4,caseDepth-lkey*0.75],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth-lkey*0.75],
+
+[-skirtX/2-innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2]
+];
+
+
+
+
+/* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
+colorCaseTop="Grey";
+colorCaseMid="Grey";
+colorLid="DarkGrey";
+colorRiserR="DarkGrey";
+colorRiserL="DarkGrey";
+
+frameColor="Black";
+
+/* color simulation for switches
+  select top and bottom color */
+switchColorTop = "Ivory";
+switchColorBottom = "Black";
+
+/* simulate a keycap profile with number of fragments ($fn = setKeycapFragments)
+   which will be set to key() call.
+   KeyV2 currently (2022-06) does not support XDA.
+   Use DSA as they look very similar
+   NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
+   of DSA caps
+   NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
+keycapProfile = "OEM"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+setKeycapFragments = 50;
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -317,7 +384,7 @@ colorRiserL="Gainsboro";
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,false,8);
+KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -327,9 +394,21 @@ KeyboardSim(layout,false,8);
 /* mainCase(layout); */
 /* lid(); */
 
+/* keycap frame functions. activate if skirt is enabled
+   and you want a frame that hides the switches, which is
+   a more classic look to none printed keyboards */
+/* translate([0,0,13])
+capFrame(layout); */
+
+/* translate([0,0,13])
+capFrameR(layout); */
+
+/* translate([0,0,13])
+capFrameL(layout); */
+
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */
-/* translate([0, 150,0]) mainCaseRight(layout); */
+/* mainCaseRight(layout); */
 
 /* lidL(); */
 /* lidR(); */

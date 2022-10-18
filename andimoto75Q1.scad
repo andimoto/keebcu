@@ -1,10 +1,10 @@
-/* andimotoTKLiso.scad
+/* andimoto7583.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
 single parts go to end of this file
 
-this file contains the layout for my TKL keyboard 3d model which can be devided
+this file contains the layout for my 7583 keyboard 3d model which can be devided
 to print on smaller printers
 
 this file includes KeyV2 files. see https://github.com/rsheldiii/KeyV2
@@ -25,12 +25,12 @@ wallThickness=3;
 /* height of the case */
 caseHeight=13;
 
-/* space between inner case stabilizers
+/* space between inner case stabilizers (no costar stabs)
    and the bottom/lip of the case */
 innerCaseSpace = 5;
 
 //length, in units, of board
-width=18.25;
+width=16.25;
 //Height, in units, of board
 height=6;
 
@@ -45,8 +45,8 @@ lidThickness=3;
 /* these are unit values; one unit is one key or switchhole
  * this makes the keyboard printable on nearly every printer.
  */
-cutAfterUnits = 8.5;
-spacebarCut = 5.5;
+cutAfterUnits = 7.25;
+spacebarCut = 4.5;
 
 /* fRowSeparator [true/false]
  * Select separation of F-Row (or Row 0; key[0][1]=0)
@@ -66,21 +66,21 @@ fRowSeparator=true;
  * around the keycaps to cover the switches. This may give
  * a cleaner look if this is prefered.
  */
-skirtSelect = false;
-skirtX = 0;
-skirtY = 0;
+skirtSelect = true;
+skirtX = 7;
+skirtY = 7;
 
 /* enables screw holes in frame (if capFrame() is called)
    and in the case. The screws will be placed according to
    the array frameScrewHoleArray[] around the case and frame.
    */
-frameScrewsEnable = false;
+frameScrewsEnable = true;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
  * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
  */
-caseRadius=10;
+caseRadius=3;
 
 
 /* ################## calculated vars #################### */
@@ -110,109 +110,96 @@ switchHoleTolerance = -0.2;
 					"row place" is the place of the switch in the row;
 					- example:  Esc, accent, TAB, CapsLock, ...
 */
-
-/* place extra keys here which are not aligned
-*  with usual switchhole unit */
-isoEnter = [
-[[13.5,2.5],1.5,"Red"] // ENTER
-];
-
-/* TKL_iso  */
+/* ansi_us_75Q1  */
 layout = [
 //start ROW 0 Function ROW
-[[0,0],1,"DarkSlateGray"], //Esc
-[[2,0],1,"DarkSlateGray"], //F1
-[[3,0],1,"DarkSlateGray"], //F2
-[[4,0],1,"DarkSlateGray"], //F3
-[[5,0],1,"DarkSlateGray"], //F4
-[[6.5,0],1,"DarkSlateGray"], //F5
-[[7.5,0],1,"DarkSlateGray"], //F6
-[[8.5,0],1,"DarkSlateGray"], //F7
-[[9.5,0],1,"DarkSlateGray"], //F8
-[[11,0],1,"DarkSlateGray"], //F9
-[[12,0],1,"DarkSlateGray"], //F10
-[[13,0],1,"DarkSlateGray"], //F11
-[[14,0],1,"DarkSlateGray"], //F12
-[[15.25,0],1,"DarkSlateGray"], //PrintScreen
-[[16.25,0],1,"DarkSlateGray"], //ScrLk
-[[17.25,0],1,"DarkSlateGray"], //Pause
+[[0,0],1,"Red"], //Esc
+[[1.25,0],1,"GhostWhite"], //F1
+[[2.25,0],1,"GhostWhite"], //F2
+[[3.25,0],1,"GhostWhite"], //F3
+[[4.25,0],1,"GhostWhite"], //F4
+[[5.5,0],1,"#5883AC"], //F5
+[[6.5,0],1,"#5883AC"], //F6
+[[7.5,0],1,"#5883AC"], //F7
+[[8.5,0],1,"#5883AC"], //F8
+[[9.75,0],1,"GhostWhite"], //F9
+[[10.75,0],1,"GhostWhite"], //F10
+[[11.75,0],1,"GhostWhite"], //F11
+[[12.75,0],1,"GhostWhite"], //F12
+[[14,0],1,"#5883AC"], //ins
+[[15.25,0],1,"#5883AC"], // Del
 //start ROW 1
-[[0,1],1,"DarkSlateGray"], //'
-[[1,1],1,"DarkSlateGray"], //1
-[[2,1],1,"DarkSlateGray"], //2
-[[3,1],1,"DarkSlateGray"], //3
-[[4,1],1,"DarkSlateGray"], //4
-[[5,1],1,"DarkSlateGray"], //5
-[[6,1],1,"DarkSlateGray"], //6
-[[7,1],1,"DarkSlateGray"], //7
-[[8,1],1,"DarkSlateGray"], //8
-[[9,1],1,"DarkSlateGray"], //9
-[[10,1],1,"DarkSlateGray"], //0
-[[11,1],1,"DarkSlateGray"], //-_
-[[12,1],1,"DarkSlateGray"], //=+
-[[13,1],2,"DarkSlateGray"], //backspace
-[[15.25,1],1,"DarkSlateGray"], //ins
-[[16.25,1],1,"DarkSlateGray"], //pos1
-[[17.25,1],1,"DarkSlateGray"], //pgup
+[[  0,1],1,"#5883AC"], //^
+[[1,1],1,"GhostWhite"], //1
+[[2,1],1,"GhostWhite"], //2
+[[3,1],1,"GhostWhite"], //3
+[[4,1],1,"GhostWhite"], //4
+[[5,1],1,"GhostWhite"], //5
+[[6,1],1,"GhostWhite"], //6
+[[7,1],1,"GhostWhite"], //7
+[[8,1],1,"GhostWhite"], //8
+[[9,1],1,"GhostWhite"], //9
+[[10,1],1,"GhostWhite"], //0
+[[11,1],1,"GhostWhite"], //ß
+[[12,1],1,"GhostWhite"], //`
+[[13,1],2,"#5883AC"], //backspace
+[[15.25,1],1,"#5883AC"], //PgUp
 //start ROW 2
-[[  0,2],1.5,"DarkSlateGray"], //TAB
-[[1.5,2],1,"DarkSlateGray"], //Q
-[[2.5,2],1,"DarkSlateGray"], //W
-[[3.5,2],1,"DarkSlateGray"], //E
-[[4.5,2],1,"DarkSlateGray"], //R
-[[5.5,2],1,"DarkSlateGray"], //T
-[[6.5,2],1,"DarkSlateGray"], //Y
-[[7.5,2],1,"DarkSlateGray"], //U
-[[8.5,2],1,"DarkSlateGray"], //I
-[[9.5,2],1,"DarkSlateGray"], //O
-[[10.5,2],1,"DarkSlateGray"], //P
-[[11.5,2],1,"DarkSlateGray"], //[
-[[12.5,2],1,"DarkSlateGray"], //]
-/* [[13.5,2.5],1.5,"DarkSlateGray"], // ENTER */
-[[15.25,2],1,"DarkSlateGray"], // del
-[[16.25,2],1,"DarkSlateGray"], // end
-[[17.25,2],1,"DarkSlateGray"], // pgdn
+[[  0,2],1.5,"#5883AC"], //TAB
+[[1.5,2],1,"MintCream"], //Q
+[[2.5,2],1,"MintCream"], //W
+[[3.5,2],1,"MintCream"], //E
+[[4.5,2],1,"MintCream"], //R
+[[5.5,2],1,"MintCream"], //T
+[[6.5,2],1,"MintCream"], //Y
+[[7.5,2],1,"MintCream"], //U
+[[8.5,2],1,"MintCream"], //I
+[[9.5,2],1,"MintCream"], //O
+[[10.5,2],1,"MintCream"], //P
+[[11.5,2],1,"MintCream"], //[
+[[12.5,2],1,"MintCream"], //]
+[[13.5,2],1.5,"#5883AC"], // \
+[[15.25,2],1,"#5883AC"], // PgUp
 //start ROW 3
-[[   0,3],1.75,"DarkSlateGray"], //CapsLock
-[[1.75,3],1,"DarkSlateGray"], //A
-[[2.75,3],1,"DarkSlateGray"], //S
-[[3.75,3],1,"DarkSlateGray"], //D
-[[4.75,3],1,"DarkSlateGray"], //F
-[[5.75,3],1,"DarkSlateGray"], //G
-[[6.75,3],1,"DarkSlateGray"], //H
-[[7.75,3],1,"DarkSlateGray"], //J
-[[8.75,3],1,"DarkSlateGray"], //K
-[[9.75,3],1,"DarkSlateGray"], //L
-[[10.75,3],1,"DarkSlateGray"], //;
-[[11.75,3],1,"DarkSlateGray"], //'
-[[12.75,3],1,"DarkSlateGray"], //#
+[[   0,3],1.75,"#5883AC"], //CapsLock
+[[1.75,3],1,"MintCream"], //A
+[[2.75,3],1,"MintCream"], //S
+[[3.75,3],1,"MintCream"], //D
+[[4.75,3],1,"MintCream"], //F
+[[5.75,3],1,"MintCream"], //G
+[[6.75,3],1,"MintCream"], //H
+[[7.75,3],1,"MintCream"], //J
+[[8.75,3],1,"MintCream"], //K
+[[9.75,3],1,"MintCream"], //L
+[[10.75,3],1,"MintCream"], //;
+[[11.75,3],1,"MintCream"], //'
+[[12.75,3],2.25,"#5883AC"], //ENTER
+[[15.25,3],1,"#5883AC"], //Home
 //start ROW 4
-[[   0,4],1.25,"DarkSlateGray"], //LShift
-[[1.25,4],1,"DarkSlateGray"], //Z
-[[2.25,4],1,"DarkSlateGray"], //Z
-[[3.25,4],1,"DarkSlateGray"], //X
-[[4.25,4],1,"DarkSlateGray"], //C
-[[5.25,4],1,"DarkSlateGray"], //V
-[[6.25,4],1,"DarkSlateGray"], //B
-[[7.25,4],1,"DarkSlateGray"], //N
-[[8.25,4],1,"DarkSlateGray"], //M
-[[9.25,4],1,"DarkSlateGray"], //,
-[[10.25,4],1,"DarkSlateGray"], //.
-[[11.25,4],1,"DarkSlateGray"], // /
-[[12.25,4],2.75,"DarkSlateGray"], //RShift
-[[16.25,4],1,"DarkSlateGray"], //UP
+[[   0,4],2.25,"#5883AC"], //LShift
+[[2.25,4],1,"GhostWhite"], //Z
+[[3.25,4],1,"GhostWhite"], //X
+[[4.25,4],1,"GhostWhite"], //C
+[[5.25,4],1,"GhostWhite"], //V
+[[6.25,4],1,"GhostWhite"], //B
+[[7.25,4],1,"GhostWhite"], //N
+[[8.25,4],1,"GhostWhite"], //M
+[[9.25,4],1,"GhostWhite"], //,
+[[10.25,4],1,"GhostWhite"], //.
+[[11.25,4],1,"GhostWhite"], // -
+[[12.25,4],1.75,"#5883AC"], //RShift
+[[14.25,4.25],1,"GhostWhite"], //UP
 //start ROW 5
-[[   0,5],1.25,"DarkSlateGray"], //LCTRL
-[[1.25,5],1.25,"DarkSlateGray"], //TUX
-[[2.5 ,5],1.25,"DarkSlateGray"], //ALT
-[[3.75,5],6.25,"DarkSlateGray"], //SPACE
-[[10  ,5],1.25,"DarkSlateGray"], //COMP
-[[11.25,5],1.25,"DarkSlateGray"], //Fn
-[[12.5,5],1.25,"DarkSlateGray"], //menu
-[[13.75 ,5],1.25,"DarkSlateGray"], //RCTRL
-[[15.25,5],1,"DarkSlateGray"], //LEFT
-[[16.25,5],1,"DarkSlateGray"], //DOWN
-[[17.25,5],1,"DarkSlateGray"], //RIGHT
+[[   0,5],1.25,"#5883AC"], //LCTRL
+[[1.25,5],1.25,"#5883AC"], //TUX
+[[2.5 ,5],1.25,"#5883AC"], //ALT
+[[3.75,5],6.25,"GhostWhite"], //SPACE
+[[10  ,5],1,"#5883AC"], //AltGr/Compose
+[[11,5],1,"#5883AC"], //Fn
+[[12,5],1,"#5883AC"], //Strg
+[[13.25,5.25],1,"GhostWhite"], //LEFT
+[[14.25,5.25],1,"GhostWhite"], //DOWN
+[[15.25,5.25],1,"GhostWhite"], //RIGHT
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -222,7 +209,7 @@ enableStabsOnHalfs = true;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=-13;
+pcbShift=0;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -231,10 +218,10 @@ usbCutX=8;
 usbCutY=wallThickness;
 
 /* Arduino Pro Micro USB Port height */
-usbCutZ=3.4;
+/* usbCutZ=3.4; */
 
 /* Teensy2 USB Port height */
-/* usbCutZ=4.5; */
+usbCutZ=4.5;
 
 /* space in lid for placing the controller pcb.
  * this example is for arduino pro micro clones.
@@ -244,15 +231,16 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
- /* teensy2 cutout */
+/* teensy2 cutout */
 pcbHeight = 1.8;
 pcbWidth = 18.5;
 pcbLength = 31.4;
 
  /* arduino pro micro cutout */
-//pcbHeight = 2;
-//pcbWidth = 18;
-//pcbLength = 34;
+/* pcbHeight = 2;
+pcbWidth = 18;
+pcbLength = 34; */
+
 
 /* set 'addRisers' to true or false
  * to calculate a lid with holes for risers
@@ -264,16 +252,16 @@ addRisers = true;
  * angleBaseX -> width of the riser
  * angleBaseY -> depth of the riser
  */
-angleBaseY=100;
-angleBaseX=80;
+angleBaseY=90;
+angleBaseX=60;
 /* riser edge radius */
 angleBaseRad=1;
 /* polygon; this is the shape of the riser */
 riserPoints = [
 [0,0],
 [angleBaseY,0],
-[angleBaseY,3],
-[0,18]
+[angleBaseY,2],
+[0,17]
 ];
 
 /* optional: move keyboard risers as needed */
@@ -300,34 +288,7 @@ include <keyboardParts.scad>
   * or other cutout objects to the model */
 module extraCutoutHook()
 {
-  /* custom: place isoEnter switchhole here */
-  for(key = isoEnter)
-  {
-    startx = 0;
-    starty = caseDepth - lkey;
-    zCase = tempHeigth;
 
-    /* check for iso Enter key; should be the last row minus 3.5
-       iso enter key belongs to the 2nd row at layout with F-Keys, or 1st
-       row without F Keys */
-    /* iso enter needs a move of about 2mm into right direction */
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-    translate([(lkey*key[1]-holesize)/2 + 2.8,(lkey - holesize)/2, 0])
-    switchhole();
-
-    /* iso enter and other stabilizers than spacebar */
-    /* needed to add some extra mm to the costarStabilizer cutouts
-       but different extra for each stabilizer */
-    translate([19.7,-5,0])
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-    translate([(lkey*key[1]-holesize)/2+(holesize/2)-shortStabX/2 + 2.5,(lkey - holesize)/2+costarStabYdelta+0.5, 0])
-    rotate([0,0,90]) costarStabilizer();
-
-    translate([-4.7,20,0])
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-    translate([(lkey*key[1]+holesize)/2-(holesize/2)+shortStabX/2 + 2.8,(lkey - holesize)/2+costarStabYdelta-0.5, 0])
-    rotate([0,0,90]) costarStabilizer();
-  }
 }
 
 /* this module gets called in 'keycapMatrix()' and adds a specific
@@ -337,6 +298,7 @@ module extraCutoutHook()
  */
 module extraKeycapCutoutHook()
 {
+
 }
 
 /* this module gets called in 'keySim()' and adds a specific
@@ -344,50 +306,41 @@ module extraKeycapCutoutHook()
   * or other objects to the model simulation */
 module extraKeySimHook()
 {
-  startx = 0;
-	starty = caseDepth - lkey;
-	zCase = tempHeigth;
-
-  for(key = isoEnter)
-  {
-    color(key[2])
-    translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-    translate([(lkey*key[1]-holesize)/2+2,(lkey - holesize)/2, 0])
-    sa_row(key[0][1]) iso_enter() key(true);
-  }
+  
 }
+
 
 /* ####### screw hole config ######## */
 /* set the screw holes to a good position.
  * if your keyboard is bigger, you can add some
  * more screw holes into the keyboard case and lid.
  */
- screwHoleArray = [
- [24,lkey-0.5], //left lower row
- [157,lkey-0.5],
- [193,lkey-0.5],
- [328,lkey-0.5], // right lower row
+screwHoleArray = [
+[24,lkey-0.4], //left lower row
+[114,lkey-0.4],
+[170,lkey-0.4],
+[291.5,lkey-0.4], // right lower row
 
- [24,lkey*3+wallThickness-3], //left mid row
- [148.5,lkey*3+wallThickness-3],
- [200,lkey*3+wallThickness-3],
- [328,lkey*3+wallThickness-3], //right mid row
+[24,lkey*3+wallThickness-3], //left mid row
+[124,lkey*3+wallThickness-3],
+[162,lkey*3+wallThickness-3],
+[291,lkey*3+wallThickness-3], //right mid row
 
- [24,lkey*5+wallThickness-3], //left upper row
- [152,lkey*5+wallThickness-3],
- [200,lkey*5+wallThickness-3],
- [328,lkey*5+wallThickness-3], //right upper row
- ];
+[19,lkey*5+wallThickness-3], //left upper row
+[133,lkey*5+wallThickness-3],
+[171,lkey*5+wallThickness-3],
+[291,lkey*5+wallThickness-3], //right upper row
+];
 
- /* rotate screw hole spacers */
- screwSpacerRotation=0;
+/* rotate screw hole spacers */
+screwSpacerRotation=0;
 
- /* move horizontal case stabilizers inside the case.
-  * to move horizontal by lkey/2 for half switch cutout.
-  * this enables to set x.5 values in layout array.
-  * else use 0!!
-  */
- caseStabMov=0;
+/* move horizontal case stabilizers inside the case.
+ * to move horizontal by lkey/2 for half switch cutout.
+ * this enables to set x.5 values in layout array.
+ * else use 0!!
+ */
+caseStabMov=0;
 
 /* screw holes when enabling outer case frame */
 frameScrewHoleArray = [
@@ -440,8 +393,8 @@ switchColorBottom = "Black";
    NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
-keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
-setKeycapFragments = 50;
+keycapProfile = "OEM"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+setKeycapFragments = 100;
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
@@ -453,7 +406,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=9.5); */
+KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -469,17 +422,16 @@ setKeycapFragments = 50;
 /* translate([0,0,13])
 capFrame(layout); */
 
-/* translate([0,0,13])
-capFrameR(layout); */
 
-/* translate([0,0,13])
-capFrameL(layout); */
+/* capFrameR(layout); */
+
+/* capFrameL(layout); */
 
 /* ### devided keyboard and lid model ### */
-mainCaseLeft(layout);
+/* mainCaseLeft(layout); */
 /* mainCaseRight(layout); */
 
-/* lidR(); */
 /* lidL(); */
+/* lidR(); */
 
 /* keyboardRiser(); */
