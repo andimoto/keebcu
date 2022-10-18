@@ -248,9 +248,9 @@ pcbWidth = 18.5;
 pcbLength = 31.4;
 
 /* arduino pro micro cutout */
-//pcbHeight = 2;
-//pcbWidth = 18;
-//pcbLength = 34;
+/* pcbHeight = 2;
+pcbWidth = 18;
+pcbLength = 34; */
 
 
 /* set 'addRisers' to true or false
@@ -477,8 +477,8 @@ capFrameR(layout); */
 capFrameL(layout); */
 
 /* ### devided keyboard and lid model ### */
-mainCaseLeft(layout);
-/* mainCaseRight(layout); */
+/* mainCaseLeft(layout); */
+mainCaseRight(layout);
 
 /* lidR(); */
 /* lidL(); */
