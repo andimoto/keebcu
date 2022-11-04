@@ -42,15 +42,16 @@ The available keyboard models (in stl directory) should work and have been print
 
 ### Current designs available
 ```
-- andimoto7583 (printed, documented wiring)
+- andimoto7583 (printed, documented wiring, firmware ProMicro)
 - andimoto6061 (not printed)
-- andimoto6064 (printed, documented wiring)
+- andimoto6064 (printed, documented wiring, firmware ProMicro)
 - andimoto_smallTKL (printed)
-- andimoto_smallTKL_iso (printed, documented wiring)
+- andimoto_smallTKL_iso (printed, documented wiring, firmware Teensy2)
+- andimoto75Q1iso (printed, documented wiring, firmware Teensy2)
 - andimotoTKL (not printed)
 - andimotoTKLiso (not printed)
 - macropad
-- numpad
+- numpad (firmware ProMicro)
 ```
 
 __Note:__
@@ -58,6 +59,7 @@ __Note:__
 7583 is -> 75% layout with 83 switches.
 6061 is -> 60% layout with 61 switches
 smallTKL is TKL keyboard with one missing column
+75Q1iso -> 75+% with Keychron Q1 Layout
 TKL - ten keyless
 etc.
 ```
@@ -225,6 +227,7 @@ Available wiring diagrams for:
 - andimoto6064 with Arduino Pro Micro
 - andimoto7583 with Arduino Pro Micro
 - andimotoSmallTKL_iso with Teensy 2.0
+- andimoto75Q1iso with Teensy 2.0
 
 The Arduino Pro Micro clones are very cheap so I used them. More money for fancy keycaps ;).
 
@@ -250,7 +253,7 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 *andimotoTKLiso*
 ![](pics/andimotoTKLiso.png)
 
-*andimoto7583-Q1*
+*andimoto75Q1iso*
 ![](pics/andimoto75Q1-iso.png)
 
 ![](pics/75er013.png)
@@ -280,7 +283,9 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/keebCaseLocks.png)
 
-### Reality
+<br>
+
+### -------- ___Reality___ --------
 
 ![](pics/pics/keebcu_017.JPG)
 
@@ -306,17 +311,19 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/img/IMG_20210406_151326.jpg)
 
-![](pics/pics/numpad_001.jpg)
+![](pics/pics/andimoto75Q1iso-002.jpg)
+
+![](pics/pics/andimoto75Q1iso-006.jpg)
 
 ![](pics/pics/numpad_002.jpg)
 
 ![](pics/pics/macro001.JPG)
 
-![](pics/pics/macro002.JPG)
-
 ![](pics/pics/macro003.JPG)
 *5x2 macropad printed with fuzzing on outer walls*
 ![](pics/pics/macro004.JPG)
+
+### -------- ___Development Process___ --------
 
 ![](pics/img/IMG_20201215_085124.jpg)
 
