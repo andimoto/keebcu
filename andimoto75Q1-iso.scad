@@ -1,4 +1,4 @@
-/* andimoto7583.scad
+/* andimoto75Q1-iso.scad
 Author: andimoto@posteo.de
 ----------------------------
 for placing assambled parts and
