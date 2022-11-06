@@ -159,11 +159,10 @@ __This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubun
 - __Costar Stabilizers__
 - __Fancy Keycaps__
 - __Teensy2 or Arduino Pro Micro__
-- Cylinder Head Screws 3x8mm
+- 12x Cylinder Head Screws 3x8mm for lids
+- 20x Cylinder Head Screws 2.5x8mm for frame (if frame is selected)
 - Thin wires
 - 1N4148 diodes
-- 12x 3x8mm screws for lids
-- 20x 2.5x8mm screws for frame (if frame is selected)
 
 __Note:__ Parts can be bougth from ebay, amazon, etc. There is a great choice, but also many things are not available or in stock...
 
