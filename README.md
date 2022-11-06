@@ -162,6 +162,8 @@ __This was only tested on Linux Mint 19.3 (Ubuntu 18.04) and Linux Mint 20 (Ubun
 - Cylinder Head Screws 3x8mm
 - Thin wires
 - 1N4148 diodes
+- 12x 3x8mm screws for lids
+- 20x 2.5x8mm screws for frame (if frame is selected)
 
 __Note:__ Parts can be bougth from ebay, amazon, etc. There is a great choice, but also many things are not available or in stock...
 
