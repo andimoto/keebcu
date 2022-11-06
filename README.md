@@ -315,6 +315,8 @@ The Arduino Pro Micro clones are very cheap so I used them. More money for fancy
 
 ![](pics/pics/andimoto75Q1iso-006.jpg)
 
+![](pics/pics/andimoto75Q1iso-007.jpg)
+
 ![](pics/pics/numpad_002.jpg)
 
 ![](pics/pics/macro001.JPG)
