@@ -66,15 +66,15 @@ fRowSeparator=false;
  * around the keycaps to cover the switches. This may give
  * a cleaner look if this is prefered.
  */
-skirtSelect = false;
-skirtX = 0;
-skirtY = 0;
+skirtSelect = true;
+skirtX = 5;
+skirtY = 5;
 
 /* enables screw holes in frame (if capFrame() is called)
    and in the case. The screws will be placed according to
    the array frameScrewHoleArray[] around the case and frame.
    */
-frameScrewsEnable = false;
+frameScrewsEnable = true;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
@@ -114,95 +114,95 @@ switchHoleTolerance = -0.2;
 /* ansiUS_7583  */
 layout = [
 //start ROW 0 Function ROW
-[[0,0],1,"red"], //Esc
-[[1,0],1,"MintCream"], //F1
-[[2,0],1,"MintCream"], //F2
-[[3,0],1,"MintCream"], //F3
-[[4,0],1,"MintCream"], //F4
-[[5,0],1,"Gray"], //F5
-[[6,0],1,"Gray"], //F6
-[[7,0],1,"Gray"], //F7
-[[8,0],1,"Gray"], //F8
-[[9,0],1,"MintCream"], //F9
-[[10,0],1,"MintCream"], //F10
-[[11,0],1,"MintCream"], //F11
-[[12,0],1,"MintCream"], //F12
-[[13,0],1,"Gray"], //PrintScreen
-[[14,0],1,"Gray"], //PrintScreen
-[[15,0],1,"Gray"], // Del/Ins
+[[0,0],1,"DarkGray"], //Esc
+[[1,0],1,"LightGrey"], //F1
+[[2,0],1,"LightGrey"], //F2
+[[3,0],1,"LightGrey"], //F3
+[[4,0],1,"LightGrey"], //F4
+[[5,0],1,"DimGray"], //F5
+[[6,0],1,"DimGray"], //F6
+[[7,0],1,"DimGray"], //F7
+[[8,0],1,"DimGray"], //F8
+[[9,0],1,"LightGrey"], //F9
+[[10,0],1,"LightGrey"], //F10
+[[11,0],1,"LightGrey"], //F11
+[[12,0],1,"LightGrey"], //F12
+[[13,0],1,"DimGray"], //PrintScreen
+[[14,0],1,"DimGray"], //PrintScreen
+[[15,0],1,"DimGray"], // Del/Ins
 //start ROW 1
-[[  0,1],1,"Gray"], //'
-[[1,1],1,"MintCream"], //1
-[[2,1],1,"MintCream"], //2
-[[3,1],1,"MintCream"], //3
-[[4,1],1,"MintCream"], //4
-[[5,1],1,"MintCream"], //5
-[[6,1],1,"MintCream"], //6
-[[7,1],1,"MintCream"], //7
-[[8,1],1,"MintCream"], //8
-[[9,1],1,"MintCream"], //9
-[[10,1],1,"MintCream"], //0
-[[11,1],1,"MintCream"], //-_
-[[12,1],1,"MintCream"], //=+
-[[13,1],2,"Gray"], //backspace
-[[15,1],1,"Gray"], //home
+[[  0,1],1,"DimGray"], //'
+[[1,1],1,"LightGrey"], //1
+[[2,1],1,"LightGrey"], //2
+[[3,1],1,"LightGrey"], //3
+[[4,1],1,"LightGrey"], //4
+[[5,1],1,"LightGrey"], //5
+[[6,1],1,"LightGrey"], //6
+[[7,1],1,"LightGrey"], //7
+[[8,1],1,"LightGrey"], //8
+[[9,1],1,"LightGrey"], //9
+[[10,1],1,"LightGrey"], //0
+[[11,1],1,"LightGrey"], //-_
+[[12,1],1,"LightGrey"], //=+
+[[13,1],2,"DimGray"], //backspace
+[[15,1],1,"DimGray"], //home
 //start ROW 2
-[[  0,2],1.5,"Gray"], //TAB
-[[1.5,2],1,"MintCream"], //Q
-[[2.5,2],1,"MintCream"], //W
-[[3.5,2],1,"MintCream"], //E
-[[4.5,2],1,"MintCream"], //R
-[[5.5,2],1,"MintCream"], //T
-[[6.5,2],1,"MintCream"], //Y
-[[7.5,2],1,"MintCream"], //U
-[[8.5,2],1,"MintCream"], //I
-[[9.5,2],1,"MintCream"], //O
-[[10.5,2],1,"MintCream"], //P
-[[11.5,2],1,"MintCream"], //[
-[[12.5,2],1,"MintCream"], //]
-[[13.5,2],1.5,"Gray"], // \
-[[15,2],1,"Gray"], // PgUp
+[[  0,2],1.5,"DimGray"], //TAB
+[[1.5,2],1,"LightGrey"], //Q
+[[2.5,2],1,"LightGrey"], //W
+[[3.5,2],1,"LightGrey"], //E
+[[4.5,2],1,"LightGrey"], //R
+[[5.5,2],1,"LightGrey"], //T
+[[6.5,2],1,"LightGrey"], //Y
+[[7.5,2],1,"LightGrey"], //U
+[[8.5,2],1,"LightGrey"], //I
+[[9.5,2],1,"LightGrey"], //O
+[[10.5,2],1,"LightGrey"], //P
+[[11.5,2],1,"LightGrey"], //[
+[[12.5,2],1,"LightGrey"], //]
+[[13.5,2],1.5,"DimGray"], // \
+[[15,2],1,"DimGray"], // PgUp
 //start ROW 3
-[[   0,3],1.75,"Gray"], //CapsLock
-[[1.75,3],1,"MintCream"], //A
-[[2.75,3],1,"MintCream"], //S
-[[3.75,3],1,"MintCream"], //D
-[[4.75,3],1,"MintCream"], //F
-[[5.75,3],1,"MintCream"], //G
-[[6.75,3],1,"MintCream"], //H
-[[7.75,3],1,"MintCream"], //J
-[[8.75,3],1,"MintCream"], //K
-[[9.75,3],1,"MintCream"], //L
-[[10.75,3],1,"MintCream"], //;
-[[11.75,3],1,"MintCream"], //'
-[[12.75,3],2.25,"Aqua"], //ENTER
-[[15,3],1,"Gray"], //PgDn
+[[   0,3],1.75,"DimGray"], //CapsLock
+[[1.75,3],1,"LightGrey"], //A
+[[2.75,3],1,"LightGrey"], //S
+[[3.75,3],1,"LightGrey"], //D
+[[4.75,3],1,"LightGrey"], //F
+[[5.75,3],1,"LightGrey"], //G
+[[6.75,3],1,"LightGrey"], //H
+[[7.75,3],1,"LightGrey"], //J
+[[8.75,3],1,"LightGrey"], //K
+[[9.75,3],1,"LightGrey"], //L
+[[10.75,3],1,"LightGrey"], //;
+[[11.75,3],1,"LightGrey"], //'
+[[12.75,3],2.25,"DarkGray"], //ENTER
+[[15,3],1,"DimGray"], //PgDn
 //start ROW 4
-[[   0,4],2.25,"Gray"], //LShift
-[[2.25,4],1,"MintCream"], //Z
-[[3.25,4],1,"MintCream"], //X
-[[4.25,4],1,"MintCream"], //C
-[[5.25,4],1,"MintCream"], //V
-[[6.25,4],1,"MintCream"], //B
-[[7.25,4],1,"MintCream"], //N
-[[8.25,4],1,"MintCream"], //M
-[[9.25,4],1,"MintCream"], //,
-[[10.25,4],1,"MintCream"], //.
-[[11.25,4],1,"MintCream"], // /
-[[12.25,4],1.75,"Gray"], //RShift
-[[14,4],1,"Gray"], //UP
-[[15,4],1,"Gray"], //end
+[[   0,4],2.25,"DimGray"], //LShift
+[[2.25,4],1,"LightGrey"], //Z
+[[3.25,4],1,"LightGrey"], //X
+[[4.25,4],1,"LightGrey"], //C
+[[5.25,4],1,"LightGrey"], //V
+[[6.25,4],1,"LightGrey"], //B
+[[7.25,4],1,"LightGrey"], //N
+[[8.25,4],1,"LightGrey"], //M
+[[9.25,4],1,"LightGrey"], //,
+[[10.25,4],1,"LightGrey"], //.
+[[11.25,4],1,"LightGrey"], // /
+[[12.25,4],1.75,"DimGray"], //RShift
+[[14,4],1,"DimGray"], //UP
+[[15,4],1,"DimGray"], //end
 //start ROW 5
-[[   0,5],1.25,"Gray"], //LCTRL
-[[1.25,5],1.25,"Gray"], //TUX
-[[2.5 ,5],1.25,"Gray"], //ALT
-[[3.75,5],6.25,"MintCream"], //SPACE
-[[10  ,5],1.25,"Gray"], //COMP
-[[11.25,5],1.25,"Gray"], //Fn
-/* [[12 ,5],1], //RCTRL */
-[[13,5],1,"Gray"], //LEFT
-[[14,5],1,"Gray"], //DOWN
-[[15,5],1,"Gray"], //RIGHT
+[[   0,5],1.25,"DimGray"], //LCTRL
+[[1.25,5],1.25,"DimGray"], //TUX
+[[2.5 ,5],1.25,"DimGray"], //ALT
+[[3.75,5],6.25,"DarkGray"], //SPACE
+[[10  ,5],1,"DimGray"], //COMP
+[[11 ,5], 1,"DimGray"], //Fn
+[[12 ,5], 1,"DimGray"], //RCTRL
+[[13,5],1,"DimGray"], //LEFT
+[[14,5],1,"DimGray"], //DOWN
+[[15,5],1,"DimGray"], //RIGHT
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -212,7 +212,7 @@ enableStabsOnHalfs = true;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=0;
+pcbShift=7;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -234,15 +234,16 @@ usbCutZ=3.4;
  * pcbLength should be as exactly as possible. this keeps the pcb
  * perfectly even if pcbWidth is to much
  */
+ /* arduino pro micro cutout */
+pcbHeight = 2;
+pcbWidth = 18;
+pcbLength = 34;
+
 /* teensy2 cutout */
 //pcbHeight = 1.8;
 //pcbWidth = 18.5;
 // pcbLength = 31.4;
 
- /* arduino pro micro cutout */
-pcbHeight = 2;
-pcbWidth = 18;
-pcbLength = 34;
 
 
 /* set 'addRisers' to true or false
@@ -256,20 +257,20 @@ addRisers = true;
  * angleBaseY -> depth of the riser
  */
 angleBaseY=90;
-angleBaseX=60;
+angleBaseX=90;
 /* riser edge radius */
 angleBaseRad=1;
 /* polygon; this is the shape of the riser */
 riserPoints = [
 [0,0],
 [angleBaseY,0],
-[angleBaseY,2],
-[0,17]
+[angleBaseY,3],
+[0,13]
 ];
 
 /* optional: move keyboard risers as needed */
-xRiserR=0;
-xRiserL=0;
+xRiserR=10;
+xRiserL=-10;
 yRiserAll=0;
 
 /* move connectors (round cylinders on top of risers)
@@ -316,17 +317,17 @@ module extraKeySimHook()
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[24,lkey-0.4], //left lower row
-[114,lkey-0.4],
+[20,lkey-0.4], //left lower row
+[140,lkey-0.4],
 [170,lkey-0.4],
 [285.5,lkey-0.4], // right lower row
 
-[24,lkey*3+wallThickness-3], //left mid row
-[124,lkey*3+wallThickness-3],
-[162,lkey*3+wallThickness-3],
+[20,lkey*3+wallThickness-3], //left mid row
+[128,lkey*3+wallThickness-3],
+[180,lkey*3+wallThickness-3],
 [285,lkey*3+wallThickness-3], //right mid row
 
-[19,lkey*5+wallThickness-3], //left upper row
+[20,lkey*5+wallThickness-3], //left upper row
 [133,lkey*5+wallThickness-3],
 [171,lkey*5+wallThickness-3],
 [285.5,lkey*5+wallThickness-3], //right upper row
@@ -351,35 +352,31 @@ frameScrewHoleArray = [
 [caseWidth-caseWidth/4,-skirtY/2-innerCaseRadius/2],
 [caseWidth+skirtX/2+innerCaseRadius/2,-skirtY/2-innerCaseRadius/2],
 
-[-skirtX/2-innerCaseRadius/2,lkey*1.5], //lower row
-[caseWidth+skirtX/2+innerCaseRadius/2,lkey*1.5],
+[-skirtX/2-innerCaseRadius/2,lkey*2], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,lkey*2],
 
-[-skirtX/2-innerCaseRadius/2,caseDepth-lkey*0.75], //lower row
-[caseWidth/2-lkey,caseDepth-lkey*0.75],
-[caseWidth/4,caseDepth-lkey*0.75],
-[caseWidth/2+lkey,caseDepth-lkey*0.75], //lower row
-[caseWidth-caseWidth/4,caseDepth-lkey*0.75],
-[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth-lkey*0.75],
+[-skirtX/2-innerCaseRadius/2,caseDepth-lkey*2], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth-lkey*2],
 
-[-skirtX/2-innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
-[caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
-[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
-[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
-[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
-[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2]
+[-skirtX/2-innerCaseRadius/2,caseDepth+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth/4,caseDepth+skirtY/2+innerCaseRadius/2],
+[caseWidth/2-lkey,caseDepth+skirtY/2+innerCaseRadius/2],
+[caseWidth/2+lkey,caseDepth+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth-caseWidth/4,caseDepth+skirtY/2+innerCaseRadius/2],
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+skirtY/2+innerCaseRadius/2]
 ];
 
 
 
 
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
-colorCaseTop="White";
+colorCaseTop="Black";
 colorCaseMid="DarkGray";
-colorLid="Black";
-colorRiserR="Black";
-colorRiserL="Black";
+colorLid="DarkGray";
+colorRiserR="DarkGray";
+colorRiserL="DarkGray";
 
-frameColor="Black";
+frameColor="DarkGray";
 
 /* color simulation for switches
   select top and bottom color */
@@ -393,7 +390,7 @@ switchColorBottom = "Black";
    NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
-keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+keycapProfile = "DSA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
 setKeycapFragments = 50;
 
 /* ###################### BUILD_LINE ########################*/
@@ -406,7 +403,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=9.5); */
+/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=6.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -419,7 +416,7 @@ setKeycapFragments = 50;
 /* keycap frame functions. activate if skirt is enabled
    and you want a frame that hides the switches, which is
    a more classic look to none printed keyboards */
-/* translate([0,0,13])
+/* translate([0,0,15])
 capFrame(layout); */
 
 /* translate([0,0,13])
@@ -429,10 +426,10 @@ capFrameR(layout); */
 capFrameL(layout); */
 
 /* ### devided keyboard and lid model ### */
-mainCaseLeft(layout);
+/* mainCaseLeft(layout); */
 /* mainCaseRight(layout); */
 
 /* lidL(); */
 /* lidR(); */
 
-/* keyboardRiser(); */
+keyboardRiser();

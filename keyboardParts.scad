@@ -765,8 +765,8 @@ module lidR()
 		{
 			if(skirtSelect == true)
 			{
-				translate([0-skirtX-caseRadius/2,-skirtY-caseRadius-extra,-extra])
-				cube([(caseWidth+(skirtX*2))/2,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
+				translate([0-skirtX-caseRadius/2-extra,-skirtY-extra,-extra])
+				cube([(caseWidth+(skirtX*2))/2+extra,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
 			}else{
 				translate([-innerCaseRadius-extra,-innerCaseRadius-extra,-extra])
 				cube([(caseWidth+2*innerCaseRadius)/2+extra,caseDepth+2*innerCaseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
@@ -783,8 +783,8 @@ module lidL()
 		{
 			if(skirtSelect == true)
 			{
-		 		translate([0-skirtX-caseRadius/2+(caseWidth+skirtX*2)/2,-skirtY-caseRadius-extra,-extra])
-				cube([(caseWidth+skirtX*2)/2+caseRadius,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
+		 		translate([0-skirtX-caseRadius/2+(caseWidth+skirtX*2)/2,-skirtY-extra,-extra])
+				cube([(caseWidth+skirtX*2)/2+caseRadius+extra,caseDepth+getExtraFRow(fRowSeparator)+(skirtY+caseRadius)*2,caseHeight]);
 			}else{
 				translate([(caseWidth+2*innerCaseRadius)/2-extra,-innerCaseRadius-extra,-extra])
 				cube([(caseWidth+2*innerCaseRadius)/2+extra,caseDepth+2*innerCaseRadius+extra+getExtraFRow(fRowSeparator),caseHeight]);
