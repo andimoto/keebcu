@@ -404,10 +404,20 @@ module keySim(holes)
 			}
 			else
 			{
-				color(key[2])
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				1u() keyProfile(key[0][1]);
+				half = getHalf(key[0][1]);
+				if(half==0.5)
+				{
+					// these will simulate keycaps like numpad enter or numpad plus
+					color(key[2])
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+					numpad_plus() keyProfile(key[0][1]);
+				}else{
+					color(key[2])
+					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+					translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
+					1u() keyProfile(key[0][1]);
+				}
 			}
 		}
 	}
