@@ -30,9 +30,9 @@ caseHeight=13;
 innerCaseSpace = 5;
 
 //length, in units, of board
-width=5;
+width=7;
 //Height, in units, of board
-height=2.5;
+height=4;
 
 /* thickness of the lid.
    the function 'lid()' will add an
@@ -80,7 +80,7 @@ frameScrewsEnable = false;
  * Note: be careful here, this interacts with skirtX/Y
  * THIS IS ONLY VALID WHEN 'skirtSelect' IS TRUE
  */
-caseRadius=5;
+caseRadius=3;
 
 
 /* debug extra for avoiding artefacts @ compilation */
@@ -111,16 +111,18 @@ switchHoleTolerance = -0.2;
 /* template_ansiUS_7583 */
 layout = [
 //start ROW 0 Function ROW
-[[ 0,0.5],1,"Gold"], //Esc
-[[ 1,0.5],1,"Gold"], //F1
-[[ 2,0.5],1,"Gold"], //F2
-[[ 3,0.5],1,"Gold"], //F3
-[[ 4,0.5],1,"Gold"], //F4
-[[ 0,1.5],1,"Gold"], //'
-[[ 1,1.5],1,"Gold"], //1
-[[ 2,1.5],1,"Gold"], //2
-[[ 3,1.5],1,"Gold"], //3
-[[ 4,1.5],1,"Gold"], //4
+[[ 3.5,0.5],1,"Gold"], //'
+[[ 4.5,0.5],1,"Gold"], //1
+[[ 5.5,0.5],1,"Gold"], //2
+
+[[ 1.5,1.5],1,"Gold"], //F1
+[[ 5.5,2],1,"Gold"], //F4
+
+[[ 0.5,2.5],1,"Gold"], //'
+[[ 1.5,2.5],1,"Gold"], //1
+[[ 2.5,2.5],1,"Gold"], //2
+[[ 4.5,2.5],1,"Gold"], //3
+/* [[ 4,1.5],1,"Gold"], //4 */
 ];
 
 /* enable placment of stabilizers on switchholes with x.5 unit in y direction
@@ -135,7 +137,7 @@ halfIsNumpadPlus = false;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=0;
+pcbShift=-40;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -286,13 +288,13 @@ frameScrewHoleArray = [
 
 
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
-colorCaseTop="White";
+colorCaseTop="DarkGray";
 colorCaseMid="DarkGray";
-colorLid="Black";
+colorLid="RoyalBlue";
 colorRiserR="Black";
 colorRiserL="Black";
 
-frameColor="Black";
+frameColor="RoyalBlue";
 
 /* color simulation for switches
   select top and bottom color */
@@ -319,7 +321,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=false,xRotate=9.5); */
+KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=9.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -342,7 +344,7 @@ capFrameR(layout); */
 capFrameL(layout); */
 
 /* ### devided keyboard and lid model ### */
-mainCaseLeft(layout);
+/* mainCaseLeft(layout); */
 /* mainCaseRight(layout); */
 
 /* lidL(); */

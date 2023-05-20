@@ -187,6 +187,11 @@ layout = [
  * if you just want a single unit (1unit keycap) you can set this to false */
 enableStabsOnHalfs = true;
 
+/* enable placment of numpad plus keycap on switchholes with x.5 unit in y direction
+ * for example: true for 0.5 units are numpad enter or numpad +
+ * if you just want a single unit (1unit keycap) you can set this to false */
+halfIsNumpadPlus = false;
+
 /* move pcb and usb cutout in x direction
    for better placement */
 pcbShift=0;

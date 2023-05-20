@@ -405,7 +405,7 @@ module keySim(holes)
 			else
 			{
 				half = getHalf(key[0][1]);
-				if(half==0.5)
+				if(half==0.5 && halfIsNumpadPlus==true)
 				{
 					// these will simulate keycaps like numpad enter or numpad plus
 					color(key[2])
