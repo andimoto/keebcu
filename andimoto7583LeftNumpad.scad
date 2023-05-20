@@ -432,7 +432,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=6.5);
+/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=6.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -445,8 +445,8 @@ KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=6.5);
 /* keycap frame functions. activate if skirt is enabled
    and you want a frame that hides the switches, which is
    a more classic look to none printed keyboards */
-/* translate([0,0,15])
-capFrame(layout); */
+translate([0,0,15])
+capFrame(layout);
 
 /* translate([0,0,13])
 capFrameR(layout); */

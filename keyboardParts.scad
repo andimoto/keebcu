@@ -129,11 +129,11 @@ module holematrix(holes,startx,starty,zCase){
 	}
 }
 
-module keycapSpace(factor=1)
+module keycapSpace(factorX=1,factorY=1)
 {
 	union(){
 		translate([-extraSpace/2,-extraSpace/2,0])
-		cube([lkey*factor+extraSpace,lkey+extraSpace,plateThickness+cutThrough+extra]);
+		cube([lkey*factorX+extraSpace,lkey*factorY+extraSpace,plateThickness+cutThrough+extra]);
 	}
 }
 
@@ -147,21 +147,21 @@ module keycapMatrix(holes,startx,starty,zCase)
 			half = getHalf(key[0][1]);// % 1;
 			if(half == 0.5){
 				/* all switchholes which have vertical sized keycaps like numpad-enter or numpad+ */
-				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], zCase-extra])
-				translate([(lkey*key[1]-holesize)/2,(lkey - holesize)/2, 0])
-				scale([1,1,key[1]]) keycapSpace(); /*todo: test this with numpad!!*/
+				translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
+				translate([0,-lkey/2, 0])
+				scale([1,1,key[1]]) keycapSpace(key[1],2); /*todo: test this with numpad!!*/
 			}
 			else
 			{
 				if((key[0][1]==0) && (fRowSeparator==true))
 				{
 					translate([startx+lkey*key[0][0], starty-lkey*(key[0][1])+getExtraFRow(fRowSeparator), 0])
-					keycapSpace(key[1]);
+					keycapSpace(key[1],1);
 				}
 				else
 				{
 					translate([startx+lkey*key[0][0], starty-lkey*key[0][1], 0])
-					keycapSpace(key[1]);
+					keycapSpace(key[1],1);
 				}
 			}
 		}
