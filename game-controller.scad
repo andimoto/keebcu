@@ -111,17 +111,17 @@ switchHoleTolerance = -0.2;
 /* template_ansiUS_7583 */
 layout = [
 //start ROW 0 Function ROW
-[[ 3.5,0.5],1,"Gold"], //'
-[[ 4.5,0.5],1,"Gold"], //1
-[[ 5.5,0.5],1,"Gold"], //2
+[[ 3.5,0.5],1,"DimGrey"], //'
+[[ 4.5,0.5],1,"DimGrey"], //1
+[[ 5.5,0.5],1,"DimGrey"], //2
 
-[[ 1.5,1.5],1,"Gold"], //F1
-[[ 5.5,2],1,"Gold"], //F4
+[[ 1.5,1.5],1,"DimGrey"], //F1
+[[ 5.5,2],1,"DimGrey"], //F4
 
-[[ 0.5,2.5],1,"Gold"], //'
-[[ 1.5,2.5],1,"Gold"], //1
-[[ 2.5,2.5],1,"Gold"], //2
-[[ 4.5,2.5],1,"Gold"], //3
+[[ 0.5,2.5],1,"DimGrey"], //'
+[[ 1.5,2.5],1,"DimGrey"], //1
+[[ 2.5,2.5],1,"DimGrey"], //2
+[[ 4.5,2.5],1,"DimGrey"], //3
 /* [[ 4,1.5],1,"Gold"], //4 */
 ];
 
@@ -137,7 +137,7 @@ halfIsNumpadPlus = false;
 
 /* move pcb and usb cutout in x direction
    for better placement */
-pcbShift=-40;
+pcbShift=-60;
 
 /* cutout for micro usb plug (not the housing of the usb plug!)
  * change this if using mini usb
@@ -241,10 +241,10 @@ module extraKeySimHook()
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[lkey,5.5], //left lower row
-[lkey*4,5.5],
-[lkey,lkey*2.21],
-[lkey*4,lkey*2.21], // right lower row
+[lkey/2-2,7.5], //left lower row
+[lkey*7-lkey/2+2,7.5],
+[lkey/2-2,lkey*3.21],
+[lkey*7-lkey/2+2,lkey*3.21], // right lower row
 ];
 
 /* rotate screw hole spacers */
@@ -260,35 +260,30 @@ caseStabMov=lkey/2;
 /* screw holes when enabling outer case frame */
 frameScrewHoleArray = [
 [-skirtX/2-innerCaseRadius/2,-skirtY/2-innerCaseRadius/2], //lower row
-[caseWidth/4,-skirtY/2-innerCaseRadius/2],
-[caseWidth/2-lkey,-skirtY/2-innerCaseRadius/2],
-[caseWidth/2+lkey,-skirtY/2-innerCaseRadius/2], //lower row
-[caseWidth-caseWidth/4,-skirtY/2-innerCaseRadius/2],
+
+[caseWidth/2,-skirtY/2-innerCaseRadius/2],
 [caseWidth+skirtX/2+innerCaseRadius/2,-skirtY/2-innerCaseRadius/2],
 
-[-skirtX/2-innerCaseRadius/2,lkey*1.5], //lower row
-[caseWidth+skirtX/2+innerCaseRadius/2,lkey*1.5],
+[-skirtX/2-innerCaseRadius/2,lkey*2], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,lkey*2],
 
-[-skirtX/2-innerCaseRadius/2,caseDepth-lkey*0.75], //lower row
-[caseWidth/2-lkey,caseDepth-lkey*0.75],
-[caseWidth/4,caseDepth-lkey*0.75],
-[caseWidth/2+lkey,caseDepth-lkey*0.75], //lower row
-[caseWidth-caseWidth/4,caseDepth-lkey*0.75],
-[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth-lkey*0.75],
-
-[-skirtX/2-innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
-[caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
-[caseWidth/2-lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
-[caseWidth/2+lkey,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2], //lower row
-[caseWidth-caseWidth/4,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2],
-[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+lkey*0.5+skirtY/2+innerCaseRadius/2]
+[-skirtX/2-innerCaseRadius/2,caseDepth+skirtY/2+innerCaseRadius/2], //lower row
+[caseWidth+skirtX/2+innerCaseRadius/2,caseDepth+skirtY/2+innerCaseRadius/2]
 ];
 
 
 
 
 /* set colors for simulation, set 0 for default OpenSCAD Gui Colors */
-colorCaseTop="DarkGray";
+/* colorCaseTop="OrangeRed";
+colorCaseMid="DarkGray";
+colorLid="OrangeRed";
+colorRiserR="Black";
+colorRiserL="Black";
+
+frameColor="RoyalBlue"; */
+
+colorCaseTop="RoyalBlue";
 colorCaseMid="DarkGray";
 colorLid="RoyalBlue";
 colorRiserR="Black";
@@ -308,7 +303,7 @@ switchColorBottom = "Black";
    NOTE: DSA is fixed to 3rd row as KeyV2 includes row number into calculation
    of DSA caps
    NOTE: currently not all profiles are working. OEM or DCS are always simulated! */
-keycapProfile = "SA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
+keycapProfile = "DSA"; // SA, DSA, DCS, G20, Hi-Pro, OEM
 setKeycapFragments = 50;
 
 /* ###################### BUILD_LINE ########################*/
@@ -321,7 +316,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=9.5);
+/* KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=9.5); */
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -329,7 +324,7 @@ KeyboardSim(layout,doFrameSim=false,DoKeycapSimulation=true,xRotate=9.5);
 
 /* ### complete keyboard model ### */
 /* mainCase(layout); */
-/* lid(); */
+lid();
 
 /* keycap frame functions. activate if skirt is enabled
    and you want a frame that hides the switches, which is
