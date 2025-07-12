@@ -74,7 +74,7 @@ skirtY = 4;
    and in the case. The screws will be placed according to
    the array frameScrewHoleArray[] around the case and frame.
    */
-frameScrewsEnable = false;
+frameScrewsEnable = true;
 
 /* edge radius of the case
  * Note: be careful here, this interacts with skirtX/Y
@@ -82,6 +82,8 @@ frameScrewsEnable = false;
  */
 caseRadius=3;
 
+/* enable intern case stabilizers */
+enableCaseStabilizers = false;
 
 /* debug extra for avoiding artefacts @ compilation */
 extra=1;
@@ -241,10 +243,10 @@ module extraKeySimHook()
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[lkey/2-2,7.5], //left lower row
-[lkey*7-lkey/2+2,7.5],
-[lkey/2-2,lkey*3.21],
-[lkey*7-lkey/2+2,lkey*3.21], // right lower row
+[-1,7.5], //left lower row
+[lkey*7+1,7.5],
+[-1,lkey*3.21+7],
+[lkey*7+1,lkey*3.21+7], // right lower row
 ];
 
 /* rotate screw hole spacers */
@@ -323,8 +325,10 @@ setKeycapFragments = 50;
 /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
 
 /* ### complete keyboard model ### */
-/* mainCase(layout); */
-lid();
+/* projection(cut=true) */
+translate([0,0,-5])
+mainCase(layout);
+/* lid(); */
 
 /* keycap frame functions. activate if skirt is enabled
    and you want a frame that hides the switches, which is

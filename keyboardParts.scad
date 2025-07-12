@@ -665,7 +665,10 @@ module mainCase(keyboardLayout){
 				union()
 				{
 					case();
-					caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+					if(enableCaseStabilizers == true)
+					{
+						caseStabilizer(caseWidth,caseDepth,keyboardLayout,0,caseDepth-lkey,tempHeigth);
+					}
 				}
 				holematrix(keyboardLayout,0,caseDepth-lkey,tempHeigth);
 				translate([caseWidth-pcbWidth/2-usbCutX/2-lkey*2+0.5+pcbShift,
