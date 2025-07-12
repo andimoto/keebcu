@@ -45,8 +45,8 @@ lidThickness=3;
 /* these are unit values; one unit is one key or switchhole
  * this makes the keyboard printable on nearly every printer.
  */
-cutAfterUnits = 7.25;
-spacebarCut = 4.5;
+cutAfterUnits = 9.5;
+spacebarCut = 1.5;
 
 /* fRowSeparator [true/false]
  * Select separation of F-Row (or Row 0; key[0][1]=0)
@@ -351,20 +351,20 @@ module extraKeySimHook()
  * more screw holes into the keyboard case and lid.
  */
 screwHoleArray = [
-[20,lkey-0.4], //left lower row
-[140,lkey-0.4],
-[170,lkey-0.4],
-[285.5,lkey-0.4], // right lower row
+[19,lkey-0.4], //left lower row
+[157,lkey-0.4],
+[229,lkey-0.4],
+[371,lkey-0.4], // right lower row
 
-[20,lkey*3+wallThickness-3], //left mid row
-[128,lkey*3+wallThickness-3],
-[180,lkey*3+wallThickness-3],
-[285,lkey*3+wallThickness-3], //right mid row
+[19,lkey*3+wallThickness-3], //left mid row
+[157,lkey*3+wallThickness-3],
+[229,lkey*3+wallThickness-3],
+[371,lkey*3+wallThickness-3], //right mid row
 
-[20,lkey*5+wallThickness-3], //left upper row
-[133,lkey*5+wallThickness-3],
-[171,lkey*5+wallThickness-3],
-[285.5,lkey*5+wallThickness-3], //right upper row
+[19,lkey*5+wallThickness-3], //left upper row
+[161,lkey*5+wallThickness-3],
+[219,lkey*5+wallThickness-3],
+[371,lkey*5+wallThickness-3], //right upper row
 ];
 
 /* rotate screw hole spacers */
@@ -429,7 +429,7 @@ setKeycapFragments = 50;
 
 /* ###################### BUILD_LINE ########################*/
 /* ##########################################################*/
-/* All calls after this line have to be ignored by the build script.
+/* All calls after this line will be ignored by the build script.
  * Do not place any calls above build line (or comment it)
  */
 
@@ -437,7 +437,7 @@ setKeycapFragments = 50;
  * with keycaps. set DoKeycapSimulation to true or false to add
  * or remove keycap simulation
  */
-/* KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=6.5); */
+KeyboardSim(layout,doFrameSim=true,DoKeycapSimulation=true,xRotate=6.5);
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 /* ##### uncomment the keyboard part you want to print ##### */
@@ -450,8 +450,8 @@ setKeycapFragments = 50;
 /* keycap frame functions. activate if skirt is enabled
    and you want a frame that hides the switches, which is
    a more classic look to none printed keyboards */
-translate([0,0,15])
-capFrame(layout);
+/* translate([0,0,15])
+capFrame(layout); */
 
 /* translate([0,0,13])
 capFrameR(layout); */
@@ -461,6 +461,7 @@ capFrameL(layout); */
 
 /* ### devided keyboard and lid model ### */
 /* mainCaseLeft(layout); */
+/* translate([80,0,0]) */
 /* mainCaseRight(layout); */
 
 /* lidL(); */
