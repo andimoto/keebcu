@@ -82,6 +82,8 @@ frameScrewsEnable = true;
  */
 caseRadius=3;
 
+/* enable intern case stabilizers */
+enableCaseStabilizers = true;
 
 /* ################## calculated vars #################### */
 
